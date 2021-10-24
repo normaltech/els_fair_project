@@ -20,10 +20,7 @@
     height: 400px;
 }
 
-.footer{
-  position: fixed;
-  bottom: 0;
-} 
+
 
 @media screen and (max-width: 768px){
 

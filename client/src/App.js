@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import SelectBooth from './component/selectbooth/SelectBooth';
+import Spec from './component/specifications/Spec';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/mainfirst">
           <Mainfirst/>
+        </Route>
+        <Route path="/selection">
+          <Spec/>
         </Route>
       </Switch>
     </Router>

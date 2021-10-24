@@ -1,11 +1,12 @@
 import React from 'react'
 import Footer from '../footer/Footer'
+import Header from '../header/Header';
 import './selectbooth.css';
 
 export default function SelectBooth() {
   return (
     <>
-      <div className="header">header</div>
+      <Header/>
       <img src="/assets/icons/eservate.png" alt="" className="selectBoothImg" />
 
       {/* 상단 배너 */}
@@ -102,7 +103,7 @@ export default function SelectBooth() {
       </div>
       {/*부스정보칸 */}
 
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }
