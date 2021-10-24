@@ -15,9 +15,9 @@ export default function Header() {
                     <img className="headerLogo" src="/assets/headerlogo.png" alt="headerlogo" />
                 </div>
                 <div className="headerRightContent">
-                    <div className="headerRightPadding">Hongildong님, 환영합니다</div>
-                    <Link to="/" style={{textDecoration:"none"}}>
-                        <span className="headerRightPadding">로그아웃</span>
+                    <div className="headerRightPadding headerRightPerson"><strong>Hongildong님, 환영합니다</strong></div>
+                    <Link to="/" className="headerLogout" style={{textDecoration:"none"}}>
+                        <span className="headerRightPadding headerRightSpan">로그아웃</span>
                     </Link>
                 </div>
             </div>
