@@ -1,0 +1,229 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+  .loginRightContent{
+      margin-top: 80px;
+      width: 600px;
+      height: 500px;
+      border-radius: 30px;
+      box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
+      border: solid 1px #dfe3f5;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  
+  .eservateLogo{
+      margin: 20px auto 30px auto;
+  }
+  
+  .loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loginInput{
+      width: 400px;
+      height: 50px;
+      border-radius: 7px;
+      border: solid 1px #0d47a1;
+      background-color: #fff;
+      outline: none;
+      padding-left: 10px;
+      margin-right: 20px;
+      margin-left: 20px;
+  }
+  
+  .loginInput:focus{
+      border: solid 1px #82b1f7 !important;
+  }
+
+  input[type=password] { 
+    font-family: sans-serif; 
+  }
+  
+  .loginButton{
+      width: 400px;
+      height: 50px;
+      background-color: #ef5e3b;
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      margin-top: 40px;
+  }
+  
+  .loginButton:hover{
+      background-color: #f58f76;
+  }
+  
+  .loginMessage{
+      font-family: NanumSquare;
+      font-size: 20px;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+  }
+  
+  .signIn{
+      margin: 30px 0;
+  }
+  
+  .signInAsk{
+      font-family: NanumSquare;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #000;
+  }
+  
+  .signInButton{
+      width: 150px;
+      height: 30px;
+      margin: 0 0 0 10px;
+      background-color: #304653;
+      border-radius: 10px;
+      border: none;
+  }
+  
+  .signInButton:hover{
+      background-color: #546c7a;
+  }
+  
+  .signInButton a{
+      text-decoration : none;
+  }
+  
+  .signInMessage{
+      font-family: NanumSquare;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #fff;
+  }
+  
+  .findEmailOrPwd{
+      margin: 30px 0;
+  }
+  
+  .findEmailOrPwd a{
+      text-decoration : none;
+  }
+  
+  .findInfo{
+      font-family: NanumSquare;
+      font-weight: bold;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #000;
+  }
+  
+  .findInfo:hover{
+      color: #808080;
+  }
+  
+  @media screen and (max-width: 768px){
+  
+      /* 로그인폼 아래 줄 생기는원인 혹은 그림자 사라짐 */   
+      *{
+        overflow-y: hidden;  
+      }
+
+      .loginRightContent{
+          margin: 158px auto 158px auto;
+          width: 400px;
+          height: 340px;
+      }
+      .eservateLogo{
+          width: 134px;
+          height: 30px;
+      }
+      .loginInput{
+          width: 248px;
+          height: 30px;
+      }
+      .loginButton{
+          width: 248px;
+          height: 32px;
+          margin-top: 25px;
+      }
+      .loginMessage{
+          font-size: 15px;
+      }
+      .signIn{
+          margin: 20px auto 10px auto;
+      }
+      .signInAsk{
+          font-size: 10px;
+      }
+      .signInButton{
+          width: 80px;
+          height: 18px;
+      }
+      .signInMessage{
+          font-size: 10px;
+      }
+      .findEmailOrPwd{
+          margin: 10px auto;
+      }
+      .findInfo{
+          font-size: 10px;
+      }
+  
+  }
+  
+  @media screen and (max-width: 480px){
+
+      .loginRightContent{
+          margin: 158px auto 158px auto;
+          width: 300px;
+          height: 310px;
+      }
+      .eservateLogo{
+          width: 134px;
+          height: 30px;
+      }
+      .loginInput{
+          width: 248px;
+          height: 30px;
+      }
+      .loginButton{
+          width: 248px;
+          height: 32px;
+          margin-top: 25px;
+      }
+      .loginMessage{
+          font-size: 15px;
+      }
+      .signIn{
+          margin: 20px auto 10px auto;
+      }
+      .signInAsk{
+          font-size: 10px;
+      }
+      .signInButton{
+          width: 80px;
+          height: 18px;
+      }
+      .signInMessage{
+          font-size: 10px;
+      }
+      .findEmailOrPwd{
+          margin: 10px auto;
+      }
+      .findInfo{
+          font-size: 10px;
+      }
+  }

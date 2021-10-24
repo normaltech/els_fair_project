@@ -1,0 +1,48 @@
+@import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+* {
+    margin: 0;
+    font-family: 'NanumSquare', sans-serif;
+}
+.normal		{ font-weight: 400 }
+.bold		{ font-weight: 700 }
+.bolder		{ font-weight: 800 }
+.light		{ font-weight: 300 }
+
+input[type=password]{
+  font-family: "굴림";
+}
+
+:root {
+  --white: #fff;
+  --warm-grey: #707070;
+  --cornflower: #6c63ff;
+  --black: #000;
+  --mango: #ffc431;
+  --white: #f9f9f9;
+  --dusty-orange: #ef5e3b;
+  --dark-cream: #ffe28f;
+  --light-peach: #ffceb6;
+  --steel: #718799;
+  --tomato: #e04f2b;
+  --leather: #b1712c;
+  --very-light-blue: #e0edff;
+  --warm-grey: #8b8b8b;
+  --greyish-brown: #4b4b4b;
+  --dark-grey-blue: #304653;
+  --white-two: #fff;
+  --warm-grey-two: #707070;
+  --cornflower-two: #6c63ff;
+  --white-two: #f9f9f9;
+  --black-two: #000;
+  --mango-two: #ffc431;
+  --dark-cream-two: #ffe28f;
+  --dusty-orange-two: #ef5e3b;
+  --light-peach-two: #ffceb6;
+  --tomato-two: #e04f2b;
+  --leather-two: #b1712c;
+  --steel-two: #718799;
+  --very-light-blue-two: #e0edff;
+  --greyish-brown-two: #4b4b4b;
+  --dark-grey-blue-two: #304653;
+  --warm-grey-two: #8b8b8b;
+}

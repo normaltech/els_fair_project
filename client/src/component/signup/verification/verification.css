@@ -1,0 +1,48 @@
+.verificationNum{
+  display: block;
+  margin: 0 auto;
+  width: 635px;
+}
+
+.verificationNumInput {
+  width: 430px;
+  height: 63px;
+  margin: 0 1.8% 0 0;
+  border-radius: 15px;
+  border: solid 1px #0d47a1;
+  background-color: var(--white);
+  padding-left: 15px;
+  font-size:25px;
+}
+
+.verificationNumInput:focus {
+  outline:none;
+}
+
+
+.verificationNumButton{
+  width: 168.6px;
+  height: 53.7px;
+  padding: 15.2px 13.6px 18.4px 14px;
+  background-color: var(--dark-grey-blue);
+  border-radius: 15px;
+  border: 0 none;
+  font-family: NanumSquare_acB;
+  font-size: 18px;
+  line-height: 1.11;
+  text-align: center;
+  color: var(--white);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 375px){
+  .verificationNumInput {
+    width: 157px;
+    height: 32px;
+  }
+  .verificationNumButton{
+    width: 96.6px;
+    height: 31.4px;
+    padding: 0 5px 0 5px;
+  }
+}
