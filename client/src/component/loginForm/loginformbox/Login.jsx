@@ -1,7 +1,8 @@
-import React, { Component, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { LoginRightContent } from '../loginrightcontent/loginRightContent';
 import Footer from '../../footer/Footer';
 import './login.css';
+import axios from 'axios';
 import { loginCall } from '../../../apiCalls';
 import { AuthContext } from '../../../context/AuthContext';
 
@@ -18,14 +19,14 @@ export default function Login() {
     setInputPw(e.target.value);
   }
 
-  const clickButton = (e) => {
+  const clickButton = async (e) => {
     e.preventDefault();
 
     const idTag = document.getElementById("input_id");
     const pwTag = document.getElementById("input_pw");
     const warnColor = "#ff0000";
 
-    if (inputId == '' && inputPw == '') {
+    if (inputId === '' && inputPw === '') {
       // alert('로그인 정보를 입력해주세요');
       idTag.style.borderColor = warnColor;
       pwTag.style.borderColor = warnColor;
@@ -49,6 +50,11 @@ export default function Login() {
       //   },
       //   body: JSON.stringify(user)
       // });
+      try {
+        await axios.post("/", user);
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 

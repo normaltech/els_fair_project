@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './signup.css';
 import Footer from '../footer/Footer';
 import SignUpFormBox from './signupformbox/SignUpFormBox';
