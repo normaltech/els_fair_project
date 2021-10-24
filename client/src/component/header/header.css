@@ -1,0 +1,43 @@
+.headerContainer{
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerLeftContent{
+    padding: 10px 10px 10px 20px;
+}
+
+.headerRightContent{
+    display: flex;
+    align-items: center;
+}
+
+.headerRightPadding{
+    padding: 10px 30px 10px 10px;
+}
+
+.headerRightSpan{
+    color: var(--greyish-brown);
+}
+
+.headerRightSpan:hover{
+    color: var(--warm-grey);
+}
+
+@media screen and (max-width: 768px){
+    .headerLogout{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .headerLogo{
+        width: 79px;
+        height: 18px;
+    }
+    .headerRightPerson{
+        font-size: 12px;
+        padding: 10px 15px 10px 10px;
+    }
+}
