@@ -1,5 +1,6 @@
-import Login from './component/loginForm/loginformbox/Login'
+import Login from './component/loginForm/loginformbox/Login';
 import Signup from './component/signup/Signup';
+import Mainfirst from './component/mainfirst/Mainfirst';
 import {
   BrowserRouter as Router,
   Switch,
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login/>
+        </Route>
+        <Route path="/mainfirst">
+          <Mainfirst/>
         </Route>
       </Switch>
     </Router>
