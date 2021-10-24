@@ -1,0 +1,208 @@
+.boothGuideContainerStepsContiner{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.selectBoothImg{
+  width: 100%;
+}
+
+.boothGuideContainerTitle{
+  width: 600px;
+  height: 102px;
+  font-family: NanumSquare_acB;
+  font-size: 40px;
+  line-height: 102px;
+  margin: 0 auto 40px auto;
+  color: var(--black);
+  border-bottom: solid 4px var(--warm-grey);  
+
+}
+
+.boothGuideContainer {
+  width: 100%;
+  height: 706px;
+  background-color: rgba(239, 239, 239, 0.4);
+}
+
+.boothGuideContainerTitle{
+  text-align: center;
+}
+
+.step {
+  width: 339px;
+  height: 495px;
+  border-radius: 17px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.stepTitle{
+  font-family: NanumSquare_acB;
+  font-size: 27px;
+  line-height: 1.11;
+  text-align: center;
+  color: var(--black);
+  margin-top: 11.5%;
+}
+.stepImgBox{
+  height: 200px;
+}
+
+.stepImg {
+  margin-top: 13.9%;
+  margin-bottom: 11.1%;
+}
+
+.stepName {
+  font-family: NanumSquare_acB;
+  font-size: 24px;
+  line-height: 1.08;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 7.1%;
+}
+
+.stepDescription {
+  font-family: NanumSquare_acL;
+  font-size: 18px;
+  line-height: 1.11;
+  text-align: center;
+  color: var(--black);
+  margin: 5% 8.3%;
+}
+
+.boothInfoContainerTitleText{
+  text-align: center;
+  width: 600px;
+  height: 102px;
+  font-family: NanumSquare_acB;
+  font-size: 40px;
+  line-height: 102px;
+  margin: 0 auto 40px auto;
+  color: var(--black);
+  border-bottom: solid 4px var(--warm-grey);  
+}
+
+.boothInfoContainerLeftBox{
+  flex:9;
+}
+
+.boothInfoSearchContainer{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.sectionBox{
+  display: flex;
+  width: 510px;
+  padding: 18px 12px 17px 15px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: var(--white);
+  margin-left: 15px;
+}
+
+.section{
+  width: 60px;
+  height: 20px;
+  margin: auto;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.09px;
+  text-align: center;
+  color: #050830;
+}
+
+.boothSearchBarContainer{
+  display: flex;
+  width: 400px;
+  height: 25px;
+  padding: 11.5px 13.7px 11.2px 11.3px;
+  border: solid 3px var(--warm-grey);
+  background-color: white;
+}
+
+.searchBarInput{
+  flex:9;
+  border: none;
+  /* background-color: transparent; */
+  height: 25px;
+  font-size: 20px;
+}
+
+.searchBarInput:focus { outline: none; }
+
+.searchMirror{
+  flex:1;
+  width: 31.4px;
+  height: 26.3px;
+}
+
+.boothInfoContainerMain{
+  display: flex;
+}
+
+.boothInfoContainerRightBox{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floor{
+  width: 80px;
+  height: 80px;
+  border-radius: 13px;
+  border: solid 2px var(--dark-grey-blue);
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.floorNum{
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.53;
+  letter-spacing: 0.11px;
+  text-align: left;
+  color: var(--dark-grey-blue);
+}
+
+.hallName{
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0.07px;
+  text-align: center;
+  color: var(--dark-grey-blue);
+}
+
+.enlargeButton{
+  width: 30px;
+  height: 30px;
+  margin: 0 0 8.6px;
+  padding: 11.8px;
+  border-radius: 10px;
+  background-color: #e4e4e4;
+  text-align: center;
+  line-height: 30px;
+  font-size: 25px;
+}
+
+.boothMainPicuture{
+  height: 100%;
+  background-color: red;
+}

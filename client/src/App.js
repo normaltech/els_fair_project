@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SelectBooth from './component/selectbooth/SelectBooth';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login/>
+        </Route>
+        <Route path="/reservation">
+          <SelectBooth/>
         </Route>
       </Switch>
     </Router>
