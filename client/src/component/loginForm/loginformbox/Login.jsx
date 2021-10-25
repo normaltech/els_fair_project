@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LoginRightContent } from '../loginrightcontent/loginRightContent';
 import Footer from '../../footer/Footer';
 import './login.css';
@@ -8,8 +8,12 @@ import { AuthContext } from '../../../context/AuthContext';
 
 
 export default function Login() {
+
+  axios.defaults.withCredentials = true;
+
   const [inputId, setInputId] = useState('')
   const [inputPw, setInputPw] = useState('')
+  const[loginStatus, setLoginStatus] = useState('')
 
   const changeId = (e) => {
     setInputId(e.target.value);
@@ -51,13 +55,31 @@ export default function Login() {
       //   body: JSON.stringify(user)
       // });
       try {
-        await axios.post("/", user);
+        await axios.post("http://localhost:5000/login", user)
+        .then((response) => {
+          if(response.data.message)
+            setLoginStatus(response.data.message)
+          else{
+            setLoginStatus(response.data[0].manager+"님 환영합니다!")
+          }
+        });
       } catch (error) {
         console.log(error);
       }
     }
   }
-
+ 
+  /*
+  - 세션관리
+  현재 로그인이 되어있는지 안되어있는지 확인하기위한 메소드
+  */  
+  useEffect(()=>{
+    axios.get("http://localhost:3000/login").then((response)=>{
+      if(response.data.loggedIn == true){
+        setLoginStatus(response.data.user[0].manager+"님 환영합니다!")
+      }
+    })
+  }, [])
   const changeBorderColor = (e) => {
     if (e.target.id === "input_id") {
       document.getElementById("input_id").style.borderColor = "#0d47a1";
@@ -74,7 +96,7 @@ export default function Login() {
         </div>
         {/* 오른쪽 로그인폼 */}
         <LoginRightContent inputId={inputId} inputPw={inputPw} changeId={changeId} changePw={changePw}
-          changeBorderColor={changeBorderColor} clickButton={clickButton} />
+          changeBorderColor={changeBorderColor} clickButton={clickButton} loginStatus={loginStatus}/>
       </div>
       <Footer />
     </div>

@@ -59,6 +59,7 @@ export default function SignUpFormBox() {
       const companyNum_front_value = companyNum_front_s.options[companyNum_front_s.selectedIndex].value;
       return (companyNum_front_value + " " + companyNum_back);
     }
+    
     // console.log(email);
     // const companyNum = companyNum_back + " " + companyNum_front_value;
 
