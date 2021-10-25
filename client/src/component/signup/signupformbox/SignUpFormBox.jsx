@@ -59,7 +59,7 @@ export default function SignUpFormBox() {
       const companyNum_front_value = companyNum_front_s.options[companyNum_front_s.selectedIndex].value;
       return (companyNum_front_value + " " + companyNum_back);
     }
-    console.log(email);
+    // console.log(email);
     // const companyNum = companyNum_back + " " + companyNum_front_value;
 
     // this.setState({
@@ -89,13 +89,22 @@ export default function SignUpFormBox() {
       password: password,
       name: name,
       gender: gender_value,
-      birthday: birth(),
       managerNum: managerNum,
       companyName: companyName,
       companyId: companyId,
       companyNum: companyNum(),
     };
     console.log(user);
+
+    try{
+      axios.post("http://localhost:5000/register",user)
+      .then((response) => {
+      console.log(response);
+    });
+    }catch(error){
+      console.log(error);
+    }
+    
     // let response = fetch('', {  // 서버에서 어디로보낼지 로그인 api 첫번째인자에 정해야됨
     //   method: 'POST',
     //   headers: {
@@ -103,11 +112,11 @@ export default function SignUpFormBox() {
     //   },
     //   body: JSON.stringify(user)
     // });
-    try {
-      await axios.post("/",user);
-    } catch (error) {
-      console.log(error);
-    }
+    // try {
+    //   await axios.post("/",user);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   return (
@@ -127,4 +136,3 @@ export default function SignUpFormBox() {
     </form>
   )
 }
-
