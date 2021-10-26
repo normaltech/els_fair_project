@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './loginRightContent.css';
 
-export const LoginRightContent = ({ inputId, inputPw, changeId, changePw, changeBorderColor, clickButton }) => (
+export const LoginRightContent = ({ inputId, inputPw, changeId, changePw, changeBorderColor, clickButton, loginStatus }) => (
   <div className="loginRightContent">
     <div>
       <img className="eservateLogo" src="/assets/eservatelogo.png" alt="" />
@@ -10,6 +10,7 @@ export const LoginRightContent = ({ inputId, inputPw, changeId, changePw, change
     <form className="loginForm" action="/" method="get">
       <input required className="loginInput" id="input_id" name="input_id" value={inputId} type="email" placeholder="이메일" onChange={changeId} onClick={changeBorderColor} />
       <input required className="loginInput" id="input_pw" name="input_pw" value={inputPw} type="password" placeholder="비밀번호" onChange={changePw} onClick={changeBorderColor} />
+      <h1>{loginStatus}</h1>
       <div><button className="loginButton" type="submit" onClick={clickButton}><span className="loginMessage">로그인</span></button></div>
     </form>
     <div className="signIn">
