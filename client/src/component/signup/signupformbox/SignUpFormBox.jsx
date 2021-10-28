@@ -5,28 +5,7 @@ import axios from 'axios';
 import React, { Component, createRef } from 'react'
 
 export default function SignUpFormBox() {
-  // state = {
-  //   manager: {  //구글클라우드 클래스다이어그램보고 변수명 책정 manager와 company로 2차 분기해서 멤버로 들어가야함
-  //     email: '',
-  //     passwordForm: {
-  //       password: '',
-  //       passwordCheck: '',
-  //     },
-  //     name: '',
-  //     birthday: {
-  //       year: 0,
-  //       month: 0,
-  //       day: 0,
-  //     },
-  //     gender: true, //true면 남자 false면 여자
-  //     managerNum: 0,
-  //   },
-  //   company: {
-  //     companyName: '',
-  //     companyId: 0,
-  //     companyNum: 0,
-  //   }
-  // }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,19 +13,6 @@ export default function SignUpFormBox() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
-
-    const birth = () => {
-      const birth_year_s = document.getElementById("birthYear");
-      const birth_year_value = birth_year_s.options[birth_year_s.selectedIndex].value;
-      const birth_month_s = document.getElementById("birthMonth");
-      const birth_month_value = birth_month_s.options[birth_month_s.selectedIndex].value;
-      const birth_day_s = document.getElementById("birthDay");
-      const birth_day_value = birth_day_s.options[birth_day_s.selectedIndex].value;
-      return birth_year_value + " " + birth_month_value + " " + birth_day_value;
-    }
-
-    const gender_s = document.getElementById("genderRadioButtonContainer");
-    const gender_value = gender_s.options[gender_s.selectedIndex].value === "male" ? true : false;
 
     const managerNum = document.getElementById("managerNum").value;
 
@@ -64,7 +30,6 @@ export default function SignUpFormBox() {
       email: email,
       password: password,
       name: name,
-      gender: gender_value,
       managerNum: managerNum,
       companyName: companyName,
       companyId: companyId,
