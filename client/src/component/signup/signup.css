@@ -61,6 +61,10 @@
   cursor: pointer;
 }
 
+.signUpButton:hover{
+  background-color: #f58f76;
+}
+
 @media screen and (max-width: 375px){
   * {
     overflow-x:hidden;
