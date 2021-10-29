@@ -1,6 +1,15 @@
 import Login from './component/loginForm/loginformbox/Login';
 import Signup from './component/signup/Signup';
 import Mainfirst from './component/mainfirst/Mainfirst';
+import Find from './component/find/Find';
+import Confirm from './component/confirm/Confirm';
+import ChangePw from './component/changepwtofindemail/ChangePw';
+import Success from './component/success/Success';
+import SuccessSignIn from './component/successsignin/SuccessSignIn';
+import ChangePassword from './component/changepassword/changepassword';
+import ChangeNumber from './component/changenumber/ChangeNumber';
+import ChangeBussinessNumber from './component/changebussinessnumber/ChangeBussinessNumber';
+import Withdraw from './component/withdraw/Withdraw';
 import {
   BrowserRouter as Router,
   Switch,
@@ -34,6 +43,35 @@ function App() {
         </Route>
         <Route path="/selection">
           <Spec/>
+        </Route>
+        <Route path="/findIdPw">
+          <Find/>
+        </Route>
+        <Route path="/confirm">
+          <Confirm/>
+        </Route>
+        {/* 아래 changePw는 Web_find_email_password */}
+        <Route path="/changePw">
+          <ChangePw/>
+        </Route>
+        <Route path="/success">
+          <Success/>
+        </Route>
+        <Route path="/successSignIn">
+          <SuccessSignIn/>
+        </Route>
+        {/* 아래 changePassword는 회원정보에서의 비밀번호 변경인 Web_change_password */}
+        <Route path="/changePassword"> 
+          <ChangePassword/>
+        </Route>
+        <Route path="/changeNumber">
+          <ChangeNumber/>
+        </Route>
+        <Route path="/changeBusinessNumber">
+          <ChangeBussinessNumber/>
+        </Route>
+        <Route path="/withdraw">
+          <Withdraw/>
         </Route>
       </Switch>
     </Router>

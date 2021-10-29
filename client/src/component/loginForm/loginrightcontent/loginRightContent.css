@@ -41,6 +41,14 @@
   input[type=password] { 
     font-family: sans-serif; 
   }
+
+  .loginAlert{
+      margin-top: 15px;
+      font-weight: bold;
+      color: var(--dark-grey-blue);
+      font-family: NanumSquare;
+      font-size: 18px;
+  }
   
   .loginButton{
       width: 400px;
@@ -49,7 +57,7 @@
       color: #ffffff;
       border: none;
       border-radius: 20px;
-      margin-top: 40px;
+      margin-top: 20px;
   }
   
   .loginButton:hover{

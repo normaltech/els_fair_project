@@ -1,0 +1,50 @@
+.changeBussinessNumber_contentWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    height: 320px;
+    border-radius: 30px;
+    box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #dfe3f5;
+    /* background-color: var(--white); */
+    margin: auto;
+    margin-top: 80px;
+}
+
+.changeBussinessNumber_word1{
+    font-family: NanumSquare_ac;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #000;
+    font-size: 20px;
+    margin: 20px 0 50px 0;
+}
+
+.changeBussinessNumber_input{
+    border-radius: 10px;
+    border: solid 1px #707070;
+    background-color: #fff;
+    width: 200px;
+    height: 25px;
+    padding: 5px 10px;
+    outline: none;
+    margin: 3px 0 10px 0;
+}
+
+.changeBussinessNumber_button1{
+    margin-top: 50px !important;
+}
+
+.changeBussinessNumber_button{
+    background-color: #ef5e3b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 5px 0;
+}

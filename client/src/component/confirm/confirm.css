@@ -1,0 +1,115 @@
+/* .wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+} */
+
+.confirm_contentWrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 480px;
+    height: 420px;
+    border-radius: 30px;
+    box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #dfe3f5;
+    /* background-color: var(--white); */
+    margin: auto;
+    margin-top: 80px;
+}
+
+
+.confirm_logo{
+    width: 250px;
+    height: 55px;
+    margin-top: 20px;
+}
+
+.confirm_word1{
+    font-family: NanumSquare_ac;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #000;
+    margin: 20px 0;
+}
+
+.confirm_word2{
+    font-family: NanumSquare_ac;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    color: #3b3b3b;
+    margin: 3px 0;
+}
+
+.confirm_input{
+    border-radius: 10px;
+    border: solid 1px #707070;
+    background-color: #fff;
+    width: 280px;
+    height: 25px;
+    padding: 5px 10px;
+    outline: none;
+    margin: 3px 0 10px 0;
+}
+
+.confirm_hidden{
+    display: none;
+    color: var(--dusty-orange);
+}
+
+.confirm_button{
+    background-color: #ef5e3b;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+}
+
+.confirm_homeLink{
+    margin: 10px 0;
+}
+
+.confirm_word3{
+    font-family: NanumSquare_ac;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    color: #4066ff;
+}
+
+@media screen and (max-width: 480px){
+    .confirm_contentWrap{
+        width: 320px;
+        height: 400px;
+    }
+
+    .confirm_logo{
+        width: 200px;
+        height: 45px;
+    }
+
+    .confirm_word1{
+        margin-top: 20px;
+    }
+
+    .confirm_word2, .confirm_word3{
+        font-size: 12px;
+        margin: 4px 0;
+    }
+
+    .confirm_input{
+        width: 200px;
+        height: 20px;
+        margin: 10px;
+    }
+
+    .confirm_hidden{
+        font-size: 12px;
+    }
+}
