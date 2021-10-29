@@ -18,6 +18,8 @@ import {
 } from "react-router-dom";
 import SelectBooth from './component/selectbooth/SelectBooth';
 import Spec from './component/specifications/Spec';
+import UserInfo from './component/userinfo/UserInfo';
+import ReservationList from './component/reservationlist/ReservationList';
 
 function App() {
   return (
@@ -72,6 +74,12 @@ function App() {
         </Route>
         <Route path="/withdraw">
           <Withdraw/>
+        </Route>
+        <Route path="/userinfo">
+          <UserInfo/>
+        </Route>
+        <Route path="/reservationlist">
+          <ReservationList/>
         </Route>
       </Switch>
     </Router>

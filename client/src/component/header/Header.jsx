@@ -25,10 +25,10 @@ export default function Header() {
                 </div>
 
                 <ul className="headerMenu">
-                    <li><a href="#">전시회 목록</a></li>
-                    <li><a href="#">부스 정보</a></li>
-                    <li><a href="#">예약 안내</a></li>
-                    <li><a href="#">전시 개요</a></li> 
+                    <li className="headerMenuItem"><a href="#">전시회 목록</a></li>
+                    <li className="headerMenuItem"><a href="#">부스 정보</a></li>
+                    <li className="headerMenuItem"><a href="#">예약 안내</a></li>
+                    <li className="headerMenuItem"><a href="#">전시 개요</a></li> 
                 </ul>
 
                 <div className="headerRightContent">
