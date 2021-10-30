@@ -133,7 +133,7 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B3">타입</label>
+                        <label htmlFor="B3">C타입</label>
                         <input type="radio" name="boothRadio" value="3" />
                       </div>
                     </div>
