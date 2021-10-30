@@ -52,12 +52,6 @@ export default function Spec() {
       companyName: companyName,
       companyId: companyId,
       companyNum: companyNum(),
-      // esl_E1: esl_E1, 필요하시면 개별 데이터로 가져가세요 배열로 만드는게 쓰시기에 더 편할것같아서 배열상태로 푸시했습니다.
-      // esl_E2: esl_E2,
-      // esl_E3: esl_E3,
-      // booth_B1: booth_B1,
-      // booth_B2: booth_B2,
-      // booth_B3: booth_B3,
       eslArray: eslArray,
       boothArray: boothArray,
       passArray: passTotalArray,
@@ -122,25 +116,25 @@ export default function Spec() {
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
-                    <div id="boothItemConatiner" className="SelectionItemBottomItem">
+                    <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/622.png" alt="booth1" />
-                      <div>
-                        <label htmlFor="B1">B1</label><br />
-                        <input className="SelectedBoothType" type="number" name="B1" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B1">A타입</label>
+                        <input type="radio" name="boothRadio" value="1" />
                       </div>
                     </div>
-                    <div id="boothItemConatiner" className="SelectionItemBottomItem">
+                    <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
-                      <div>
-                        <label htmlFor="B2">B2</label><br />
-                        <input className="SelectedBoothType" type="number" name="B2" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B2">B타입</label>
+                        <input type="radio" name="boothRadio" value="2" />
                       </div>
                     </div>
-                    <div id="boothItemConatiner" className="SelectionItemBottomItem">
+                    <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
-                      <div>
-                        <label htmlFor="B3">B3</label><br />
-                        <input className="SelectedBoothType" type="number" name="B3" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B3">타입</label>
+                        <input type="radio" name="boothRadio" value="3" />
                       </div>
                     </div>
                   </div>
@@ -155,23 +149,44 @@ export default function Spec() {
                   <div className="SelectionItemBottomItems">
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label htmlFor="ESL_E1">E1</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E1" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E1">E1</label>
+                        <select name="ESL_E1" className="eslSelectionBOX">
+                          <option value="0" selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label htmlFor="ESL_E2">E2</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E2" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E2">E2</label>
+                        <select name="ESL_E2" className="eslSelectionBOX">
+                          <option value="0" selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label htmlFor="ESL_E3">E3</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E3" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E3">E3</label>
+                        <select name="ESL_E3" className="eslSelectionBOX">
+                          <option value="0" selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
                       </div>
                     </div>
                   </div>

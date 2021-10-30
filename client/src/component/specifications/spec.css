@@ -55,25 +55,55 @@
   display: flex;
   justify-content: center;
 }
-.SelectionItemBottomItem{
-  width: 344px;
-  height: 344px;
-  margin: 46px 29px 126px 45px;
-  border: solid 1px var(--greyish-brown);
-  background-color: var(--white);
-}
+
 
 .SelectionItemBottomItem{
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 20px;
-  justify-content: space-between;
+  width: 344px;
+  height: 344px;
+  margin: 46px 29px 126px 45px;
+  border: solid 1px var(--greyish-brown);
+  background-color: var(--white);
+  justify-content: space-evenly;
 }
 
-#boothItemConatiner img{
+.SelectionItemBottomItem img{
+  width: 80%;
+  height: 200px;
+  text-align: center;
+}
+
+
+.selectionConatiner{
+  display: flex;
+  justify-content: space-evenly;
   width: 80%;
   text-align: center;
+}
+
+.selectionConatiner label{
+  text-align: center;
+  font-size: 16px;
+  font-family: NanumSquare_acEB;
+  font-weight: bold;
+  color: var(--black);
+}
+
+.selectionConatiner input{
+  height: 20px;
+}
+
+.selectionConatiner *{
+  width: 30%;
+  text-align: center;
+  font-size: 16px;
+  font-family: NanumSquare_acEB;
+  font-weight: bold;
+  color: var(--black);
+  border-radius: 5px;
 }
 
 
