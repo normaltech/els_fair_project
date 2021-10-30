@@ -11,7 +11,7 @@ export default function SelectBooth() {
 
       {/* 상단 배너 */}
 
-      <div className="boothGuideContainer">
+      <div id="boothGuide" className="boothGuideContainer">
         <div className="boothGuideContainerTitle">예약 안내</div>
         <div className="boothGuideContainerStepsContiner">
           <div className="step">
@@ -51,10 +51,10 @@ export default function SelectBooth() {
 
       {/*예약안내칸 */}
 
-      <div className="boothInfoContainer">
+      <div className="boothInfoContainer" id="boothInfo">
         <div className="boothInfoContainerTitle">
           <img src="" alt="" className="boothInfoContainerTitleImg" />
-          <div className="boothInfoContainerTitleText">부스 정보</div>
+          <div className="boothInfoContainerTitleText">부스 배치도</div>
         </div>
         <div className="boothInfoContainerMain">
           <div className="boothInfoContainerLeftBox">

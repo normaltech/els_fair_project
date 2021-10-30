@@ -16,6 +16,8 @@ export default function Header() {
         menu.classList.toggle('active');
         logout.classList.toggle('active');
     }
+    const sendToSelection = () => {
+    }
     return (
         <>
             <div className="headerContainer">
@@ -25,10 +27,10 @@ export default function Header() {
                 </div>
 
                 <ul className="headerMenu">
-                    <li className="headerMenuItem"><a href="#">전시회 목록</a></li>
-                    <li className="headerMenuItem"><a href="#">부스 정보</a></li>
-                    <li className="headerMenuItem"><a href="#">예약 안내</a></li>
+                    <Link to="/mainpage"><li className="headerMenuItem">전시회 목록</li></Link>
                     <li className="headerMenuItem"><a href="#">전시 개요</a></li>
+                    <li className="headerMenuItem" onClick={sendToSelection}><a href="#boothGuide">예약 안내</a></li>
+                    <li className="headerMenuItem" onClick={sendToSelection}><a href="#boothInfo">부스 배치도</a></li>
                 </ul>
 
                 <div className="headerRightContent">
