@@ -102,8 +102,8 @@ export default function SelectBooth() {
         </div>
       </div>
       {/*부스정보칸 */}
-
-      <Footer/>
+{/* 
+      <Footer/> */}
     </>
   )
 }

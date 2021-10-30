@@ -37,13 +37,13 @@ function App() {
         <Route path="/login">
           <Login/>
         </Route>
-        <Route path="/reservation">
+        <Route path="/selection">
           <SelectBooth/>
         </Route>
-        <Route path="/mainfirst">
+        <Route path="/mainpage">
           <Mainfirst/>
         </Route>
-        <Route path="/selection">
+        <Route path="/reservation">
           <Spec/>
         </Route>
         <Route path="/findIdPw">

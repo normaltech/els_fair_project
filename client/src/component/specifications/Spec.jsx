@@ -74,7 +74,7 @@ export default function Spec() {
     // }
   }
   return (
-    <>
+    <div className="reservationContainer">
       <Header />
       <div className="specBanner">RESERVATION</div>
       <div className="specContainer">
@@ -267,7 +267,7 @@ export default function Spec() {
           </div>
         </div>
       </div>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </div>
   )
 }
