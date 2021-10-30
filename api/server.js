@@ -50,7 +50,12 @@ app.get("/hello",(req,res)=>{
     res.send("Welcome to homepage");
 })
   
-
+app.get("/test",(req,res)=>{
+    console.log(req.session.user);
+})
+app.get("/logout",(req,res)=>{
+    req.session.destroy();
+})
 app.post("/register",(req,res)=>{
     const userEmail = req.body.email
     const password = req.body.password
@@ -128,4 +133,15 @@ app.get("/login",(req,res)=>{
     }
 })
 
+app.get("/ExhibitionList",(req,res)=>{
+    db.query("SELECT * FROM ExhibitionList;",(err, data) => {
+        console.log(data)
+           if(!err){
+               res.send(data);
+           }else{
+               res.send(err);
+           }
+        }
+    )
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));
