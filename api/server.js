@@ -157,10 +157,8 @@ app.get("/ExhibitionList/:month",(req,res)=>{
     db.query("SELECT * FROM ExhibitionList WHERE YEAR(startDate)=? AND MONTH(startDate)=?;",[year,month],
     (err, data) => {
            if(!err){
-            console.log(data)
                res.send(data);
            }else{
-            console.log(err)
                res.send(err);
            }
         }
