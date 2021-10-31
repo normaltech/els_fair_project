@@ -51,18 +51,6 @@ export default function Spec() {
       return companyNum_back;
     }
 
-    const eslNum = document.getElementsByClassName("SelectedESLNum");
-    const esl_E1 = eslNum[0].value;
-    const esl_E2 = eslNum[1].value;
-    const esl_E3 = eslNum[2].value;
-    const eslArray = [esl_E1,esl_E2,esl_E3];
-
-    const boothNum = document.getElementsByClassName("SelectedBoothType");
-    const booth_B1 = boothNum[0].value;
-    const booth_B2 = boothNum[1].value;
-    const booth_B3 = boothNum[2].value;
-    const boothArray = [booth_B1,booth_B2,booth_B3];
-
     const passNameRow = document.getElementsByClassName("passNameRow");
     const passRankRow = document.getElementsByClassName("passRankRow");
     const passTelRow = document.getElementsByClassName("passTelRow");
@@ -81,9 +69,8 @@ export default function Spec() {
       companyName: companyName,
       companyId: companyId,
       companyNum: companyNum(),
-      eslArray: eslArray,
-      boothArray: boothArray,
       passArray: passTotalArray,
+      totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
     };
     console.log(selectionInfo);
 
