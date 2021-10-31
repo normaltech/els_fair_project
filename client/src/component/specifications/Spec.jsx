@@ -1,12 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './spec.css'
 import axios from 'axios';
 
 export default function Spec() {
+  const [totalPrice, setTotalPrice] = useState(0);
 
-  const handleSubmit = async (e) => {
+  const [eslNum, setEslNum] = useState([0,0,0]);
+  const [booth, setBooth] = useState(0);
+  
+  const handleEslNum = (e) => {
+    const e1 = document.getElementById("e1Select");
+    const e2 = document.getElementById("e2Select");
+    const e3 = document.getElementById("e3Select");
+    const e1Num = Number(e1.options[e1.selectedIndex].value);
+    const e2Num = Number(e2.options[e2.selectedIndex].value);
+    const e3Num = Number(e3.options[e3.selectedIndex].value);
+    setEslNum([e1Num,e2Num,e3Num]);
+    // setEslPrice(eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4);
+  }
+
+
+  const handleBoothPrice = (e) => {
+    const boothType = e.target.value;
+    if (boothType == 1) {
+      setBooth(100)
+    } else if (boothType == 2){
+      setBooth(150);
+    }
+    else if (boothType == 3){
+      setBooth(200);
+    }
+    console.log(booth);
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const email = document.getElementById("defaultInfoTable_managerEmail").value;
     const name = document.getElementById("defaultInfoTable_managerName").value;
@@ -119,22 +148,22 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/622.png" alt="booth1" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B1">A타입</label>
-                        <input type="radio" name="boothRadio" value="1" />
+                        <label htmlFor="B1">A타입<br/>100만원</label>
+                        <input type="radio" name="boothRadio" value="1" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B2">B타입</label>
-                        <input type="radio" name="boothRadio" value="2" />
+                        <label htmlFor="B2">B타입<br/>150만원</label>
+                        <input type="radio" name="boothRadio" value="2" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B3">C타입</label>
-                        <input type="radio" name="boothRadio" value="3" />
+                        <label htmlFor="B3">C타입<br/>200만원</label>
+                        <input type="radio" name="boothRadio" value="3" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                   </div>
@@ -150,8 +179,22 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
-                        <label htmlFor="ESL_E1">E1</label>
-                        <select name="ESL_E1" className="eslSelectionBOX">
+                        <label htmlFor="ESL_E1">E1<br/>기기당<br/>2만원</label>
+                        <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
+                          <option value={0} selected>0</option>
+                          <option value={1}>1</option>
+                          <option value={2}>2</option>
+                          <option value={3}>3</option>
+                          <option value={4}>4</option>
+                          <option value={5}>5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="SelectionItemBottomItem">
+                      <img src="/assets/icons/esl.png" alt="esl image" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E2">E2<br/>기기당<br/>3만원</label>
+                        <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
                           <option value="0" selected>0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -164,22 +207,8 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
-                        <label htmlFor="ESL_E2">E2</label>
-                        <select name="ESL_E2" className="eslSelectionBOX">
-                          <option value="0" selected>0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div className="selectionConatiner">
-                        <label htmlFor="ESL_E3">E3</label>
-                        <select name="ESL_E3" className="eslSelectionBOX">
+                        <label htmlFor="ESL_E3">E3<br/>기기당<br/>4만원</label>
+                        <select id="e3Select" name="ESL_E3" className="eslSelectionBOX" onChange={handleEslNum}>
                           <option value="0" selected>0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
@@ -252,31 +281,33 @@ export default function Spec() {
                 </div>
                 <div className="DescBottomItem">
                   <div className="DescBottomItemTitle">부스</div>
-                  <div className="DescBottomItemDetail">1,500,000 원</div>
+                  <div className="DescBottomItemDetail">{booth}만원</div>
                 </div>
                 <div className="DescBottomItem">
                   <div className="DescBottomItemTitle">ESL</div>
-                  <div className="DescBottomItemDetail">500,000 원</div>
+                  <div className="DescBottomItemDetail">
+                    {eslNum[0]+ eslNum[1]+ eslNum[2] == 0 ? 0 : eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4}만원
+                  </div>
                 </div>
                 <div className="eslClasses">
                   <div className="eslClass">
                     <div className="eslClassTitle">E1</div>
-                    <div className="eslClassNum">6개</div>
+                    <div className="eslClassNum">{eslNum[0] == 0 ? 0 : eslNum[0]}개</div>
                   </div>
                   <div className="eslClass">
                     <div className="eslClassTitle">E2</div>
-                    <div className="eslClassNum">8개</div>
+                    <div className="eslClassNum">{eslNum[1] == 0 ? 0 : eslNum[1]}개</div>
                   </div>
                   <div className="eslClass">
                     <div className="eslClassTitle">E3</div>
-                    <div className="eslClassNum">5개</div>
+                    <div className="eslClassNum">{eslNum[2] == 0 ? 0 : eslNum[2]}개</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="reservationDashboardCost">
               <div className="reservationDashboardCostTitle">총 금액</div>
-              <div className="reservationDashboardCostNum" onChange>2,000,000원</div>
+              <div className="reservationDashboardCostNum">{eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth == 0 ? 0 : eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth}만원</div>
             </div>
             <div className="reservationDashboardButton" onClick={handleSubmit}>결제</div>
           </div>
