@@ -1,13 +1,13 @@
 import React from 'react';
 import '../mainfirst/mainfirst.css';
 
-export const ExInfo = ({month, exhibitMonth, place, period}) => (       
+export const ExInfo = ({name, place, startDate, endDate}) => (       
                 <div className="exInfo">
                     <div className="exImg"><img src="/assets/eximg1.png" alt="전시회 사진" /></div>
                     <div className="detailInfo">
                         <div>
                             <span>전시회</span>
-                            <span>{exhibitMonth}</span>
+                            <span>{name}</span>
                         </div>
                         <div>
                             <span>장소</span>
@@ -15,7 +15,7 @@ export const ExInfo = ({month, exhibitMonth, place, period}) => (
                         </div>
                         <div>
                             <span>기간</span>
-                            <span>{period}</span>
+                            <span>{startDate} ~ {endDate}</span>
                         </div>
                     </div>
                     <div className="moreInfo">

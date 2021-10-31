@@ -20,7 +20,6 @@ import SelectBooth from './component/selectbooth/SelectBooth';
 import Spec from './component/specifications/Spec';
 import UserInfo from './component/userinfo/UserInfo';
 import ReservationList from './component/reservationlist/ReservationList';
-
 function App() {
   return (
     // <div className="App">

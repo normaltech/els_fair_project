@@ -38,7 +38,7 @@ export default function Header() {
                     </Link>
                 </div>
 
-                <a href="#" className="headerToggle" onClick={toggleClick}><i class="fas fa-bars"></i></a>
+                <a href="#" className="headerToggle" onClick={toggleClick}><i className="fas fa-bars"></i></a>
             </div>
         </>
     )

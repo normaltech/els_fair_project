@@ -1,4 +1,6 @@
 import React, { useState,useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectRow,init_Data,init_lastIdx } from '../modules/boardReducer'
 import './mainfirst.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
@@ -7,58 +9,34 @@ import Stack from '@mui/material/Stack';
 import { ExMonth } from '../mainfristinfo/ExMonth';
 import { Notice } from '../mainfristinfo/Notice';
 import axios from 'axios';
+function useFetch(url){
+    const [data, setData] = useState([])
+    async function fetchUrl(){
+        const response = await fetch(url);
+        const json = await response.json();
+
+        setData(json);
+    }
+
+    useEffect(() => {
+        fetchUrl();
+     },[]);
+
+    return data;
+}
 
 export default function Mainfirst() {
     const [num, setNum] = useState('1')
     const [exhibition, setExhibition] = useState('에스씨엠 페어 2021')
     const [title, setTitle] = useState('킨덱스 캠핑 박람회 참가 기업 모집')
     const [date, setDate] = useState('2021-10-03')
-    const [month, setMonth] = useState('9월')
-    const [exhibitionName, setExhibitionName] = useState('고카프 킨텍스 박람회')
-    const [place, setPlace] = useState('킨텍스')
-    const [period, setPeriod] = useState('2021년 10월 1일 (월) ~ 2021년 10월 8일 (월)')
+    const data = useFetch("/ExhibitionMonthList");
+    const items = [];
+    
+    data.map(
+        (item)=>{items.push(<ExMonth key={item.month} month={item.month}/>)}
+    )
 
-    const [initData, setInitData] = useState([{
-        inputData:{
-            id:'',
-            month:'',
-            image:'',
-            exhibitionName:'',
-            place:'',
-            startDate:'',
-            endDate:''
-        }
-    }])
-
-    const [initLastIdx, setInitLastIdx] = useState(0)
-
-    useEffect(async() => {
-        try{
-            const res = await axios.get('/ExhibitionList')
-            console.log(res)
-            const _inputData = await res.data.map((rowData) => {
-                setInitLastIdx(rowData.idx),
-                {
-                    id:rowData.id,
-                    month:rowData.month,
-                    image:rowData.image,
-                    exhibitionName:rowData.name,
-                    place:rowData.place,
-                    startDate:rowData.startDate,
-                    endDate:rowData.endDate
-                }
-            })
-            setInitData(initData.concat(_inputData))
-        }catch(e){
-            console.error(e.message)
-        }
-    },[])
-
-    const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(init_Data(initData))
-        dispatch(init_lastIdx(initLastIdx))
-    },[initData])
     const click = (e) => {
         console.log(e);
     }
@@ -97,7 +75,13 @@ export default function Mainfirst() {
             </div>
             {/* 월별 전시정보 */}
 
-            <ExMonth month={month} exhibitionName={exhibitionName} place={place} period={period}/>
+            {/*
+                1. 현재 년도를 받아온다.
+                2. 현재 년도와 데이터베이스에서 받아온 년도와 일치한 데이터들만 받아온다.
+                3. 1월 2월 3월... 11월 12월 월별로 데이터를 출력해야한다.
+            */}
+            {items}
+            
             {/* <Footer /> */}
         </>
     )
