@@ -38,6 +38,7 @@ app.use(session({
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 
+
 const db = mysql.createConnection({
     host : conf.host,
     user:conf.user,
@@ -45,6 +46,10 @@ const db = mysql.createConnection({
     database:conf.database
 });
 db.connect();
+
+//현재 날짜 가져오기
+const time = new Date();
+const year = time.getFullYear();
 
 app.get("/hello",(req,res)=>{
     res.send("Welcome to homepage");
@@ -133,12 +138,29 @@ app.get("/login",(req,res)=>{
     }
 })
 
-app.get("/ExhibitionList",(req,res)=>{
-    db.query("SELECT * FROM ExhibitionList;",(err, data) => {
-        console.log(data)
+app.get("/ExhibitionMonthList",(req,res)=>{
+    
+    db.query("SELECT DISTINCT MONTH(startDate) AS 'month' FROM ExhibitionList ;",(err, data) => {
+        // console.log(data)
            if(!err){
                res.send(data);
            }else{
+               res.send(err);
+           }
+        }
+    )
+})
+
+
+app.get("/ExhibitionList/:month",(req,res)=>{
+    const month = req.params.month;
+    db.query("SELECT * FROM ExhibitionList WHERE YEAR(startDate)=? AND MONTH(startDate)=?;",[year,month],
+    (err, data) => {
+           if(!err){
+            console.log(data)
+               res.send(data);
+           }else{
+            console.log(err)
                res.send(err);
            }
         }
