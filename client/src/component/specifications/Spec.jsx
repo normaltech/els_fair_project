@@ -258,8 +258,10 @@ export default function Spec() {
             <div className="DashboardDesc">
               <div className="DashboardDescTop">
                 <div className="DescTopTitle">부스번호</div>
-                <div className="DescTopBoothnum">B-a106</div>
-                <div className="DescTopBoothnumDetail">B구역 a타입 106</div>
+                <div className="DescTopBoothnum">{}-{}{}</div>
+                {/* 앞의 페이지에서 고른 정보 가져와서 구여 타입 부스넘버 적을 것 */}
+                <div className="DescTopBoothnumDetail">{}구역 {}타입 {}</div>
+                {/* 앞의 페이지에서 고른 정보 가져와서 구여 타입 부스넘버 적을 것 */}
               </div>
               <div className="DashboardDescBottom">
                 <div className="DescBottomItemDate">
