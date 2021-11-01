@@ -53,7 +53,9 @@ export const ExMonth = ({id, month}) => {
                         name={item.name}
                         place={item.place}
                         startDate={toStringByFormatting(new Date(item.startDate))}
-                        endDate={toStringByFormatting(new Date(item.endDate))}/>
+                        endDate={toStringByFormatting(new Date(item.endDate))}
+                        image={item.image}
+                        />
                         )
                 })
             }
