@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../mainfirst/mainfirst.css';
 
 export const ExInfo = ({name, place, startDate, endDate, image}) => (       
@@ -20,7 +21,11 @@ export const ExInfo = ({name, place, startDate, endDate, image}) => (
                         </div>
                     </div>
                     <div className="moreInfo">
-                        <button className="exButton" type="button"><span className="buttonWord">더 알아보기</span><img className="arrowImg" src="/assets/arrow.png" alt="화살표이미지" /></button>
+                        <Link to='/reservation'>
+                            <button className="exButton" type="button"><span className="buttonWord">더 알아보기</span><img className="arrowImg" src="/assets/arrow.png" alt="화살표이미지" /></button>
+                        </Link>
                     </div>
+
+                    
                 </div>   
 );
