@@ -180,6 +180,7 @@ app.get("/getuserinfo", (req, res) => {
                 if (!err) {
                     res.send(data);
                     console.log('데이터전송');
+                    console.log(data);
                 } else {
                     res.send(err);
                 }
