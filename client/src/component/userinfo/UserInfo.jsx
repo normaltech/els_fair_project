@@ -84,17 +84,14 @@ export default function UserInfo() {
                             <div className="userInfoAddressContainer">
                                 <span className="uIACKey">이름</span>&nbsp;
                                 <span className="uIACValue">{manager}</span>
-                                {/* <span className="uIACValue">{data[0].manager}</span> */}
                             </div>
                             <div className="userInfoAddressContainer">
                                 <span className="uIACKey">전화번호</span>&nbsp;
                                 <span className="uIACValue">{manager_phone_num}</span>
-                                {/* <span className="uIACValue">{data[0].manager_phone_num}</span> */}
                             </div>
                             <div className="userInfoAddressContainer">
                                 <span className="uIACKey">이메일</span>&nbsp;
                                 <span className="uIACValue">{email}</span>
-                                {/* <span className="uIACValue">{data[0].email}</span> */}
                             </div>
                         </div>
                     </div>
