@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import './header.css'
 import {
     BrowserRouter as Router,
@@ -6,6 +7,7 @@ import {
     Route,
     Link
   } from "react-router-dom";
+
 
 export default function Header() {
     const [person, setPerson] = useState('HongilDong')
@@ -16,6 +18,18 @@ export default function Header() {
             menu.classList.toggle('active');
             logout.classList.toggle('active');
     }
+
+    useEffect(() => { //session에서 받아온 유저정보
+        try {
+          axios.get("/getuserinfo")
+          .then((response) => {
+            setPerson(response.data[0].manager);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+    }, []);
+
     return (
         <>
             <div className="headerContainer">
@@ -32,7 +46,7 @@ export default function Header() {
                 </ul>
 
                 <div className="headerRightContent">
-                    <div className="headerRightPadding headerRightPerson"><strong>{person}, 환영합니다</strong></div>
+                    <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
                     <Link to="/" className="headerLogout" style={{textDecoration:"none"}}>
                         <span className="headerRightPadding headerRightSpan">로그아웃</span>
                     </Link>

@@ -4,37 +4,15 @@ import Header from '../header/Header'
 import './userinfo.css'
 import axios from 'axios';
 
-function useFetch(url) {
-  const [data, setData] = useState([])
-  async function fetchUrl() {
-      const response = await fetch(url);
-      const json = await response.json();
-      setData(json);
-  }
-
-  useEffect(() => {
-      fetchUrl();
-  }, []);
-
-  return data;
-}
-
-
-
 export default function UserInfo() {
-
-  // const data = useFetch("/getuserinfo");
-  // console.log('받아온 데이터');
-  // console.log(data);
 
   const [company_id, setcompany_id] = useState('');
   const [manager, setmanager] = useState('');
   const [manager_phone_num, setmanager_phone_num] = useState('');
   const [email, setemail] = useState('');
   
-  
 
-  useEffect(() => {
+  useEffect(() => { //session에서 받아온 유저정보
     try {
       axios.get("/getuserinfo")
       .then((response) => {

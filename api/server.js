@@ -166,7 +166,7 @@ app.get("/ExhibitionList/:month",(req,res)=>{
 })
 
 app.get("/getuserinfo", (req, res) => {
-    const email = 'godtjrdl98@kakao.com';
+    const email = 'test@test.com';
 
     if (req.session.user) {
         res.send(req.session.user);
