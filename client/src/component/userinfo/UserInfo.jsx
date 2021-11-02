@@ -1,9 +1,30 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './userinfo.css'
 
+function useFetch(url) {
+  const [data, setData] = useState([])
+  async function fetchUrl() {
+      const response = await fetch(url);
+      const json = await response.json();
+      setData(json);
+  }
+
+  useEffect(() => {
+      fetchUrl();
+  }, []);
+
+  return data;
+}
+
+
+
 export default function UserInfo() {
+
+  const data = useFetch("/userinfo");
+  console.log(data);
+  
   return (
     <>
       <Header/>
@@ -26,7 +47,7 @@ export default function UserInfo() {
         <div className="userInfoBoxItem">
           <div className="userInfoBoxItemDesc">
             <div className="userInfoBoxItemTitle">사업자번호</div>
-            <div className="userInfoBoxItemSub">사업자 번호를 수정하세요.</div>
+            <div className="userInfoBoxItemSub">{data[0].company_id}</div>
           </div>
           <div className="userInfoBoxItemLeft">
             <div className="userInfoBoxItemButton">수정</div>
@@ -38,15 +59,15 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">이름</span>&nbsp;
-                <span className="uIACValue">홍길동</span>
+                <span className="uIACValue">{data[0].manager}</span>
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">전화번호</span>&nbsp;
-                <span className="uIACValue">010-0000-0000</span>
+                <span className="uIACValue">{data[0].manager_phone_num}</span>
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">이메일</span>&nbsp;
-                <span className="uIACValue">emailismylife@eservate.com</span>
+                <span className="uIACValue">{data[0].email}</span>
               </div>
             </div>
           </div>
@@ -60,7 +81,7 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">회원 탈퇴를 하게 되면 예약 정보가 모두 삭제됩니다.</div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <div className="userInfoBoxItemButton">수정</div>
+            <div className="userInfoBoxItemButton">탈퇴</div>
           </div>
         </div>
       </div>
