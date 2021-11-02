@@ -167,11 +167,10 @@ app.get("/ExhibitionList/:month",(req,res)=>{
 
 app.get("/getuserinfo", (req, res) => {
     const email = 'godtjrdl98@kakao.com';
-    // console.log(req.session.user);
 
     if (req.session.user) {
         res.send(req.session.user);
-        console.log('세션전송');
+        //로그인 되었을때 session에 저장된 유저정보 전송
     }
 
     else {
@@ -187,7 +186,6 @@ app.get("/getuserinfo", (req, res) => {
             }
         )
     }
-    // console.log(req.session.user.email);
 })
 
 app.listen(5000, () => console.log(`Listening on port 5000`));
