@@ -22,8 +22,15 @@ function useFetch(url) {
 
 export default function UserInfo() {
 
-  const data = useFetch("/userinfo");
-  console.log(data);
+  const data = useFetch("/getuserinfo");
+  console.log(data[0].email);
+
+  const [company_id, setcompany_id] = useState('1111111111');
+  const [manager, setmanager] = useState('테스트이름');
+  const [manager_phone_num, setmanager_phone_num] = useState('테스트번호');
+  const [email, setemail] = useState('테스트이메일');
+
+  
   
   return (
     <>
@@ -47,7 +54,8 @@ export default function UserInfo() {
         <div className="userInfoBoxItem">
           <div className="userInfoBoxItemDesc">
             <div className="userInfoBoxItemTitle">사업자번호</div>
-            <div className="userInfoBoxItemSub">{data[0].company_id}</div>
+            <div className="userInfoBoxItemSub">{company_id}</div>
+            {/* <div className="userInfoBoxItemSub">{data[0].company_id}</div> */}
           </div>
           <div className="userInfoBoxItemLeft">
             <div className="userInfoBoxItemButton">수정</div>
@@ -59,15 +67,18 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">이름</span>&nbsp;
-                <span className="uIACValue">{data[0].manager}</span>
+                <span className="uIACValue">{manager}</span>
+                {/* <span className="uIACValue">{data[0].manager}</span> */}
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">전화번호</span>&nbsp;
-                <span className="uIACValue">{data[0].manager_phone_num}</span>
+                <span className="uIACValue">{manager_phone_num}</span>
+                {/* <span className="uIACValue">{data[0].manager_phone_num}</span> */}
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">이메일</span>&nbsp;
-                <span className="uIACValue">{data[0].email}</span>
+                <span className="uIACValue">{email}</span>
+                {/* <span className="uIACValue">{data[0].email}</span> */}
               </div>
             </div>
           </div>

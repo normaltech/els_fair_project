@@ -165,18 +165,27 @@ app.get("/ExhibitionList/:month",(req,res)=>{
     )
 })
 
-app.get("/userinfo",(req,res)=>{
+app.get("/getuserinfo", (req, res) => {
     const email = 'godtjrdl98@kakao.com';
-    db.query("SELECT * FROM UserAccountInfo WHERE email=?;",[email],
-    (err, data) => {
-           if(!err){
-               res.send(data);
-               console.log('데이터전송');
-           }else{
-               res.send(err);
-           }
-        }
-    )
+    // console.log(req.session.user);
+
+    if (req.session.user) {
+        res.send(req.session.user);
+        console.log('세션전송');
+    }
+
+    else {
+        db.query("SELECT * FROM UserAccountInfo WHERE email=?;", [email],
+            (err, data) => {
+                if (!err) {
+                    res.send(data);
+                    console.log('데이터전송');
+                } else {
+                    res.send(err);
+                }
+            }
+        )
+    }
     // console.log(req.session.user.email);
 })
 
