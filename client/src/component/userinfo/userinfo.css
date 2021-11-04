@@ -52,6 +52,7 @@
 
 .userInfoBoxItemButton:hover{
   cursor: pointer;
+  color: #f58f76 !important;
 }
 
 
@@ -66,3 +67,18 @@
 .userinfoLogoutButton{
   justify-self: center;
 }
+
+@media screen and (max-width: 768px){
+  .userinfoOrReservationlistContainer{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .userInfoBoxItem{
+    margin: 10px auto;
+    padding: 10px 0;
+  }
+}
+
+/* @media screen and (max-width: 480px){
+  
+} */

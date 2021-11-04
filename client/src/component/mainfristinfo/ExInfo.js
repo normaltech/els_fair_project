@@ -21,7 +21,8 @@ export const ExInfo = ({name, place, startDate, endDate, image}) => (
                         </div>
                     </div>
                     <div className="moreInfo">
-                        <Link to='/reservation'>
+
+                        <Link to='/selection'>
                             <button className="exButton" type="button"><span className="buttonWord">더 알아보기</span><img className="arrowImg" src="/assets/arrow.png" alt="화살표이미지" /></button>
                         </Link>
                     </div>

@@ -2,10 +2,10 @@ import { BirthInputWithLabel, GenderInputWithLabel, InputWithLabel, TelInputWith
 import Verification from '../verification/Verification';
 import axios from 'axios';
 
-import React, { Component, createRef } from 'react'
+import React, { Component, createRef, useState } from 'react'
+
 
 export default function SignUpFormBox() {
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();

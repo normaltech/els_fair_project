@@ -98,7 +98,6 @@ export default function Login() {
         <LoginRightContent inputId={inputId} inputPw={inputPw} changeId={changeId} changePw={changePw}
           changeBorderColor={changeBorderColor} clickButton={clickButton} loginStatus={loginStatus}/>
       </div>
-      <Footer />
     </div>
   )
 }

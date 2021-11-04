@@ -9,7 +9,10 @@ export default function Confirm(){
         const hidden = document.querySelector('.confirm_hidden');
         if(value === "")
         {
-            hidden.style.display = "block";
+            hidden.style.display = "block"; // 일치하지않을경우도 조건식에 추가
+        }
+        else{
+            // 만약 인증번호가 맞으면 /changePw 경로로 이동
         }
     }
     return(

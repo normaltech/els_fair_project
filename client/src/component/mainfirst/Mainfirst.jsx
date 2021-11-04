@@ -1,6 +1,4 @@
 import React, { useState,useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectRow,init_Data,init_lastIdx } from '../modules/boardReducer'
 import './mainfirst.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
@@ -9,6 +7,7 @@ import Stack from '@mui/material/Stack';
 import { ExMonth } from '../mainfristinfo/ExMonth';
 import { Notice } from '../mainfristinfo/Notice';
 import axios from 'axios';
+
 function useFetch(url){
     const [data, setData] = useState([])
     async function fetchUrl(){

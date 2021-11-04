@@ -146,7 +146,7 @@
   
       /* 로그인폼 아래 줄 생기는원인 혹은 그림자 사라짐 */   
       *{
-        overflow-y: hidden;  
+        /* overflow-y: hidden;   */
       }
 
       .loginRightContent{

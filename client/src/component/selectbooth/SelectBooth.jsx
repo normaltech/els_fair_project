@@ -1,9 +1,19 @@
 import React from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header';
+import Booth from '../booth/Booth';
 import './selectbooth.css';
 
 export default function SelectBooth() {
+  const layer_1 = 1;
+  const layer_2 = 2;
+  const layer_3 = 3;
+  // const clickSection = (e) => {
+  //   if(e.target.id === "section_A"){
+  //     document.getElementById('section_A').style.color = "red";
+  //     // document.querySelector('.selectbooth_layer1').querySelector('.Booth_A').style.borderColor = "red";
+  //   }
+  // }
   return (
     <>
       <Header/>
@@ -11,7 +21,7 @@ export default function SelectBooth() {
 
       {/* 상단 배너 */}
 
-      <div className="boothGuideContainer">
+      <div id="boothGuide" className="boothGuideContainer">
         <div className="boothGuideContainerTitle">예약 안내</div>
         <div className="boothGuideContainerStepsContiner">
           <div className="step">
@@ -51,15 +61,16 @@ export default function SelectBooth() {
 
       {/*예약안내칸 */}
 
-      <div className="boothInfoContainer">
+      <div className="boothInfoContainer" id="boothInfo">
         <div className="boothInfoContainerTitle">
           <img src="" alt="" className="boothInfoContainerTitleImg" />
-          <div className="boothInfoContainerTitleText">부스 정보</div>
+          <div className="boothInfoContainerTitleText">부스 배치도</div>
         </div>
         <div className="boothInfoContainerMain">
           <div className="boothInfoContainerLeftBox">
             <div className="boothInfoSearchContainer">
               <div className="sectionBox">
+                {/* <div className="section"><button onClick={clickSection} id="section_A">A 구역</button></div> */}
                 <div className="section">A 구역</div>
                 <div className="section">B 구역</div>
                 <div className="section">C 구역</div>
@@ -76,7 +87,10 @@ export default function SelectBooth() {
               </div>
             </div>
             <div className="boothMainPicuture">
-                boothmain
+                <Booth className="selectbooth_layer1" layer = {layer_1}/>
+                {/* <Booth className="selectbooth_layer2" layer = {layer_2}/> */}
+                {/* <Booth className="selectbooth_layer3" layer = {layer_3}/> */}
+                {/* 3개의 Booth태그 대신 옆에 층을 클릭했을때(className="floor") 나타나게 하는방식으로 props로 층을주고 */}
             </div>
           </div>
           <div className="boothInfoContainerRightBox">
@@ -102,8 +116,6 @@ export default function SelectBooth() {
         </div>
       </div>
       {/*부스정보칸 */}
-
-      <Footer/>
     </>
   )
 }
