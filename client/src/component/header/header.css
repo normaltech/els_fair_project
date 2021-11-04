@@ -21,6 +21,10 @@ a{
     padding-left: 0;
 }
 
+.headerMenuItem:hover{
+    color: var(--warm-grey);
+}
+
 .headerMenu li{
     padding: 8px 30px;
     font-size: 23px;
@@ -111,6 +115,10 @@ a{
 
     .headerToggle{
         display: block;
+    }
+
+    .headerToggle:hover{
+        color: rgba(255, 255, 255, 0.815);
     }
 
     .headerMenu.active,

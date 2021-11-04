@@ -16,7 +16,7 @@
   font-size: 18px;
   line-height: 60px;
   color: var(--white);
-  border-bottom: solid 3px white;
+  border-bottom: solid 3px rgb(190, 158, 158);
 }
 
 .userinfoOrReservationlistContainer{
@@ -93,4 +93,32 @@
   line-height: 1.12;
   text-align: center;
   color: var(--warm-grey);
+}
+
+@media screen and (max-width: 768px){
+  .rListTitle{
+    font-size: 18px;
+    padding-left: 0;
+    margin: 10px 0;
+  }
+  .rListSub{
+    font-size: 18px;
+  }
+  .rListItem{
+    width: 15%;
+    font-size: 16px;
+  }
+  #rListTableField>.rListItem{
+    width: 15%;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .rListTitleAndSub{
+    height: 90px;
+  }
+  .rListItem{
+    height: 30px;
+  }
 }

@@ -33,6 +33,10 @@
     margin: 10px 0;
 }
 
+.changeNumber_input:focus{
+    border-color: var(--black);
+}
+
 .changeNumber_button1{
     margin-top: 70px !important;
 }
@@ -47,4 +51,8 @@
     font-size: 17px;
     font-weight: bold;
     margin: 5px 0;
+}
+
+.changeNumber_button:hover{
+    background-color: #f58f76;
 }

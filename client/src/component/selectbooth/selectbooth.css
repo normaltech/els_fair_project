@@ -208,6 +208,117 @@
 }
 
 .boothMainPicuture{
-  height: 400px;
-  background-color: red;
+  width: 1669px;
+  height: 683px;
+  padding: 17px 23px 16px 23.5px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+/* .selectbooth_layer1{
+  position: relative;
+  z-index: 4;
+}
+
+.selectbooth_layer2{
+  position: relative;
+  z-index: 2;
+}
+
+.selectbooth_layer3{
+  position: relative;
+  z-index: 3;
+} */
+
+@media screen and (max-width: 768px){
+    .boothGuideContainer{
+      height: 500px;
+    }
+    .boothGuideContainerTitle{
+      font-size: 27px;
+      border-bottom: solid 2.5px var(--warm-grey);
+    }
+    .step{
+      width: 339px;
+      height: 300px;
+      margin: 0 10px;
+    }
+    .stepTitle{
+      font-size: 20px;
+    }
+    .stepImgBox{
+      margin-top: 30px;
+    }
+    .stepImg{
+      width: 80px;
+      height: 80px;
+    }
+    .stepName{
+      font-size: 18px;
+    }
+    .stepDescription{
+      font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 540px){
+  .boothGuideContainerTitle{
+    width: 540px;
+  }
+  .boothInfoContainerTitleText{
+    width: 540px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .boothGuideContainer{
+    background-color: #fff;
+    height: 1300px;
+  }
+  .boothGuideContainerTitle{
+    width: 400px;
+    font-size: 25px;
+    border-bottom: solid 2.5px var(--warm-grey);
+  }
+  .boothGuideContainerStepsContiner{
+      flex-direction: column;
+      align-items: center;
+      
+  }
+  .step{
+    margin: 20px 0;
+    width: 157px;
+    height: 228px;
+  }
+  .stepTitle{
+    font-size: 14px;
+  }
+  .stepImgBox{
+    margin-top: 25px;
+    height: 100px;
+  }
+  .stepImg{
+    width: 40px;
+    height: 40px;
+  }
+  .stepName{
+    font-size: 12px;
+  }
+  .stepDescription{
+    font-size: 7px;
+  }
+  .boothInfoContainer{
+    position: absolute;
+    top: 1500px;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .boothGuideContainerTitle{
+    width: 280px;
+    /* font-size: 25px; */
+    border-bottom: solid 1.5px var(--warm-grey);
+  }
 }

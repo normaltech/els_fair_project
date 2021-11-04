@@ -6,7 +6,7 @@ import Confirm from './component/confirm/Confirm';
 import ChangePw from './component/changepwtofindemail/ChangePw';
 import Success from './component/success/Success';
 import SuccessSignIn from './component/successsignin/SuccessSignIn';
-import ChangePassword from './component/changepassword/changepassword';
+import ChangePassword from './component/changepassword/ChangePassword';
 import ChangeNumber from './component/changenumber/ChangeNumber';
 import ChangeBussinessNumber from './component/changebussinessnumber/ChangeBussinessNumber';
 import Withdraw from './component/withdraw/Withdraw';
