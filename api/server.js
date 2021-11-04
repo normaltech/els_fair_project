@@ -38,6 +38,7 @@ app.use(session({
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
 
+
 const db = mysql.createConnection({
     host : conf.host,
     user:conf.user,
@@ -46,11 +47,20 @@ const db = mysql.createConnection({
 });
 db.connect();
 
+//현재 날짜 가져오기
+const time = new Date();
+const year = time.getFullYear();
+
 app.get("/hello",(req,res)=>{
     res.send("Welcome to homepage");
 })
   
-
+app.get("/test",(req,res)=>{
+    console.log(req.session.user);
+})
+app.get("/logout",(req,res)=>{
+    req.session.destroy();
+})
 app.post("/register",(req,res)=>{
     const userEmail = req.body.email
     const password = req.body.password
@@ -125,6 +135,56 @@ app.get("/login",(req,res)=>{
         res.send({loggedIn: true, user: req.session.user})
     }else{
         res.send({loggedIn: false })
+    }
+})
+
+app.get("/ExhibitionMonthList",(req,res)=>{
+    
+    db.query("SELECT DISTINCT MONTH(startDate) AS 'month' FROM ExhibitionList ;",(err, data) => {
+        // console.log(data)
+           if(!err){
+               res.send(data);
+           }else{
+               res.send(err);
+           }
+        }
+    )
+})
+
+
+app.get("/ExhibitionList/:month",(req,res)=>{
+    const month = req.params.month;
+    db.query("SELECT * FROM ExhibitionList WHERE YEAR(startDate)=? AND MONTH(startDate)=?;",[year,month],
+    (err, data) => {
+           if(!err){
+               res.send(data);
+           }else{
+               res.send(err);
+           }
+        }
+    )
+})
+
+app.get("/getuserinfo", (req, res) => {
+    const email = 'test@test.com';
+
+    if (req.session.user) {
+        res.send(req.session.user);
+        //로그인 되었을때 session에 저장된 유저정보 전송
+    }
+
+    else {
+        db.query("SELECT * FROM UserAccountInfo WHERE email=?;", [email],
+            (err, data) => {
+                if (!err) {
+                    res.send(data);
+                    console.log('데이터전송');
+                    console.log(data);
+                } else {
+                    res.send(err);
+                }
+            }
+        )
     }
 })
 
