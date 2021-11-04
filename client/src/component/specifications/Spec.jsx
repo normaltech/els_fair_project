@@ -84,14 +84,14 @@ export default function Spec() {
   return (
     <div className="reservationContainer">
       <Header />
-      <div className="specBanner">&nbsp;RESERVATION</div>
+      <div className="specBanner">RESERVATION</div>
       <div className="specContainer">
         <div className="specContainerLeft">
           <div className="boothSpecSelection">
             <div className="SelectionItems">
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">1</div>
+                  <div className="SelectionItemIndex">2</div>
                   <div className="SelectionItemTitle">기본 정보 입력</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -123,63 +123,32 @@ export default function Spec() {
                   </div>
                 </div>
               </div>
-              <div className="SelectionItem SelectionItem_add">
+              <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">2</div>
+                  <div className="SelectionItemIndex">3</div>
                   <div className="SelectionItemTitle">부스 타입 선택</div>
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/622.png" alt="booth1" />
-                      <div>
-                        <label className="specLabel" htmlFor="B1">B1</label><br />
-                        <input className="SelectedBoothType" type="number" name="B1" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B1">A타입<br/>100만원</label>
+                        <input type="radio" name="boothRadio" value="1" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
-                      <div>
-                        <label className="specLabel" htmlFor="B2">B2</label><br />
-                        <input className="SelectedBoothType" type="number" name="B2" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B2">B타입<br/>150만원</label>
+                        <input type="radio" name="boothRadio" value="2" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
-                      <div>
-                        <label className="specLabel" htmlFor="B3">B3</label><br />
-                        <input className="SelectedBoothType" type="number" name="B3" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="SelectionItem SelectionItem_add">
-                <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">3</div>
-                  <div className="SelectionItemTitle">ESL 대여</div>
-                </div>
-                <div className="SelectionItemBottom">
-                  <div className="SelectionItemBottomItems">
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label className="specLabel" htmlFor="ESL_E1">E1</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E1" />
-                      </div>
-                    </div>
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label className="specLabel" htmlFor="ESL_E2">E2</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E2" />
-                      </div>
-                    </div>
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
-                      <div>
-                        <label className="specLabel" htmlFor="ESL_E3">E3</label><br />
-                        <input className="SelectedESLNum" type="number" name="ESL_E3" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="B3">C타입<br/>200만원</label>
+                        <input type="radio" name="boothRadio" value="3" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                   </div>
@@ -188,6 +157,58 @@ export default function Spec() {
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
                   <div className="SelectionItemIndex">4</div>
+                  <div className="SelectionItemTitle">ESL 대여</div>
+                </div>
+                <div className="SelectionItemBottom">
+                  <div className="SelectionItemBottomItems">
+                    <div className="SelectionItemBottomItem">
+                      <img src="/assets/icons/esl.png" alt="esl image" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E1">E1<br/>기기당<br/>2만원</label>
+                        <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
+                          <option value={0} selected>0</option>
+                          <option value={1}>1</option>
+                          <option value={2}>2</option>
+                          <option value={3}>3</option>
+                          <option value={4}>4</option>
+                          <option value={5}>5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="SelectionItemBottomItem">
+                      <img src="/assets/icons/esl.png" alt="esl image" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E2">E2<br/>기기당<br/>3만원</label>
+                        <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
+                          <option value="0" selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div className="SelectionItemBottomItem">
+                      <img src="/assets/icons/esl.png" alt="esl image" />
+                      <div className="selectionConatiner">
+                        <label htmlFor="ESL_E3">E3<br/>기기당<br/>4만원</label>
+                        <select id="e3Select" name="ESL_E3" className="eslSelectionBOX" onChange={handleEslNum}>
+                          <option value="0" selected>0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="SelectionItem">
+                <div className="SelectionItemTop">
+                  <div className="SelectionItemIndex">5</div>
                   <div className="SelectionItemTitle">출입증 신청</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -279,6 +300,7 @@ export default function Spec() {
           </div>
         </div>
       </div>
+      {/* <Footer /> */}
     </div>
   )
 }
