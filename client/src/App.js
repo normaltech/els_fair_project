@@ -63,7 +63,7 @@ function App() {
           <SuccessSignIn/>
         </Route>
         {/* 아래 changePassword는 회원정보에서의 비밀번호 변경인 Web_change_password */}
-        <Route path="/ChangePassword"> 
+        <Route path="/changePassword"> 
           <ChangePassword/>
         </Route>
         <Route path="/changeNumber">
