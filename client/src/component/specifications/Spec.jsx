@@ -32,7 +32,6 @@ export default function Spec() {
     else if (boothType == 3){
       setBooth(200);
     }
-    console.log(booth);
   }
 
   const handleSubmit = (e) => {
@@ -72,7 +71,6 @@ export default function Spec() {
       passArray: passTotalArray,
       totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
     };
-    console.log(selectionInfo);
 
     // try{
     //   axios.post("http://localhost:5000/register",selectionInfo)
