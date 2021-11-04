@@ -10,7 +10,7 @@ import {
 
 
 export default function Header() {
-    const [person, setPerson] = useState('HongilDong')
+    const [person, setPerson] = useState('홍길동')
     const toggleBtn = document.querySelector('.headerToggle');
     const menu = document.querySelector('.headerMenu');
     const logout = document.querySelector('.headerRightSpan');
@@ -23,12 +23,27 @@ export default function Header() {
         try {
           axios.get("/getuserinfo")
           .then((response) => {
-            setPerson(response.data[0].manager);
+            if(response.data[0].manager){
+                setPerson(response.data[0].manager);
+            }
+            else {
+                setPerson('방문자'); //세션에 정보가 없으면 로그인 X
+            }
           });
         } catch (error) {
           console.log(error);
         }
     }, []);
+
+    const btn = true;
+
+    useEffect(() => { //로그아웃
+        try {
+          axios.get("/logout")
+        } catch (error) {
+          console.log(error);
+        }
+    }, [btn]);
 
     return (
         <>
@@ -48,7 +63,7 @@ export default function Header() {
                 <div className="headerRightContent">
                     <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
                     <Link to="/" className="headerLogout" style={{textDecoration:"none"}}>
-                        <span className="headerRightPadding headerRightSpan">로그아웃</span>
+                        <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
                     </Link>
                 </div>
 

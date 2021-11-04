@@ -59,7 +59,16 @@ app.get("/test",(req,res)=>{
     console.log(req.session.user);
 })
 app.get("/logout",(req,res)=>{
-    req.session.destroy();
+    
+    if(req.session.user){
+        res.send({loggedIn: false})
+        
+        req.session.destroy(function(){
+            req.session;
+        });
+    }else{
+        res.send({loggedIn: false })
+    }
 })
 app.post("/register",(req,res)=>{
     const userEmail = req.body.email
@@ -166,7 +175,8 @@ app.get("/ExhibitionList/:month",(req,res)=>{
 })
 
 app.get("/getuserinfo", (req, res) => {
-    const email = 'test@test.com';
+    // const email = 'test@test.com';
+    const name = '방문자'
 
     if (req.session.user) {
         res.send(req.session.user);
@@ -174,17 +184,19 @@ app.get("/getuserinfo", (req, res) => {
     }
 
     else {
-        db.query("SELECT * FROM UserAccountInfo WHERE email=?;", [email],
-            (err, data) => {
-                if (!err) {
-                    res.send(data);
-                    console.log('데이터전송');
-                    console.log(data);
-                } else {
-                    res.send(err);
-                }
-            }
-        )
+        // db.query("SELECT * FROM UserAccountInfo WHERE email=?;", [email],
+        //     (err, data) => {
+        //         if (!err) {
+        //             res.send(data);
+        //             console.log('데이터전송');
+        //             console.log(data);
+        //         } else {
+        //             res.send(err);
+        //         }
+        //     }
+        // )
+
+        res.send(name);
     }
 })
 
