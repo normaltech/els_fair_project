@@ -45,6 +45,10 @@
     margin: 3px 0 10px 0;
 }
 
+.changePw_input:focus{
+    border-color: var(--black);
+}
+
 .changePw_hidden{
     display: none;
     color: var(--dusty-orange);
@@ -62,6 +66,10 @@
     margin: 20px 0 10px 0;
 }
 
+.changePw_button:hover{
+    background-color: #f58f76;
+}
+
 .changePw_homeLink{
     margin: 10px 0;
 }
@@ -72,6 +80,10 @@
     font-stretch: normal;
     font-style: normal;
     color: #4066ff;
+}
+
+.changePw_word3:hover{
+    color: #7b95fd;
 }
 
 @media screen and (max-width: 480px){

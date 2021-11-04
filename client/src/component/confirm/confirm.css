@@ -54,6 +54,10 @@
     margin: 3px 0 10px 0;
 }
 
+.confirm_input:focus{
+    border-color: var(--black);
+}
+
 .confirm_hidden{
     display: none;
     color: var(--dusty-orange);
@@ -71,6 +75,10 @@
     margin: 20px 0 10px 0;
 }
 
+.confirm_button:hover{
+    background-color: #f58f76;
+}
+
 .confirm_homeLink{
     margin: 10px 0;
 }
@@ -81,6 +89,10 @@
     font-stretch: normal;
     font-style: normal;
     color: #4066ff;
+}
+
+.confirm_word3:hover{
+    color: #7b95fd;
 }
 
 @media screen and (max-width: 480px){

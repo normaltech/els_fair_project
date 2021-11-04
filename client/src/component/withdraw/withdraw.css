@@ -49,3 +49,7 @@
     font-weight: bold;
     margin: 10px 0;
 }
+
+.withdraw_button:hover{
+    background-color: #f58f76;
+}

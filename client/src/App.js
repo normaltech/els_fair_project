@@ -6,7 +6,7 @@ import Confirm from './component/confirm/Confirm';
 import ChangePw from './component/changepwtofindemail/ChangePw';
 import Success from './component/success/Success';
 import SuccessSignIn from './component/successsignin/SuccessSignIn';
-import ChangePassword from './component/changepassword/changepassword';
+import ChangePassword from './component/changepassword/ChangePassword';
 import ChangeNumber from './component/changenumber/ChangeNumber';
 import ChangeBussinessNumber from './component/changebussinessnumber/ChangeBussinessNumber';
 import Withdraw from './component/withdraw/Withdraw';
@@ -37,13 +37,13 @@ function App() {
         <Route path="/login">
           <Login/>
         </Route>
-        <Route path="/reservation">
+        <Route path="/selection">
           <SelectBooth/>
         </Route>
-        <Route path="/mainfirst">
+        <Route path="/mainpage">
           <Mainfirst/>
         </Route>
-        <Route path="/selection">
+        <Route path="/reservation">
           <Spec/>
         </Route>
         <Route path="/findIdPw">

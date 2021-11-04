@@ -65,6 +65,10 @@
   background-color: var(--white);
 }
 
+.SelectionItemBottomItem div{
+  margin-bottom: 10px;
+}
+
 .SelectionItemBottomItem{
   display: flex;
   flex-direction: column;
@@ -312,4 +316,165 @@
 
 .defaultInfoTable input:hover{
   outline: none;
+}
+
+@media screen and (max-width: 768px){
+  .specBanner{
+    height: 60px;
+    font-size: 30px;
+    line-height: 60px;
+    padding-left: 0px;
+  }
+  .specContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+  .specContainerLeft{
+    width: 768px;
+  }
+  .SelectionItemIndex{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 20px;
+  }
+  .SelectionItemTitle{
+    height: 40px;
+    margin-left : 25px;
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .InfoTableLabel{
+    font-size: 16px;
+  }
+  .inputTag input{
+    width: 180px;
+  }
+  .SelectionItemBottomItem{
+    width: 182px;
+    height: 250px;
+    margin: 46px 29px 126px 45px;
+  }
+  .SelectionItemBottomItem img{
+    width: 160px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .specBanner{
+    height: 27px;
+    font-size: 20px;
+    line-height: 27px;
+  }
+  .specContainerLeft{
+    width: 480px;
+  }
+  .SelectionItemIndex{
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+  }
+  .SelectionItemTitle{
+    height: 20px;
+    margin-left : 15px;
+    font-size: 20px;
+    line-height: 20px;
+  }
+  .InfoTableLabel{
+    font-size: 13px;
+  }
+  .defaultInfoTable{
+    display: flex;
+    flex-direction: column;
+  }
+  .inputTag input{
+    margin-top: 5px;
+    margin-bottom: -10px;
+    width: 200px;
+  }
+  .SelectionItemBottomItem{
+    width: 99px;
+    height: 99px;
+    margin: 20px 15px;
+  }
+  .SelectionItemBottomItem img{
+    width: 80px;
+  }
+  .specLabel{
+    font-size: 12px;
+  }
+  .SelectedBoothType{
+    width: 70px;
+  }
+  .SelectedESLNum{
+    width: 70px;
+  }
+  .SelectionItem_add{
+    height: 260px;
+  }
+  .reservationDashboard{
+    width: 300px;
+  }
+  .DashboardTitle{
+    width: 250px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+  }
+  .DashboardDesc{
+    width: 250px;
+    height: 500px;
+  }
+  .DashboardDescTop{
+    width: 200px;
+  }
+  .DescTopTitle{
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  .DescTopBoothnum{
+    font-size: 30px;
+  }
+  .DescTopBoothnumDetail{
+    font-size: 15px;
+  }
+  .DashboardDescBottom{
+    width: 200px;
+  }
+  .DescBottomItemTitle{
+    font-size: 15px;
+    margin: 10px auto;
+  }
+  .DescBottomItemDetail{
+    font-size: 15px;
+    line-height: 15px;
+    margin: 15px auto;
+  }
+  .reservationDashboardCost{
+    width: 250px;
+    height: 140px;
+  }   
+  .reservationDashboardCostTitle{
+    font-size: 16px;
+  }
+  .reservationDashboardCostNum{
+    font-size: 30px;
+  }
+  .reservationDashboardButton{
+    width: 250px;
+    height: 45px;
+    font-size: 20px;
+    line-height: 45px;
+  }
+}
+@media screen and (max-width: 414px){
+  .specContainerLeft{
+    width: 414px;
+  }
+}
+@media screen and (max-width: 360px){
+  .specContainerLeft{
+    width: 360px;
+  }
 }

@@ -10,7 +10,10 @@ export default function Find(){
         const hidden = document.querySelector('.find_hidden');
         if(value === "")
         {
-            hidden.style.display = "block";
+            hidden.style.display = "block"; // 일치하지않을경우도 조건식에 추가
+        }
+        else{
+            // 만약 가입된 메일이라면 /confirm 경로로 이동
         }
     }
     return(

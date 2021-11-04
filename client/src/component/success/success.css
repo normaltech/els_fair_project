@@ -47,6 +47,10 @@
     margin: 20px 0 10px 0;
 }
 
+.success_button:hover{
+    background-color: #f58f76;
+}
+
 @media screen and (max-width: 480px){
     .success_contentWrap{
         width: 320px;

@@ -76,14 +76,14 @@ export default function Spec() {
   return (
     <>
       <Header />
-      <div className="specBanner">RESERVATION</div>
+      <div className="specBanner">&nbsp;RESERVATION</div>
       <div className="specContainer">
         <div className="specContainerLeft">
           <div className="boothSpecSelection">
             <div className="SelectionItems">
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">2</div>
+                  <div className="SelectionItemIndex">1</div>
                   <div className="SelectionItemTitle">기본 정보 입력</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -115,9 +115,9 @@ export default function Spec() {
                   </div>
                 </div>
               </div>
-              <div className="SelectionItem">
+              <div className="SelectionItem SelectionItem_add">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">3</div>
+                  <div className="SelectionItemIndex">2</div>
                   <div className="SelectionItemTitle">부스 타입 선택</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -125,30 +125,30 @@ export default function Spec() {
                     <div id="boothItemConatiner" className="SelectionItemBottomItem">
                       <img src="/assets/icons/622.png" alt="booth1" />
                       <div>
-                        <label htmlFor="B1">B1</label><br />
+                        <label className="specLabel" htmlFor="B1">B1</label><br />
                         <input className="SelectedBoothType" type="number" name="B1" />
                       </div>
                     </div>
                     <div id="boothItemConatiner" className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
                       <div>
-                        <label htmlFor="B2">B2</label><br />
+                        <label className="specLabel" htmlFor="B2">B2</label><br />
                         <input className="SelectedBoothType" type="number" name="B2" />
                       </div>
                     </div>
                     <div id="boothItemConatiner" className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
                       <div>
-                        <label htmlFor="B3">B3</label><br />
+                        <label className="specLabel" htmlFor="B3">B3</label><br />
                         <input className="SelectedBoothType" type="number" name="B3" />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="SelectionItem">
+              <div className="SelectionItem SelectionItem_add">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">4</div>
+                  <div className="SelectionItemIndex">3</div>
                   <div className="SelectionItemTitle">ESL 대여</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -156,21 +156,21 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div>
-                        <label htmlFor="ESL_E1">E1</label><br />
+                        <label className="specLabel" htmlFor="ESL_E1">E1</label><br />
                         <input className="SelectedESLNum" type="number" name="ESL_E1" />
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div>
-                        <label htmlFor="ESL_E2">E2</label><br />
+                        <label className="specLabel" htmlFor="ESL_E2">E2</label><br />
                         <input className="SelectedESLNum" type="number" name="ESL_E2" />
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div>
-                        <label htmlFor="ESL_E3">E3</label><br />
+                        <label className="specLabel" htmlFor="ESL_E3">E3</label><br />
                         <input className="SelectedESLNum" type="number" name="ESL_E3" />
                       </div>
                     </div>
@@ -179,7 +179,7 @@ export default function Spec() {
               </div>
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">5</div>
+                  <div className="SelectionItemIndex">4</div>
                   <div className="SelectionItemTitle">출입증 신청</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -267,7 +267,7 @@ export default function Spec() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

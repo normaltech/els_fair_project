@@ -1,7 +1,6 @@
 import { BirthInputWithLabel, GenderInputWithLabel, InputWithLabel, TelInputWithLabel } from '../inputwithlabel/InputWithLabel'
 import Verification from '../verification/Verification';
 import axios from 'axios';
-
 import React, { Component, createRef } from 'react'
 
 export default function SignUpFormBox() {

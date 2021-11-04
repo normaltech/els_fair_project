@@ -10,7 +10,10 @@ export default function ChangePw(){
         const hidden = document.querySelector('.changePw_hidden');
         if(value === "")
         {
-            hidden.style.display = "block";
+            hidden.style.display = "block"; // 일치하지않을경우도 조건식에 추가
+        }
+        else{
+            // 만약 비밀번호가 일치하면 /success 경로로 이동
         }
     }
     return(

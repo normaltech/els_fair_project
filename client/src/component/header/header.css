@@ -11,14 +11,14 @@ a{
     color: var(--black);
 }
 
-.headerLeftContent{
-    /* padding: 10px 10px 10px 20px; */
-}
-
 .headerMenu{
     display: flex;
     list-style: none;
     padding-left: 0;
+}
+
+.headerMenuItem:hover{
+    color: var(--warm-grey);
 }
 
 .headerMenu li{
@@ -111,6 +111,10 @@ a{
 
     .headerToggle{
         display: block;
+    }
+
+    .headerToggle:hover{
+        color: rgba(255, 255, 255, 0.815);
     }
 
     .headerMenu.active,
