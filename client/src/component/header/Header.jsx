@@ -35,7 +35,7 @@ export default function Header() {
         }
     }, []);
 
-    const btn = true;
+    const btn = true; //로그아웃버튼
 
     useEffect(() => { //로그아웃
         try {
