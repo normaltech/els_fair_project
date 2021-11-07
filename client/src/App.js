@@ -22,7 +22,7 @@ import UserInfo from './component/userinfo/UserInfo';
 import ReservationList from './component/reservationlist/ReservationList';
 
 // 메니저페이지 테스트용
-import ManagerPage from './component/ManagerPage/Home';
+import ManagerPage from './ManagerPage/Home';
 
 function App() {
   return (
