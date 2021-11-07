@@ -1,7 +1,11 @@
 #userInfoBox{
   display: grid;
-  column-gap: 12rem;
+  column-gap: 3rem;
   grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  width: 70%;
+  height: 70vh;
+  margin-top: 7%;
 }
 
 .userInfoBoxItem{

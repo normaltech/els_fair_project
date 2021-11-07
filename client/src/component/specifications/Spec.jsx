@@ -69,9 +69,11 @@ export default function Spec() {
       companyId: companyId,
       companyNum: companyNum(),
       passArray: passTotalArray,
+      eslNum: eslNum,
       totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
     };
 
+    console.log(selectionInfo);
     // try{
     //   axios.post("http://localhost:5000/register",selectionInfo)
     //   .then((response) => {
