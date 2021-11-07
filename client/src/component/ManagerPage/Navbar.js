@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import {Link} from 'react-router-dom';
@@ -10,8 +10,15 @@ function Navbar() {
     
     const [sidebar, setsidebar] = useState(false);
     const [manager_name, setmanager_name] = useState('홍길동');
+    const [icon, seticon] = useState(AiIcons.AiFillHome);
+    const [pagename, setpagename] = useState('Home');
 
     const showSidebar = () => setsidebar(!sidebar);
+
+    const showHeader = (e) => {
+        setpagename(e)
+        console.log(e)
+    }
 
     return (
         <>
@@ -21,6 +28,8 @@ function Navbar() {
                         <Link to="#" className="menu-bars">
                             <FaIcons.FaBars onClick={showSidebar} />
                         </Link>
+                        <span className="nowpage">{icon}</span>
+                        <span className="nowpage">{pagename}</span>
                     </span>
                     <span><img src="/assets/headerlogo.png" alt="로고이미지" /></span>
                     <span className="manager-name">
@@ -29,23 +38,23 @@ function Navbar() {
                     </span>
                 </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ui className='nav-menu-items' onClick={showSidebar}>
-                    <li className="navbar-toggle">
+                <ul className='nav-menu-items' onClick={showSidebar}>
+                    <li className="navbar-toggle" >
                         <Link to="#" className='menu-bars'>
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li>
-                    {SidebarData.map((item, index) => {
+                    {SidebarData.map((item, index, initialValue) => {
                         return(
-                            <li key={index} className={item.cName}>
-                                <Link to={item.path}>
+                            <li key={index} className={item.cName} >
+                                <Link to={item.path} >
                                     {item.icon}
                                     <span>{item.title}</span>
                                 </Link>
                             </li>
                         )
                     })}
-                </ui>
+                </ul>
             </nav>
             </IconContext.Provider>
         </>
