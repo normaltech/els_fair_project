@@ -1,0 +1,36 @@
+.signUpFormBox{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.signUpButton{
+  width: 608px;
+  height: 98px;
+  padding: 26px 24px 33px;
+  background-color: var(--dusty-orange);
+  border: 0 none;
+  border-radius: 10px;
+  font-size: 35px;
+  line-height: 1.14;
+  color: var(--white);
+  margin: 30px auto 100px auto;
+  cursor: pointer;
+}
+
+.signUpButton:hover{
+  background-color: #f58f76;
+}
+
+@media screen and (max-width: 375px){
+  .signUpFormBox{
+    margin: 0 9.6%;
+  }
+  .signUpButton{
+    width: 250px;
+    height: 48.8px;
+    padding: 10px 30px;
+    margin: 0 auto;
+  }
+}

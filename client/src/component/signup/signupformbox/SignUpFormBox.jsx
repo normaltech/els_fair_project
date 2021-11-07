@@ -1,6 +1,7 @@
 import { BirthInputWithLabel, GenderInputWithLabel, InputWithLabel, TelInputWithLabel } from '../inputwithlabel/InputWithLabel'
 import Verification from '../verification/Verification';
 import axios from 'axios';
+import './signupformbox.css'
 
 import React, { Component, createRef, useState } from 'react'
 
