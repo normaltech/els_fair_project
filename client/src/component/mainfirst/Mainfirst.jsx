@@ -2,10 +2,11 @@ import React, { useState,useEffect } from 'react';
 import './mainfirst.css';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
-import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import { ExMonth } from '../mainfristinfo/ExMonth';
 import { Notice } from '../mainfristinfo/Notice';
+import Pagenation from '../mainfristinfo/Pagenation';
+import Posts from '../mainfristinfo/Posts';
 import axios from 'axios';
 
 function useFetch(url){
@@ -25,10 +26,35 @@ function useFetch(url){
 }
 
 export default function Mainfirst() {
-    const [num, setNum] = useState('1')
-    const [exhibition, setExhibition] = useState('에스씨엠 페어 2021')
-    const [title, setTitle] = useState('킨덱스 캠핑 박람회 참가 기업 모집')
-    const [date, setDate] = useState('2021-10-03')
+    // const [num, setNum] = useState('1')
+    // const [exhibition, setExhibition] = useState('에스씨엠 페어 2021')
+    // const [title, setTitle] = useState('킨덱스 캠핑 박람회 참가 기업 모집')
+    // const [date, setDate] = useState('2021-10-03')
+
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postPerPage, setPostPerPage] = useState(5);
+  
+    useEffect(()=>{
+      const fetchPosts = async () =>{
+        setLoading(true);
+        const res = await axios.get('/getNotice');
+        setPosts(res.data);
+        setLoading(false);
+      }
+  
+      fetchPosts();
+    }, [])
+  
+    //현재 파일 가져오기
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  
+    //페이지 바꾸기
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     const data = useFetch("/ExhibitionMonthList");
     const items = [];
     
@@ -60,7 +86,11 @@ export default function Mainfirst() {
                         <div className="n4">날짜</div>
                         {/* <div className="n5">선택</div> */}
                     </div>
-                    <Notice num={num} exhibition={exhibition} title={title} date={date} />
+                    {console.log('postPerPage :'+postPerPage +'\n'+'postslength: :'+posts.length)}
+                    <Posts posts={currentPosts} loading={loading}/>
+                    <Pagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
+                   
+                    {/* <Notice num={num} exhibition={exhibition} title={title} date={date} />
                     <Notice num={num} exhibition={exhibition} title={title} date={date} />
                     <Notice num={num} exhibition={exhibition} title={title} date={date} />
                     <Notice num={num} exhibition={exhibition} title={title} date={date} />
@@ -69,7 +99,7 @@ export default function Mainfirst() {
                         <Stack className="page" spacing={2}>
                             <Pagination count={10} color="primary" onClick={click} />
                         </Stack>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             {/* 월별 전시정보 */}

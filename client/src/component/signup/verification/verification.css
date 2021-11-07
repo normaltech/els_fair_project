@@ -34,6 +34,9 @@
   color: var(--white);
   cursor: pointer;
 }
+.verificationNumButton:hover{
+  background-color: #546c7a;
+}
 
 @media screen and (max-width: 375px){
   .verificationNumInput {

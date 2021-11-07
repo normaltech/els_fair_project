@@ -34,8 +34,8 @@ export default function Header() {
         <>
             <div className="headerContainer">
                 <div className="headerLeftContent">
-                    <img id="black_logo" className="headerLogo" src="/assets/headerlogo.png" alt="headerlogo" />
-                    <img id="white_logo" src="/assets/eservate_white.png" alt="로고흰색버전" />
+                    <Link to="/mainpage"><img title="메인페이지로 이동" id="black_logo" className="headerLogo" src="/assets/headerlogo.png" alt="headerlogo" /></Link>
+                    <Link to="/mainpage"><img title="메인페이지로 이동" id="white_logo" src="/assets/eservate_white.png" alt="로고흰색버전" /></Link>
                 </div>
 
                 <ul className="headerMenu">
