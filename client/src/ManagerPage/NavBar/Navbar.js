@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {SidebarData} from './SidebarData';
 import './Navbar.css';
 import {IconContext} from 'react-icons'
+import axios from 'axios';
 
 function Navbar() {
     
@@ -20,6 +21,22 @@ function Navbar() {
         setpagename(e.title);
         seticon(e.icon);
     }
+
+    // useEffect(() => { //session에서 받아온 유저정보
+    //     try {
+    //       axios.get("/getuserinfo")
+    //       .then((response) => {
+    //         if(response.data[0].manager){
+    //             setmanager_name(response.data[0].manager);
+    //         }
+    //         else {
+    //             setmanager_name('로그인안됨'); //세션에 정보가 없으면 로그인 X
+    //         }
+    //       });
+    //     } catch (error) {
+    //       console.log(error);
+    //     }
+    // }, []);
 
 
     return (
