@@ -52,7 +52,7 @@ export default function SignUpFormBox() {
     <form className="signUpFormBox" onSubmit={handleSubmit}>
       <InputWithLabel label="이메일" type="email" name="email" warningText="필수정보 입니다." />
       <Verification />
-      <InputWithLabel label="비밀번호" type="password" name="password" warningText="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요." />
+      <InputWithLabel label="비밀번호" type="text" name="password" warningText="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요." />
       <InputWithLabel label="비밀번호 재확인" type="password" name="passwordcheck" warningText="비밀번호가 일치하지 않습니다." />
       <InputWithLabel label="담당자 성함" type="text" name="name" warningText="필수정보 입니다." />
       <TelInputWithLabel label="담당자 연락처" name="managerNum" warningText="필수정보 입니다." />

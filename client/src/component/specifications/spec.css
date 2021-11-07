@@ -70,7 +70,6 @@
   justify-content: space-evenly;
 }
 
-<<<<<<< HEAD
 .SelectionItemBottomItem img{
   width: 80%;
   height: 200px;
@@ -375,9 +374,6 @@
   .InfoTableLabel{
     font-size: 16px;
   }
-  .inputTag input{
-    width: 180px;
-  }
   .SelectionItemBottomItem{
     width: 182px;
     height: 250px;
@@ -415,11 +411,6 @@
   .defaultInfoTable{
     display: flex;
     flex-direction: column;
-  }
-  .inputTag input{
-    margin-top: 5px;
-    margin-bottom: -10px;
-    width: 200px;
   }
   .SelectionItemBottomItem{
     width: 99px;
