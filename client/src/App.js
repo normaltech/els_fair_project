@@ -23,8 +23,6 @@ import ReservationList from './component/reservationlist/ReservationList';
 
 // 메니저페이지 테스트용
 import ManagerPage from './component/ManagerPage/Home';
-import ManagerPage2 from './component/ManagerPage/Products';
-import ManagerPage3 from './component/ManagerPage/Reports';
 
 function App() {
   return (
@@ -90,12 +88,6 @@ function App() {
         {/* 매니저페이지 테스트용 */}
         <Route path="/managerpage">
           <ManagerPage />
-        </Route>
-        <Route path="/managerpage2">
-          <ManagerPage2 />
-        </Route>
-        <Route path="/managerpage3">
-          <ManagerPage3 />
         </Route>
       </Switch>
     </Router>

@@ -16,9 +16,19 @@ function Navbar() {
     const showSidebar = () => setsidebar(!sidebar);
 
     const showHeader = (e) => {
-        setpagename(e)
-        console.log(e)
+        console.log(e);
+        setpagename(e);
     }
+
+    useEffect(() => { 
+        try {
+            console.log('유저이펙트');
+
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
+
 
     return (
         <>
@@ -38,7 +48,7 @@ function Navbar() {
                     </span>
                 </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ul className='nav-menu-items' onClick={showSidebar}>
+                <ui className='nav-menu-items' onClick={showSidebar}>
                     <li className="navbar-toggle" >
                         <Link to="#" className='menu-bars'>
                             <AiIcons.AiOutlineClose />
@@ -46,7 +56,7 @@ function Navbar() {
                     </li>
                     {SidebarData.map((item, index, initialValue) => {
                         return(
-                            <li key={index} className={item.cName} >
+                            <li key={index} className={item.cName} onClick={()=>{showHeader(item.title)}}>
                                 <Link to={item.path} >
                                     {item.icon}
                                     <span>{item.title}</span>
@@ -54,7 +64,7 @@ function Navbar() {
                             </li>
                         )
                     })}
-                </ul>
+                </ui>
             </nav>
             </IconContext.Provider>
         </>

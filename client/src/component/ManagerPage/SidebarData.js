@@ -12,25 +12,25 @@ export const SidebarData = [
     },
     {
         title: '사용자 관리',
-        path: '/managerpage2',
+        path: '/managerpage/userManagement',
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
     {
         title: 'ESL 기기 관리',
-        path: '/managerpage3',
+        path: '/managerpage/eslManagement',
         icon: <AiIcons.AiOutlineConsoleSql />,
         cName: 'nav-text'
     },
     {
         title: '부스 관리',
-        path: '/',
+        path: '/managerpage/boothManagement',
         icon: <GiProcessor />,
         cName: 'nav-text'
     },
     {
         title: '공지 사항',
-        path: '/',
+        path: '/managerpage/notice',
         icon: <AiIcons.AiOutlineCarryOut />,
         cName: 'nav-text'
     },
