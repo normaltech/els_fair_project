@@ -6,6 +6,8 @@ import Header from '../header/Header';
 
 export default function Signup() {
   return (
+    <>
+    <Header/>
     <div className="signup">
       <div className="Web_register">
         <img src="/assets/eslogo.png"
@@ -17,5 +19,6 @@ export default function Signup() {
         <SignUpFormBox />
       </div>
     </div>
+    </>
   )
 }
