@@ -23,6 +23,9 @@ export default function Signup() {
           <SignUpFormBox />
           </div>
       </div>
+      <div>
+        {/* 아무거나 */}
+      </div>
     </>
   )
 }
