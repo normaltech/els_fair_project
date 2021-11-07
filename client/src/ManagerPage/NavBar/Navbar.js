@@ -48,7 +48,7 @@ function Navbar() {
                     </span>
                 </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-                <ui className='nav-menu-items' onClick={showSidebar}>
+                <ul className='nav-menu-items' onClick={showSidebar}>
                     <li className="navbar-toggle" >
                         <Link to="#" className='menu-bars'>
                             <AiIcons.AiOutlineClose />
@@ -64,7 +64,7 @@ function Navbar() {
                             </li>
                         )
                     })}
-                </ui>
+                </ul>
             </nav>
             </IconContext.Provider>
         </>
