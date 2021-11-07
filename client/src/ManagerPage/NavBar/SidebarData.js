@@ -1,6 +1,7 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
+import { GoCreditCard} from "react-icons/go";
 import { GiProcessor } from "react-icons/gi";
 
 export const SidebarData = [
@@ -19,7 +20,7 @@ export const SidebarData = [
     {
         title: 'ESL 기기 관리',
         path: '/managerpage/eslManagement',
-        icon: <AiIcons.AiOutlineConsoleSql />,
+        icon: <GoCreditCard />,
         cName: 'nav-text'
     },
     {

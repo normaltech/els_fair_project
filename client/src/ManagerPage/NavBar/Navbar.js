@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import { GoCommentDiscussion } from "react-icons/go";
 import {Link} from 'react-router-dom';
 import {SidebarData} from './SidebarData';
 import './Navbar.css';
@@ -16,18 +17,9 @@ function Navbar() {
     const showSidebar = () => setsidebar(!sidebar);
 
     const showHeader = (e) => {
-        console.log(e);
-        setpagename(e);
+        setpagename(e.title);
+        seticon(e.icon);
     }
-
-    useEffect(() => { 
-        try {
-            console.log('유저이펙트');
-
-        } catch (error) {
-            console.log(error);
-        }
-    }, []);
 
 
     return (
@@ -41,9 +33,9 @@ function Navbar() {
                         <span className="nowpage">{icon}</span>
                         <span className="nowpage">{pagename}</span>
                     </span>
-                    <span><img src="/assets/headerlogo.png" alt="로고이미지" /></span>
+                    <span className="logoimg"><img src="/assets/headerlogo.png" alt="로고이미지" /></span>
                     <span className="manager-name">
-                        <span><FaIcons.FaRegCommentAlt /></span>
+                        <span className="messageicon"><GoCommentDiscussion /></span>
                         <span>{manager_name}</span>
                     </span>
                 </div>
@@ -56,7 +48,7 @@ function Navbar() {
                     </li>
                     {SidebarData.map((item, index, initialValue) => {
                         return(
-                            <li key={index} className={item.cName} onClick={()=>{showHeader(item.title)}}>
+                            <li key={index} className={item.cName} onClick={()=>{showHeader(item)}}>
                                 <Link to={item.path} >
                                     {item.icon}
                                     <span>{item.title}</span>
