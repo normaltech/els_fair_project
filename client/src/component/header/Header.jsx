@@ -30,6 +30,7 @@ export default function Header() {
     }
   }, []);
 
+<<<<<<< HEAD
   return (
     <>
       <div className="headerContainer">
@@ -37,6 +38,15 @@ export default function Header() {
           <img id="black_logo" className="headerLogo" src="/assets/headerlogo.png" alt="headerlogo" />
           <img id="white_logo" src="/assets/eservate_white.png" alt="로고흰색버전" />
         </div>
+=======
+    return (
+        <>
+            <div className="headerContainer">
+                <div className="headerLeftContent">
+                    <Link to="/mainpage"><img title="메인페이지로 이동" id="black_logo" className="headerLogo" src="/assets/headerlogo.png" alt="headerlogo" /></Link>
+                    <Link to="/mainpage"><img title="메인페이지로 이동" id="white_logo" src="/assets/eservate_white.png" alt="로고흰색버전" /></Link>
+                </div>
+>>>>>>> front_sjh
 
         <ul className="headerMenu">
           <li className="headerMenuItem"><a href="#">전시회 목록</a></li>

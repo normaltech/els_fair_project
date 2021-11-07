@@ -12,7 +12,11 @@ a{
 }
 
 .headerLeftContent{
-    padding: 10px 10px 10px 20px;
+    padding: 0px 10px 10px 20px;
+}
+
+#black_logo{
+    height: 30px;
 }
 
 .headerMenu{
@@ -26,14 +30,15 @@ a{
 }
 
 .headerMenu li{
-    padding: 8px 30px;
-    font-size: 23px;
+    padding: 10px 30px;
+    margin-top: 15px;
+    font-size: 16px;
     line-height: 23px;
     font-weight: bold;
 }
 
-.headerMenu li:hover{
-    font-weight: bold;
+.headerMenu li a:hover{
+    color: var(--warm-grey);
 }
 
 .headerRightContent{
@@ -67,23 +72,20 @@ a{
     margin-top: 10px;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1098px){
     /* .headerLogout{
         display: none;
     } */
 
     #black_logo{
-        display: none;
-    }
-
-    #white_logo{
-        display: block;
+        margin-top: 12px;
+        height: 27px;
     }
 
     .headerContainer{
         flex-direction: column;
         align-items: flex-start;
-        background-color: var(--dark-grey-blue);
+        /* background-color: var(--dark-grey-blue); */
     }
 
     .headerMenu{
@@ -95,7 +97,12 @@ a{
     }
 
     .headerMenu li a{
-        color: var(--white);
+        /* color: var(--white); */
+        color: var(--dark-grey-blue);
+    }
+
+    .headerMenu li a:hover{
+        color: #73838d;
     }
 
     .headerRightPerson{
@@ -110,15 +117,18 @@ a{
 
     .headerRightSpan{
         display: none;
-        color: var(--white);
+        /* color: var(--white); */
+        color: var(--dark-grey-blue);
     }
 
     .headerToggle{
         display: block;
+        color: var(--dark-grey-blue);
+        margin-top: 8px;
     }
 
     .headerToggle:hover{
-        color: rgba(255, 255, 255, 0.815);
+        color: #73838d;
     }
 
     .headerMenu.active,
@@ -129,12 +139,50 @@ a{
 
 
 @media screen and (max-width: 480px) {
+    #black_logo{
+        display: none;
+        /* padding-top: 15px; */
+    }
+    #white_logo{
+        display: block;
+        padding-top: 16px;
+    }
     .headerLogo{
         width: 79px;
         height: 18px;
     }
+    .headerContainer{
+        background-color: var(--dark-grey-blue);
+    }
     .headerRightPerson{
         font-size: 12px;
         padding: 10px 15px 10px 10px;
+    }
+    .headerMenu li{
+        font-size: 14px;
+    }
+    .headerMenu li a{
+        color: var(--white);
+    }
+    .headerRightSpan{
+        color: var(--white);
+        font-size: 14px;
+    }
+    .headerToggle{
+        color: var(--white);
+        margin-top: 11px;
+    }
+    .headerToggle:hover{
+        color: var(--warm-grey);
+    }
+}
+
+@media screen and (max-width: 360px){
+    #white_logo{
+        padding-top: 5px;
+        margin-left: -5px;
+    }
+    .headerToggle{
+        margin-top: 13px;
     }
 }

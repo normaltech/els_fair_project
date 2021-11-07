@@ -18,6 +18,8 @@
 
 .wordWrap{
     position: absolute;
+    width: 300px;
+    text-align: center;
     top: 50%;
     left: 85%;
     transform: translate( -50%, -50% );
@@ -44,7 +46,6 @@
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    /* line-height: 1.37; */
     letter-spacing: normal;
     text-align: center;
     color: #304653;
@@ -85,10 +86,6 @@
     width: 120px;
 }
 
-/* .n5{
-    width: 80px;
-} */
-
 .noticeNav div{
     padding: 10px;
     background-color: #f5f6fa;
@@ -105,10 +102,6 @@
 .noticeDetail div{
     padding: 10px;
 }
-/* 
-.pageWrap{
-    margin-top:
-} */
 
 .page{
     position: absolute;
@@ -126,8 +119,16 @@
     margin: 15px 10px;
 }
 
-.detailInfo div span{
-    margin: 10px;
+.detailInfo div .exinfo_span_title{
+    margin-right: 25px;
+}
+
+.detailInfo div .exinfo_sapn_first{
+    margin-left: 7px !important;
+}
+
+.detailInfo div .exinfo_span_info{
+    margin-left: 20px;
 }
 
 .exImg img{
@@ -135,16 +136,26 @@
     height: 120px;
 }
 
+.moreInfo{
+    margin-right: 0;
+}
+
 .exButton{
     border-radius: 7px;
     background-color: #304653;
     border: 0px;
     outline: none;
-    width: 120px;
-    height: 40px;
+    width: 95px;
+    height: 50px;
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.exButton:hover{
+    background-color: #455863;
 }
 
 .buttonWord{
@@ -153,17 +164,22 @@
     font-stretch: normal;
     font-style: normal;
     color: var( --white);
+    padding-left: 9px;
 }
 
 .arrowImg{
     width: 18px;
     height: 18px;
-    margin-left: 18px;
+    margin: 0 9px;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 1098px) {
+    .line{
+        width: 70%;
+    }
     .wordWrap{
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .noticeContainer{
@@ -171,27 +187,78 @@
     }
 
     .exImg img{
-        width: 100px;
-        height: 45px;
+        width: 200px;
+        height: 100px;
     }
 
     .detailInfo div span{
+        font-size: 14px;
+        margin: 0px;
+    }
+}
+
+@media screen and (max-width: 590px){
+    .exImg img{
+        width: 150px;
+        height: 80px;
+    }
+    .detailInfo div span{
         font-size: 8px;
+    }
+    .wordWrap{
+        width: 150px;
+        left: 75%;
+        font-size: 12px;
+    }
+    .moreInfo{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .wordWrap{
+        font-size: 14px;
+    }
+
+    .exImg{
+        margin: 0;
+        width: 250px;
+    }
+
+    .exImg img{
+        width: 100px;
+        height: 45px;
+
+    }
+
+    .detailInfo div span{
+        display: block;
     }
 
     .moreInfo{
         display: none;
     }
-    /* .exButton{
-        width: 80px;
+
+    .detailInfo div{
+        margin: 10px 0;
     }
 
-    .buttonWord{
-        font-size: 8px;
+    .detailInfo span{
+        padding: 1.5px;
     }
 
-    .arrowImg{
-        width: 10px;
-        height: 10px;
-    } */
+    .detailInfo div .exinfo_span_title{
+        margin-right: 0px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .detailInfo div .exinfo_sapn_first{
+        margin-left: 0px !important;
+    }
+
+    .detailInfo div .exinfo_span_info{
+        margin-left: 0px;
+        text-align: center;
+    }
 }
