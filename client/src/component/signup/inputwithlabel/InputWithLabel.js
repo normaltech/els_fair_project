@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import './inputWithLabel.css'
 
 const NationCode = () => (
@@ -221,7 +221,8 @@ const NationCode = () => (
 )
 
 export const InputWithLabel = ({ label, type, warningText, name, value,setter }) => {
-
+  useEffect(() => {
+  }, [value])
   return (
     <div className="inputTag">
       <label className="inputTagLabel" htmlFor={name}>{label}</label><br />
@@ -232,14 +233,58 @@ export const InputWithLabel = ({ label, type, warningText, name, value,setter })
 };
 
 
-export const TelInputWithLabel = ({ label, warningText, name, value, setter }) => {
+const hypenMaker = (value) => {
+    if(!value) {
+      return "";
+    }
+
+    value = value.replace(/[^0-9]/g,'');
+
+    let result = [];
+    let restNumber = '';
+
+    if (value.startsWith("02")) {
+      // 서울 02 지역번호
+      result.push(value.substr(0, 2));
+      restNumber = value.substring(2);
+    } else if (value.startsWith("1")) {
+      // 지역 번호가 없는 경우
+      // 1xxx-yyyy
+      restNumber = value;
+    } else {
+      // 나머지 3자리 지역번호
+      // 0xx-yyyy-zzzz
+      result.push(value.substr(0, 3));
+      restNumber = value.substring(3);
+    }
+  
+    if (restNumber.length === 7) {
+      // 7자리만 남았을 때는 xxx-yyyy
+      result.push(restNumber.substring(0, 3));
+      result.push(restNumber.substring(3));
+    } else {
+      result.push(restNumber.substring(0, 4));
+      result.push(restNumber.substring(4));
+    }  
+    return result.filter((val) => val).join("-");
+  }
+
+  const managerHypen = function(e) {
+    const managerNum_hypen = hypenMaker(e.target.value);
+    e.target.value = managerNum_hypen;
+  }
+  const companyHypen = function(value) {
+    const companyNum_hypen = hypenMaker(value);
+  }
+
+export const TelInputWithLabel = ({ label, warningText, name, value, setter}) => {
 
   return (
     <div className="inputTag">
       <label className="inputTagLabel" htmlFor={name}>{label}</label><br />
       <div className="telNumContainer">
         <NationCode />
-        <input onChange={(e) => {setter(e.target.value)}}  value={value} className="telNumContainerWrite" type="number" id={name}></input>
+        <input onInput={(e) => {managerHypen(e)}} onChange={(e) => {setter(e.target.value)}} className="telNumContainerWrite" type="text" id={name}></input>
       </div>
       <div className="warningText">{warningText}</div>
     </div>
