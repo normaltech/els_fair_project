@@ -19,14 +19,11 @@
   border-bottom: solid 3px rgb(190, 158, 158);
 }
 
-.userinfoOrReservationlistContainer{
-  position: absolute;
-  width: 80vw;
+#reservationInfoBox{
+  margin: auto;
+  width: 70%;
   height: 70vh;
-  margin-left: -40vw;
-  margin-top: -30vh;
-  top:50%;
-  left:50%;
+  margin-top: 2%;
 }
 
 .rListTitleAndSub{

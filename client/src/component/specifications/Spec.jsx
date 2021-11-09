@@ -69,9 +69,11 @@ export default function Spec() {
       companyId: companyId,
       companyNum: companyNum(),
       passArray: passTotalArray,
+      eslNum: eslNum,
       totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
     };
 
+    console.log(selectionInfo);
     // try{
     //   axios.post("http://localhost:5000/register",selectionInfo)
     //   .then((response) => {
@@ -91,41 +93,41 @@ export default function Spec() {
             <div className="SelectionItems">
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">2</div>
+                  <div className="SelectionItemIndex">1</div>
                   <div className="SelectionItemTitle">기본 정보 입력</div>
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="defaultInfoTable">
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
-                      <input type="text" id="defaultInfoTable_companyName" />
-                    </div>
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
-                      <input type="number" id="defaultInfoTable_companyId" />
-                    </div>
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
-                      <input type="text" id="defaultInfoTable_managerName" />
-                    </div>
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
-                      <input type="number" id="defaultInfoTable_companyNum" />
-                    </div>
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
-                      <input type="number" id="defaultInfoTable_managerNum" />
-                    </div>
-                    <div className="inputTag">
-                      <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
-                      <input type="email" id="defaultInfoTable_managerEmail" />
-                    </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
+                        <input type="text" className="sepcInput" id="defaultInfoTable_companyName" />
+                      </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
+                        <input type="number" className="sepcInput" id="defaultInfoTable_companyId" />
+                      </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
+                        <input type="text" className="sepcInput" id="defaultInfoTable_managerName" />
+                      </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
+                        <input type="number" className="sepcInput" id="defaultInfoTable_companyNum" />
+                      </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
+                        <input type="number" className="sepcInput" id="defaultInfoTable_managerNum" />
+                      </div>
+                      <div className="inputTag">
+                        <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
+                        <input type="email" className="sepcInput" id="defaultInfoTable_managerEmail" />
+                      </div>
                   </div>
                 </div>
               </div>
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">3</div>
+                  <div className="SelectionItemIndex">2</div>
                   <div className="SelectionItemTitle">부스 타입 선택</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -156,7 +158,7 @@ export default function Spec() {
               </div>
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">4</div>
+                  <div className="SelectionItemIndex">3</div>
                   <div className="SelectionItemTitle">ESL 대여</div>
                 </div>
                 <div className="SelectionItemBottom">
@@ -208,15 +210,15 @@ export default function Spec() {
               </div>
               <div className="SelectionItem">
                 <div className="SelectionItemTop">
-                  <div className="SelectionItemIndex">5</div>
+                  <div className="SelectionItemIndex">4</div>
                   <div className="SelectionItemTitle">출입증 신청</div>
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="passEnrollTable">
-                    <div className="passNum" id="passFieldRow">순번</div>
-                    <div className="passName" id="passFieldRow">이름</div>
-                    <div className="passRank" id="passFieldRow">직위</div>
-                    <div className="passTel" id="passFieldRow">연락처</div>
+                    <div className="passFieldRow" id="passNum">순번</div>
+                    <div className="passFieldRow" id="passName">이름</div>
+                    <div className="passFieldRow" id="passRank">직위</div>
+                    <div className="passFieldRow" id="passTel">연락처</div>
                     <div className="passNumRow">1</div>
                     <input className="passNameRow" />
                     <input className="passRankRow" />
@@ -247,9 +249,9 @@ export default function Spec() {
             </div>
           </div>
           <div className="eslSelection">
-
           </div>
         </div>
+
         <div className="specContainerRight">
           <div className="reservationDashboard">
             <div className="DashboardTitle">예약현황</div>
@@ -264,7 +266,7 @@ export default function Spec() {
               <div className="DashboardDescBottom">
                 <div className="DescBottomItemDate">
                   <div className="DescBottomItemTitle">기간</div>
-                  <div className="DescBottomItemDetail">21년 10월 5일 (수) ~ 10월 9일 (월)</div>
+                  <div className="DescBottomItemDetail">21년 10월 5일 (수) ~<br /> 10월 9일 (월)</div>
                 </div>
                 <div className="DescBottomItem">
                   <div className="DescBottomItemTitle">부스</div>

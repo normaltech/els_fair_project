@@ -13,7 +13,7 @@ export default function ReservationList() {
           <span className="uorMenu">예약 내역</span>
         </div>
       </div>
-      <div className="userinfoOrReservationlistContainer">
+      <div className="userinfoOrReservationlistContainer" id="reservationInfoBox">
         <div className="rListTitleAndSub">
           <div className="rListTitle">예약 내역 확인</div>
           <div className="rListSub">부스 예약 정보를 확인할 수 있습니다.</div>
@@ -43,7 +43,7 @@ export default function ReservationList() {
           </div>
         </div>
       </div>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   )
 }

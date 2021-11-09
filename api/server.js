@@ -200,4 +200,16 @@ app.get("/getuserinfo", (req, res) => {
     }
 })
 
+//공지사항 테이블 불러오기
+app.get("/getNotice",(req,res)=>{
+    db.query("SELECT * FROM NOTICE;",
+            (err, data) => {
+                if (!err) {
+                    res.send(data);
+                } else {
+                    res.send(err);
+                }
+            }
+        )
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

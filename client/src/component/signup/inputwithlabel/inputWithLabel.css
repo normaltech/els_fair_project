@@ -5,6 +5,7 @@ input::-webkit-inner-spin-button {
 
 .inputTag{
   display: block;
+  width: 100%;
   margin: 10px auto;
   width: auto;
 }
@@ -14,7 +15,7 @@ input::-webkit-inner-spin-button {
 }
 
 .inputTagLabel {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.17;
   text-align: left;
   color: var(--black);
@@ -22,20 +23,20 @@ input::-webkit-inner-spin-button {
 
 .inputTagInput {
   width: 600px;
-  height: 63px;
+  height: 50px;
   margin: 10px 0 0;
   padding: 0 15px;
-  border-radius: 15px;
+  border-radius: 5px;
   border: solid 1px #0d47a1;
   background-color: var(--white);
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .warningText{
   width: 500px;
   height: 27px;
   margin: 5px 6px 4px 10px;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.35;
   text-align: left;
   color: #f80000;
@@ -48,7 +49,7 @@ input::-webkit-inner-spin-button {
 
 #telNumContainerSelect {
   width: 230px;
-  height: 63px;
+  height: 50px;
   margin: 10px 21.3px 7px 0;
   padding: 11px 11.8px 11px 10px;
   border: solid 1px #0d47a1;
@@ -57,154 +58,71 @@ input::-webkit-inner-spin-button {
   line-height: 1.33;
   text-align: left;
   color: var(--black);
-  border-radius: 10px
+  border-radius: 5px;
 }
 
 .telNumContainerWrite {
   width: 350px;
-  height: 63px;
+  height: 50px;
   margin: 10px 0 7px 0;
   padding: 0 15px 0 15.9px;
   border: solid 1px #0d47a1;
   background-color: var(--white);
-  border-radius: 10px;
-  font-size: 27px;
+  border-radius: 5px;
+  font-size: 20px;
   line-height: 1.33;
   text-align: left;
   color: var(--black);
 }
-
-#genderRadioButtonContainer{
-  width: 635px;
-  height: 63px;
-  margin: 10px 0 0;
-  padding: 0 17.8px ;
-  border-radius: 15px;
-  border: solid 1px #0d47a1;
-  background-color: var(--white);
-  font-size: 27px;
-  line-height: 1.33;
-  text-align: left;
-  color: var(--black);
-}
-
-.birthInputTag{
-  width: 676px;
-}
-
-
-#birthYear {
-  width: 219px;
-  height: 63px;
-  margin: 10px 40px 20px 0;
-  padding: 5px 0 0 13px;
-  border-radius: 15px;
-  border: solid 1px #0d47a1;
-  background-color: var(--white);
-  font-size: 27px;
-  line-height: 1.33;
-  text-align: ce;
-  color: var(--black);
-}
-
-#birthMonth {
-  width: 174px;
-  height: 63px;
-  padding: 5px 0 0 13px;
-  margin: 10px 40px 20px 0;
-  border-radius: 15px;
-  border: solid 1px #0d47a1;
-  background-color: var(--white);
-  font-size: 27px;
-  line-height: 1.33;
-  text-align: left;
-  color: var(--black);
-}
-
-#birthDay {
-  width: 163px;
-  height: 63px;
-  margin: 10px 10px 20px 0;
-  padding: 5px 0 0 13px;
-  border-radius: 15px;
-  border: solid 1px #0d47a1;
-  background-color: var(--white);
-  font-size: 27px;
-  line-height: 1.33;
-  text-align: left;
-  color: var(--black);
-}
-
 
 @media screen and (max-width: 375px){
-  *{
-    font-size: 12px !important;
+
+  .warningText{
+    font-size: 10px;
   }
-  .Web_register {
-    width: 100vw;
-    height: 100%;
-    padding: 109px 0 0;
-    background-color: var(--white);
-  }
+
   .inputTag{
-    width: 282px;
-    margin: 0 auto;
+    width: 80vw;
   }
-
   .inputTagInput{
-    width: 250px;
-    height: 31px;
-    padding-left: 15px;
+    width: 80vw;
+    height: 25px;
+    font-size: 10px;
   }
-  .footerInfo{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  .inputTagLabel {
+    font-size: 15px;
+    line-height: 1.17;
+    text-align: left;
+    color: var(--black);
   }
-  .line{
-      display: none;
+  
+  .warningText{
+    width: 500px;
+    height: 10px;
+    margin: 5px 6px 4px 10px;
+    font-size: 10px;
+    line-height: 1.35;
+    text-align: left;
+    color: #f80000;
   }
-  .copyright{
-      justify-content: center;
+  
+  .telNumContainer{
+    width: 100%;
   }
-  .genderRadioButtonContainer{
-    width: 282px;
-    height: 31px;
-  }
-
-  .birthYear{
-    width: 109px;
-    height: 31px;
-    margin: 0 2px 0 0;
-  }
-
-  .birthMonth{
-    width: 86px;
-    height: 31px;
-    margin: 0 2px;
-  }
-
-  .birthDay{
-    width: 81px;
-    height: 31px;
-    margin: 0;
-  }
-
-  .telNumContainerSelect {
-    width: 100px;
-    height: 31.4px;
-    margin: 10px 5px 7px 0;
-    padding: 0 11.8px 0 10px;
+  
+  
+  #telNumContainerSelect {
+    width: 30vw;
+    height: 25px;
+    padding: 0;
+    margin-right: 5px;
+    font-size: 10px;
   }
   
   .telNumContainerWrite {
-    width: 150px;
-    height: 31.4px;
-    margin: 10px 0 7px 0;
-    padding: 0 15px 0 15.9px;
+    width: 48vw;
+    height: 25px;
+    font-size: 20px;
   }
-  .warningText{
-    width: 300px;
-  }
+  
 }

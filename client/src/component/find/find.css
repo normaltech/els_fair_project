@@ -3,7 +3,6 @@
     height: 100%;
     display: flex;
 } */
-
 .find_contentWrap{
     display: flex;
     flex-direction: column;
@@ -14,8 +13,9 @@
     box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #dfe3f5;
     /* background-color: var(--white); */
-    margin: auto;
-    margin-top: 80px;
+    margin: 140px auto;
+    /* margin-top: 140px; */
+    /* vertical-align: middle; */
 }
 
 
@@ -49,7 +49,7 @@
     background-color: #fff;
     width: 280px;
     height: 25px;
-    padding: 5px 10px;
+    padding: 18px 10px;
     outline: none;
     margin: 3px 0 10px 0;
 }
@@ -98,7 +98,8 @@
 @media screen and (max-width: 480px){
     .find_contentWrap{
         width: 320px;
-        height: 400px;
+        height: 350px;
+        margin-top: 170px;
     }
 
     .find_logo{
@@ -124,5 +125,17 @@
 
     .find_hidden{
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .find_contentWrap{
+        margin-top: 90px;
+    }
+}
+@media screen and (max-width: 360px){
+    .find_contentWrap{
+        /* height: 350px; */
+        margin-top: 110px;
     }
 }
