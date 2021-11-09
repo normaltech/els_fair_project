@@ -1,7 +1,12 @@
+.verificationContainer{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .verificationNum{
-  display: block;
+  display: flex;
   margin: 0 auto;
-  width: 635px;
+  width: auto;
 }
 
 .verificationNumInput {
@@ -11,7 +16,6 @@
   border-radius: 5px;
   border: solid 1px #0d47a1;
   background-color: var(--white);
-  padding-left: 15px;
   font-size:20px;
 }
 
@@ -21,6 +25,7 @@
 
 
 .verificationNumButton{
+  display: inline;
   width: 168.6px;
   height: 53.7px;
   padding: 15.2px 13.6px 18.4px 14px;

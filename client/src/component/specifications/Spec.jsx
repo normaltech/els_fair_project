@@ -100,27 +100,27 @@ export default function Spec() {
                   <div className="defaultInfoTable">
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
-                        <input type="text" className="sepcInput" id="defaultInfoTable_companyName" />
+                        <input type="text" className="specInput" id="defaultInfoTable_companyName" />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
-                        <input type="number" className="sepcInput" id="defaultInfoTable_companyId" />
+                        <input type="number" className="specInput" id="defaultInfoTable_companyId" />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
-                        <input type="text" className="sepcInput" id="defaultInfoTable_managerName" />
+                        <input type="text" className="specInput" id="defaultInfoTable_managerName" />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
-                        <input type="number" className="sepcInput" id="defaultInfoTable_companyNum" />
+                        <input type="number" className="specInput" id="defaultInfoTable_companyNum" />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
-                        <input type="number" className="sepcInput" id="defaultInfoTable_managerNum" />
+                        <input type="number" className="specInput" id="defaultInfoTable_managerNum" />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
-                        <input type="email" className="sepcInput" id="defaultInfoTable_managerEmail" />
+                        <input type="email" className="specInput" id="defaultInfoTable_managerEmail" />
                       </div>
                   </div>
                 </div>

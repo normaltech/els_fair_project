@@ -455,7 +455,7 @@
     display: flex;
     flex-direction: column;
   }
-  .inputTag input{
+  .specInput{
     margin-top: 5px;
     margin-bottom: -10px;
     width: 200px;
@@ -602,7 +602,7 @@
   .defaultInfoTable .inputTag label{
     margin-left: 20px;
   }
-  .defaultInfoTable .inputTag .sepcInput{
+  .defaultInfoTable .inputTag .specInput{
     height: 30px;
     padding: 3px 0;
     margin-left: 20px;
