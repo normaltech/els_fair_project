@@ -17,7 +17,7 @@ export default function Confirm(){
     }
     return(
         <>
-            {/* <div className="wrap"> */}
+            <div className="confirm_wrap">
                 <div className="confirm_contentWrap">
                     <img className="confirm_logo" src="/assets/eslogo.png" alt="로고" />
                     <div className="confirm_word1">인증 번호를 입력하세요</div>
@@ -29,7 +29,7 @@ export default function Confirm(){
                     <div className="confirm_homeLink"><Link to="#" className="confirm_word3">인증번호 재전송</Link></div>
                     <div className="confirm_homeLink"><Link to="/" className="confirm_word3">홈으로 이동</Link></div>
                 </div>
-            {/* </div> */}
+            </div>
             {/* <Footer /> */}
         </>
     )

@@ -71,11 +71,11 @@
 }
 
 .n1{
-    width: 80px;
+    width: 60px;
 }
 
 .n2{
-    width: 180px;
+    width: 200px;
 }
 
 .n3{
@@ -83,7 +83,7 @@
 }
 
 .n4{
-    width: 120px;
+    width: 150px;
 }
 
 .noticeNav div{
@@ -96,11 +96,11 @@
 .noticeDetail{
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin: 5px;
 }
 
 .noticeDetail div{
-    padding: 10px;
+    padding: 10px 10px 10px 12px;
 }
 
 .page{
