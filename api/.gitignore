@@ -5,6 +5,9 @@
 #database
 /database.json
 
+#email
+/email.json
+
 # dependencies
 /node_modules
 /.pnp

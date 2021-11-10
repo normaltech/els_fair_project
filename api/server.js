@@ -11,6 +11,7 @@ const saltRounds = 10;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const nodemailer = require("nodemailer");
 app.use(express.json());
 
 app.use(cors({
@@ -37,6 +38,9 @@ app.use(session({
 //데이터 베이스 연동!
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
+
+const email_data = fs.readFileSync('./email.json');
+const email_conf = JSON.parse(email_data);
 
 
 const db = mysql.createConnection({
@@ -212,4 +216,31 @@ app.get("/getNotice",(req,res)=>{
             }
         )
 })
+
+app.post('/sendEmail', async function (req, res) {
+    const user_email = req.body.email;
+    console.log(user_email);
+
+    const transporter = nodemailer.createTransport({
+        service: 'Naver',
+        auth: {
+            user: email_conf.user,
+            pass: email_conf.pass
+        },
+        requireTLS: true,
+        secure: false,
+        host: 'smtp.naver.com',
+        port: '587'
+    });
+
+    const info = await transporter.sendMail({
+        from: 'godtjrdkel98@naver.com',
+        to: user_email,
+        subject: '제목제목제목제목',
+        text: '내용내용내용내용내용내용',
+    });
+
+    console.log('메일 갔는지 안갔는지')
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));
