@@ -106,6 +106,8 @@ export default function SignUpFormBox() {
       companyNum: companyNum().replaceAll("-",""),
     };
 
+    console.log(userInfo);
+
     try{
       axios.post("http://localhost:5000/register",userInfo)
       .then((response) => {

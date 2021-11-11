@@ -269,12 +269,9 @@ const hypenMaker = (value) => {
     return result.filter((val) => val).join("-");
   }
 
-  const managerHypen = function(e) {
+  const productHypen = function(e) {
     const managerNum_hypen = hypenMaker(e.target.value);
-    e.target.value = managerNum_hypen;
-  }
-  const companyHypen = function(value) {
-    const companyNum_hypen = hypenMaker(value);
+    e.target.value = managerNum_hypen; //이렇게 해야 반영
   }
 
 export const TelInputWithLabel = ({ label, warningText, name, value, setter}) => {
@@ -284,7 +281,7 @@ export const TelInputWithLabel = ({ label, warningText, name, value, setter}) =>
       <label className="inputTagLabel" htmlFor={name}>{label}</label><br />
       <div className="telNumContainer">
         <NationCode />
-        <input onInput={(e) => {managerHypen(e)}} onChange={(e) => {setter(e.target.value)}} className="telNumContainerWrite" type="text" id={name}></input>
+        <input onInput={(e) => {productHypen(e)}} onChange={(e) => {setter(e.target.value)}} className="telNumContainerWrite" type="text" id={name}></input>
       </div>
       <div className="warningText">{warningText}</div>
     </div>

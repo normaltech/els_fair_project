@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header';
 import Booth from '../booth/Booth';
@@ -14,6 +14,10 @@ export default function SelectBooth() {
   //     // document.querySelector('.selectbooth_layer1').querySelector('.Booth_A').style.borderColor = "red";
   //   }
   // }
+
+  const [ratio, setRatio] = useState(1);
+  const booth_module = useRef();
+
   return (
     <>
       <Header/>
@@ -83,11 +87,11 @@ export default function SelectBooth() {
               </div>
               <div className="boothSearchBarContainer">
                 <input type="text" className="searchBarInput" placeholder="검색하실 기업을 입력해주세요."/>
-                <img src="/assets/icons/iconAwesomeSearch.png" alt="" className="searchMirror" />
+                <img src="/assets/icons/iconAwesomeSearch.png" alt="" className="searchMirror" ratio={ratio}/>
               </div>
             </div>
             <div className="boothMainPicuture">
-                <Booth className="selectbooth_layer1" layer = {layer_1}/>
+                <Booth className="selectbooth_layer1" layer = {layer_1} ref = {booth_module} />
                 {/* <Booth className="selectbooth_layer2" layer = {layer_2}/> */}
                 {/* <Booth className="selectbooth_layer3" layer = {layer_3}/> */}
                 {/* 3개의 Booth태그 대신 옆에 층을 클릭했을때(className="floor") 나타나게 하는방식으로 props로 층을주고 */}
