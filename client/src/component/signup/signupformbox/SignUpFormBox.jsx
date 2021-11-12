@@ -2,10 +2,7 @@ import { BirthInputWithLabel, GenderInputWithLabel, InputWithLabel, TelInputWith
 import Verification from '../verification/Verification';
 import axios from 'axios';
 import './signupformbox.css'
-
 import React, { Component, useState } from 'react'
-import GoEmail, {call, email} from '../verification/GoEmail';
-
 
 export default function SignUpFormBox() {
 
@@ -115,24 +112,17 @@ export default function SignUpFormBox() {
   
 
   return (
-    <>
-      <div style={{display: "flex", justifyContent: 'center'}}>
-        <button onClick={call}>버튼</button>
-        <input type='text'></input>
-        <button>확인버튼</button>
-      </div>
-      <form className="signUpFormBox" onSubmit={handleSubmit}>
-        <InputWithLabel setter={emailSetter} label="이메일" type="email" name="email" warningText="필수정보 입니다." />
-        <Verification setter={vericationCodeSetter} />
-        <InputWithLabel setter={passwordSetter} label="비밀번호" type="text" name="password" warningText="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요." />
-        <InputWithLabel setter={passwordCheckSetter} label="비밀번호 재확인" type="password" name="passwordcheck" warningText="비밀번호가 일치하지 않습니다." />
-        <InputWithLabel setter={managerNameSetter} label="담당자 성함" type="text" name="managerName" warningText="필수정보 입니다." />
-        <TelInputWithLabel setter={managerNumSetter} label="담당자 연락처" name="managerNum" warningText="필수정보 입니다." />
-        <InputWithLabel setter={companyNameSetter} label="회사명" type="text" name="companyName" warningText="필수정보 입니다." />
-        <InputWithLabel setter={companyIdSetter} label="사업자 번호" type="text" name="companyId" warningText="필수정보 입니다." />
-        <TelInputWithLabel setter={companyNumSetter} label="회사전화" name="companyNum" warningText="필수정보 입니다." />
-        <input className="signUpButton" type="submit" value='가입하기' />
-      </form>
-    </>
+    <div className="signUpFormBox">
+      <InputWithLabel setter={emailSetter} label="이메일" type="email" name="email" warningText="필수정보 입니다." />
+      <Verification setter={vericationCodeSetter} label="인증번호" useremail={user.email} />
+      <InputWithLabel setter={passwordSetter} label="비밀번호" type="text" name="password" warningText="8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요." />
+      <InputWithLabel setter={passwordCheckSetter} label="비밀번호 재확인" type="password" name="passwordcheck" warningText="비밀번호가 일치하지 않습니다." />
+      <InputWithLabel setter={managerNameSetter} label="담당자 성함" type="text" name="managerName" warningText="필수정보 입니다." />
+      <TelInputWithLabel setter={managerNumSetter} label="담당자 연락처" name="managerNum" warningText="필수정보 입니다." />
+      <InputWithLabel setter={companyNameSetter} label="회사명" type="text" name="companyName" warningText="필수정보 입니다." />
+      <InputWithLabel setter={companyIdSetter} label="사업자 번호" type="text" name="companyId" warningText="필수정보 입니다." />
+      <TelInputWithLabel setter={companyNumSetter} label="회사전화" name="companyNum" warningText="필수정보 입니다." />
+      <input className="signUpButton" type="submit" value='가입하기' onClick={handleSubmit} />
+    </div>
   )
 }

@@ -221,26 +221,40 @@ app.post('/sendEmail', async function (req, res) {
     const user_email = req.body.email;
     console.log(user_email);
 
-    const transporter = nodemailer.createTransport({
-        service: 'Naver',
-        auth: {
-            user: email_conf.user,
-            pass: email_conf.pass
-        },
-        requireTLS: true,
-        secure: false,
-        host: 'smtp.naver.com',
-        port: '587'
-    });
+    let number = Math.floor(Math.random() * 1000000) + 100000;
+    if (number > 1000000) number = number - 100000;
 
-    const info = await transporter.sendMail({
-        from: 'godtjrdkel98@naver.com',
-        to: user_email,
-        subject: '제목제목제목제목',
-        text: '내용내용내용내용내용내용',
-    });
+    console.log(number);
 
-    console.log('메일 갔는지 안갔는지')
+    try {
+        const transporter = nodemailer.createTransport({
+            service: 'Naver',
+            auth: {
+                user: email_conf.user,
+                pass: email_conf.pass
+            },
+            requireTLS: true,
+            secure: false,
+            host: 'smtp.naver.com',
+            port: '587'
+        });
+
+        const info = await transporter.sendMail({
+            from: 'godtjrdkel98@naver.com',
+            to: user_email,
+            subject: 'EserVate 인증번호입니다.',
+            text: String(number),
+        });
+
+        const checkemail = await new Object();
+        checkemail.number = number;
+
+        await res.send(checkemail);
+
+        console.log('메일 전송')
+    } catch {
+        console.log('오류')
+    }
 })
 
 app.listen(5000, () => console.log(`Listening on port 5000`));
