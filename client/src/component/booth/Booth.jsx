@@ -1,8 +1,9 @@
 import React from 'react'
 import './booth.css';
 import { Link } from 'react-router-dom';
+import { Modal } from '@mui/material';
 
-export default function Booth( {layer} ) {
+export default function Booth( {layer, handleOpen, handleClose} ) {
     return(
         <>
             <div className="booth_wrap">
@@ -10,7 +11,7 @@ export default function Booth( {layer} ) {
                 <img id="booth_out" src="/assets/OUT.png" alt="출구이미지" />
                 <img id="booth_state" src="/assets/STATE.png" alt="예약상태이미지" />
                 {/* A구역 */}
-                <Link to="#"><span className="Booth_A" id="A_b1_101">A-{layer}01</span></Link>
+                <span className="Booth_A" id="A_b1_101" onClick={handleOpen}>A-{layer}01</span>
                 <Link to="#"><span id="A_a_102">A-{layer}02</span></Link>
                 <Link to="#"><span id="A_a_103">A-{layer}03</span></Link>
                 <Link to="#"><span id="A_a_104">A-{layer}04</span></Link>
