@@ -243,7 +243,8 @@ app.post('/sendEmail', async function (req, res) {
         });
 
         const info = await transporter.sendMail({
-            from: 'godtjrdkel98@naver.com',
+            // from: 'godtjrdkel98@naver.com',
+            from: 'EserVate@eservate.com',
             to: user_email,
             subject: 'EserVate 인증번호입니다.',
             text: String(number),
