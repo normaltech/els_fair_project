@@ -90,7 +90,7 @@ function App() {
             <ReservationList />
           </Route>
 
-          {/* 매니저페이지 테스트용 */}
+          {/* 매니저페이지 */}
           <Route path="/managerpage">
             <ManagerPage />
           </Route>

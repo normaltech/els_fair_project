@@ -7,10 +7,7 @@ class ErrorBoundary extends Component {
 
   componentDidCatch(error, info) {
     console.log('에러가 발생했습니다.');
-    console.log({
-      error,
-      info
-    });
+    console.log({ error, info });
     this.setState({
       error: true
     });
@@ -20,7 +17,7 @@ class ErrorBoundary extends Component {
     if (this.state.error) {
       return <h1>에러 발생!</h1>;
     }
-    return this.props.children;
+    else return this.props.children;
   }
 }
 

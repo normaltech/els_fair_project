@@ -231,20 +231,19 @@ app.post('/sendEmail', async function (req, res) {
 
     try {
         const transporter = nodemailer.createTransport({
-            service: 'Naver',
+            service: 'gmail',
             auth: {
                 user: email_conf.user,
                 pass: email_conf.pass
             },
             requireTLS: true,
             secure: false,
-            host: 'smtp.naver.com',
+            host: 'smtp.gmail.com',
             port: '587'
         });
 
         const info = await transporter.sendMail({
-            // from: 'godtjrdkel98@naver.com',
-            from: 'EserVate@eservate.com',
+            from: 'eservate.2021@gmail.com',
             to: user_email,
             subject: 'EserVate 인증번호입니다.',
             text: String(number),
