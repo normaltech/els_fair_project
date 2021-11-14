@@ -2,6 +2,7 @@ import React from 'react'
 import './booth.css';
 import { Link } from 'react-router-dom';
 import { Modal } from '@mui/material';
+import BoothModal from '../selectbooth/boothmodal/BoothModal';
 
 export default function Booth( {layer, handleOpen, handleClose} ) {
     return(
@@ -11,76 +12,76 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
                 <img id="booth_out" src="/assets/OUT.png" alt="출구이미지" />
                 <img id="booth_state" src="/assets/STATE.png" alt="예약상태이미지" />
                 {/* A구역 */}
-                <span className="Booth_A" id="A_b1_101" onClick={handleOpen}>A-{layer}01</span>
-                <Link to="#"><span id="A_a_102">A-{layer}02</span></Link>
-                <Link to="#"><span id="A_a_103">A-{layer}03</span></Link>
-                <Link to="#"><span id="A_a_104">A-{layer}04</span></Link>
-                <Link to="#"><span id="A_a_105">A-{layer}05</span></Link>
-                <Link to="#"><span id="A_a_106">A-{layer}06</span></Link>
-                <Link to="#"><span id="A_a_107">A-{layer}07</span></Link>
-                <Link to="#"><span id="A_b2_108">A-{layer}08</span></Link>
+                <BoothModal className={"A_b1_101"} section={"A"} type={"b"} layer={layer} number={"01"}/>
+                <BoothModal className={"A_a_102"} section={"A"} type={"a"} layer={layer} number={"02"}/>
+                <BoothModal className={"A_a_103"} section={"A"} type={"a"} layer={layer} number={"03"}/>
+                <BoothModal className={"A_a_104"} section={"A"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"A_a_105"} section={"A"} type={"a"} layer={layer} number={"05"}/>
+                <BoothModal className={"A_a_106"} section={"A"} type={"a"} layer={layer} number={"06"}/>
+                <BoothModal className={"A_a_107"} section={"A"} type={"a"} layer={layer} number={"07"}/>
+                <BoothModal className={"A_b2_108"} section={"A"} type={"b"} layer={layer} number={"08"}/>
                 {/* B구역 */}
-                <Link to="#"><span id="B_c_101">B-{layer}01</span></Link>
-                <Link to="#"><span id="B_c_102">B-{layer}02</span></Link>
-                <Link to="#"><span id="B_a_103">B-{layer}03</span></Link>
-                <Link to="#"><span id="B_b1_104">B-{layer}04</span></Link>
-                <Link to="#"><span id="B_b1_105">B-{layer}05</span></Link>
-                <Link to="#"><span id="B_b1_106">B-{layer}06</span></Link>
-                <Link to="#"><span id="B_a_107">B-{layer}07</span></Link>
-                <Link to="#"><span id="B_b1_108">B-{layer}08</span></Link>
+                <BoothModal className={"B_c_101"} section={"B"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"B_c_102"} section={"B"} type={"c"} layer={layer} number={"02"}/>
+                <BoothModal className={"B_a_103"} section={"B"} type={"a"} layer={layer} number={"03"}/>
+                <BoothModal className={"B_b1_104"} section={"B"} type={"b"} layer={layer} number={"04"}/>
+                <BoothModal className={"B_b1_105"} section={"B"} type={"b"} layer={layer} number={"05"}/>
+                <BoothModal className={"B_b1_106"} section={"B"} type={"b"} layer={layer} number={"06"}/>
+                <BoothModal className={"B_a_107"} section={"B"} type={"a"} layer={layer} number={"07"}/>
+                <BoothModal className={"B_b1_108"} section={"B"} type={"b"} layer={layer} number={"08"}/>
                 {/* C구역 */}
-                <Link to="#"><span id="C_c_101">C-{layer}01</span></Link>
-                <Link to="#"><span id="C_a_102">C-{layer}02</span></Link>
-                <Link to="#"><span id="C_b2_103">C-{layer}03</span></Link>
-                <Link to="#"><span id="C_b1_104">C-{layer}04</span></Link>
-                <Link to="#"><span id="C_b1_105">C-{layer}05</span></Link>
-                <Link to="#"><span id="C_b2_106">C-{layer}06</span></Link>
+                <BoothModal className={"C_c_101"} section={"C"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"C_a_102"} section={"C"} type={"a"} layer={layer} number={"02"}/>
+                <BoothModal className={"C_b2_103"} section={"C"} type={"b"} layer={layer} number={"03"}/>
+                <BoothModal className={"C_b1_104"} section={"C"} type={"b"} layer={layer} number={"04"}/>
+                <BoothModal className={"C_b1_105"} section={"C"} type={"b"} layer={layer} number={"05"}/>
+                <BoothModal className={"C_b2_106"} section={"C"} type={"b"} layer={layer} number={"06"}/>
                 {/* D구역 */}
-                <Link to="#"><span id="D_b2_101">D-{layer}01</span></Link>
-                <Link to="#"><span id="D_a_102">D-{layer}02</span></Link>
-                <Link to="#"><span id="D_a_103">D-{layer}03</span></Link>
-                <Link to="#"><span id="D_a_104">D-{layer}04</span></Link>
-                <Link to="#"><span id="D_a_105">D-{layer}05</span></Link>
-                <Link to="#"><span id="D_b2_106">D-{layer}06</span></Link>
-                <Link to="#"><span id="D_c_107">D-{layer}07</span></Link>
-                <Link to="#"><span id="D_c_108">D-{layer}08</span></Link>
+                <BoothModal className={"D_b2_101"} section={"D"} type={"b"} layer={layer} number={"01"}/>
+                <BoothModal className={"D_a_102"} section={"D"} type={"a"} layer={layer} number={"02"}/>
+                <BoothModal className={"D_a_103"} section={"D"} type={"a"} layer={layer} number={"03"}/>
+                <BoothModal className={"D_a_104"} section={"D"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"D_a_105"} section={"D"} type={"a"} layer={layer} number={"05"}/>
+                <BoothModal className={"D_b2_106"} section={"D"} type={"b"} layer={layer} number={"06"}/>
+                <BoothModal className={"D_c_107"} section={"D"} type={"c"} layer={layer} number={"07"}/>
+                <BoothModal className={"D_c_108"} section={"D"} type={"c"} layer={layer} number={"08"}/>
                 {/* E구역 */}
-                <Link to="#"><span id="E_c_101">E-{layer}01</span></Link>
-                <Link to="#"><span id="E_c_102">E-{layer}02</span></Link>
-                <Link to="#"><span id="E_b2_103">E-{layer}03</span></Link>
-                <Link to="#"><span id="E_c_104">E-{layer}04</span></Link>
+                <BoothModal className={"E_c_101"} section={"E"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"E_c_102"} section={"E"} type={"c"} layer={layer} number={"02"}/>
+                <BoothModal className={"E_b2_103"} section={"E"} type={"b"} layer={layer} number={"03"}/>
+                <BoothModal className={"E_c_104"} section={"E"} type={"c"} layer={layer} number={"04"}/>
                 {/* F구역 */}
-                <Link to="#"><span id="F_c_101">F-{layer}01</span></Link>
-                <Link to="#"><span id="F_a_102">F-{layer}02</span></Link>
-                <Link to="#"><span id="F_a_103">F-{layer}03</span></Link>
-                <Link to="#"><span id="F_a_104">F-{layer}04</span></Link>
-                <Link to="#"><span id="F_a_105">F-{layer}05</span></Link>
-                <Link to="#"><span id="F_c_106">F-{layer}06</span></Link>
+                <BoothModal className={"F_c_101"} section={"F"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"F_a_102"} section={"F"} type={"a"} layer={layer} number={"02"}/>
+                <BoothModal className={"F_a_103"} section={"F"} type={"a"} layer={layer} number={"03"}/>
+                <BoothModal className={"F_a_104"} section={"F"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"F_a_105"} section={"F"} type={"a"} layer={layer} number={"05"}/>
+                <BoothModal className={"F_c_106"} section={"F"} type={"c"} layer={layer} number={"06"}/>
                 {/* G구역 */}
-                <Link to="#"><span id="G_c_101">G-{layer}01</span></Link>
-                <Link to="#"><span id="G_c_102">G-{layer}02</span></Link>
-                <Link to="#"><span id="G_b1_103">G-{layer}03</span></Link>
-                <Link to="#"><span id="G_a_104">G-{layer}04</span></Link>
-                <Link to="#"><span id="G_a_105">G-{layer}05</span></Link>
-                <Link to="#"><span id="G_a_106">G-{layer}06</span></Link>
-                <Link to="#"><span id="G_a_107">G-{layer}07</span></Link>
+                <BoothModal className={"G_c_101"} section={"G"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"G_c_102"} section={"G"} type={"c"} layer={layer} number={"02"}/>
+                <BoothModal className={"G_b1_103"} section={"G"} type={"b"} layer={layer} number={"03"}/>
+                <BoothModal className={"G_a_104"} section={"G"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"G_a_105"} section={"G"} type={"a"} layer={layer} number={"05"}/>
+                <BoothModal className={"G_a_106"} section={"G"} type={"a"} layer={layer} number={"06"}/>
+                <BoothModal className={"G_a_107"} section={"G"} type={"a"} layer={layer} number={"07"}/>
                 {/* H구역 */}
-                <Link to="#"><span id="H_c_101">H-{layer}01</span></Link>
-                <Link to="#"><span id="H_b2_102">H-{layer}02</span></Link>
-                <Link to="#"><span id="H_b2_103">H-{layer}03</span></Link>
-                <Link to="#"><span id="H_a_104">H-{layer}04</span></Link>
-                <Link to="#"><span id="H_a_105">H-{layer}05</span></Link>
-                <Link to="#"><span id="H_a_106">H-{layer}06</span></Link>
-                <Link to="#"><span id="H_a_107">H-{layer}07</span></Link>
-                <Link to="#"><span id="H_b2_108">H-{layer}08</span></Link>
-                <Link to="#"><span id="H_b2_109">H-{layer}09</span></Link>
+                <BoothModal className={"H_c_101"} section={"H"} type={"c"} layer={layer} number={"01"}/>
+                <BoothModal className={"H_b2_102"} section={"H"} type={"b"} layer={layer} number={"02"}/>
+                <BoothModal className={"H_b2_103"} section={"H"} type={"b"} layer={layer} number={"03"}/>
+                <BoothModal className={"H_a_104"} section={"H"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"H_a_105"} section={"H"} type={"a"} layer={layer} number={"05"}/>
+                <BoothModal className={"H_a_106"} section={"H"} type={"a"} layer={layer} number={"06"}/>
+                <BoothModal className={"H_a_107"} section={"H"} type={"a"} layer={layer} number={"07"}/>
+                <BoothModal className={"H_b2_108"} section={"H"} type={"b"} layer={layer} number={"08"}/>
+                <BoothModal className={"H_b2_109"} section={"H"} type={"b"} layer={layer} number={"09"}/>
                 {/* I구역 */}
-                <Link to="#"><span id="I_a_101">I-{layer}01</span></Link>
-                <Link to="#"><span id="I_a_102">I-{layer}02</span></Link>
-                <Link to="#"><span id="I_a_103">I-{layer}03</span></Link>
-                <Link to="#"><span id="I_a_104">I-{layer}04</span></Link>
-                <Link to="#"><span id="I_b1_105">I-{layer}05</span></Link>
-                <Link to="#"><span id="I_b1_106">I-{layer}06</span></Link>
+                <BoothModal className={"I_a_101"} section={"I"} type={"a"} layer={layer} number={"01"}/>
+                <BoothModal className={"I_a_102"} section={"I"} type={"a"} layer={layer} number={"02"}/>
+                <BoothModal className={"I_a_103"} section={"I"} type={"a"} layer={layer} number={"03"}/>
+                <BoothModal className={"I_a_104"} section={"I"} type={"a"} layer={layer} number={"04"}/>
+                <BoothModal className={"I_b1_105"} section={"I"} type={"b"} layer={layer} number={"05"}/>
+                <BoothModal className={"I_b1_106"} section={"I"} type={"b"} layer={layer} number={"06"}/>
             </div>
         </>
     )

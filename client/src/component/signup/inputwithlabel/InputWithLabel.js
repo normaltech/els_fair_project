@@ -102,7 +102,7 @@ const NationCode = () => (
     <option data-countrycode="KE" value="254">Kenya (+254)</option>
     <option data-countrycode="KI" value="686">Kiribati (+686)</option>
     <option data-countrycode="KP" value="850">Korea North (+850)</option>
-    <option data-countrycode="KR" value="82" selected >Korea South (+82)</option>
+    <option data-countrycode="KR" value="82" defaultValue >Korea South (+82)</option>
     <option data-countrycode="KW" value="965">Kuwait (+965)</option>
     <option data-countrycode="KG" value="996">Kyrgyzstan (+996)</option>
     <option data-countrycode="LA" value="856">Laos (+856)</option>

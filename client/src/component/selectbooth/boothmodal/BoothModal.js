@@ -32,13 +32,13 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "white",
 }));
 
-export default function BoothModal({}) {
+export default function BoothModal({className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <span className={className} onClick={handleOpen}>{section}-{layer}{number}</span>
       <Modal
         open={open}
         onClose={handleClose}
@@ -56,18 +56,18 @@ export default function BoothModal({}) {
                   부스번호
                 </Typography>
                 <Typography component="div" fontSize="25px" fontWeight="bold">
-                  B-a106
+                  {section}-{layer}{number}
                 </Typography>
               </div>
               <div className="modalBoothTypeRight">
                 <Typography component="div">
-                  B구역
+                  {section}구역
                 </Typography>
                 <Typography component="div">
-                  a타입
+                  {type}타입
                 </Typography>
                 <Typography component="div">
-                  106
+                  {layer}{number}
                 </Typography>
               </div>
             </Box>

@@ -5,6 +5,7 @@ import Header from '../header/Header';
 import Booth from '../booth/Booth';
 import './selectbooth.css';
 import Modal from './boothmodal/BoothModal';
+import BoothModal from './boothmodal/BoothModal';
 
 export default function SelectBooth() {
   const layer_1 = 1;
@@ -140,8 +141,6 @@ export default function SelectBooth() {
           )}
         </TransformWrapper>
       </div>
-      <Modal visible={true}>Hello</Modal>
-      {/*부스정보칸 */}
     </>
   )
 }
