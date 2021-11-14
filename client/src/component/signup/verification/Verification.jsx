@@ -5,19 +5,12 @@ import axios from 'axios'
 
 export default function Verification({setter, label, useremail}) {
 
-  // const handleVerivationSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log(event.target.email.value, event.target.name.value);
-  // }   
-  
-  
-
   const [email, setemail] = useState({
     email: ''
   })
   
-  const [number, setnumber] = useState(123456)
-  const [inputnumber, setinputnumber] = useState(123456)
+  const [number, setnumber] = useState('123456')
+  const [inputnumber, setinputnumber] = useState('654321')
   const [warningText, setwarningText] = useState('인증 번호를 다시 확인해주시기 바랍니다.')
 
   const checkbtn = () => {
@@ -68,11 +61,6 @@ export default function Verification({setter, label, useremail}) {
 
 
   return (
-    // <div className="verificationNum" onSubmit={handleVerivationSubmit}>
-    //   <input onChange={(e)=>setter(e.target.value)} className="verificationNumInput" type="text" />
-    //   <button className="verificationNumButton" type="submit" onClick={call}>인증번호 받기</button>
-    //   <div className="warningText">인증 번호를 다시 확인해주시기 바랍니다.</div>
-    // </div>
     <div className="verificationNum">
       <label className="inputTagLabel" >{label}</label><br />
       <input onChange={(e) => { setter(e.target.value); setinputnumber(e.target.value) }} className="verificationNumInput" type="text" />

@@ -70,8 +70,11 @@ app.get("/logout",(req,res)=>{
         req.session.destroy(function(){
             req.session;
         });
+
+        console.log('로그아웃 완료')
     }else{
         res.send({loggedIn: false })
+        console.log('세션에 로그인 정보가 없음')
     }
 })
 app.post("/register",(req,res)=>{

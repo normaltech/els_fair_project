@@ -35,15 +35,13 @@ export default function Header() {
         }
     }, []);
 
-    const btn = true; //로그아웃버튼
-
-    useEffect(() => { //로그아웃
-        try {
-          axios.get("/logout")
-        } catch (error) {
-          console.log(error);
-        }
-    }, [btn]);
+    const btn = () => {
+      try {
+        axios.get("/logout")
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     return (
         <>

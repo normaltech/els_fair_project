@@ -20,6 +20,7 @@ import SelectBooth from './component/selectbooth/SelectBooth';
 import Spec from './component/specifications/Spec';
 import UserInfo from './component/userinfo/UserInfo';
 import ReservationList from './component/reservationlist/ReservationList';
+import ErrPage from './component/errpage/ErrPage';
 
 // 메니저페이지 테스트용
 import ManagerPage from './ManagerPage/Home';
@@ -89,6 +90,9 @@ function App() {
         <Route path="/managerpage">
           <ManagerPage />
         </Route>
+
+        {/* 페이지를 찾을 수 없을때 */}
+        <Route component={ErrPage} />
       </Switch>
     </Router>
   );
