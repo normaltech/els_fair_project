@@ -3,6 +3,7 @@ import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './spec.css'
 import axios from 'axios';
+import { useLocation } from 'react-router';
 
 export default function Spec() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -83,6 +84,10 @@ export default function Spec() {
     //   console.log(error);
     // }
   }
+
+  const specs = useLocation().state;
+  console.log(specs.section);
+
   return (
     <div className="reservationContainer">
       <Header />
@@ -258,9 +263,9 @@ export default function Spec() {
             <div className="DashboardDesc">
               <div className="DashboardDescTop">
                 <div className="DescTopTitle">부스번호</div>
-                <div className="DescTopBoothnum">{}-{}{}</div>
+                <div className="DescTopBoothnum">{specs.section}-{specs.type}{specs.layer}{specs.number}</div>
                 {/* 앞의 페이지에서 고른 정보 가져와서 구여 타입 부스넘버 적을 것 */}
-                <div className="DescTopBoothnumDetail">{}구역 {}타입 {}</div>
+                <div className="DescTopBoothnumDetail">{specs.section}구역 {specs.type}타입 {specs.layer}{specs.number}</div>
                 {/* 앞의 페이지에서 고른 정보 가져와서 구여 타입 부스넘버 적을 것 */}
               </div>
               <div className="DashboardDescBottom">

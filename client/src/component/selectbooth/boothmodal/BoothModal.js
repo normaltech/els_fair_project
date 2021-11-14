@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import './boothmodal.css'
 import { orange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
+import { Link } from 'react-router-dom';
 
 const style = {
   position: 'absolute',
@@ -114,7 +115,15 @@ export default function BoothModal({className, section,type,layer,number}) {
                 <Typography fontSize="15px" fontWeight="bold">{1}회선</Typography>
               </Box>
             </Box>
-            <ColorButton size="large" variant="contained" display="flex" disableElevation >부스신청</ColorButton>
+            <Link to={{
+              pathname: "/reservation",
+              state: {
+                section: section,
+                type: type,
+                number: number,
+                layer: layer,
+              }
+            }}><ColorButton size="large" variant="contained" display="flex" disableElevation >부스신청</ColorButton></Link>
           </div>
         </Box>
       </Modal>
