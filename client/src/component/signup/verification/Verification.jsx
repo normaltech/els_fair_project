@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 
 
-export default function Verification({setter, label, useremail}) {
+export default function Verification({setter, label, useremail, certification}) {
 
   const [email, setemail] = useState({
     email: ''
@@ -16,9 +16,11 @@ export default function Verification({setter, label, useremail}) {
   const checkbtn = () => {
     if(number == inputnumber){
       setwarningText('인증이 완료되었습니다.')
+      certification(true)
     }
     else {
       setwarningText('인증 번호를 다시 확인해주시기 바랍니다.')
+      certification(false)
     }
 
   }
@@ -43,10 +45,6 @@ export default function Verification({setter, label, useremail}) {
       //   console.log(error);
       // }
     }
-  }
-
-  const test = () => {
-    console.log(useremail)
   }
 
   useEffect(() => {
