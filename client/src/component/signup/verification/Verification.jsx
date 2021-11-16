@@ -9,9 +9,9 @@ export default function Verification({setter, label, useremail, certification}) 
     email: ''
   })
   
-  const [number, setnumber] = useState('123456')
-  const [inputnumber, setinputnumber] = useState('654321')
-  const [warningText, setwarningText] = useState('인증 번호를 다시 확인해주시기 바랍니다.')
+  const [number, setnumber] = useState('인증번호생성')
+  const [inputnumber, setinputnumber] = useState('인증번호입력')
+  const [warningText, setwarningText] = useState('인증 번호 받기를 눌러주세요.')
 
   const checkbtn = () => {
     if(number == inputnumber){
@@ -29,11 +29,12 @@ export default function Verification({setter, label, useremail, certification}) 
   const call = () => {
     
     if(email.email === ''){
-      console.log('이메일 입력하세요')
+      alert('이메일을 입력해주세요')
     }
     else {
       console.log('성공')
       console.log(email.email)
+      setwarningText('인증 번호를 입력해주세요.')
       // 제대로된 이메일 양식을 입력 안했을때 안보내기위해서 일단 주석처리해놨음.
       // try {  
       //   axios.post("http://localhost:5000/sendEmail", email)

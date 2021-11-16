@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import './inputWithLabel.css'
 
 const NationCode = () => (
@@ -220,13 +220,21 @@ const NationCode = () => (
   </select>
 )
 
-export const InputWithLabel = ({ label, type, warningText, name, value,setter }) => {
+export const InputWithLabel = ({ label, type, warningText, name, value, setter }) => {
+
+  const [warningstyle, setwarningstyle] = useState("warningText")
+  const [checktext, setchecktext] = useState('')
+
+  useEffect(() => {
+    if (checktext === '') setwarningstyle("warningText")
+    else setwarningstyle("warningTextHidden")
+  }, [setter])
 
   return (
     <div className="inputTag">
       <label className="inputTagLabel" htmlFor={name}>{label}</label><br />
-      <input onChange={(e) => {setter(e.target.value)}} value={value} className="inputTagInput" type={type} id={name} />
-      <div className="warningText">{warningText}</div>
+      <input onChange={(e) => { setter(e.target.value); setchecktext(e.target.value) }} value={value} className="inputTagInput" type={type} id={name} />
+      <div className={warningstyle}>{warningText}</div>
     </div>
   );
 };
@@ -234,14 +242,22 @@ export const InputWithLabel = ({ label, type, warningText, name, value,setter })
 
 export const TelInputWithLabel = ({ label, warningText, name, value, setter }) => {
 
+  const [warningstyle, setwarningstyle] = useState("warningText")
+  const [checktext, setchecktext] = useState('')
+
+  useEffect(() => {
+    if (checktext === '') setwarningstyle("warningText")
+    else setwarningstyle("warningTextHidden")
+  }, [setter])
+
   return (
     <div className="inputTag">
       <label className="inputTagLabel" htmlFor={name}>{label}</label><br />
       <div className="telNumContainer">
         <NationCode />
-        <input onChange={(e) => {setter(e.target.value)}}  value={value} className="telNumContainerWrite" type="number" id={name}></input>
+        <input onChange={(e) => { setter(e.target.value); setchecktext(e.target.value) }} value={value} className="telNumContainerWrite" type="number" id={name}></input>
       </div>
-      <div className="warningText">{warningText}</div>
+      <div className={warningstyle}>{warningText}</div>
     </div>
   );
 };
