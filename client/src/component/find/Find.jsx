@@ -18,7 +18,7 @@ export default function Find(){
     }
     return(
         <>
-            {/* <div className="wrap"> */}
+            <div className="find_wrap">
                 <div className="find_contentWrap">
                     <img className="find_logo" src="/assets/eslogo.png" alt="로고" />
                     <div className="find_word1">아이디/비밀번호 찾기</div>
@@ -29,7 +29,7 @@ export default function Find(){
                     <div><button onClick={click} className="find_button">다음</button></div>
                     <div className="find_homeLink"><Link to="/" className="find_word3">홈으로 이동</Link></div>
                 </div>
-            {/* </div> */}
+            </div>
             {/* <Footer /> */}
         </>
     )

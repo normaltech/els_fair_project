@@ -18,7 +18,7 @@ export default function ChangePw(){
     }
     return(
         <>
-            {/* <div className="wrap"> */}
+            <div className="changePw_wrap">
                 <div className="changePw_contentWrap">
                     <img className="changePw_logo" src="/assets/eslogo.png" alt="로고" />
                     <div className="changePw_word1">비밀번호 변경</div>
@@ -28,7 +28,7 @@ export default function ChangePw(){
                     <div><button onClick={click} className="changePw_button">변경</button></div>
                     <div className="changePw_homeLink"><Link to="/" className="changePw_word3">홈으로 이동</Link></div>
                 </div>
-            {/* </div> */}
+            </div>
             {/* <Footer /> */}
         </>
     )

@@ -15,13 +15,15 @@ export default function ChangePassword(){
                 <span className="uorMenu">예약 내역</span>
                 </div>
             </div>
-            <div className="changePassword_contentWrap">
-                <div className="changePassword_word1">비밀번호 변경</div>
-                <div><input className="changePassword_input changePassword_input1" type="password" placeholder="현재 비밀번호 입력"/></div>
-                <div><input className="changePassword_input" type="password" placeholder="새 비밀번호"/></div>
-                <div><input className="changePassword_input" type="password" placeholder="새 비밀번호 확인"/></div>
-                <div><Link to="/userinfo"><button className="changePassword_button changePassword_button1">확인</button></Link></div>
-                <div><Link to="/userinfo"><button className="changePassword_button">취소</button></Link></div>
+            <div className="changePassword_wrap">
+                <div className="changePassword_contentWrap">
+                    <div className="changePassword_word1">비밀번호 변경</div>
+                    <div><input className="changePassword_input changePassword_input1" type="password" placeholder="현재 비밀번호 입력"/></div>
+                    <div><input className="changePassword_input" type="password" placeholder="새 비밀번호"/></div>
+                    <div><input className="changePassword_input" type="password" placeholder="새 비밀번호 확인"/></div>
+                    <div><Link to="/userinfo"><button className="changePassword_button changePassword_button1">확인</button></Link></div>
+                    <div><Link to="/userinfo"><button className="changePassword_button">취소</button></Link></div>
+                </div>
             </div>
             {/* <Footer/> */}
         </>

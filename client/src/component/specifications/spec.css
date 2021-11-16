@@ -113,7 +113,8 @@
 
 
 .specContainerRight{
-  width: 800px;
+  /* width: 800px; */
+  width: 100%;
 }
 
 .reservationDashboard{
@@ -126,6 +127,8 @@
   border-radius: 23px;
   background-color: #d3d3d3;
   align-items: center;
+  position: sticky;
+  top: 5%;
 }
 
 .DashboardTitle{
@@ -565,7 +568,7 @@
 }
 @media screen and (max-width: 420px){
   .specContainerLeft{
-    width: 414px;
+    width: 411px;
   }
 }
 @media screen and (max-width: 380px){
@@ -584,6 +587,9 @@
 }
 @media screen and (max-width: 360px){
   .specContainerLeft{
+    width: 360px;
+  }
+  .specContainerRight{
     width: 360px;
   }
   .specBanner{
@@ -650,5 +656,28 @@
   } */
   .eslClasses .eslClassTitle, .eslClasses .eslClassNum{
     height: 15px;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .specContainerLeft{
+    width: 320px;
+  }
+  .specContainerRight{
+    width: 320px;
+  }
+  ..reservationDashboard{
+    width: 300px;
+  }
+}
+@media screen and (max-width: 290px){
+  .specContainerLeft{
+    width: 280px;
+  }
+  .specContainerRight{
+    width: 280px;
+  }
+  .reservationDashboard{
+    width: 270px;
   }
 }

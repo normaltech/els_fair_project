@@ -1,3 +1,12 @@
+.userinfoOrReservationlistMenuBar{
+    margin-top: 0px !important;
+}
+.withdraw_wrap{
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .withdraw_contentWrap{
     display: flex;
     flex-direction: column;
@@ -7,8 +16,6 @@
     border-radius: 30px;
     box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #dfe3f5;
-    /* background-color: var(--white); */
-    margin: 90px auto;
 }
 
 .withdraw_word1, .withdraw_word2, .withdraw_word3{
@@ -51,25 +58,4 @@
 
 .withdraw_button:hover{
     background-color: #f58f76;
-}
-@media screen and (max-height: 1400px){
-    .withdraw_contentWrap{
-        margin-top: 320px;
-    }
-}
-@media screen and (max-height: 1024px){
-    .withdraw_contentWrap{
-        margin-top: 220px;
-    }
-}
-@media screen and (max-height: 830px){
-    .withdraw_contentWrap{
-        margin-top: 120px;
-    }
-}
-
-@media screen and (max-height: 740px){
-    .withdraw_contentWrap{
-        margin: 90px auto;
-    }
 }

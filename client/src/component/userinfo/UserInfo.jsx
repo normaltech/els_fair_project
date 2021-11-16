@@ -3,7 +3,7 @@ import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './userinfo.css'
 import axios from 'axios';
-
+import { Link } from 'react-router-dom';
 export default function UserInfo() {
 
   const [company_id, setcompany_id] = useState('');
@@ -43,7 +43,9 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">이메일 인증을 통해 비밀번호를 찾을 수 있습니다.</div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <div className="userInfoBoxItemButton">수정</div>
+            <Link to="/changePassword">
+              <div className="userInfoBoxItemButton" style={{color:"var(--dusty-orange)"}}>수정</div>
+            </Link>
           </div>
         </div>
         <div className="userInfoBoxItem">
@@ -52,7 +54,9 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">{company_id}</div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <div className="userInfoBoxItemButton">수정</div>
+            <Link to="/changeBusinessNumber">
+              <div className="userInfoBoxItemButton" style={{color:"var(--dusty-orange)"}}>수정</div>
+            </Link>
           </div>
         </div>
         <div className="userInfoBoxItem">
@@ -74,7 +78,9 @@ export default function UserInfo() {
             </div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <div className="userInfoBoxItemButton">수정</div>
+            <Link to="changeNumber">
+              <div className="userInfoBoxItemButton" style={{color:"var(--dusty-orange)"}}>수정</div>
+            </Link>
           </div>
         </div>
         <div className="userInfoBoxItem">
@@ -83,7 +89,9 @@ export default function UserInfo() {
             <div className="userInfoBoxItemSub">회원 탈퇴를 하게 되면 예약 정보가 모두 삭제됩니다.</div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <div className="userInfoBoxItemButton">탈퇴</div>
+            <Link to="/withdraw">
+              <div className="userInfoBoxItemButton" style={{color:"var(--dusty-orange)"}}>탈퇴</div>
+            </Link>
           </div>
         </div>
       </div>

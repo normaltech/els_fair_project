@@ -1,5 +1,6 @@
  .navbar{
-     background-color: #f4f7fc;
+     /* background-color: #f4f7fc; */
+     background-color: #fff;
      height: 80px;
      display: flex;
      justify-content: space-between;
@@ -84,7 +85,7 @@
  }
 
  .logoimg{
-     position: fixed;
+     /* position: fixed; */
      left: 45%;
  }
  
@@ -93,3 +94,54 @@
      position: relative;
      right: 20px;
  }
+
+@media screen and (max-width: 768px){
+    .logoimg{
+        display: none;
+    }
+}
+/* 540px 부터 네브바 요소들 크기 줄이기 */
+@media screen and (max-width: 540px){
+    .menu-bars {
+        margin-left: 0.5rem;
+        font-size: 1rem;
+        /* background: none; */
+    }
+    .nowpage{
+        /* position: relative; */
+        left: 8%;
+        font-size: 1rem;
+    }
+    .manager-name{
+        position: relative;
+        right: 4%;
+        font-size: 1rem;
+    }
+    .messageicon{
+        font-size: 1rem;
+        /* position: relative; */
+        right: 10px;
+    }
+}
+@media screen and (max-width: 325px){
+    .menu-bars {
+        margin-left: 0.3rem;
+        font-size: 0.8rem;
+        /* background: none; */
+    }
+    .nowpage{
+        /* position: relative; */
+        left: 1%;
+        font-size: 0.8rem;
+    }
+    .manager-name{
+        position: relative;
+        right: 4%;
+        font-size: 0.8rem;
+    }
+    .messageicon{
+        /* font-size: 1rem; */
+        /* position: relative; */
+        right: 0px;
+    }
+}
