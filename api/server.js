@@ -11,6 +11,7 @@ const saltRounds = 10;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const nodemailer = require("nodemailer");
 app.use(express.json());
 
 app.use(cors({
@@ -37,6 +38,9 @@ app.use(session({
 //데이터 베이스 연동!
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
+
+const email_data = fs.readFileSync('./email.json');
+const email_conf = JSON.parse(email_data);
 
 
 const db = mysql.createConnection({
@@ -66,8 +70,11 @@ app.get("/logout",(req,res)=>{
         req.session.destroy(function(){
             req.session;
         });
+
+        console.log('로그아웃 완료')
     }else{
         res.send({loggedIn: false })
+        console.log('세션에 로그인 정보가 없음')
     }
 })
 app.post("/register",(req,res)=>{
@@ -212,4 +219,45 @@ app.get("/getNotice",(req,res)=>{
             }
         )
 })
+
+app.post('/sendEmail', async function (req, res) {
+    const user_email = req.body.email;
+    console.log(user_email);
+
+    let number = Math.floor(Math.random() * 1000000) + 100000;
+    if (number > 1000000) number = number - 100000;
+
+    console.log(number);
+
+    try {
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: email_conf.user,
+                pass: email_conf.pass
+            },
+            requireTLS: true,
+            secure: false,
+            host: 'smtp.gmail.com',
+            port: '587'
+        });
+
+        const info = await transporter.sendMail({
+            from: 'eservate.2021@gmail.com',
+            to: user_email,
+            subject: 'EserVate 인증번호입니다.',
+            text: String(number),
+        });
+
+        const checkemail = await new Object();
+        checkemail.number = number;
+
+        await res.send(checkemail);
+
+        console.log('메일 전송')
+    } catch {
+        console.log('오류')
+    }
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));

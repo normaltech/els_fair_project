@@ -35,15 +35,13 @@ export default function Header() {
         }
     }, []);
 
-    const btn = true; //로그아웃버튼
-
-    useEffect(() => { //로그아웃
-        try {
-          axios.get("/logout")
-        } catch (error) {
-          console.log(error);
-        }
-    }, [btn]);
+    const btn = () => {
+      try {
+        axios.get("/logout")
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     return (
         <>
@@ -63,7 +61,7 @@ export default function Header() {
         <div className="headerRightContent">
           <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
           <Link to="/" className="headerLogout" style={{ textDecoration: "none" }}>
-            <span className="headerRightPadding headerRightSpan">로그아웃</span>
+            <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
           </Link>
         </div>
 
