@@ -1,0 +1,885 @@
+.userManagement_wrap{
+    height: 100vh; 
+    /* height 다시 */
+    background-color: #f4f7fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 검색창 */
+.userManagement_search{
+    display: flex;
+    width: 380px;
+    height: 50px;
+    padding: 10px;
+    border: solid 3px var(--warm-grey);
+    background-color: white;
+    margin: 20px 0;
+}
+.userManagement_search .userManagement_input{
+    flex:9;
+    border: none;
+    height: 25px;
+    font-size: 20px;
+}
+.userManagement_search .userManagement_input:focus{
+    outline: none; 
+}
+.userManagement_search .userManagement_img{
+    flex:1;
+    width: 30px;
+    height: 30px;
+}
+
+/* table */
+.userManagement_table_wrap{
+    width: 1200px;
+    height: 500px;
+    border-radius: 6px 6px 0 0;
+    background-color: #fff;
+    padding: 20px;
+}
+.userManagement_table{
+    width: 1160px;
+}
+.userManagement_table_tr{
+    background-color: #f5f6fa;
+}
+.userManagement_table_padding{
+    padding: 10px 20px;
+}
+.userManagement_table_btn{
+    border: none;
+    background-color: #fff;
+}
+.userManagement_table_deleteImg{
+    width: 20px;
+    height: 23px;
+}
+.userManagement_bottom_content_wrap{
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    border-radius: 0 0 6px 6px;
+    background-color: #fff;
+    padding: 20px;
+}
+.userManagement_btn_add{
+    width: 100px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin: 0 5px;
+}
+.userManagement_btn_add:hover{
+    background-color: #3076fa;
+}
+
+/* 모달 css */
+.userManagement_black_bg{
+    display: none;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color:#bebebe;
+    opacity: 0.57;
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+/* 사용자 자세히 모달창 */
+.userManagement_userDetailModal_wrap{
+    display: none;
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_userDetailModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_userDetailModal_leftContent_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px 0 0;
+    border-right: 1px solid #707070;
+}
+.userManagement_userDetailModal_leftContent_padding{
+    padding: 10px 0;
+}
+.userManagement_userDetailModal_leftContent_img_wrap{
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--warm-grey);
+    border-radius: 50%;
+}
+.userManagement_userDetailModal_leftContent_name{
+    font-size: 30px;
+    font-weight: 600;
+    color: #2c2a2a;
+}
+.userManagement_userDetailModal_leftContent_phoneNum,
+.userManagement_userDetailModal_leftContent_email{
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c2a2a;
+}
+.userManagement_userDetailModal_rightContent_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 50px;
+}
+.userManagement_userDetailModal_rightUpContent_wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #707070;
+}
+.userManagement_userDetailModal_rightUpContent_padding{
+    padding: 5px 0;
+}
+.userManagement_userDetailModal_rightUpTitle_style{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f0f0f;
+}
+.userManagement_userDetailModal_rightUpTitleInfo_style{
+    font-size: 18px;
+    font-weight: 600;
+    color: #695d5d;
+}
+.userManagement_userDetailModal_rightDownContent_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 10px 10px;
+}
+.userManagement_userDetailModal_rightDownContent_padding{
+    padding: 5px;
+}
+.userManagement_userDetailModal_rightDownUp_wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.userManagement_userDetailModal_rightDownDown_wrap{
+    display: flex;
+    margin-top: 20px;
+    /* justify-content: space-between; */
+}
+.userManagement_userDetailModal_rightDownUp_booth_title,
+.userManagement_userDetailModal_rightDownUp_numofPeople_title,
+.userManagement_userDetailModal_rightDownUp_authority_title,
+.userManagement_userDetailModal_rightDownDown_esl_title,
+.userManagement_userDetailModal_rightDownDown_created_title,
+.userManagement_userDetailModal_rightDownDown_lastLogin_title{
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f0f0f;
+}
+.userManagement_userDetailModal_rightDownUp_isUsing,
+.userManagement_userDetailModal_rightDownDown_isLending{
+    font-size: 13px;
+    font-weight: 600;
+    color: #f00;
+}
+.userManagement_userDetailModal_rightDownUp_boothInfo,
+.userManagement_userDetailModal_rightDownUp_numofPeople,
+.userManagement_userDetailModal_rightDownUp_authority,
+.userManagement_userDetailModal_rightDownDown_created,
+.userManagement_userDetailModal_rightDownDown_lastLogin{
+    font-size: 13px;
+    font-weight: 600;
+    color: #695d5d;
+}
+.userManagement_userDetailModal_rightDownDown_created_wrap,
+.userManagement_userDetailModal_rightDownDown_lastLogin_wrap{
+    margin-left: 50px;
+}
+.userManagement_userDetailModal_rightDownDown_created,
+.userManagement_userDetailModal_rightDownDown_lastLogin{
+    width: 90px;
+}
+.userManagement_userDetailModal_rightDownDown_btn_wrap{
+    margin-top: 40px;
+}
+.userManagement_userDetailModal_rightDownDown_btn{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin: 0 5px;
+}
+.userManagement_userDetailModal_rightDownDown_btn:hover{
+    background-color: #3076fa;
+}
+/* 삭제 모달창 */
+.userManagement_deleteModal_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_deleteModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_deleteModal_img_wrap{
+    margin-right: 25px;
+}
+.userManagement_deleteModal_img{
+    width: 90px;
+    height: 80px;
+}
+.userManagement_deleteModal_title{
+    font-size: 15px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_deleteModal_question{
+    font-size: 14px;
+    color: #131523;
+    margin: 10px 0;
+}
+.userManagement_deleteModal_btn_wrap{
+    display: flex;
+}
+.userManagement_deleteModal_btn_delete,
+.userManagement_deleteModal_btn_cancel{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin: 10px 10px 0 0;
+}
+.userManagement_deleteModal_btn_delete:hover,
+.userManagement_deleteModal_btn_cancel:hover{
+    background-color: #3076fa;
+}
+/* 공지사항 삭제완료 모달창 */
+.userManagement_deleteSuccess_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_deleteSuccess_content_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_deleteSuccess_title{
+    font-family: NanumSquare_ac;
+    font-size: 25px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_deleteSuccess_btn{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.userManagement_deleteSuccess_btn:hover{
+    background-color: #3076fa;
+}
+
+/* 수정 실패 모달창 */
+.userManagement_modifyFailModal_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_modifyFailModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_modifyFailModal_img_wrap{
+    margin-right: 25px;
+}
+.userManagement_modifyFailModal_img{
+    width: 90px;
+    height: 80px;
+}
+.userManagement_modifyFailModal_right_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userManagement_modifyFailModal_title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_modifyFailModal_question{
+    width: 250px;
+    height: 40px;
+    font-size: 14px;
+    color: #ff001f;
+    margin: 10px 0;
+    text-align: center;
+}
+.userManagement_modifyFailModal_btn_wrap{
+    display: flex;
+}
+.userManagement_modifyFailModal_btn_back{
+    width: 90px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+.userManagement_modifyFailModal_btn_back:hover{
+    background-color: #3076fa;
+}
+/* 삭제 실패 모달창 */
+.userManagement_deleteFailModal_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+    border: 1px solid red;
+}
+.userManagement_deleteFailModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_deleteFailModal_img_wrap{
+    margin-right: 25px;
+}
+.userManagement_deleteFailModal_img{
+    width: 90px;
+    height: 80px;
+}
+.userManagement_deleteFailModal_right_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userManagement_deleteFailModal_title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_deleteFailModal_question{
+    width: 250px;
+    height: 40px;
+    font-size: 14px;
+    color: #ff001f;
+    margin: 10px 0;
+    text-align: center;
+}
+.userManagement_deleteFailModal_btn_wrap{
+    display: flex;
+}
+.userManagement_deleteFailModal_btn_back{
+    width: 90px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+.userManagement_deleteFailModal_btn_back:hover{
+    background-color: #3076fa;
+}
+/* 등록 실패 모달창 */
+.userManagement_registerFailModal_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_registerFailModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_registerFailModal_img_wrap{
+    margin-right: 25px;
+}
+.userManagement_registerFailModal_img{
+    width: 90px;
+    height: 80px;
+}
+.userManagement_registerFailModal_right_content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.userManagement_registerFailModal_title{
+    font-size: 18px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_registerFailModal_question{
+    width: 250px;
+    height: 40px;
+    font-size: 14px;
+    color: #ff001f;
+    margin: 10px 0;
+    text-align: center;
+}
+.userManagement_registerFailModal_btn_wrap{
+    display: flex;
+}
+.userManagement_registerFailModal_btn_back{
+    width: 90px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+}
+.userManagement_registerFailModal_btn_back:hover{
+    background-color: #3076fa;
+}
+/* 사용자 수정 모달창 */
+.userManagement_userModifyModal_wrap{
+    display: none;
+    width: 800px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_userModifyModal_topTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+}
+.userManagement_userModifyModal_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100%; */
+    /* 다시 */
+}
+.userManagement_userModifyModal_leftContent_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px 0 0;
+    border-right: 1px solid #707070;
+}
+.userManagement_userModifyModal_leftContent_padding{
+    padding: 10px 0;
+}
+.userManagement_userModifyModal_leftContent_img_wrap{
+    width: 180px;
+    height: 180px;
+    border: 1px solid var(--warm-grey);
+    border-radius: 50%;
+}
+.userManagement_userModifyModal_leftContent_pic_input{
+    font-size: 12px;
+    color: #707070;
+}
+.userManagement_userModifyModal_leftContent_name,
+.userManagement_userModifyModal_leftContent_phoneNum,
+.userManagement_userModifyModal_leftContent_email{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.userManagement_userModifyModal_leftContent_name_title,
+.userManagement_userModifyModal_leftContent_phoneNum_title,
+.userManagement_userModifyModal_leftContent_email_title{
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 3px;
+}
+.userManagement_userModifyModal_leftContent_input{
+    border: solid 1px #707070;
+    outline: none;
+    padding: 3px 5px;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.userManagement_userModifyModal_rightContent_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 50px;
+}
+.userManagement_userModifyModal_rightUpContent_wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #707070;
+}
+.userManagement_userModifyModal_rightUpContent_padding{
+    padding: 5px 0;
+}
+.userManagement_userModifyModal_rightUpTitle_style{
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin-top: 3px;
+}
+.userManagement_userModifyModal_rightUpTitleInfo_style{
+    font-size: 18px;
+    font-weight: 600;
+    color: #695d5d;
+}
+.userManagement_userModifyModal_rightContent_input{
+    border: solid 1px #707070;
+    outline: none;
+    padding: 3px 5px;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.userManagement_userModifyModal_rightDownContent_wrap{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px 10px 10px;
+}
+.userManagement_userModifyModal_rightDownContent_padding{
+    padding: 5px;
+}
+.userManagement_userModifyModal_rightDownUp_wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.userManagement_userModifyModal_rightDownDown_wrap{
+    display: flex;
+    margin-top: 20px;
+    /* justify-content: space-between; */
+}
+.userManagement_userModifyModal_rightDownUp_booth_title,
+.userManagement_userModifyModal_rightDownUp_numofPeople_title,
+.userManagement_userModifyModal_rightDownUp_authority_title,
+.userManagement_userModifyModal_rightDownDown_esl_title,
+.userManagement_userModifyModal_rightDownDown_created_title,
+.userManagement_userModifyModal_rightDownDown_lastLogin_title{
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f0f0f;
+}
+.userManagement_userModifyModal_rightDownUp_numOfPeople_input{
+    border: solid 1px #707070;
+    outline: none;
+    padding: 3px 5px;
+    font-size: 12px;
+    border-radius: 7px;
+    width: 60px;
+}
+.userManagement_userModifyModal_rightDownDown_created,
+.userManagement_userModifyModal_rightDownDown_lastLogin{
+    font-size: 13px;
+    font-weight: 600;
+    color: #f00;
+}
+.userManagement_userModifyModal_rightDownDown_created_wrap,
+.userManagement_userModifyModal_rightDownDown_lastLogin_wrap{
+    margin-left: 50px;
+}
+.userManagement_userModifyModal_rightDownDown_created,
+.userManagement_userModifyModal_rightDownDown_lastLogin{
+    width: 90px;
+}
+.userManagement_userModifyModal_rightDownDown_btn_wrap{
+    margin-top: 40px;
+}
+.userManagement_userModifyModal_rightDownDown_btn{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin: 0 15px;
+}
+.userManagement_userModifyModal_rightDownDown_btn:hover{
+    background-color: #3076fa;
+}
+/* 수정완료 모달창 */
+.userManagement_modifySuccess_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_modifySuccess_content_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_modifySuccess_title{
+    font-family: NanumSquare_ac;
+    font-size: 25px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_modifySuccess_btn{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.userManagement_modifySuccess_btn:hover{
+    background-color: #3076fa;
+}
+
+/* 사용자등록 모달창 */
+.userManagement_userRegister_wrap{
+    display: none;
+    width: 600px;
+    height: 700px;
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    margin: -250px 0 0 -250px;
+    border: solid 1px #707070;
+    background-color: #fffcf5;
+    padding: 10px 30px;
+    z-index: 2;
+}
+.userManagement_userRegister_top_wrap{
+    display: flex;
+    justify-content: center;
+}
+.userManagement_userRegister_topTitle{
+    font-weight: 800;
+    color: #000;
+}
+.userManagement_userRegister_outBtn{
+    border: 0;
+    background-color: #fffcf5;
+}
+.userManagement_userRegister_imgWrap{
+    position: absolute;
+    right: 2%;
+}
+.userManagement_userRegister_img{
+    width: 20px;
+    height: 20px;
+}
+.userManagement_userRegister_content_wrap{
+    padding-left: 20%;
+}
+.userManagement_userRegister_title{
+    font-family: NanumSquare;
+    font-size: 15px;
+    font-weight: 700;
+    color: #000;
+    padding-top: 10px;
+}
+.userManagement_userRegister_red{
+    font-family: NanumSquare;
+    font-size: 11px;
+    font-weight: 700;
+    color: #f80000;
+}
+.userManagement_userRegister_input{
+    width: 300px;
+    border-radius: 8px;
+    border: solid 1px #0d47a1;
+    background-color: #fff;
+    outline: none;
+    padding: 2px 10px;
+}
+.userManagement_userRegister_inputFront{
+    width: 150px;
+    margin-right: 20px;
+    border-radius: 8px;
+    border: solid 1px #0d47a1;
+    background-color: #fff;
+    outline: none;
+    padding: 2px 10px;
+}
+.userManagement_userRegister_inputBehind{
+    width: 130px;
+    border-radius: 8px;
+    border: solid 1px #0d47a1;
+    background-color: #fff;
+    outline: none;
+    padding: 2px 10px;
+}
+.userManagement_userRegister_btn{
+    width: 300px;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 20px;
+    background-color: #448aff;
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.userManagement_userRegister_btn:hover{
+    background-color: #639af8;
+}
+/* 사용자등록완료 모달창 */
+.userManagement_userRegisterSuccess_wrap{
+    display: none;
+    width: 420px;
+    height: 200px;
+    position: absolute;
+    top: 70%;
+    left: 55%;
+    margin: -250px 0 0 -250px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px 30px;
+    z-index: 2;
+}
+.userManagement_userRegisterSuccess_content_wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.userManagement_userRegisterSuccess_title{
+    font-family: NanumSquare_ac;
+    font-size: 25px;
+    font-weight: bold;
+    color: #131523;
+}
+.userManagement_userRegisterSuccess_btn{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.userManagement_userRegisterSuccess_btn:hover{
+    background-color: #3076fa;
+}
+.userManagement_userRegister_fontSize{
+    font-size: 17px;
+}
+
+@media screen and (max-height: 610px) {
+    .userManagement_userRegister_wrap{
+        top: 45%;
+    }
+}
+@media screen and (max-width: 1025px) {
+    .userManagement_table_wrap{
+        width: 1000px;
+        height: 500px;
+        border-radius: 6px 6px 0 0;
+        background-color: #fff;
+        padding: 20px;
+    }
+    .userManagement_table{
+        width: 960px;
+    }
+    .userManagement_bottom_content_wrap{
+        width: 1000px;
+    }
+}
+@media screen and (max-width: 780px) {
+    .userManagement_table_wrap{
+        width: 760px;
+        height: 500px;
+        border-radius: 6px 6px 0 0;
+        background-color: #fff;
+        padding: 20px;
+    }
+    .userManagement_table{
+        width: 720px;
+    }
+    .userManagement_bottom_content_wrap{
+        width: 760px;
+    }
+    .userManagement_table_padding{
+        padding: 10px;
+    }
+}

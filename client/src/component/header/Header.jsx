@@ -19,16 +19,31 @@ export default function Header() {
     logout.classList.toggle('active');
   }
 
-  useEffect(() => { //session에서 받아온 유저정보
-    try {
-      axios.get("/getuserinfo")
-        .then((response) => {
-          setPerson(response.data[0].manager);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+    useEffect(() => { //session에서 받아온 유저정보
+        try {
+          axios.get("/getuserinfo")
+          .then((response) => {
+            if(response.data[0].manager){
+                setPerson(response.data[0].manager);
+            }
+            else {
+                setPerson('방문자'); //세션에 정보가 없으면 로그인 X
+            }
+          });
+        } catch (error) {
+          console.log(error);
+        }
+    }, []);
+
+    const btn = true; //로그아웃버튼
+
+    useEffect(() => { //로그아웃
+        try {
+          axios.get("/logout")
+        } catch (error) {
+          console.log(error);
+        }
+    }, [btn]);
 
     return (
         <>

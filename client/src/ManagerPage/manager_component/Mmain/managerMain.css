@@ -1,0 +1,352 @@
+.managerMain_wrap{
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-color: #f4f7fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.managerMain_wrap .managerMain_top_content_wrap, 
+.managerMain_wrap .managerMain_middle_content_wrap, 
+.managerMain_wrap .managerMain_bottom_cotent_wrap{
+    margin: 20px 0;
+}
+
+/* 1. 기업, 관람객 수 */
+.managerMain_top_content_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.managerMain_corp_wrap{
+    width: 400px;
+    height: 150px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(21, 34, 50, 0.08);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.managerMain_corp_wrap .managerMain_corp_padding{
+    padding: 2px 15px;
+}
+
+.managerMain_corp_wrap .managerMain_corpTitle{
+    color: #7e84a3;
+    margin-bottom: 15px;
+}
+
+.managerMain_corp_wrap .managerMain_corpTeam{
+    font-size: 28px;
+    font-weight: 600;
+    color: #131523;
+}
+
+.managerMain_corp_wrap .managerMain_corpInfo{
+    display: flex;
+}
+
+.managerMain_corp_wrap .managerMain_corpInfo .managerMain_corpInfo_margin{
+    margin-right: 10px;
+}
+
+.managerMain_corp_wrap .managerMain_corpInfo .managerMain_corpInfoNum{
+    font-size: 16px;
+    font-weight: 600;
+    color: #3dd598;
+}
+
+.managerMain_corp_wrap .managerMain_corpInfo .managerMain_up{
+    width: 16px;
+    height: 16px;
+} 
+
+.managerMain_corp_wrap .managerMain_corpInfo .managerMain_corpInfoYesterday{
+    font-size: 12px;
+    line-height: 24px;
+    color: #7e84a3;
+}
+
+.managerMain_visitor_wrap{
+    width: 400px;
+    height: 150px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px 0 rgba(21, 34, 50, 0.08);
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.managerMain_visitor_wrap .managerMain_visitor_padding{
+    padding: 2px 15px;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorTitle{
+    color: #7e84a3;
+    margin-bottom: 15px;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorNum{
+    font-size: 28px;
+    font-weight: 600;
+    color: #131523;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorInfo{
+    display: flex;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorInfo .managerMain_visitorInfo_margin{
+    margin-right: 10px;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorInfo .managerMain_visitorInfoNum{
+    font-size: 16px;
+    font-weight: 600;
+    color: #f0142f;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorInfo .managerMain_down{
+    width: 16px;
+    height: 16px;
+}
+
+.managerMain_visitor_wrap .managerMain_visitorInfo .managerMain_visitorInfoYesterday{
+    font-size: 12px;
+    line-height: 24px;
+    color: #7e84a3;
+}
+
+/* 2. 부스 예약 현황 */
+.managerMain_middle_content_wrap{
+    /* width: 1400px; */
+    width: 80vw;
+    height: 686px;
+    border-radius: 9px;
+    background-color: #fff;
+}
+
+/* 3. 기업관리 및 ESL관리 */
+.managerMain_bottom_cotent_wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.managerMain_corpManage_wrap{
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.managerMain_corpManage_wrap .managerMain_corpManageTitle{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #131523;
+}
+/* managerMain_corpManage_wrap 안에 content 작업 하기 */
+.managerMain_corpManage_wrap .managerMain_table{
+    width: 450px;
+}
+
+.managerMain_corpManage_wrap .managerMain_th_borderBottom{
+    border-bottom: 3px solid #e6e9f4;
+}
+
+.managerMain_corpManage_wrap .managerMain_td_borderBottom{
+    border-bottom: 1px solid #e6e9f4;
+}
+
+.managerMain_corpManage_wrap .managerMain_table .managerMain_padding{
+    padding: 10px;
+}
+
+.managerMain_corpManage_wrap .managerMain_table .managerMain_th{
+    color: #7e84a3;
+    font-size: 14px;
+}
+
+.managerMain_corpManage_wrap .managerMain_table .managerMain_td{
+    color: #131523;
+    font-size: 14px;
+}
+
+.managerMain_eslManage_wrap{
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageTitle{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    /* index */
+    color: #131523;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageNum_wrap{
+    width: 100px;
+    height: 100px;
+    border: solid 3px #a1a7c4;
+    border-radius: 50px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageNum_wrap .managerMain_eslManageNumTitle{
+    font-size: 15px;
+    font-weight: bold;
+    color: #5a607f;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageNum_wrap .managerMain_eslManageNum{
+    font-size: 14px;
+    font-weight: bold;
+    color: #5a607f;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageDestroy_wrap{
+    width: 100px;
+    height: 100px;
+    border: solid 3px #a1a7c4;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageDestroy_wrap .managerMain_eslManageDestroyTitle{
+    font-size: 15px;
+    font-weight: bold;
+    color: #5a607f;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageInfo_wrap .managerMain_eslManageDestroy_wrap .managerMain_eslManageDestroy{
+    font-size: 14px;
+    font-weight: bold;
+    color: #5a607f;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageUnder_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.managerMain_eslManage_wrap .managerMain_eslManageUnder_wrap .managerMain_eslManageUnder_img{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+@media screen and (min-height: 1350px){
+    .managerMain_wrap{
+        height: 1300px;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .managerMain_corpManage_wrap, .managerMain_eslManage_wrap{
+        width: 480px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .managerMain_corp_wrap, .managerMain_visitor_wrap{
+        width: 300px;
+    }
+    
+    .managerMain_bottom_cotent_wrap{
+        flex-direction: column;
+    }
+
+    .managerMain_corpManage_wrap{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 540px){
+    .managerMain_top_content_wrap{
+        flex-direction: column;
+    }
+    .managerMain_corp_wrap{
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 420px){   
+    .managerMain_corp_wrap .managerMain_corpTeam,
+    .managerMain_visitor_wrap .managerMain_visitorNum{
+        font-size: 24px;
+    }
+    .managerMain_corpManage_wrap,
+    .managerMain_eslManage_wrap{
+        width: 300px;
+    }
+    .managerMain_corpManage_wrap .managerMain_table{
+        width: 290px;
+    }
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_padding{
+        padding: 8px 5px;
+    }
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_th,
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_td{
+        font-size: 13px;
+    }
+}
+
+
+@media screen and (max-width: 290px){
+    .managerMain_corp_wrap,
+    .managerMain_visitor_wrap{
+        width: 250px;
+    }
+    .managerMain_corp_wrap .managerMain_corpTeam,
+    .managerMain_visitor_wrap .managerMain_visitorNum{
+        font-size: 22px;
+    }
+    .managerMain_corpManage_wrap,
+    .managerMain_eslManage_wrap{
+        width: 250px;
+    }
+    
+    .managerMain_corpManage_wrap .managerMain_table{
+        width: 240px;
+    }
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_padding{
+        padding: 8px 4px;
+    }
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_th,
+    .managerMain_corpManage_wrap .managerMain_table .managerMain_td{
+        font-size: 10px;
+    }
+}

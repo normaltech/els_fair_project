@@ -1,0 +1,337 @@
+.boothManagement_wrap{
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-color: #f4f7fc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+}
+.boothManagement_search,
+.boothManagement_info_wrap,
+.boothManagement_detail_wrap{
+    margin: 20px 0;
+}
+/* 상단 검색창 */
+.boothManagement_search{
+    display: flex;
+    width: 380px;
+    height: 50px;
+    padding: 10px;
+    border: solid 3px var(--warm-grey);
+    background-color: white;
+}
+.boothManagement_search .boothManagement_input{
+    flex:9;
+    border: none;
+    height: 25px;
+    font-size: 20px;
+}
+.boothManagement_search .boothManagement_input:focus{
+    outline: none; 
+}
+.boothManagement_search .boothManagement_img{
+    flex:1;
+    width: 30px;
+    height: 30px;
+}
+/* 중앙 content*/
+.boothManagement_info_wrap{
+    display: flex;
+    justify-content: center;
+    /* 다시 */
+}
+/* 중앙-부스정보 */
+.boothManagement_boothInfo_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 280px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.boothManagement_boothInfo_title{
+    padding: 10px 0;
+    font-family: NanumSquare_ac;
+    color: #304653;
+}
+.boothManagement_boothInfo_content_wrap{
+    margin-top: 5px;
+}
+.boothManagement_boothInfo_content{
+    display: flex;
+}
+.boothManagement_boothInfo_content_style{
+    width: 100px;
+    padding: 5px;
+    color: #304653;
+}
+.boothManagement_boothInfo_name,
+.boothManagement_boothInfo_section,
+.boothManagement_boothInfo_type,
+.boothManagement_boothInfo_floor,
+.boothManagement_boothInfo_width,
+.boothManagement_boothInfo_length,
+.boothManagement_boothInfo_height{
+    font-weight: 800;
+}
+/* 중앙-예약자정보 */
+.boothManagement_reservationInfo_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 40px;
+}
+.boothManagement_reservationInfo_true{
+    /* display: none; */
+}
+.boothManagement_reservationInfo_false{
+    margin-top: 20%;
+    display: none;
+}
+.boothManagement_reservationInfo_title{
+    padding: 10px 0;
+    font-family: NanumSquare_ac;
+    color: #304653;
+}
+.boothManagement_reservationInfo_content_wrap{
+    margin-top: 5px;
+}
+.boothManagement_reservationInfo_content{
+    display: flex;
+}
+.boothManagement_reservationInfo_content_style_title{
+    width: 140px;
+    padding: 8px;
+    color: #304653;
+    font-weight: 800;
+}
+.boothManagement_reservationInfo_content_style_sub{
+    width: 200px;
+    padding: 8px;
+    color: #304653;
+}
+/* 중앙-ESL정보 */
+.boothManagement_eslInfo_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: #fff;
+    overflow: auto;
+}
+.boothManagement_eslInfo_title{
+    padding: 10px 0;
+    font-family: NanumSquare_ac;
+    color: #304653;
+}
+/* 중앙 - boothManagement_table_wrap 내부 table css */
+.boothManagement_eslInfo_true{
+    /* display: none; */
+}
+.boothManagement_eslInfo_false{
+    margin-top: 20%;
+    display: none;
+}
+.boothManagement_eslInfo_table{
+    width: 380px;
+}
+.boothManagement_eslInfo_tr{
+    background-color: #f5f6fa;
+}
+.boothManagement_eslInfo_table .boothManagement_eslInfo_padding{
+    padding: 8px;
+}
+.boothManagement_eslInfo_table .boothManagement_eslInfo_th{
+    color: #304653;
+    font-size: 12px;
+    font-weight: bold;
+}
+.boothManagement_eslInfo_table .boothManagement_eslInfo_td{
+    color: #304653;
+    font-size: 11px;
+}
+/* 하단 css */
+.boothManagement_detail_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1160px;
+    height: 800px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+/* 하단 - table css */
+.boothManagement_detail_table_wrap{
+    padding: 20px;
+}
+.boothManagement_detail_table{
+    width: 1100px;
+}
+.boothManagement_detail_tr{
+    background-color: #f5f6fa;
+}
+.boothManagement_detail_padding{
+    padding: 10px 20px;
+}
+.boothManagement_detail_th{
+    color: #131523;
+    font-size: 14px;
+    font-weight: 800;
+}
+.boothManagement_detail_td{
+    color: #131523;
+    font-size: 13px;
+}
+.boothManagement_detail_hover:hover{
+    background-color: rgba(252, 192, 0, 0.23);
+}
+.boothManagement_detail_btn{
+    border: none;
+    background-color: #fff;
+}
+
+@media screen and (min-height: 1350px){
+    .boothManagement_wrap{
+        height: 94.15vh;
+    }
+}
+@media screen and (max-width: 1025px){
+    .boothManagement_boothInfo_wrap{
+        width: 200px;
+    }
+    .boothManagement_reservationInfo_wrap{
+        width: 370px;
+        margin: 0 20px;
+    }
+    .boothManagement_detail_wrap{
+        width: 1000px;
+    }
+    .boothManagement_detail_table{
+        width: 900px;
+    }
+}
+
+@media screen and (max-width: 780px){
+    .boothManagement_info_wrap{
+        flex-direction: column;
+        align-items: center;
+    }
+    .boothManagement_boothInfo_wrap{
+        width: 400px;
+    }
+    .boothManagement_reservationInfo_wrap{
+        width: 400px;
+        margin: 20px 0;
+    }
+    .boothManagement_detail_wrap{
+        width: 750px;
+    }
+    .boothManagement_detail_table{
+        width: 700px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .boothManagement_detail_wrap{
+        width: 520px;
+    }
+    .boothManagement_detail_table_wrap{
+        padding: 10px;
+    }
+    .boothManagement_detail_padding{
+        padding: 10px;
+    }
+    .boothManagement_detail_table{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .boothManagement_search{
+        width: 260px;
+        height: 40px;
+        padding: 10px;
+        border: solid 2px var(--warm-grey);
+    }
+    .boothManagement_search .boothManagement_input{
+        height: 20px;
+        font-size: 15px;
+    }
+    .boothManagement_search .boothManagement_img{
+        width: 20px;
+        height: 18px;
+    }
+    .boothManagement_boothInfo_wrap,
+    .boothManagement_reservationInfo_wrap,
+    .boothManagement_eslInfo_wrap{
+        width: 300px;
+    }
+    .boothManagement_reservationInfo_content_style_title{
+        width: 120px;
+        padding: 10px 5px;
+        font-size: 12px;
+    }
+    .boothManagement_reservationInfo_content_style_sub{
+        width: 150px;
+        padding: 10px 5px;
+        font-size: 12px;
+    }   
+    .boothManagement_eslInfo_table{
+        width: 280px;
+    }
+    .boothManagement_eslInfo_table .boothManagement_eslInfo_padding{
+        padding: 8px 5px;
+    }
+    .boothManagement_detail_wrap{
+        width: 300px;
+    }
+    .boothManagement_detail_table{
+        width: 280px;
+    }
+    .boothManagement_detail_padding{
+        padding: 5px;
+    }
+    .boothManagement_detail_th{
+        font-size: 10px;
+    }
+    .boothManagement_detail_td{
+        font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 290px){
+    .boothManagement_search{
+        width: 250px;
+    }
+    .boothManagement_boothInfo_wrap,
+    .boothManagement_reservationInfo_wrap,
+    .boothManagement_eslInfo_wrap{
+        width: 265px;
+    }
+    .boothManagement_eslInfo_table{
+        width: 250px;
+    }
+    .boothManagement_detail_wrap{
+        width: 265px;
+    }
+    .boothManagement_detail_table{
+        width: 250px;
+    }
+    .boothManagement_detail_padding{
+        padding: 5px 2px;
+    }
+    .boothManagement_detail_th{
+        font-size: 8px;
+    }
+    .boothManagement_detail_td{
+        font-size: 7px;
+    }
+}

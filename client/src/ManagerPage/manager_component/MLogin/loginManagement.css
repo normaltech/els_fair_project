@@ -1,0 +1,167 @@
+.loginManagement_wrap{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f7fc;
+}
+
+.loginManagement_content_wrap{
+    width: 520px;
+    height: 420px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
+    border: solid 1px #dfe3f5;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginManagement_logo_wrap{
+    margin: 10px;
+}
+
+.loginManagement_logo{
+    width: 236px;
+    height: 54px;
+}
+
+.loginManagement_label{
+    width: 196px;
+    height: 27px;
+    margin: 10px 0 40px 0;
+    font-family: NanumSquare_ac;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.35;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(--dark-grey-blue);
+}
+
+.loginManagement_input{
+    width: 440px;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 1px var(--dark-grey-blue);
+    outline: none;
+    padding: 10px;
+}
+
+.loginManagement_input:focus{
+    border-color: var(--black);
+}
+
+.loginManagement_button_wrap{
+    margin: 35px 0;
+}
+
+.loginManagement_button{
+    width: 440px;
+    height: 55px;
+    background-color: var(--dusty-orange);
+    border: none;
+    color: var(--white);
+    font-family: NanumSquare_ac;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.loginManagement_button:hover{
+    background-color: var(--dusty-orange-hover);
+}
+
+@media screen and (max-width: 540px){
+    .loginManagement_content_wrap{
+        width: 450px;
+    }
+    .loginManagement_logo{
+        width: 200px;
+        height: 44px;
+    }
+    .loginManagement_label{
+        font-size: 18px;
+    }
+    .loginManagement_input{
+        width: 350px;
+    }
+    .loginManagement_button{
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 420px){
+    .loginManagement_content_wrap{
+        width: 350px;
+    }
+    .loginManagement_logo{
+        width: 185px;
+        height: 42px;
+    }
+    .loginManagement_label{
+        font-size: 16px;
+    }
+    .loginManagement_input{
+        width: 300px;
+    }
+    .loginManagement_button{
+        width: 300px;
+        font-size: 23px;
+    }
+}
+
+@media screen and (max-width: 380px){
+    .loginManagement_content_wrap{
+        width: 280px;
+        height: 300px;
+        padding: 15px;
+    }
+    .loginManagement_logo{
+        width: 180px;
+        height: 38px;
+    }
+    .loginManagement_label{
+        font-size: 14px;
+        margin: 10px 0 20px 0;
+    }
+    .loginManagement_input{
+        width: 220px;
+        height: 38px;
+    }
+    .loginManagement_button{
+        width: 220px;
+        font-size: 19px;
+        height: 42px;
+    }
+}
+
+@media screen and (max-width: 290px){
+    .loginManagement_content_wrap{
+        width: 250px;
+        padding: 10px;
+    }
+    .loginManagement_logo{
+        width: 150px;
+        height: 34px;
+    }
+    .loginManagement_label{
+        font-size: 13px;
+        margin: 5px 0 10px 0;
+    }
+    .loginManagement_input{
+        width: 200px;
+        height: 35px;
+    }
+    .loginManagement_button{
+        width: 200px;
+        font-size: 16px;
+        height: 40px;
+    }
+}

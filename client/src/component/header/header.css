@@ -52,6 +52,7 @@ a{
 
 .headerRightSpan{
     color: var(--greyish-brown);
+    margin-left: 0;
 }
 
 .headerRightSpan:hover{

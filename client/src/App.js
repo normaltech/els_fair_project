@@ -20,6 +20,10 @@ import SelectBooth from './component/selectbooth/SelectBooth';
 import Spec from './component/specifications/Spec';
 import UserInfo from './component/userinfo/UserInfo';
 import ReservationList from './component/reservationlist/ReservationList';
+
+// 메니저페이지 테스트용
+import ManagerPage from './ManagerPage/Home';
+
 function App() {
   return (
     // <div className="App">
@@ -79,6 +83,11 @@ function App() {
         </Route>
         <Route path="/reservationlist">
           <ReservationList/>
+        </Route>
+
+        {/* 매니저페이지 테스트용 */}
+        <Route path="/managerpage">
+          <ManagerPage />
         </Route>
       </Switch>
     </Router>
