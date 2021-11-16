@@ -119,7 +119,7 @@ export default function SignUpFormBox() {
         // }
       }
       else {
-        console.log('인증번호 확인하세요')
+        alert('인증번호 확인하세요')
       }
     }
     else if (count == 2) alert('비밀번호를 확인해주세요.')
@@ -131,12 +131,12 @@ export default function SignUpFormBox() {
     setcount(0)
 
     if (user.email === '') setcount(1)
-    if (user.password === '' || user.passwordCheck === '' || user.password != user.passwordCheck) setcount(2)
     if (user.managerName === '') setcount(3)
     if (user.managerNum === '') setcount(4)
     if (user.companyName === '') setcount(5)
     if (user.companyId === '') setcount(6)
     if(user.companyId.length != 10) setcount(8)
+    if (user.password === '' || user.passwordCheck === '' || user.password != user.passwordCheck) setcount(2)
     if (user.companyNum === '') setcount(7)
 
     if (count == 0) setcheckinput(true)
@@ -154,7 +154,7 @@ export default function SignUpFormBox() {
       <InputWithLabel setter={managerNameSetter} label="담당자 성함" type="text" name="managerName" warningText="필수정보 입니다." />
       <TelInputWithLabel setter={managerNumSetter} label="담당자 연락처" name="managerNum" warningText="필수정보 입니다." />
       <InputWithLabel setter={companyNameSetter} label="회사명" type="text" name="companyName" warningText="필수정보 입니다." />
-      <InputWithLabel setter={companyIdSetter} label="사업자 번호" type="text" name="companyId" warningText="필수정보 입니다. 10자리를 입력해주세요." />
+      <InputWithLabel setter={companyIdSetter} label="사업자 번호" type="number" name="companyId" warningText="필수정보 입니다. 10자리를 입력해주세요." />
       <TelInputWithLabel setter={companyNumSetter} label="회사전화" name="companyNum" warningText="필수정보 입니다." />
       <input className="signUpButton" type="submit" value='가입하기' onClick={handleSubmit} />
     </div>
