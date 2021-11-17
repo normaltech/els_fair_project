@@ -10,8 +10,23 @@ import {
 
 
 export default function Header() {
-  const [person, setPerson] = useState('HongilDong')
-  const toggleClick = () => {
+  const [person, setPerson] = useState()
+
+  useEffect(() => { //session에서 받아온 유저정보
+    try {
+      axios.get("/getuserinfo")
+      .then((response) => {
+        if(response.data[0].manager){
+            setPerson(response.data[0].manager);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  const toggleClick = (e) => {
+    e.preventDefault();
     const toggleBtn = document.querySelector('.headerToggle');
     const menu = document.querySelector('.headerMenu');
     const logout = document.querySelector('.headerRightSpan');
@@ -19,30 +34,36 @@ export default function Header() {
     logout.classList.toggle('active');
   }
 
-    useEffect(() => { //session에서 받아온 유저정보
-        try {
-          axios.get("/getuserinfo")
-          .then((response) => {
-            if(response.data[0].manager){
-                setPerson(response.data[0].manager);
-            }
-            else {
-                setPerson('방문자'); //세션에 정보가 없으면 로그인 X
-            }
-          });
-        } catch (error) {
-          console.log(error);
-        }
-    }, []);
-
-    const btn = () => {
+  const btn = () => {
       try {
         axios.get("/logout")
       } catch (error) {
         console.log(error);
       }
-    }
+  }
 
+  const loginlogout = () =>{
+    if(person != null){
+      return (
+        <>
+          <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
+          <Link to="/" className="headerLogout" style={{ textDecoration: "none" }}>
+            <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
+          </Link>
+        </>
+      )
+    }else{
+      return (
+        <>
+          <Link to="/login" className="headerLogout" style={{ textDecoration: "none" }}>
+            <span className="headerRightPadding headerRightSpan">로그인</span>
+          </Link>
+        </>
+      )
+    }
+  }
+
+    
     return (
         <>
             <div className="headerContainer">
@@ -59,13 +80,10 @@ export default function Header() {
         </ul>
 
         <div className="headerRightContent">
-          <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
-          <Link to="/" className="headerLogout" style={{ textDecoration: "none" }}>
-            <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
-          </Link>
+          {loginlogout()}
         </div>
 
-        <a href="#" className="headerToggle" onClick={toggleClick}><i className="fas fa-bars"></i></a>
+        <a className="headerToggle" onClick={toggleClick}><i className="fas fa-bars"></i></a>
       </div>
     </>
   )

@@ -1,15 +1,32 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './spec.css'
 import axios from 'axios';
 import { useLocation } from 'react-router';
 
+
+
 export default function Spec() {
+  
+  const specs = useLocation().state;
+  console.log(specs);
+
   const [totalPrice, setTotalPrice] = useState(0);
 
   const [eslNum, setEslNum] = useState([0,0,0]);
-  const [booth, setBooth] = useState(0);
+  var boothPrice = 0;
+  if(specs.type == 'a'){
+    boothPrice = 100;
+  }else if(specs.type == 'b'){
+    boothPrice = 150;
+  }else if(specs.type == 'c'){
+    boothPrice = 200;
+  }else{
+    boothPrice = 0;
+  }
+
+  const [booth, setBooth] = useState(boothPrice);
   
   const handleEslNum = (e) => {
     const e1 = document.getElementById("e1Select");
@@ -22,9 +39,13 @@ export default function Spec() {
     // setEslPrice(eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4);
   }
 
+  const[atype,setAType] = useState(specs.type == 'a'?true:false);
+  const[btype,setBType] = useState(specs.type == 'b'?true:false);
+  const[ctype,setCType] = useState(specs.type == 'c'?true:false);
 
   const handleBoothPrice = (e) => {
     const boothType = e.target.value;
+
     if (boothType == 1) {
       setBooth(100)
     } else if (boothType == 2){
@@ -57,37 +78,95 @@ export default function Spec() {
     
     const passTotalArray = [];
     for(let i=0; i<6; i++){
-      const onePass = [];
-      onePass.push(passNameRow[i].value, passRankRow[i].value, passTelRow[i].value);
-      passTotalArray.push(onePass);
+      if(passNameRow[i].value != ''){
+        passTotalArray.push({
+          'companyId' : companyId,
+          'name' : passNameRow[i].value,
+          'position' : passRankRow[i].value,
+          'number' :passTelRow[i].value
+        })
+      }
     }
 
+    // let selectionInfo = {
+    //   boothId: specs.boothId,
+    //   email: email,
+    //   name: name,
+    //   managerNum: managerNum,
+    //   companyName: companyName,
+    //   companyId: companyId,
+    //   companyNum: companyNum(),
+    //   passArray: passTotalArray,
+    //   eslNum: eslNum,
+    //   totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
+    // };
     let selectionInfo = {
-      email: email,
-      name: name,
-      managerNum: managerNum,
-      companyName: companyName,
+      boothId: specs.boothId,
       companyId: companyId,
-      companyNum: companyNum(),
       passArray: passTotalArray,
       eslNum: eslNum,
       totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
     };
 
     console.log(selectionInfo);
-    // try{
-    //   axios.post("http://localhost:5000/register",selectionInfo)
-    //   .then((response) => {
-    //   console.log(response);
-    // });
-    // }catch(error){
-    //   console.log(error);
-    // }
+    const reserveResultMsg ="";
+    try{
+      axios.post("/reservateBooth",selectionInfo)
+      .then((res) => {
+      // console.log(res);
+      if(res.data.resultCd == 'S'){
+        reserveResultMsg = res.data.msg;
+      }else if(res.data.resultCd == 'E'){
+        reserveResultMsg = res.data.msg;
+      }
+      console.log(reserveResultMsg)
+    });
+    }catch(error){
+      console.log(error);
+    }
   }
+  //사용자 기본 정보 값 가져와서 초기화 해놓기
+  const [companyName,setCompanyName] = useState();
+  const [companyId,setCompanyId] = useState();
+  const [managerName,setManagerName] = useState();
+  const [companyNum,setCompanyNum] = useState();
+  const [managerNum,setManagerNum] = useState();
+  const [managerEmail,setManagerEmail] = useState();
 
-  const specs = useLocation().state;
-  console.log(specs.section);
+  useEffect(() => { //session에서 받아온 유저정보
+    try {
+      axios.get("/getUserInfoFromSession")
+      .then((response) => {
+        if(response.data != null){
+          setCompanyName(response.data.companyName);
+          setCompanyId(response.data.companyId);
+          setManagerName(response.data.managerName);
+          setCompanyNum(response.data.companyNum);
+          setManagerNum(response.data.managerNum);
+          setManagerEmail(response.data.managerEmail);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+}, []);
 
+
+
+  
+
+
+  // data.map((item)=>{
+  //   setManagerEmail(item.email)
+  //   console.log(item.email)
+  // });
+  
+//  setCompanyName(userData.company_name)
+//  setCompanyId(userData.company_id)
+//  setManagerName(userData.manager)
+//  setCompanyNum(userData.company_phone_num)
+//  setManagerNum(userData.manager_phone_num)
+//  setManagerEmail(userData.email)
   return (
     <div className="reservationContainer">
       <Header />
@@ -105,27 +184,27 @@ export default function Spec() {
                   <div className="defaultInfoTable">
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_companyName" />
+                        <input type="text" className="specInput" id="defaultInfoTable_companyName" defaultValue={companyName} />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
-                        <input type="number" className="specInput" id="defaultInfoTable_companyId" />
+                        <input type="number" className="specInput" id="defaultInfoTable_companyId" defaultValue={companyId} />
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_managerName" />
+                        <input type="text" className="specInput" id="defaultInfoTable_managerName" defaultValue={managerName}/>
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
-                        <input type="number" className="specInput" id="defaultInfoTable_companyNum" />
+                        <input type="text" className="specInput" id="defaultInfoTable_companyNum" defaultValue={companyNum}/>
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
-                        <input type="number" className="specInput" id="defaultInfoTable_managerNum" />
+                        <input type="text" className="specInput" id="defaultInfoTable_managerNum" defaultValue={managerNum}/>
                       </div>
                       <div className="inputTag">
                         <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
-                        <input type="email" className="specInput" id="defaultInfoTable_managerEmail" />
+                        <input type="email" className="specInput" id="defaultInfoTable_managerEmail" defaultValue={managerEmail}/>
                       </div>
                   </div>
                 </div>
@@ -141,21 +220,21 @@ export default function Spec() {
                       <img src="/assets/icons/622.png" alt="booth1" />
                       <div className="selectionConatiner">
                         <label htmlFor="B1">A타입<br/>100만원</label>
-                        <input type="radio" name="boothRadio" value="1" onChange={handleBoothPrice}/>
+                        <input id="typea" type="radio" name="boothRadio" checked={atype} value="a" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
                       <div className="selectionConatiner">
                         <label htmlFor="B2">B타입<br/>150만원</label>
-                        <input type="radio" name="boothRadio" value="2" onChange={handleBoothPrice}/>
+                        <input id="typeb" type="radio" name="boothRadio" checked={btype} value="b" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
                       <div className="selectionConatiner">
                         <label htmlFor="B3">C타입<br/>200만원</label>
-                        <input type="radio" name="boothRadio" value="3" onChange={handleBoothPrice}/>
+                        <input id="typec" type="radio" name="boothRadio" checked={ctype} value="c" onChange={handleBoothPrice}/>
                       </div>
                     </div>
                   </div>
@@ -173,7 +252,7 @@ export default function Spec() {
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E1">E1<br/>기기당<br/>2만원</label>
                         <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option value={0} selected>0</option>
+                          <option value={0}>0</option>
                           <option value={1}>1</option>
                           <option value={2}>2</option>
                           <option value={3}>3</option>
@@ -187,7 +266,7 @@ export default function Spec() {
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E2">E2<br/>기기당<br/>3만원</label>
                         <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option value="0" selected>0</option>
+                          <option value="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -201,7 +280,7 @@ export default function Spec() {
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E3">E3<br/>기기당<br/>4만원</label>
                         <select id="e3Select" name="ESL_E3" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option value="0" selected>0</option>
+                          <option value="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>

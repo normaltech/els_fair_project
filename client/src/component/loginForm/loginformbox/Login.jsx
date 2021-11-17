@@ -55,12 +55,13 @@ export default function Login() {
       //   body: JSON.stringify(user)
       // });
       try {
-        await axios.post("http://localhost:5000/login", user)
+        await axios.post("/login", user)
         .then((response) => {
           if(response.data.message)
             setLoginStatus(response.data.message)
           else{
             setLoginStatus(response.data[0].manager+"님 환영합니다!")
+            window.location.href = "/mainpage"
           }
         });
       } catch (error) {
@@ -74,7 +75,7 @@ export default function Login() {
   현재 로그인이 되어있는지 안되어있는지 확인하기위한 메소드
   */  
   useEffect(()=>{
-    axios.get("http://localhost:3000/login").then((response)=>{
+    axios.get("/login").then((response)=>{
       if(response.data.loggedIn == true){
         setLoginStatus(response.data.user[0].manager+"님 환영합니다!")
       }
