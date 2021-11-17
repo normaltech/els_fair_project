@@ -666,7 +666,7 @@
   .specContainerRight{
     width: 320px;
   }
-  ..reservationDashboard{
+  .reservationDashboard{
     width: 300px;
   }
 }

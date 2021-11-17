@@ -47,7 +47,8 @@ const db = mysql.createConnection({
     host : conf.host,
     user:conf.user,
     password:conf.password,
-    database:conf.database
+    database:conf.database,
+    multipleStatements:true
 });
 db.connect();
 
@@ -116,7 +117,7 @@ app.post("/register",(req,res)=>{
 app.post("/login", (req, res) => {
     const userEmail = req.body.email
     const password = req.body.password
-    console.log(userEmail);
+    // console.log(userEmail);
     db.query(
         "SELECT * FROM UserAccountInfo WHERE email = ?;",
         userEmail,
@@ -130,8 +131,9 @@ app.post("/login", (req, res) => {
                 bcrypt.compare(password, result[0].password,(error, response) =>{
                     if(response){
                         //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
+                        
                         req.session.user = result
-                        console.log(req.session.user);
+                        // console.log(req.session.user);
                         res.send(result)
                     }
                     else{
@@ -259,5 +261,80 @@ app.post('/sendEmail', async function (req, res) {
         console.log('오류')
     }
 })
+//부스 정보 가져오기
+app.post("/getBooth",(req,res)=>{
+    const exhibitionId = req.body.exhibitionId;
+    // const section = req.body.section;
+    db.query("SELECT booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?",exhibitionId,
+        (err, result) => {
+            if(err){
+                console.log(err);
+                res.send({err:err})
+            }
 
+            if(result.length > 0){
+               res.send(result)
+            }else{
+                res.send({message:"부스가 존재하지 않습니다!"})
+            }
+        }
+    )
+})
+
+//예약 기능
+app.post("/reservateBooth",(req,res)=>{
+    const rvData = req.body
+    var reservateList = {
+      boothId: rvData.boothId,
+      companyId: rvData.companyId,
+      eslType: rvData.eslNum.toString(),
+      totalPrice: rvData.totalPrice
+    }
+
+    console.log(reservateList);
+    const pass = rvData.passArray
+    // console.log(pass)
+    
+    //sql구문 두개 이상 한번에 처리
+    var sql1 = "INSERT INTO RESERVATION SET ?;";
+    var sql1s = mysql.format(sql1, reservateList);
+
+    var sql2 = "INSERT INTO Pass SET ?;";
+    var sql2s = "";
+    pass.forEach(function(item){
+        sql2s += mysql.format(sql2, item);
+    });
+    console.log(sql2s);
+
+    db.query(sql1s + sql2s, function(err,result){
+        if(err){
+            console.error(err);
+            res.send({resultCd:'E', msg: "예기치 않은 오류가 발생하여 예약에 실패하였습니다."});
+            throw err;
+          }
+      
+          if(result[0].affectedRows > 0){
+            res.send({resultCd:'S', msg:'정상적으로 예약이 완료되었습니다.'});
+            
+          }else{
+            console.error(result.message);
+            res.send({resultCd:'E', msg: "예기치 않은 오류가 발생하여 예약에 실패하였습니다. " + result.message});
+          }
+    })
+})
+
+//세션에서 사용자 정보 가져오기
+app.get("/getUserInfoFromSession",(req,res)=>{
+    const su = req.session.user[0]
+    const userData ={
+        companyName : su.company_name,
+        companyId : su.company_id,
+        managerName : su.manager,
+        companyNum : su.company_phone_num,
+        managerNum : su.manager_phone_num,
+        managerEmail : su.email
+    }
+    // console.log(userData)
+    res.send(userData)
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

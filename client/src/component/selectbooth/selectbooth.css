@@ -148,7 +148,8 @@
 
 .boothInfoContainerMain{
   display: flex;
-  height: 500px;
+  height: 100%;
+  overflow-x:scroll;
 }
 
 .boothInfoContainerRightBox{

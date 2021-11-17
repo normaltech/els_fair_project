@@ -33,13 +33,13 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "white",
 }));
 
-export default function BoothModal({className, section,type,layer,number}) {
+export default function BoothModal({boothId, className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   return (
     <>
-      <span className={className} onClick={handleOpen}>{section}-{layer}{number}</span>
+      <span className={className} onClick={handleOpen}>{section}-{type}{layer}{number}</span>
       <Modal
         open={open}
         onClose={handleClose}
@@ -57,7 +57,7 @@ export default function BoothModal({className, section,type,layer,number}) {
                   부스번호
                 </Typography>
                 <Typography component="div" fontSize="25px" fontWeight="bold">
-                  {section}-{layer}{number}
+                  {section}-{type}{layer}{number}
                 </Typography>
               </div>
               <div className="modalBoothTypeRight">
@@ -118,6 +118,7 @@ export default function BoothModal({className, section,type,layer,number}) {
             <Link to={{
               pathname: "/reservation",
               state: {
+                boothId: boothId,
                 section: section,
                 type: type,
                 number: number,
