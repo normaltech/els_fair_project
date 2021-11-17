@@ -227,8 +227,6 @@ app.post('/sendEmail', async function (req, res) {
     let number = Math.floor(Math.random() * 1000000) + 100000;
     if (number > 1000000) number = number - 100000;
 
-    console.log(number);
-
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',

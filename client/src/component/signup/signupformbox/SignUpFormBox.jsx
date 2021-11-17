@@ -3,6 +3,7 @@ import Verification from '../verification/Verification';
 import axios from 'axios';
 import './signupformbox.css'
 import React, { Component, useEffect, useState } from 'react'
+import {useHistory} from "react-router-dom"
 
 export default function SignUpFormBox() {
 
@@ -10,6 +11,8 @@ export default function SignUpFormBox() {
   const [certification, setcertification] = useState(false);
   const [checkinput, setcheckinput] = useState(false)
   const [count, setcount] = useState(0)
+
+  const history = useHistory();
 
   const [user, setUser] = useState({
     email: '',
@@ -115,6 +118,8 @@ export default function SignUpFormBox() {
             .then((response) => {
               console.log(response);
             });
+            history.push('/SuccessSignIn');
+
         } catch (error) {
           console.log(error);
         }
@@ -151,7 +156,7 @@ export default function SignUpFormBox() {
     <div className="signUpFormBox">
       <InputWithLabel setter={emailSetter} label="이메일" type="email" name="email" warningText="필수정보 입니다." />
       <Verification setter={vericationCodeSetter} label="인증번호" useremail={user.email} certification={certificationSetter} />
-      <InputWithLabel setter={passwordSetter} label="비밀번호" type="text" name="password" warningText="비밀번호를 입력해주세요." />
+      <InputWithLabel setter={passwordSetter} label="비밀번호" type="password" name="password" warningText="비밀번호를 입력해주세요." />
       <InputWithLabel setter={passwordCheckSetter} label="비밀번호 재확인" type="password" name="passwordcheck" warningText="비밀번호를 한번 더 입력해주세요." />
       <InputWithLabel setter={managerNameSetter} label="담당자 성함" type="text" name="managerName" warningText="필수정보 입니다." />
       <TelInputWithLabel setter={managerNumSetter} label="담당자 연락처" name="managerNum" warningText="필수정보 입니다." />
