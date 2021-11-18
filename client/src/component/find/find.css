@@ -74,13 +74,13 @@
 
 .regist_button{
     display: none;
-    background-color: #ef5e3b;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
     border-radius: 5px;
     width: 100px;
     height: 30px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
     margin: auto;

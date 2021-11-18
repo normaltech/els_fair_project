@@ -1,10 +1,10 @@
 .specBanner{
   width: auto;
-  height: 100px;
+  height: 90px;
   font-family: NanumSquare_acEB;
-  font-size: 50px;
+  font-size: 38px;
   background-color: var(--dark-grey-blue);
-  line-height: 100px;
+  line-height: 90px;
   color: white;
   padding-left: 40px;
 }
@@ -29,10 +29,10 @@
   text-align: center;
   width: 44px;
   height: 44px;
-  line-height: 44px;
+  line-height: 41px;
   border-radius: 100%;
   font-family: NanumSquare_acEB;
-  font-size: 25px;
+  font-size: 23px;
   font-weight: bold;
   color: white;
   border: solid 1px var(--warm-grey);
@@ -41,11 +41,11 @@
 
 .SelectionItemTitle{
   height: 44px;
-  margin-left : 40px;
+  margin-left : 30px;
   font-family: NanumSquare_acEB;
-  font-size: 35px;
+  font-size: 26px;
   font-weight: bold;
-  line-height: 44px;
+  line-height: 42px;
   text-align: center;
   color: var(--black);
 }
@@ -85,7 +85,7 @@
 .selectionConatiner{
   display: flex;
   justify-content: space-evenly;
-  width: 80%;
+  width: 90%;
   text-align: center;
 }
 
@@ -320,12 +320,12 @@
 .passEnrollTable div{
   text-align: center;
   width: 70%;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
 }
 
 .passEnrollTable input{
-  width: 70%;
+  width: 75%;
   height: 20px;
   font-size: 18px;
 }
@@ -399,8 +399,8 @@
   .SelectionItemTitle{
     height: 40px;
     margin-left : 25px;
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 22px;
+    line-height: 35px;
   }
   .InfoTableLabel{
     font-size: 16px;
@@ -440,8 +440,8 @@
     width: 540px;
   }
   .SelectionItemIndex{
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     line-height: 20px;
     font-size: 12px;
   }

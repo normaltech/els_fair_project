@@ -12,6 +12,11 @@ export default function Find(){
     const registBtn = () => {
         window.location.href="/signup"
     }
+    const onKeyPress = (e) => {
+        if(e.key == 'Enter'){
+            click();
+        }
+    }
     const click = (e) => {
         const email = document.querySelector('.find_input').value;
         let data = {email : email}
@@ -25,6 +30,7 @@ export default function Find(){
                     axios.post("/sendEmail", data).then((response) => {
                         // /confirm으로 난수 보내기
                         console.log("메일코드:"+response.data.number)
+                        hiddenTxt.style.display = "block";
                         hiddenTxt.textContent = "인증 번호 발송중..."
                         history.push({
                             pathname:'/confirm',
@@ -34,13 +40,6 @@ export default function Find(){
                             }
                         })
                     })
-                // console.log(res.data.message);
-                // nextButtonAllow = true;
-                // console.log(nextButtonAllow);
-                // hiddenTxt.style.display = "none";
-                // hiddenTxt.textContent = "'다음'버튼을 클릭하여 비밀번호를 변경하세요!"
-                // hiddenTxt.style.display = "block";
-                // window.location.href="/confirm"
               }
               else{
                 console.log(res.data.message);
@@ -60,10 +59,10 @@ export default function Find(){
                     <div className="find_word1">아이디/비밀번호 찾기</div>
                     <div className="find_word2">아이디 비밀번호를 잊으셨습니까?</div>
                     <div className="find_word2">&lt;아래 칸에 이메일을 입력하세요&gt;</div>
-                    <div><input className="find_input" type="email" placeholder="이메일을 입력하세요."/></div>
+                    <div><input id="emailInput" onKeyPress={onKeyPress} className="find_input" type="email" placeholder="이메일을 입력하세요."/></div>
                     <div className="find_hidden">가입되어있지않은 메일입니다. 회원가입하시겠습니까?</div>
                     <div><button className="regist_button" onClick={registBtn}>회원 가입</button></div>
-                    <div><button onClick={click} className="find_button">다음</button></div>
+                    <div><button onClick={click} className="find_button" >다음</button></div>
                     <div className="find_homeLink"><Link to="/" className="find_word3">홈으로 이동</Link></div>
                 </div>
             </div>
