@@ -337,4 +337,25 @@ app.get("/getUserInfoFromSession",(req,res)=>{
     // console.log(userData)
     res.send(userData)
 })
+
+//이메일 중복 확인
+app.post("/checkEmail",(req,res)=>{
+    const email = req.body.email
+    console.log(email)
+    db.query("SELECT * FROM UserAccountInfo WHERE EMAIL=?;",email,(err,result)=>{
+        if(err) console.log(err)
+        //중복된 이메일이 있으면 1 반환
+        if(result){
+            if(result.length >0){
+                res.send({message:"존재하는 이메일입니다!",flag:1})
+                
+            }else{
+                res.send({message:"사용가능한 이메일입니다!",flag:0})
+            }
+        }
+        else{
+            
+        }
+    })
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

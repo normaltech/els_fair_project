@@ -35,16 +35,15 @@ export default function Verification({setter, label, useremail, certification}) 
       console.log('성공')
       console.log(email.email)
       setwarningText('인증 번호를 입력해주세요.')
-      // 제대로된 이메일 양식을 입력 안했을때 안보내기위해서 일단 주석처리해놨음.
-      // try {  
-      //   axios.post("http://localhost:5000/sendEmail", email)
-      //     .then((response) => {
-      //       setnumber(response.data.number)
-      //     })
-      //   console.log('메일전송완료')
-      // } catch (error) {
-      //   console.log(error);
-      // }
+      try {  
+        axios.post("/sendEmail", email)
+          .then((response) => {
+            setnumber(response.data.number)
+          })
+        console.log('메일전송완료')
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
 
