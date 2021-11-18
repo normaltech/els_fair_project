@@ -37,7 +37,7 @@ export default function Verification({setter, label, useremail, certification}) 
       setwarningText('인증 번호를 입력해주세요.')
       // 이메일인증 메일보내기
       try {  
-        axios.post("http://localhost:5000/sendEmail", email)
+        axios.post("/sendEmail", email)
           .then((response) => {
             setnumber(response.data.number)
           })
