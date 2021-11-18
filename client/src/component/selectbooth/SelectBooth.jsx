@@ -18,12 +18,30 @@ export default function SelectBooth() {
   //   }
   // }
 
+  //현재 기기 해상도 가로 세로 크기 가져오기
+  function getDisplayInfo() {
+    var size = {
+      width: window.innerWidth || document.body.clientWidth,
+      height: window.innerHeight || document.body.clientHeight
+    }
+    return size;
+  }
+  function setElementById(obj, value) {
+    var target = document.getElementById(obj);
+    target.innerHTML = value;
+  }
+  const handleWidth = () =>{
+    var size = getDisplayInfo();
+    setElementById("boothInfo",size.width);
+  }
+
   const [ratio, setRatio] = useState(1);
   const booth_module = useRef();
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
 
   return (
     <>

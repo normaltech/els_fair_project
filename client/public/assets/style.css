@@ -3,6 +3,11 @@
     margin: 0;
     font-family: 'NanumSquare', sans-serif;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 .normal		{ font-weight: 400 }
 .bold		{ font-weight: 700 }
 .bolder		{ font-weight: 800 }
