@@ -18,7 +18,7 @@ export const LoginRightContent = ({ inputId, inputPw, changeId, changePw, change
       {/* 회원가입페이지로 이동 */}
       <Link to="/signup" style={{textDecoration:"none"}}>  
         <button className="signInButton">
-          <span className="signInMessage">회원가입</span>
+          <div className="signInMessage">회원가입</div>
         </button>
       </Link>
     </div>

@@ -11,7 +11,7 @@ const saltRounds = 10;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 app.use(express.json());
 
 app.use(cors({

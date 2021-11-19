@@ -8,13 +8,13 @@ import MBoothPagenation from './MBoothPagenation';
 function BoothManagement() {
 
     // 부스정보 변수
-    const [nameInfo, setNameInfo] = useState('A-a102')
-    const [sectionInfo, setSectionInfo] = useState('A구역')
-    const [typeInfo, setTypeInfo] = useState('a타입')
-    const [floorInfo, setFloorInfo] = useState('1층')
-    const [widthInfo, setWidthInfo] = useState('6000')
-    const [lengthInfo, setLengthInfo] = useState('6000')
-    const [heightInfo, setHeightInfo] = useState('3000')
+    const [nameInfo, setNameInfo] = useState('')
+    const [sectionInfo, setSectionInfo] = useState('')
+    const [typeInfo, setTypeInfo] = useState('')
+    const [floorInfo, setFloorInfo] = useState('')
+    const [widthInfo, setWidthInfo] = useState('')
+    const [lengthInfo, setLengthInfo] = useState('')
+    const [heightInfo, setHeightInfo] = useState('')
     // 예약자정보 변수
     const [companyNameInfo, setCompanyNameInfo] = useState('CampingGas')
     const [bussinessNumberInfo, setBussinessNumberInfo] = useState('**********')
@@ -28,11 +28,11 @@ function BoothManagement() {
     const [eslInfoId, setEslInfoId] = useState('E1-50022SEB')
     const [eslInfoState, setEslInfoState] = useState('대여중')
     // 하단 table 변수
-    // const [detailBoothName, setDetailBoothName] = useState('A-101')
-    // const [detailBoothType, setDetailBoothType] = useState('a')
-    // const [detailCompany, setDetailCompany] = useState('CampinGas')
-    // const [detailEsl, setDetailEsl] = useState('6')
-    // const [detailPrice, setDetailPrice] = useState('자세히')
+    const [detailBoothName, setDetailBoothName] = useState('A-101')
+    const [detailBoothType, setDetailBoothType] = useState('a')
+    const [detailCompany, setDetailCompany] = useState('CampinGas')
+    const [detailEsl, setDetailEsl] = useState('6')
+    const [detailPrice, setDetailPrice] = useState('자세히')
     
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);
@@ -56,6 +56,48 @@ function BoothManagement() {
     
         fetchPosts();
       }, [])
+
+    const onClickBoothInfo = () =>{
+        const addName = detailBoothName.slice(0,2) + detailBoothType + detailBoothName.slice(2,6);
+        setNameInfo(addName);
+    }  
+    useEffect(()=>{
+        const sliceType = detailBoothName.slice(0,1) + '구역';
+        setSectionInfo(sliceType);
+        setTypeInfo(detailBoothType + '타입');
+
+        if(detailBoothName.slice(2,3) == 1){
+            setFloorInfo(1 + '층');
+        }else if(detailBoothName.slice(2,3) == 2){
+            setFloorInfo(2 + '층');
+        }else{
+            setFloorInfo(3 + '층');
+        }
+
+        if(detailBoothType.slice(0,1) === 'a'){
+            setWidthInfo(3000);
+            setLengthInfo(3000);
+            setHeightInfo(3000);
+        }else if(detailBoothType.slice(0,1) === 'b'){
+            setWidthInfo(6000);
+            setLengthInfo(3000);
+            setHeightInfo(3000);
+        }else{
+            setWidthInfo(6000);
+            setLengthInfo(6000);
+            setHeightInfo(3000);
+        }
+    }, [nameInfo])
+
+    useEffect(()=>{
+        setNameInfo('');
+        setSectionInfo('');
+        setTypeInfo('');
+        setFloorInfo('');
+        setWidthInfo('');
+        setLengthInfo('');
+        setHeightInfo('');
+    }, [])
 
     return (
         <>
@@ -212,6 +254,14 @@ function BoothManagement() {
                                 <th className="boothManagement_detail_padding boothManagement_detail_th">ESL</th>
                                 <th className="boothManagement_detail_padding boothManagement_detail_th">가격</th>
                                 <th className="boothManagement_detail_padding boothManagement_detail_th">초기화</th>
+                            </tr>
+                            <tr className="boothManagement_detail_hover" onClick={onClickBoothInfo}>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td">{detailBoothName}</td>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td">{detailBoothType}</td>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td">{detailCompany}</td>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td">{detailEsl}</td>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td">{detailPrice}</td>
+                                <td className="boothManagement_detail_padding boothManagement_detail_td"><button className="boothManagement_detail_btn"><img src="/assets/reset.png" alt="초기화" /></button></td>
                             </tr>
                             <MBoothPosts posts={currentPosts} loading={loading}/>
                         </table>
