@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import './managerMain.css'
+import { CompanyM } from './company/CompanyM'
 
 function ManagerMain() {
-    
+
     const [corpTeam, setCorpTeam] = useState('38')
     const [corpInfoNum, setCorpInfoNum] = useState('3')
     const [visitorNum, setVisitorNum] = useState('352')
@@ -45,49 +46,11 @@ function ManagerMain() {
                 </div>
                 {/* 3. 기업관리 및 ESL관리 */}
                 <div className="managerMain_bottom_cotent_wrap">
-                    <div className="managerMain_corpManage_wrap">
-                        <div className="managerMain_corpManageTitle">기업관리</div>
-                        {/* 여기 table형태로 해보기 */}
-                        <div className="managerMain_table_wrap">
-                            <table className="managerMain_table">
-                                <tr className="managerMain_th_borderBottom">
-                                    <th className="managerMain_padding managerMain_th">회사명</th>
-                                    <th className="managerMain_padding managerMain_th">인원</th>
-                                    <th className="managerMain_padding managerMain_th">부스</th>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">{companyName}</td>
-                                    <td className="managerMain_padding managerMain_td">{companyNum}명</td>
-                                    <td className="managerMain_padding managerMain_td">{companyBooth}</td>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">네이버</td>
-                                    <td className="managerMain_padding managerMain_td">5명</td>
-                                    <td className="managerMain_padding managerMain_td">A-a102</td>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">현대</td>
-                                    <td className="managerMain_padding managerMain_td">6명</td>
-                                    <td className="managerMain_padding managerMain_td">B-b105</td>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">기아</td>
-                                    <td className="managerMain_padding managerMain_td">6명</td>
-                                    <td className="managerMain_padding managerMain_td">B-c104</td>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">삼성</td>
-                                    <td className="managerMain_padding managerMain_td">11명</td>
-                                    <td className="managerMain_padding managerMain_td">C-c104</td>
-                                </tr>
-                                <tr className="managerMain_td_borderBottom">
-                                    <td className="managerMain_padding managerMain_td">라이</td>
-                                    <td className="managerMain_padding managerMain_td">11명</td>
-                                    <td className="managerMain_padding managerMain_td">B-c108</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                    
+                    {/* 기업관리 */}
+                    <CompanyM />
+
+                    {/* ESL 관리 */}
                     <div className="managerMain_eslManage_wrap">
                         <div className="managerMain_eslManageTitle">ESL관리</div>
                         <div className="managerMain_eslManageInfo_wrap">

@@ -101,7 +101,10 @@ app.post("/register",(req,res)=>{
             [companyId,companyName,managerName,userEmail,hash,gender,companyNum,managerNum,1],
             (err, result) => {
                 
-                if(err) console.log(err);
+                if(err) {
+                    console.log(err);
+                    res.send({message:"회원가입 실패"})
+                }
                 
                 if(result){
                     res.send(result)
@@ -335,4 +338,18 @@ app.get("/getUserInfoFromSession",(req,res)=>{
     // console.log(userData)
     res.send(userData)
 })
+
+//회사 부스예약 정보
+app.get("/companyList",(req,res)=>{
+    db.query("SELECT * FROM CompanyTEST;",
+            (err, data) => {
+                if (!err) {
+                    res.send(data);
+                } else {
+                    res.send(err);
+                }
+            }
+        )
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));
