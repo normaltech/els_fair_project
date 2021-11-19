@@ -96,7 +96,8 @@ export default function SelectBooth() {
           <div className="boothInfoContainerTitleText">부스 배치도</div>
         </div>
         <TransformWrapper
-          initialScale={1}
+          initialScale={1} 
+          disabled={true}
         >
           {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
             <React.Fragment>

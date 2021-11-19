@@ -44,7 +44,7 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
                 <img id="booth_state" src="/assets/STATE.png" alt="예약상태이미지" />
 
                 {boothModalList}
-               {/*
+               
                 
                 <BoothModal className={"A_b1_101"} section={"A"} type={"b"} layer={layer} number={"01"}/>
                 <BoothModal className={"A_a_102"} section={"A"} type={"a"} layer={layer} number={"02"}/>
@@ -116,7 +116,7 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
                 <BoothModal className={"I_a_104"} section={"I"} type={"a"} layer={layer} number={"04"}/>
                 <BoothModal className={"I_b1_105"} section={"I"} type={"b"} layer={layer} number={"05"}/>
                 <BoothModal className={"I_b1_106"} section={"I"} type={"b"} layer={layer} number={"06"}/>
-                */}
+               
             </div>
         </>
     )

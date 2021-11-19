@@ -115,7 +115,7 @@ export default function BoothModal({boothId, className, section,type,layer,numbe
                 <Typography fontSize="15px" fontWeight="bold">{1}회선</Typography>
               </Box>
             </Box>
-            <Link to={{
+            <Link className="boothmodalButton" to={{
               pathname: "/reservation",
               state: {
                 boothId: boothId,
