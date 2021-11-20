@@ -450,4 +450,16 @@ app.get("/getCompanyInfoById/:companyId",(req,res)=>{
         }
     })
 })
+
+app.get("/getSearchData",(req,res)=>{
+    db.query("SET @num:=0;SELECT @num:=@num+1 AS id, CONCAT(b.section, '_',b.type,'_', b.layer,'0', b.number) AS boothname, company_name  FROM UserAccountInfo AS u JOIN BoothInfo AS b  ON u.company_id = b.company_id WHERE (@num:=0)=0;",
+    (err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[1]);
+                res.send(result)
+            }
+        }
+    })
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

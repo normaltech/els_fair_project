@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -33,13 +33,36 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "white",
 }));
 
-export default function BoothModal({boothId, className, section,type,layer,number}) {
+export default function BoothModal({clickSection, searchData, boothId, className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const searchRef = useRef(null);
+ 
+  const [cs, setCS] = useState(clickSection);
+  if(clickSection == section){
+    searchRef.current.style.animation = "blink-effect 1s step-end";
+  }
+  //한번 클릭하면 animation이 바뀌어 있어서 바로 animation을 null로 바꿔줘야됨
+
+  searchData.map((value)=>{
+    //value에서 boothname을 none으로 받으면 안보이게 설정
+    if(value === className){
+      searchRef.current.style.color = "white";
+      searchRef.current.style.border = "";
+      searchRef.current.style.backgroundColor = "#F6C652";
+      searchRef.current.style.animation = "blink-effect 1s step-end infinite";
+    }else{
+      searchRef.current.style.color = "black";
+      searchRef.current.style.border = "solid 1px #707070";
+      searchRef.current.style.backgroundColor = " #fff";
+      searchRef.current.style.animation = "";
+    }
+  })
   return (
     <>
-      <span className={className} onClick={handleOpen}>{section}-{type}{layer}{number}</span>
+      <span className={className} onClick={handleOpen} ref={searchRef}>{section}-{type}{layer}{number}</span>
       <Modal
         open={open}
         onClose={handleClose}
