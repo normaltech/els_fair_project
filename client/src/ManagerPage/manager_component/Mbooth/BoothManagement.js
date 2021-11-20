@@ -2,10 +2,42 @@ import React, { useState, useEffect } from 'react'
 import './boothManagement.css'
 import axios from 'axios';
 import MBoothPosts from './MBoothPosts';
-import { MBoothNotice } from './MBoothNotice';
+import { MBoothNotice, btn } from './MBoothNotice';
 import MBoothPagenation from './MBoothPagenation';
 
 function BoothManagement() {
+
+    //체인지 함수
+    const [c_booth, setc_booth] = useState("-")
+    const [c_conpany, setc_conpany] = useState("-")
+    const [c_esl, setc_esl] = useState("-")
+
+    const getChange = (c_booth, c_conpany, c_esl) => {
+        setc_booth(c_booth);
+        setc_conpany(c_conpany);
+        setc_esl(c_esl);
+    }
+
+    useEffect(() => {
+        if (c_conpany != "-") {
+            try {
+                axios.post("/getmanagerInfo", c_conpany)
+                    .then((response) => {
+                        // setCompanyNameInfo(response.data[0].company_name)
+                        // setBussinessNumberInfo(response.data[0].company_id)
+                        // setManagerNumberInfo(response.data[0].company_phone_num)
+                        // setManagerNameInfo(response.data[0].manager)
+                        // setManagerEmailInfo(response.data[0].email)
+                        // setPeopleNumInfo(response.data[0].personnel)
+                        // console.log(response.data[0])
+                        console.log("안녕")
+                    });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        console.log(c_conpany)
+    }, [getChange])
 
     // 부스정보 변수
     const [nameInfo, setNameInfo] = useState('A-a102')
@@ -16,12 +48,12 @@ function BoothManagement() {
     const [lengthInfo, setLengthInfo] = useState('6000')
     const [heightInfo, setHeightInfo] = useState('3000')
     // 예약자정보 변수
-    const [companyNameInfo, setCompanyNameInfo] = useState('CampingGas')
-    const [bussinessNumberInfo, setBussinessNumberInfo] = useState('**********')
-    const [managerNumberInfo, setManagerNumberInfo] = useState('010-1111-1111')
-    const [managerNameInfo, setManagerNameInfo] = useState('김담당')
-    const [managerEmailInfo, setManagerEmailInfo] = useState('damdang@naver.com')
-    const [peopleNumInfo, setPeopleNumInfo] = useState('4명')
+    const [companyNameInfo, setCompanyNameInfo] = useState('-')
+    const [bussinessNumberInfo, setBussinessNumberInfo] = useState('-')
+    const [managerNumberInfo, setManagerNumberInfo] = useState('-')
+    const [managerNameInfo, setManagerNameInfo] = useState('-')
+    const [managerEmailInfo, setManagerEmailInfo] = useState('-')
+    const [peopleNumInfo, setPeopleNumInfo] = useState('-')
     // ESL정보 변수
     const [eslInfoNum, setEslInfoNum] = useState('1')
     const [eslInfoType, setEslInfoType] = useState('E1')
@@ -49,7 +81,7 @@ function BoothManagement() {
     useEffect(()=>{
         const fetchPosts = async () =>{
           setLoading(true);
-          const res = await axios.get(''); // 데이터베이스 가져오기
+          const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
           setPosts(res.data);
           setLoading(false);
         }
@@ -206,14 +238,14 @@ function BoothManagement() {
                     <div className="boothManagement_detail_table_wrap">
                         <table className="boothManagement_detail_table">
                             <tr className="boothManagement_detail_tr">
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">부스이름</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">부스형태</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">회사</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">ESL</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">가격</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">초기화</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th1">부스이름</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th2">부스형태</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th3">회사</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th4">ESL</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th5">가격</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th6">초기화</th>
                             </tr>
-                            <MBoothPosts posts={currentPosts} loading={loading}/>
+                            <MBoothPosts posts={currentPosts} loading={loading} getChange={getChange} />
                         </table>
                     </div>
                     <MBoothPagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
