@@ -33,6 +33,10 @@ function UserManagement() {
         document.querySelector('.userManagement_userModifyModal_wrap').style.display = 'none';
         document.querySelector('.userManagement_userRegister_wrap').style.display = 'none';
     }
+    const onClickModify = () => {
+        document.querySelector('.userManagement_userModifyModal_wrap').style.display = 'none';
+        document.querySelector('.userManagement_modifySuccess_wrap').style.display = 'block';
+    }
     const onClickDelBack = () => {
         document.querySelector('.userManagement_deleteFailModal_wrap').style.display = 'none';
         document.querySelector('.userManagement_deleteModal_wrap').style.display = 'block';
@@ -42,10 +46,7 @@ function UserManagement() {
         document.querySelector('.userManagement_black_bg').style.display = 'block';
         document.querySelector('.userManagement_userModifyModal_wrap').style.display = 'block';
     }
-    const onClickModify = () => {
-        document.querySelector('.userManagement_userModifyModal_wrap').style.display = 'none';
-        document.querySelector('.userManagement_modifySuccess_wrap').style.display = 'block';
-    }
+    
     const onClickModifyBack = () => {
         document.querySelector('.userManagement_modifyFailModal_wrap').style.display = 'none';
         document.querySelector('.userManagement_userModifyModal_wrap').style.display = 'block';
@@ -67,6 +68,7 @@ function UserManagement() {
 
     const NationCode = () => (
         <select name="countryCode" className="userManagement_userRegister_inputFront userManagement_userRegister_fontSize">
+        <option data-countrycode="KR" value="82" className="userManagement_userRegister_fontSize" >Korea South (+82)</option>
           <option data-countrycode="DZ" value="213" className="userManagement_userRegister_fontSize">Algeria (+213)</option>
           <option data-countrycode="AD" value="376" className="userManagement_userRegister_fontSize">Andorra (+376)</option>
           <option data-countrycode="AO" value="244" className="userManagement_userRegister_fontSize">Angola (+244)</option>
@@ -166,7 +168,6 @@ function UserManagement() {
           <option data-countrycode="KE" value="254" className="userManagement_userRegister_fontSize">Kenya (+254)</option>
           <option data-countrycode="KI" value="686" className="userManagement_userRegister_fontSize">Kiribati (+686)</option>
           <option data-countrycode="KP" value="850" className="userManagement_userRegister_fontSize">Korea North (+850)</option>
-          <option data-countrycode="KR" value="82" className="userManagement_userRegister_fontSize" selected >Korea South (+82)</option>
           <option data-countrycode="KW" value="965" className="userManagement_userRegister_fontSize">Kuwait (+965)</option>
           <option data-countrycode="KG" value="996" className="userManagement_userRegister_fontSize">Kyrgyzstan (+996)</option>
           <option data-countrycode="LA" value="856" className="userManagement_userRegister_fontSize">Laos (+856)</option>
@@ -292,6 +293,17 @@ function UserManagement() {
     // const [phoneNum, setPhoneNum] = useState('010-****-****');
     // const [email, setEmail] = useState('***@gmail.com');
 
+    useEffect(()=>{
+        const fetchPosts = async () =>{
+          setLoading(true);
+          const res = await axios.get('/getAllUserData'); // 데이터베이스 가져오기
+          setPosts(res.data);
+          setLoading(false);
+        }
+    
+        fetchPosts();
+      }, [])
+
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -300,20 +312,13 @@ function UserManagement() {
     //현재 파일 가져오기
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
+    // console.log(posts);
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    useEffect(()=>{
-        const fetchPosts = async () =>{
-          setLoading(true);
-          const res = await axios.get(''); // 데이터베이스 가져오기
-          setPosts(res.data);
-          setLoading(false);
-        }
-    
-        fetchPosts();
-      }, [])
+    console.log(currentPosts)
+   
 
     return (
         <>
@@ -432,20 +437,7 @@ function UserManagement() {
                     </div>
                 </div>
             </div>
-            {/* 삭제버튼 -> 공지사항 삭제 모달창 */}
-            <div className="userManagement_deleteModal_wrap">
-                <div className="userManagement_deleteModal_content_wrap">
-                    <div className="userManagement_deleteModal_img_wrap"><img className="userManagement_deleteModal_img" src="/assets/delete_warning.png" alt="느낌표이미지" /></div>
-                    <div className="userManagement_deleteModal_right_content">
-                        <div className="userManagement_deleteModal_title">사용자 삭제</div>
-                        <div className="userManagement_deleteModal_question">삭제 버튼을 누르게 되면 해당 내용은 복구할 수 없습니다. 그래도 삭제하시겠습니까?</div>
-                        <div className="userManagement_deleteModal_btn_wrap">
-                            <div><button className="userManagement_deleteModal_btn_delete" onClick={onClickDelInDel}>삭제</button></div>
-                            <div><button className="userManagement_deleteModal_btn_cancel" onClick={onClickCancel}>취소</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
             {/* 공지사항 삭제완료 모달창 */}
             <div className="userManagement_deleteSuccess_wrap">
                 <div className="userManagement_deleteSuccess_content_wrap">
@@ -486,104 +478,7 @@ function UserManagement() {
                     </div>
                 </div>
             </div>
-            {/* 사용자 수정 모달창 */}
-            <div className="userManagement_userModifyModal_wrap">
-                <div className="userManagement_userModifyModal_topTitle">- 수 정 -</div>
-               <div className="userManagement_userModifyModal_content_wrap">
-                   <div className="userManagement_userModifyModal_leftContent_wrap">
-                       <div className="userManagement_userModifyModal_leftContent_img_wrap userManagement_userModifyModal_leftContent_padding"><img src="" alt="" /></div>
-                       <div className="userManagement_userModifyModal_leftContent_pic userManagement_userModifyModal_leftContent_padding">
-                            <form action="" method="post" enctype="multipart/form-data" name="">
-                                <input className="userManagement_userModifyModal_leftContent_pic_input" type="file" name="FileName"/>
-                            </form>
-                       </div>
-                       <div className="userManagement_userModifyModal_leftContent_name userManagement_userModifyModal_leftContent_padding">
-                           <div className="userManagement_userModifyModal_leftContent_name_title">이름</div>
-                           <div className="userManagement_userModifyModal_leftContent_name_info"><input type="text" className="userManagement_userModifyModal_leftContent_input" /></div>
-                       </div>
-                       <div className="userManagement_userModifyModal_leftContent_phoneNum userManagement_userModifyModal_leftContent_padding">
-                           <div className="userManagement_userModifyModal_leftContent_phoneNum_title">전화번호</div>
-                           <div className="userManagement_userModifyModal_leftContent_phoneNum_info"><input type="text" className="userManagement_userModifyModal_leftContent_input" /></div>
-                       </div>
-                       <div className="userManagement_userModifyModal_leftContent_email userManagement_userModifyModal_leftContent_padding">
-                           <div className="userManagement_userModifyModal_leftContent_email_title">이메일</div>
-                           <div className="userManagement_userModifyModal_leftContent_email_info"><input type="email" className="userManagement_userModifyModal_leftContent_input" /></div>
-                       </div>
-                   </div>
-                   <div className="userManagement_userModifyModal_rightContent_wrap">
-                       <div className="userManagement_userModifyModal_rightUpContent_wrap">
-                           {/* 왼쪽 오른쪽으로 구역 나눔 */}
-                           <div className="userManagement_userModifyModal_rightUpTitle_wrap">
-                               <div className="userManagement_userModifyModal_rightUpTitle_style userManagement_userModifyModal_rightUpContent_padding">회사</div>
-                               <div className="userManagement_userModifyModal_rightUpTitle_style userManagement_userModifyModal_rightUpContent_padding">회사번호</div>
-                               <div className="userManagement_userModifyModal_rightUpTitle_style userManagement_userModifyModal_rightUpContent_padding">고유번호</div>
-                           </div>
-                           <div className="userManagement_userModifyModal_rightUpTitleInfo_wrap">
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" /></div>
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" /></div>
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" /></div>
-                           </div>
-                       </div>
-                       <div className="userManagement_userModifyModal_rightDownContent_wrap">
-                           {/* 위 아래로 구역 나눔 */}
-                           {/* 위 */}
-                           <div className="userManagement_userModifyModal_rightDownUp_wrap">
-                               <div className="userManagement_userModifyModal_rightDownUp_user_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownUp_user_title userManagement_userModifyModal_rightDownContent_padding">부스</div>
-                                   <div className="userManagement_userModifyModal_rightDownContent_padding">
-                                        <select name="" id="">
-                                            <option value="">사용중</option>
-                                            <option value="">사용가능</option>
-                                            <option value="">사용불가능</option>
-                                        </select>
-                                   </div>
-                               </div>
-                               <div className="userManagement_userModifyModal_rightDownUp_numOfPeople_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownUp_numofPeople_title userManagement_userModifyModal_rightDownContent_padding">인원</div>
-                                   <div className="userManagement_userModifyModal_rightDownUp_numofPeople userManagement_userModifyModal_rightDownContent_padding">
-                                       <input className="userManagement_userModifyModal_rightDownUp_numOfPeople_input" type="text" />
-                                   </div>
-                               </div>
-                               <div className="userManagement_userModifyModal_rightDownUp_authority_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownUp_authority_title userManagement_userModifyModal_rightDownContent_padding">권한</div>
-                                   <div className="userManagement_userModifyModal_rightDownContent_padding">
-                                        <select name="" id="">
-                                            <option value="">활성화</option>
-                                            <option value="">비활성화</option>
-                                        </select>
-                                   </div>
-                               </div>
-                           </div>
-                           {/* 중앙 */}
-                           <div className="userManagement_userModifyModal_rightDownDown_wrap">
-                               <div className="userManagement_userModifyModal_rightDownDown_esl_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownDown_esl_title userManagement_userModifyModal_rightDownContent_padding">ESL</div>
-                                   <div className="userManagement_userModifyModal_rightDownContent_padding">
-                                        <select name="" id="">
-                                            <option value="">대여중</option>
-                                            <option value="">대여가능</option>
-                                            <option value="">대여불가능</option>
-                                        </select>
-                                   </div>
-                               </div>
-                               <div className="userManagement_userModifyModal_rightDownDown_created_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownDown_created_title userManagement_userModifyModal_rightDownContent_padding">Created</div>
-                                   <div className="userManagement_userModifyModal_rightDownDown_created userManagement_userModifyModal_rightDownContent_padding">2021/10/01 08:30 PM</div>
-                               </div>
-                               <div className="userManagement_userModifyModal_rightDownDown_lastLogin_wrap">
-                                   <div className="userManagement_userModifyModal_rightDownDown_lastLogin_title userManagement_userModifyModal_rightDownContent_padding">Last login</div>
-                                   <div className="userManagement_userModifyModal_rightDownDown_lastLogin userManagement_userModifyModal_rightDownContent_padding">2021/10/04 11:30 PM</div>
-                               </div>
-                           </div>
-                           {/* 아래 */}
-                           <div className="userManagement_userModifyModal_rightDownDown_btn_wrap">
-                               <button className="userManagement_userModifyModal_rightDownDown_btn" onClick={onClickModify}>수정</button>
-                               <button className="userManagement_userModifyModal_rightDownDown_btn" onClick={onClickCancel}>취소</button>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-            </div>
+            
             {/* 사용자 수정완료 모달창 */}
             <div className="userManagement_modifySuccess_wrap">
                 <div className="userManagement_modifySuccess_content_wrap">

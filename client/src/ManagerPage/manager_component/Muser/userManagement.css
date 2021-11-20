@@ -231,7 +231,6 @@
 }
 /* 삭제 모달창 */
 .userManagement_deleteModal_wrap{
-    display: none;
     width: 420px;
     height: 200px;
     position: absolute;
@@ -508,7 +507,6 @@
 }
 /* 사용자 수정 모달창 */
 .userManagement_userModifyModal_wrap{
-    display: none;
     width: 800px;
     height: 500px;
     position: absolute;
@@ -544,10 +542,10 @@
     padding: 10px 0;
 }
 .userManagement_userModifyModal_leftContent_img_wrap{
-    width: 180px;
-    height: 180px;
-    border: 1px solid var(--warm-grey);
+    width: 247px;
+    height: 224px;
     border-radius: 50%;
+    text-align: center;
 }
 .userManagement_userModifyModal_leftContent_pic_input{
     font-size: 12px;

@@ -397,4 +397,57 @@ app.post("/changePassword",(req,res)=>{
         )
     })
 })
+
+app.post("/adminLogin",(req,res)=>{
+    const id = req.body.id;
+    const pw = req.body.pw;
+    db.query("SELECT COUNT(*) AS exist FROM AdminAccount WHERE adminId = ? AND PASSWORD =?;",[id,pw],(err,result)=>{
+        if(err) {
+            console.log(err);
+            res.send({resultCode:'E',message:"에러났어요!",error:err});
+        }
+        if(result){
+            if(result[0].exist){
+                res.send({resultCode:'S',message:"로그인 성공!"});
+            }else{
+                res.send({resultCode:'E',message:"로그인 실패!"});
+            }
+        }else {
+            res.send({resultCode:'E',message:"데이터 베이스 에러"});
+        }
+    })
+})
+
+app.get("/getAllUserData",(req,res)=>{
+    db.query("SELECT * FROM UserAccountInfo",(err,result)=>{
+        if(result.length > 0){
+            console.log(result);
+            res.send(result);
+        }
+    })
+})
+
+app.get("/getCompanyMemberCount/:companyId",(req,res)=>{
+    const companyId = req.params.companyId;
+    db.query("SELECT COUNT(*) AS member FROM Pass WHERE companyId = ?;",companyId,(err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[0]);
+                res.send(result[0]);
+            }
+        }
+    })
+})
+
+app.get("/getCompanyInfoById/:companyId",(req,res)=>{
+    const companyId = req.params.companyId;
+    db.query("SELECT * FROM UserAccountInfo WHERE company_id = ?;",companyId,(err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[0]);
+                res.send(result[0]);
+            }
+        }
+    })
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './loginManagement.css';
-
+import axios from 'axios';
 export default function LoginManagement() {
 
     const [inputId, setInputId] = useState('')
@@ -15,7 +15,20 @@ export default function LoginManagement() {
     }
 
     const clickButton = async (e) => {
+        let adminInfo = {
+            id : inputId,
+            pw : inputPw
+        }
         e.preventDefault();
+        await axios.post('/adminLogin',adminInfo).then((res)=>{
+            if(res.data){
+                if(res.data.resultCode == 'S'){
+                    window.location.href="/managerpage";
+                }else{
+                    console.log(res.data.message);
+                }
+            }
+        }) 
     }
 
     return(
