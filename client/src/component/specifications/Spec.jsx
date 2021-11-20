@@ -76,6 +76,9 @@ export default function Spec() {
     }
   }
 
+  useEffect(() => {
+  }, [isE1True,isE2True])
+
   const E1InfoBox = () => {
     if (!isE1True()) {
       return null
@@ -314,6 +317,7 @@ export default function Spec() {
                   <div className="SelectionItemBottomItems">
                   <div className="newSelectionItemContainer">
                     <div id="fixedBox" className="SelectionItemBottomItem">
+                      <h4>회사안내 ESL</h4>
                       <img src="/assets/icons/esl1.png" alt="esl image" />
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E1">E1<br />기기당<br />2만원</label>
@@ -329,6 +333,7 @@ export default function Spec() {
                     </div>
                     <div className="newSelectionItemContainer">
                     <div id="fixedBox" className="SelectionItemBottomItem">
+                      <h4>제품 안내 ESL</h4>
                       <img src="/assets/icons/esl2.png" alt="esl image" />
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E2">E2<br />기기당<br />3만원</label>
@@ -347,6 +352,7 @@ export default function Spec() {
                     }
                     </div>
                     <div id="fixedBox">
+                    <h4>기타 ESL</h4>
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E3">E3<br />기기당<br />4만원</label>
