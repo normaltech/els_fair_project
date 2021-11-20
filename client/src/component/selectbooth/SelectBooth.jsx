@@ -11,12 +11,15 @@ export default function SelectBooth() {
   const layer_1 = 1;
   const layer_2 = 2;
   const layer_3 = 3;
-  // const clickSection = (e) => {
-  //   if(e.target.id === "section_A"){
-  //     document.getElementById('section_A').style.color = "red";
-  //     // document.querySelector('.selectbooth_layer1').querySelector('.Booth_A').style.borderColor = "red";
-  //   }
-  // }
+  
+  const [sections, setSections] = useState([true,false,false,false,false,false,false,false,false])
+
+  const clickSection = (e) => {
+    if(e.target.id === "section_A"){
+      document.getElementById('section_A').style.color = "red";
+      document.querySelector('.selectbooth_layer1').querySelector('.Booth_A').style.borderColor = "red";
+    }
+  }
 
   //현재 기기 해상도 가로 세로 크기 가져오기
   function getDisplayInfo() {
@@ -44,7 +47,7 @@ export default function SelectBooth() {
 
 
   return (
-    <>
+    <div className="selectionPageConainer">
       <Header />
       <img src="/assets/icons/eservate.png" alt="" className="selectBoothImg" />
 
@@ -110,7 +113,7 @@ export default function SelectBooth() {
                 <div className="boothInfoContainerLeftBox">
                   <div className="boothInfoSearchContainer">
                     <div className="sectionBox">
-                      {/* <div className="section"><button onClick={clickSection} id="section_A">A 구역</button></div> */}
+                      <div id="section_A" className="section" onClick={clickSection}>A 구역</div>
                       <div className="section">A 구역</div>
                       <div className="section">B 구역</div>
                       <div className="section">C 구역</div>
@@ -160,6 +163,6 @@ export default function SelectBooth() {
           )}
         </TransformWrapper>
       </div>
-    </>
+    </div>
   )
 }

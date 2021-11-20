@@ -33,7 +33,7 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
     const boothModalList = [];
     boothList.map(
         (item)=>{
-            boothModalList.push(<BoothModal boothId={item.booth_id} className={item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
+            boothModalList.push(<BoothModal boothId={item.booth_id} className={item.section+" "+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
         }
     )
     return(

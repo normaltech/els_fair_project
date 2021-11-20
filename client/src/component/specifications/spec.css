@@ -52,11 +52,23 @@
 
 .SelectionItemBottomItems{
   width: auto;
-  height: 400px;
+  height: auto;
   display: flex;
   justify-content: center;
 }
 
+#fixedBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  width: 344px;
+  height: 344px;
+  margin: 46px 29px 50px 45px;
+  border: solid 1px var(--greyish-brown);
+  background-color: var(--white);
+  justify-content: space-evenly;
+}
 
 .SelectionItemBottomItem{
   display: flex;
@@ -64,8 +76,8 @@
   align-items: center;
   padding-top: 20px;
   width: 344px;
-  height: 344px;
-  margin: 46px 29px 126px 45px;
+  height: auto;
+  margin: 46px 29px 50px 45px;
   border: solid 1px var(--greyish-brown);
   background-color: var(--white);
   justify-content: space-evenly;
