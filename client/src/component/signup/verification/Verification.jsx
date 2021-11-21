@@ -35,6 +35,7 @@ export default function Verification({setter, label, useremail, certification}) 
       console.log('성공')
       console.log(email.email)
       setwarningText('인증 번호를 입력해주세요.')
+      // 이메일인증 메일보내기
       try {  
         axios.post("/sendEmail", email)
           .then((response) => {

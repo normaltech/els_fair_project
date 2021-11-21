@@ -186,6 +186,20 @@
     font-size: 14px;
     font-weight: 800;
 }
+.boothManagement_detail_th1{
+    width: 160px;
+}
+.boothManagement_detail_th2{
+    width: 100px;
+}
+.boothManagement_detail_th5
+.boothManagement_detail_th6{
+    width: 40px;
+}
+.boothManagement_detail_th3,
+.boothManagement_detail_th4{
+    width: 260px;
+}
 .boothManagement_detail_td{
     color: #131523;
     font-size: 13px;

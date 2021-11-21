@@ -2,37 +2,111 @@ import React, { useState, useEffect } from 'react'
 import './boothManagement.css'
 import axios from 'axios';
 import MBoothPosts from './MBoothPosts';
-import { MBoothNotice } from './MBoothNotice';
+import { MBoothNotice, btn } from './MBoothNotice';
 import MBoothPagenation from './MBoothPagenation';
 
 function BoothManagement() {
 
+    //체인지 함수
+    const [c_booth, setc_booth] = useState("-")
+    const [c_conpany, setc_conpany] = useState("-")
+    const [c_esl, setc_esl] = useState("-")
+
+    const getChange = (c_booth, c_conpany, c_esl) => {
+        setc_booth(c_booth);
+        setc_conpany(c_conpany);
+        setc_esl(c_esl);
+    }
+
+    const getboothinfo = (bname, position, type, floor, width, length, height) => {
+        setNameInfo(bname);
+        setSectionInfo(position);
+        setTypeInfo(type);
+        setFloorInfo(floor);
+        // setWidthInfo(width);
+        // setLengthInfo(length);
+        // setHeightInfo(height);
+    }
+
+    const getvolume = (type) => {
+        if(type === 'a'){setWidthInfo(3000); setLengthInfo(3000); setHeightInfo(3000);}
+        else if(type === 'b1'){setWidthInfo(6000); setLengthInfo(3000); setHeightInfo(3000);}
+        else if(type === 'b2'){setWidthInfo(3000); setLengthInfo(6000); setHeightInfo(6000);}
+        else if(type === 'c'){setWidthInfo(6000); setLengthInfo(6000); setHeightInfo(6000);}
+    }
+
+    useEffect(() => {
+        if (c_booth !== "-") {
+            try {
+                axios.post("/getboothInfo", {c_booth})
+                    .then((response) => {
+                        getboothinfo(
+                            response.data[0].bname,
+                            response.data[0].section,
+                            response.data[0].type,
+                            response.data[0].layer,
+                        )
+                        getvolume(response.data[0].type);
+                    });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }, [c_booth])
+
+    const getreservation = (cid, cname, cphone, manager, email, personnel) => {
+        setCompanyNameInfo(cname);
+        setBussinessNumberInfo(cid);
+        setManagerNumberInfo(cphone);
+        setManagerNameInfo(manager);
+        setManagerEmailInfo(email);
+        setPeopleNumInfo(personnel);
+    }
+
+    useEffect(() => {
+        if (c_conpany !== "-") {
+            if(c_conpany == null){
+                getreservation("-","-","-","-","-","-");
+            } else {
+                try {
+                    axios.post("/getmanagerInfo", {c_conpany})
+                        .then((response) => {
+                            getreservation(
+                                response.data[0].company_id,
+                                response.data[0].company_name,
+                                response.data[0].company_phone_num,
+                                response.data[0].manager,
+                                response.data[0].email,
+                                response.data[0].personnel,
+                            )
+                        });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    }, [c_conpany])
+
     // 부스정보 변수
-    const [nameInfo, setNameInfo] = useState('A-a102')
-    const [sectionInfo, setSectionInfo] = useState('A구역')
-    const [typeInfo, setTypeInfo] = useState('a타입')
-    const [floorInfo, setFloorInfo] = useState('1층')
-    const [widthInfo, setWidthInfo] = useState('6000')
-    const [lengthInfo, setLengthInfo] = useState('6000')
-    const [heightInfo, setHeightInfo] = useState('3000')
+    const [nameInfo, setNameInfo] = useState('-')
+    const [sectionInfo, setSectionInfo] = useState('-')
+    const [typeInfo, setTypeInfo] = useState('-')
+    const [floorInfo, setFloorInfo] = useState('-')
+    const [widthInfo, setWidthInfo] = useState('-')
+    const [lengthInfo, setLengthInfo] = useState('-')
+    const [heightInfo, setHeightInfo] = useState('-')
     // 예약자정보 변수
-    const [companyNameInfo, setCompanyNameInfo] = useState('CampingGas')
-    const [bussinessNumberInfo, setBussinessNumberInfo] = useState('**********')
-    const [managerNumberInfo, setManagerNumberInfo] = useState('010-1111-1111')
-    const [managerNameInfo, setManagerNameInfo] = useState('김담당')
-    const [managerEmailInfo, setManagerEmailInfo] = useState('damdang@naver.com')
-    const [peopleNumInfo, setPeopleNumInfo] = useState('4명')
+    const [companyNameInfo, setCompanyNameInfo] = useState('-')
+    const [bussinessNumberInfo, setBussinessNumberInfo] = useState('-')
+    const [managerNumberInfo, setManagerNumberInfo] = useState('-')
+    const [managerNameInfo, setManagerNameInfo] = useState('-')
+    const [managerEmailInfo, setManagerEmailInfo] = useState('-')
+    const [peopleNumInfo, setPeopleNumInfo] = useState('-')
     // ESL정보 변수
     const [eslInfoNum, setEslInfoNum] = useState('1')
     const [eslInfoType, setEslInfoType] = useState('E1')
     const [eslInfoId, setEslInfoId] = useState('E1-50022SEB')
     const [eslInfoState, setEslInfoState] = useState('대여중')
-    // 하단 table 변수
-    // const [detailBoothName, setDetailBoothName] = useState('A-101')
-    // const [detailBoothType, setDetailBoothType] = useState('a')
-    // const [detailCompany, setDetailCompany] = useState('CampinGas')
-    // const [detailEsl, setDetailEsl] = useState('6')
-    // const [detailPrice, setDetailPrice] = useState('자세히')
     
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);
@@ -49,7 +123,7 @@ function BoothManagement() {
     useEffect(()=>{
         const fetchPosts = async () =>{
           setLoading(true);
-          const res = await axios.get(''); // 데이터베이스 가져오기
+          const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
           setPosts(res.data);
           setLoading(false);
         }
@@ -206,14 +280,14 @@ function BoothManagement() {
                     <div className="boothManagement_detail_table_wrap">
                         <table className="boothManagement_detail_table">
                             <tr className="boothManagement_detail_tr">
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">부스이름</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">부스형태</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">회사</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">ESL</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">가격</th>
-                                <th className="boothManagement_detail_padding boothManagement_detail_th">초기화</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th1">부스이름</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th2">부스형태</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th3">회사</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th4">ESL</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th5">가격</th>
+                                <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th6">초기화</th>
                             </tr>
-                            <MBoothPosts posts={currentPosts} loading={loading}/>
+                            <MBoothPosts posts={currentPosts} loading={loading} getChange={getChange} />
                         </table>
                     </div>
                     <MBoothPagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
