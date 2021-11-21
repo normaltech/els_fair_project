@@ -89,6 +89,7 @@
       letter-spacing: normal;
       text-align: center;
       color: #000;
+      margin-left: 0;
   }
   
   .signInButton{
@@ -98,6 +99,7 @@
       background-color: #304653;
       border-radius: 10px;
       border: none;
+      text-align: center;
   }
   
   .signInButton:hover{
@@ -150,8 +152,14 @@
         /* overflow-y: hidden;   */
       }
 
+      .loginContent{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
       .loginRightContent{
-          margin: 200px auto 158px auto;
+          margin: 0;
           width: 400px;
           height: 370px;
       }
@@ -199,7 +207,7 @@
   
   @media screen and (max-width: 480px){
       .loginRightContent{
-          margin: 158px auto 158px auto;
+          /* margin: 158px auto 158px auto; */
           width: 300px;
           height: 350px;
       }

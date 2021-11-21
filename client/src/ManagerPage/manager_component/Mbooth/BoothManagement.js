@@ -107,6 +107,12 @@ function BoothManagement() {
     const [eslInfoType, setEslInfoType] = useState('E1')
     const [eslInfoId, setEslInfoId] = useState('E1-50022SEB')
     const [eslInfoState, setEslInfoState] = useState('대여중')
+    // 하단 table 변수
+    const [detailBoothName, setDetailBoothName] = useState('A-101')
+    const [detailBoothType, setDetailBoothType] = useState('a')
+    const [detailCompany, setDetailCompany] = useState('CampinGas')
+    const [detailEsl, setDetailEsl] = useState('6')
+    const [detailPrice, setDetailPrice] = useState('자세히')
     
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);
@@ -130,6 +136,48 @@ function BoothManagement() {
     
         fetchPosts();
       }, [])
+
+    const onClickBoothInfo = () =>{
+        const addName = detailBoothName.slice(0,2) + detailBoothType + detailBoothName.slice(2,6);
+        setNameInfo(addName);
+    }  
+    useEffect(()=>{
+        const sliceType = detailBoothName.slice(0,1) + '구역';
+        setSectionInfo(sliceType);
+        setTypeInfo(detailBoothType + '타입');
+
+        if(detailBoothName.slice(2,3) == 1){
+            setFloorInfo(1 + '층');
+        }else if(detailBoothName.slice(2,3) == 2){
+            setFloorInfo(2 + '층');
+        }else{
+            setFloorInfo(3 + '층');
+        }
+
+        if(detailBoothType.slice(0,1) === 'a'){
+            setWidthInfo(3000);
+            setLengthInfo(3000);
+            setHeightInfo(3000);
+        }else if(detailBoothType.slice(0,1) === 'b'){
+            setWidthInfo(6000);
+            setLengthInfo(3000);
+            setHeightInfo(3000);
+        }else{
+            setWidthInfo(6000);
+            setLengthInfo(6000);
+            setHeightInfo(3000);
+        }
+    }, [nameInfo])
+
+    useEffect(()=>{
+        setNameInfo('');
+        setSectionInfo('');
+        setTypeInfo('');
+        setFloorInfo('');
+        setWidthInfo('');
+        setLengthInfo('');
+        setHeightInfo('');
+    }, [])
 
     return (
         <>

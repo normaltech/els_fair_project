@@ -62,11 +62,14 @@ export default function Verification({setter, label, useremail, certification}) 
   return (
     <div className="verificationNum">
       <label className="inputTagLabel" >{label}</label><br />
-      <input onChange={(e) => { setter(e.target.value); setinputnumber(e.target.value) }} className="verificationNumInput" type="text" />
+      {/* <input onChange={(e) => { setter(e.target.value); setinputnumber(e.target.value) }} className="verificationNumInput" type="text" /> */}
 
-      <div>
-        <button className="verificationNumButton" onClick={call}>인증번호 받기</button>
-        <button className="verificationNumButton" onClick={checkbtn}>확인</button>
+      <div className="vertificationContentWrap">
+        <input onChange={(e) => { setter(e.target.value); setinputnumber(e.target.value) }} className="verificationNumInput" type="text" />
+        <div className="vertificationBtnWrap">
+          <button className="verificationNumButton" onClick={call}>인증번호 받기</button>
+          <button className="verificationNumButton" onClick={checkbtn}>확인</button>
+        </div>
       </div>
       <div className="warningText">{warningText}</div>
     </div>

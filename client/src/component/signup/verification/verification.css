@@ -10,10 +10,18 @@
   width: 600px;
 }
 
+.vertificationContentWrap{
+  display: flex;
+}
+
+.vertificationBtnWrap{
+  display: flex;
+}
+
 .verificationNumInput {
-  width: 430px;
+  width: 250px;
   height: 50px;
-  margin: 0 1.8% 0 0;
+  margin: 0;
   border-radius: 5px;
   border: solid 1px #0d47a1;
   background-color: var(--white);
@@ -39,9 +47,32 @@
   text-align: center;
   color: var(--white);
   cursor: pointer;
+  margin-left: 1%;
 }
 .verificationNumButton:hover{
   background-color: #546c7a;
+}
+
+@media screen and (max-width: 550px){
+  .verificationNum{
+    width: 288px;
+  }
+  .vertificationContentWrap{
+    flex-direction: column;
+    width: 288px;
+  }
+  .vertificationBtnWrap{
+    /* justify-content: space-between; */
+  }
+  .verificationNumButton{
+    width: 168.6px;
+    height: 53.7px;
+    /* margin-left: 2%; */
+    margin-top: 1%;
+  }
+  .verificationNumInput {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 375px){

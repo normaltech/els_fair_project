@@ -1,15 +1,64 @@
-import React from 'react';
+import * as React from 'react';
 import '../mainfirst/mainfirst.css';
 import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+
+const style ={
+    display: 'block',
+    width: 600,
+    height: 550,
+    position: 'absolute',
+    top: '48%',
+    left: '48%',
+    margin: '-250px 0 0 -250px',
+    backgroundColor: '#fff',
+    borderRadius: '15px',
+    padding: '20px 30px',
+    zIndex: 2,
+}
+
+function NoticeModal({title}) {
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+    return(
+        <React.Fragment>
+            <Button className="n3 mainpage_n3" onClick={handleOpen}>{title}</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+            <Box sx={style} className="mainpage_box">
+                <div className="mainpage_noticeModal_word"><span className="mainpage_noticeModal_word_span">공지사항 작성</span></div>
+                <div className="mainpage_noticeModal_selectTitle mainpage_noticeModal_padding">전시회 선택</div>
+                <div className="mainpage_noticeModal_padding">
+                    <select className="mainpage_noticeModal_selectInput" name="" id="">
+                        <option value="">에스씨엠 페어 2021</option>
+                        <option value="">에스씨엠 페어 2022</option>
+                        <option value="">에스씨엠 페어 2023</option>
+                    </select>
+                </div>
+                <div className="mainpage_noticeModal_title mainpage_noticeModal_padding">제목</div>
+                <div className="mainpage_noticeModal_padding"><input type="text" className="mainpage_noticeModal_titleInput" placeholder="제목을 입력하세요." /></div>
+                <div className="mainpage_noticeModal_content mainpage_noticeModal_padding">내용</div>
+                <div className="mainpage_noticeModal_padding"><textarea className="mainpage_noticeModal_textarea" cols="62" rows="10" placeholder="내용을 입력하세요."></textarea></div>
+            </Box>
+            </Modal>
+        </React.Fragment>
+    );
+}
 
 export const Notice = ({num, exhibition, title, date}) => (
-
     <div className="noticeDetail">
         <div className="n1">{num}</div>
-        <div className="n2"><Link to="#">{exhibition}</Link></div>
-        <div className="n3"><Link to="#">{title}</Link></div>
+        <div className="n2">{exhibition}</div>
+        <NoticeModal title={title} />
         <div className="n4">{date}</div>
-        {/* <div className="n5"><input type="checkbox" /></div> */}
     </div>
-
 );

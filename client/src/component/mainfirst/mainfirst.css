@@ -70,6 +70,10 @@
     justify-content: center;
 }
 
+.noticeNav .n3{
+    padding-left: 35px;
+}
+
 .n1{
     width: 60px;
 }
@@ -91,6 +95,10 @@
     background-color: #f5f6fa;
     color: #131523;
     font-weight: bold;
+}
+
+.mainpage_n3{
+    color: #131523 !important;
 }
 
 .noticeDetail{
@@ -145,7 +153,7 @@
     background-color: #304653;
     border: 0px;
     outline: none;
-    width: 95px;
+    width: 100px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -164,7 +172,7 @@
     font-stretch: normal;
     font-style: normal;
     color: var( --white);
-    padding-left: 9px;
+    margin-left: 14px;
 }
 
 .arrowImg{
@@ -261,4 +269,49 @@
         margin-left: 0px;
         text-align: center;
     }
+}
+
+/* 공지사항 모달창 */
+.mainpage_noticeModal_word{
+    text-align: center;
+}
+.mainpage_noticeModal_word_span{
+    margin-left: 0;
+}
+.mainpage_noticeModal_word_span,
+.mainpage_noticeModal_selectTitle,
+.mainpage_noticeModal_title,
+.mainpage_noticeModal_content{
+    font-size: 18px;
+    font-weight: 600;
+    color: #131523;
+}
+.mainpage_noticeModal_selectInput{
+    width: 200px;
+    text-align: center;
+    border-radius: 7px;
+    border: solid 1px #b4b4b4;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+.mainpage_noticeModal_titleInput{
+    width: 200px;
+    border-radius: 7px;
+    border: solid 1px #b4b4b4;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 15px;
+    outline: none;
+}
+.mainpage_noticeModal_textarea{
+    border-radius: 7px;
+    border: solid 1px #b4b4b4;
+    font-size: 15px;
+    outline: none;
+    padding: 5px 10px;
+
+}
+.mainpage_noticeModal_padding{
+    padding: 6px 0;
 }
