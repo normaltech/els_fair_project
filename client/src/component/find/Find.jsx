@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './find.css';
+import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ export default function Find(){
     }
     return(
         <>
+            <Header />
             <div className="find_wrap">
                 <div className="find_contentWrap">
                     <img className="find_logo" src="/assets/eslogo.png" alt="로고" />
