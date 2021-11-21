@@ -94,7 +94,7 @@
 }
 /* 사용자 자세히 모달창 */
 .userManagement_userDetailModal_wrap{
-    display: none;
+    /* display: none; */
     width: 800px;
     height: 500px;
     position: absolute;
@@ -713,7 +713,7 @@
 
 /* 사용자등록 모달창 */
 .userManagement_userRegister_wrap{
-    display: none;
+    /* display: none; */
     width: 600px;
     height: 700px;
     position: absolute;
