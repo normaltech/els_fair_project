@@ -83,7 +83,7 @@ export default function SelectBooth() {
 
 
   return (
-    <>
+    <div className="selectionPageConainer">
       <Header />
       <img src="/assets/icons/eservate.png" alt="" className="selectBoothImg" />
 
@@ -135,7 +135,8 @@ export default function SelectBooth() {
           <div className="boothInfoContainerTitleText">부스 배치도</div>
         </div>
         <TransformWrapper
-          initialScale={1}
+          initialScale={1} 
+          disabled={true}
         >
           {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
             <React.Fragment>
@@ -148,16 +149,15 @@ export default function SelectBooth() {
                 <div className="boothInfoContainerLeftBox">
                   <div className="boothInfoSearchContainer">
                     <div className="sectionBox">
-                      {/* <div className="section"><button onClick={clickSection} id="section_A">A 구역</button></div> */}
-                      <button className="section" id ="A" onClick={(e)=>sectionHandler(e)}>A 구역</button>
-                      <button className="section" id ="B" onClick={(e)=>sectionHandler(e)}>B 구역</button>
-                      <button className="section" id ="C" onClick={(e)=>sectionHandler(e)}>C 구역</button>
-                      <button className="section" id ="D" onClick={(e)=>sectionHandler(e)}>D 구역</button>
-                      <button className="section" id ="E" onClick={(e)=>sectionHandler(e)}>E 구역</button>
-                      <button className="section" id ="F" onClick={(e)=>sectionHandler(e)}>F 구역</button>
-                      <button className="section" id ="G" onClick={(e)=>sectionHandler(e)}>G 구역</button>
-                      <button className="section" id ="H" onClick={(e)=>sectionHandler(e)}>H 구역</button>
-                      <button className="section" id ="I" onClick={(e)=>sectionHandler(e)}>I 구역</button>
+                      <div id="section_A" className="section" onClick={clickSection}>A 구역</div>
+                      <div id="section_B" className="section" onClick={clickSection}>B 구역</div>
+                      <div id="section_C" className="section" onClick={clickSection}>C 구역</div>
+                      <div id="section_D" className="section" onClick={clickSection}>D 구역</div>
+                      <div id="section_E" className="section" onClick={clickSection}>E 구역</div>
+                      <div id="section_F" className="section" onClick={clickSection}>F 구역</div>
+                      <div id="section_G" className="section" onClick={clickSection}>G 구역</div>
+                      <div id="section_H" className="section" onClick={clickSection}>H 구역</div>
+                      <div id="section_I" className="section" onClick={clickSection}>I 구역</div>
                     </div>
                       {/* <div>{filteredData.map((value,index)=>{
                         return(<div key={value.id}>{value.boothname}</div>)
@@ -201,6 +201,6 @@ export default function SelectBooth() {
           )}
         </TransformWrapper>
       </div>
-    </>
+    </div>
   )
 }

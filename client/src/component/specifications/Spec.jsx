@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import './spec.css'
@@ -8,26 +8,26 @@ import { useLocation } from 'react-router';
 
 
 export default function Spec() {
-  
+
   const specs = useLocation().state;
   console.log(specs);
 
   const [totalPrice, setTotalPrice] = useState(0);
 
-  const [eslNum, setEslNum] = useState([0,0,0]);
+  const [eslNum, setEslNum] = useState([0, 0, 0]);
   var boothPrice = 0;
-  if(specs.type == 'a'){
+  if (specs.type == 'a') {
     boothPrice = 100;
-  }else if(specs.type == 'b'){
+  } else if (specs.type == 'b') {
     boothPrice = 150;
-  }else if(specs.type == 'c'){
+  } else if (specs.type == 'c') {
     boothPrice = 200;
-  }else{
+  } else {
     boothPrice = 0;
   }
 
   const [booth, setBooth] = useState(boothPrice);
-  
+
   const handleEslNum = (e) => {
     const e1 = document.getElementById("e1Select");
     const e2 = document.getElementById("e2Select");
@@ -35,24 +35,92 @@ export default function Spec() {
     const e1Num = Number(e1.options[e1.selectedIndex].value);
     const e2Num = Number(e2.options[e2.selectedIndex].value);
     const e3Num = Number(e3.options[e3.selectedIndex].value);
-    setEslNum([e1Num,e2Num,e3Num]);
+    setEslNum([e1Num, e2Num, e3Num]);
     // setEslPrice(eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4);
   }
 
-  const[atype,setAType] = useState(specs.type == 'a'?true:false);
-  const[btype,setBType] = useState(specs.type == 'b'?true:false);
-  const[ctype,setCType] = useState(specs.type == 'c'?true:false);
+  const [atype, setAType] = useState(specs.type == 'a' ? true : false);
+  const [btype, setBType] = useState(specs.type == 'b' ? true : false);
+  const [ctype, setCType] = useState(specs.type == 'c' ? true : false);
 
   const handleBoothPrice = (e) => {
     const boothType = e.target.value;
 
     if (boothType == 1) {
       setBooth(100)
-    } else if (boothType == 2){
+    } else if (boothType == 2) {
       setBooth(150);
     }
-    else if (boothType == 3){
+    else if (boothType == 3) {
       setBooth(200);
+    }
+  }
+
+  const isE1True = function () {
+    try {
+      const e1 = document.getElementById("e1Select");
+      const e1Num = Number(e1.options[e1.selectedIndex].value);
+      return (e1Num > 0 ? true : false);
+    } 
+    catch (error) {
+      return false;
+    }
+  }
+  const isE2True = function () {
+    try {
+      const e2 = document.getElementById("e2Select");
+      const e2Num = Number(e2.options[e2.selectedIndex].value);
+      return (e2Num > 0 ? true : false);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  useEffect(() => {
+  }, [isE1True,isE2True])
+
+  const E1InfoBox = () => {
+    if (!isE1True()) {
+      return null
+    }
+    return (
+      <div className="SelectionItemBottomItem">
+        <div className="e1DetailInfo">
+          <label htmlFor="">회사 소개 사이트 주소</label><br />
+          <input type="text" name="companyName" />
+        </div>
+      </div>
+    )
+  }
+
+  const E2InfoBox = function () {
+    if (!isE2True()) {
+      return null
+    }
+    const result = []
+    try {
+      const e2 = document.getElementById("e2Select");
+      const e2Num = Number(e2.options[e2.selectedIndex].value);
+      for(let i = 0; i < e2Num; i++){
+        result.push(
+          <div>
+          <h5>품목{i+1}</h5>
+          <div className="e2DetailInfo">
+            <label htmlFor="product">제품명</label><br />
+            <input type="text" name="product" /><br/>
+            <label htmlFor="value">가격</label><br />
+            <input type="text" name="value" />
+          </div></div>)
+      }
+      return (
+        <div className="SelectionItemBottomItem">
+          {result.map(item => (
+            item
+          ))}
+        </div>
+      );
+    } catch (error) {
+      return null
     }
   }
 
@@ -75,15 +143,15 @@ export default function Spec() {
     const passNameRow = document.getElementsByClassName("passNameRow");
     const passRankRow = document.getElementsByClassName("passRankRow");
     const passTelRow = document.getElementsByClassName("passTelRow");
-    
+
     const passTotalArray = [];
-    for(let i=0; i<6; i++){
-      if(passNameRow[i].value != ''){
+    for (let i = 0; i < 6; i++) {
+      if (passNameRow[i].value != '') {
         passTotalArray.push({
-          'companyId' : companyId,
-          'name' : passNameRow[i].value,
-          'position' : passRankRow[i].value,
-          'number' :passTelRow[i].value
+          'companyId': companyId,
+          'name': passNameRow[i].value,
+          'position': passRankRow[i].value,
+          'number': passTelRow[i].value
         })
       }
     }
@@ -105,68 +173,68 @@ export default function Spec() {
       companyId: companyId,
       passArray: passTotalArray,
       eslNum: eslNum,
-      totalPrice: eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth
+      totalPrice: eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth
     };
 
     console.log(selectionInfo);
-    const reserveResultMsg ="";
-    try{
-      axios.post("/reservateBooth",selectionInfo)
-      .then((res) => {
-      // console.log(res);
-      if(res.data.resultCd == 'S'){
-        reserveResultMsg = res.data.msg;
-      }else if(res.data.resultCd == 'E'){
-        reserveResultMsg = res.data.msg;
-      }
-      console.log(reserveResultMsg)
-    });
-    }catch(error){
+    const reserveResultMsg = "";
+    try {
+      axios.post("/reservateBooth", selectionInfo)
+        .then((res) => {
+          // console.log(res);
+          if (res.data.resultCd == 'S') {
+            reserveResultMsg = res.data.msg;
+          } else if (res.data.resultCd == 'E') {
+            reserveResultMsg = res.data.msg;
+          }
+          console.log(reserveResultMsg)
+        });
+    } catch (error) {
       console.log(error);
     }
   }
   //사용자 기본 정보 값 가져와서 초기화 해놓기
-  const [companyName,setCompanyName] = useState();
-  const [companyId,setCompanyId] = useState();
-  const [managerName,setManagerName] = useState();
-  const [companyNum,setCompanyNum] = useState();
-  const [managerNum,setManagerNum] = useState();
-  const [managerEmail,setManagerEmail] = useState();
+  const [companyName, setCompanyName] = useState();
+  const [companyId, setCompanyId] = useState();
+  const [managerName, setManagerName] = useState();
+  const [companyNum, setCompanyNum] = useState();
+  const [managerNum, setManagerNum] = useState();
+  const [managerEmail, setManagerEmail] = useState();
 
   useEffect(() => { //session에서 받아온 유저정보
     try {
       axios.get("/getUserInfoFromSession")
-      .then((response) => {
-        if(response.data != null){
-          setCompanyName(response.data.companyName);
-          setCompanyId(response.data.companyId);
-          setManagerName(response.data.managerName);
-          setCompanyNum(response.data.companyNum);
-          setManagerNum(response.data.managerNum);
-          setManagerEmail(response.data.managerEmail);
-        }
-      });
+        .then((response) => {
+          if (response.data != null) {
+            setCompanyName(response.data.companyName);
+            setCompanyId(response.data.companyId);
+            setManagerName(response.data.managerName);
+            setCompanyNum(response.data.companyNum);
+            setManagerNum(response.data.managerNum);
+            setManagerEmail(response.data.managerEmail);
+          }
+        });
     } catch (error) {
       console.log(error);
     }
-}, []);
+  }, []);
 
 
 
-  
+
 
 
   // data.map((item)=>{
   //   setManagerEmail(item.email)
   //   console.log(item.email)
   // });
-  
-//  setCompanyName(userData.company_name)
-//  setCompanyId(userData.company_id)
-//  setManagerName(userData.manager)
-//  setCompanyNum(userData.company_phone_num)
-//  setManagerNum(userData.manager_phone_num)
-//  setManagerEmail(userData.email)
+
+  //  setCompanyName(userData.company_name)
+  //  setCompanyId(userData.company_id)
+  //  setManagerName(userData.manager)
+  //  setCompanyNum(userData.company_phone_num)
+  //  setManagerNum(userData.manager_phone_num)
+  //  setManagerEmail(userData.email)
   return (
     <div className="reservationContainer">
       <Header />
@@ -182,30 +250,30 @@ export default function Spec() {
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="defaultInfoTable">
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_companyName" defaultValue={companyName} />
-                      </div>
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
-                        <input type="number" className="specInput" id="defaultInfoTable_companyId" defaultValue={companyId} />
-                      </div>
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_managerName" defaultValue={managerName}/>
-                      </div>
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_companyNum" defaultValue={companyNum}/>
-                      </div>
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
-                        <input type="text" className="specInput" id="defaultInfoTable_managerNum" defaultValue={managerNum}/>
-                      </div>
-                      <div className="inputTag">
-                        <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
-                        <input type="email" className="specInput" id="defaultInfoTable_managerEmail" defaultValue={managerEmail}/>
-                      </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="companyName">회사이름</label><br />
+                      <input type="text" className="specInput" id="defaultInfoTable_companyName" defaultValue={companyName} />
+                    </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="companyId">사업자 등록번호</label><br />
+                      <input type="number" className="specInput" id="defaultInfoTable_companyId" defaultValue={companyId} />
+                    </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="managerName">담당자 이름</label><br />
+                      <input type="text" className="specInput" id="defaultInfoTable_managerName" defaultValue={managerName} />
+                    </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="companyNum">회사 전화번호</label><br />
+                      <input type="text" className="specInput" id="defaultInfoTable_companyNum" defaultValue={companyNum} />
+                    </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="managerNum">담당자 전화번호</label><br />
+                      <input type="text" className="specInput" id="defaultInfoTable_managerNum" defaultValue={managerNum} />
+                    </div>
+                    <div className="inputTag">
+                      <label className="InfoTableLabel" htmlFor="managerEmail">담당자 이메일</label><br />
+                      <input type="email" className="specInput" id="defaultInfoTable_managerEmail" defaultValue={managerEmail} />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -219,22 +287,22 @@ export default function Spec() {
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/622.png" alt="booth1" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B1">A타입<br/>100만원</label>
-                        <input id="typea" type="radio" name="boothRadio" checked={atype} value="a" onChange={handleBoothPrice}/>
+                        <label htmlFor="B1">A타입<br />100만원</label>
+                        <input id="typea" type="radio" name="boothRadio" checked={atype} value="a" onChange={handleBoothPrice} />
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/647.png" alt="booth2" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B2">B타입<br/>150만원</label>
-                        <input id="typeb" type="radio" name="boothRadio" checked={btype} value="b" onChange={handleBoothPrice}/>
+                        <label htmlFor="B2">B타입<br />150만원</label>
+                        <input id="typeb" type="radio" name="boothRadio" checked={btype} value="b" onChange={handleBoothPrice} />
                       </div>
                     </div>
                     <div className="SelectionItemBottomItem">
                       <img src="/assets/icons/649.png" alt="booth3" />
                       <div className="selectionConatiner">
-                        <label htmlFor="B3">C타입<br/>200만원</label>
-                        <input id="typec" type="radio" name="boothRadio" checked={ctype} value="c" onChange={handleBoothPrice}/>
+                        <label htmlFor="B3">C타입<br />200만원</label>
+                        <input id="typec" type="radio" name="boothRadio" checked={ctype} value="c" onChange={handleBoothPrice} />
                       </div>
                     </div>
                   </div>
@@ -247,26 +315,30 @@ export default function Spec() {
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
+                  <div className="newSelectionItemContainer">
+                    <div id="fixedBox" className="SelectionItemBottomItem">
+                      <h4>회사안내 ESL</h4>
+                      <img src="/assets/icons/esl1.png" alt="esl image" />
                       <div className="selectionConatiner">
-                        <label htmlFor="ESL_E1">E1<br/>기기당<br/>2만원</label>
+                        <label htmlFor="ESL_E1">E1<br />기기당<br />2만원</label>
                         <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
                           <option value={0}>0</option>
                           <option value={1}>1</option>
-                          <option value={2}>2</option>
-                          <option value={3}>3</option>
-                          <option value={4}>4</option>
-                          <option value={5}>5</option>
-                        </select>
+                        </select>  
                       </div>
                     </div>
-                    <div className="SelectionItemBottomItem">
-                      <img src="/assets/icons/esl.png" alt="esl image" />
+                    {
+                      isE1True() && <E1InfoBox/>
+                    }
+                    </div>
+                    <div className="newSelectionItemContainer">
+                    <div id="fixedBox" className="SelectionItemBottomItem">
+                      <h4>제품 안내 ESL</h4>
+                      <img src="/assets/icons/esl2.png" alt="esl image" />
                       <div className="selectionConatiner">
-                        <label htmlFor="ESL_E2">E2<br/>기기당<br/>3만원</label>
+                        <label htmlFor="ESL_E2">E2<br />기기당<br />3만원</label>
                         <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option value="0">0</option>
+                          <option defaultValue value="0">0</option>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -275,10 +347,15 @@ export default function Spec() {
                         </select>
                       </div>
                     </div>
-                    <div className="SelectionItemBottomItem">
+                    {
+                      isE2True() && <E2InfoBox/>
+                    }
+                    </div>
+                    <div id="fixedBox">
+                    <h4>기타 ESL</h4>
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
-                        <label htmlFor="ESL_E3">E3<br/>기기당<br/>4만원</label>
+                        <label htmlFor="ESL_E3">E3<br />기기당<br />4만원</label>
                         <select id="e3Select" name="ESL_E3" className="eslSelectionBOX" onChange={handleEslNum}>
                           <option value="0">0</option>
                           <option value="1">1</option>
@@ -359,7 +436,7 @@ export default function Spec() {
                 <div className="DescBottomItem">
                   <div className="DescBottomItemTitle">ESL</div>
                   <div className="DescBottomItemDetail">
-                    {eslNum[0]+ eslNum[1]+ eslNum[2] == 0 ? 0 : eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4}만원
+                    {eslNum[0] + eslNum[1] + eslNum[2] == 0 ? 0 : eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4}만원
                   </div>
                 </div>
                 <div className="eslClasses">
@@ -380,7 +457,7 @@ export default function Spec() {
             </div>
             <div className="reservationDashboardCost">
               <div className="reservationDashboardCostTitle">총 금액</div>
-              <div className="reservationDashboardCostNum">{eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth == 0 ? 0 : eslNum[0]*2 + eslNum[1]*3 + eslNum[2]*4 + booth}만원</div>
+              <div className="reservationDashboardCostNum">{eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth == 0 ? 0 : eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth}만원</div>
             </div>
             <div className="reservationDashboardButton" onClick={handleSubmit}>결제</div>
           </div>
