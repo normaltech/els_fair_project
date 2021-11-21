@@ -46,7 +46,9 @@ export default function Header() {
     if(person != null){
       return (
         <>
-          <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
+          <Link to="/userinfo">
+            <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
+          </Link>
           <Link to="/" className="headerLogout" style={{ textDecoration: "none" }}>
             <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
           </Link>
