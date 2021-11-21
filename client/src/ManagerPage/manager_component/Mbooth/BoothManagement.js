@@ -18,35 +18,83 @@ function BoothManagement() {
         setc_esl(c_esl);
     }
 
+    const getboothinfo = (bname, position, type, floor, width, length, height) => {
+        setNameInfo(bname);
+        setSectionInfo(position);
+        setTypeInfo(type);
+        setFloorInfo(floor);
+        // setWidthInfo(width);
+        // setLengthInfo(length);
+        // setHeightInfo(height);
+    }
+
+    const getvolume = (type) => {
+        if(type === 'a'){setWidthInfo(3000); setLengthInfo(3000); setHeightInfo(3000);}
+        else if(type === 'b1'){setWidthInfo(6000); setLengthInfo(3000); setHeightInfo(3000);}
+        else if(type === 'b2'){setWidthInfo(3000); setLengthInfo(6000); setHeightInfo(6000);}
+        else if(type === 'c'){setWidthInfo(6000); setLengthInfo(6000); setHeightInfo(6000);}
+    }
+
     useEffect(() => {
-        if (c_conpany != "-") {
+        if (c_booth !== "-") {
             try {
-                axios.post("/getmanagerInfo", c_conpany)
+                axios.post("/getboothInfo", {c_booth})
                     .then((response) => {
-                        // setCompanyNameInfo(response.data[0].company_name)
-                        // setBussinessNumberInfo(response.data[0].company_id)
-                        // setManagerNumberInfo(response.data[0].company_phone_num)
-                        // setManagerNameInfo(response.data[0].manager)
-                        // setManagerEmailInfo(response.data[0].email)
-                        // setPeopleNumInfo(response.data[0].personnel)
-                        // console.log(response.data[0])
-                        console.log("안녕")
+                        getboothinfo(
+                            response.data[0].bname,
+                            response.data[0].section,
+                            response.data[0].type,
+                            response.data[0].layer,
+                        )
+                        getvolume(response.data[0].type);
                     });
             } catch (error) {
                 console.log(error);
             }
         }
-        console.log(c_conpany)
-    }, [getChange])
+    }, [c_booth])
+
+    const getreservation = (cid, cname, cphone, manager, email, personnel) => {
+        setCompanyNameInfo(cname);
+        setBussinessNumberInfo(cid);
+        setManagerNumberInfo(cphone);
+        setManagerNameInfo(manager);
+        setManagerEmailInfo(email);
+        setPeopleNumInfo(personnel);
+    }
+
+    useEffect(() => {
+        if (c_conpany !== "-") {
+            if(c_conpany == null){
+                getreservation("-","-","-","-","-","-");
+            } else {
+                try {
+                    axios.post("/getmanagerInfo", {c_conpany})
+                        .then((response) => {
+                            getreservation(
+                                response.data[0].company_id,
+                                response.data[0].company_name,
+                                response.data[0].company_phone_num,
+                                response.data[0].manager,
+                                response.data[0].email,
+                                response.data[0].personnel,
+                            )
+                        });
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+        }
+    }, [c_conpany])
 
     // 부스정보 변수
-    const [nameInfo, setNameInfo] = useState('A-a102')
-    const [sectionInfo, setSectionInfo] = useState('A구역')
-    const [typeInfo, setTypeInfo] = useState('a타입')
-    const [floorInfo, setFloorInfo] = useState('1층')
-    const [widthInfo, setWidthInfo] = useState('6000')
-    const [lengthInfo, setLengthInfo] = useState('6000')
-    const [heightInfo, setHeightInfo] = useState('3000')
+    const [nameInfo, setNameInfo] = useState('-')
+    const [sectionInfo, setSectionInfo] = useState('-')
+    const [typeInfo, setTypeInfo] = useState('-')
+    const [floorInfo, setFloorInfo] = useState('-')
+    const [widthInfo, setWidthInfo] = useState('-')
+    const [lengthInfo, setLengthInfo] = useState('-')
+    const [heightInfo, setHeightInfo] = useState('-')
     // 예약자정보 변수
     const [companyNameInfo, setCompanyNameInfo] = useState('-')
     const [bussinessNumberInfo, setBussinessNumberInfo] = useState('-')
@@ -59,12 +107,6 @@ function BoothManagement() {
     const [eslInfoType, setEslInfoType] = useState('E1')
     const [eslInfoId, setEslInfoId] = useState('E1-50022SEB')
     const [eslInfoState, setEslInfoState] = useState('대여중')
-    // 하단 table 변수
-    // const [detailBoothName, setDetailBoothName] = useState('A-101')
-    // const [detailBoothType, setDetailBoothType] = useState('a')
-    // const [detailCompany, setDetailCompany] = useState('CampinGas')
-    // const [detailEsl, setDetailEsl] = useState('6')
-    // const [detailPrice, setDetailPrice] = useState('자세히')
     
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);

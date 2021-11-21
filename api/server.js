@@ -357,7 +357,6 @@ app.get("/companyList", (req, res) => {
         (err, data) => {
             if (!err) {
                 res.send(data);
-                console.log(data);
             } else {
                 console.log(err);
             }
@@ -368,17 +367,24 @@ app.get("/companyList", (req, res) => {
 //관리자 부스관리page 예약자정보
 app.post("/getmanagerInfo", (req, res) => {
     
-    // const textquery = req.body;
-    const textquery = "멋진회사";
-    
+    const textquery = req.body.c_conpany;
     
     db.query("SELECT company_name, company_id, company_phone_num, manager, email, (SELECT COUNT(name) FROM Pass WHERE companyId = u.company_id) AS personnel FROM UserAccountInfo AS u WHERE company_name = ?;", textquery,
         (err, data) => {
-            if (!err) {
-                res.send(data);
-            } else {
-                console.log(err);
-            }
+            if (!err) res.send(data);
+            else console.log(err);
+        }
+    )
+})
+
+//관리자 부스관리page 부스정보
+app.post("/getboothInfo", (req, res) => {
+    const textquery = req.body.c_booth;
+
+    db.query("SELECT CONCAT(section, '-', `type`,layer, '0', number) AS bname, section, type, layer FROM BoothInfo WHERE CONCAT(section, '-', `type`,layer, '0', NUMBER) = ?;", textquery,
+        (err, data) => {
+            if(!err)res.send(data);
+            else console.log(err);
         }
     )
 })
