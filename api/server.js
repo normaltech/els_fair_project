@@ -224,7 +224,7 @@ app.get("/getNotice",(req,res)=>{
 
 app.post('/sendEmail', async function (req, res) {
     const user_email = req.body.email;
-    console.log(user_email);
+    console.log("email:"+user_email);
 
     let number = Math.floor(Math.random() * 1000000) + 100000;
     if (number > 1000000) number = number - 100000;
@@ -243,7 +243,7 @@ app.post('/sendEmail', async function (req, res) {
             host: 'smtp.gmail.com',
             port: '587'
         });
-
+        
         const info = await transporter.sendMail({
             from: 'eservate.2021@gmail.com',
             to: user_email,
@@ -257,7 +257,8 @@ app.post('/sendEmail', async function (req, res) {
         await res.send(checkemail);
 
         console.log('메일 전송')
-    } catch {
+    } catch(err) {
+        console.error(err)
         console.log('오류')
     }
 })
@@ -338,23 +339,126 @@ app.get("/getUserInfoFromSession",(req,res)=>{
     res.send(userData)
 })
 
+//세션에서 사용자 정보 가져오기
+app.post("/getCompanyIdByEmail",(req,res)=>{
+    console.log(req.body)
+    const email = req.body.email;
+    db.query("SELECT company_id from UserAccountInfo WHERE EMAIL = ?;",email,
+    (err,result)=>{
+        if(err) console.log("회사id찾기 오류:"+err)
+        if(result){
+            console.log(result[0].company_id);
+            res.send({companyId:result[0].company_id});
+        }
+    })
+})
+
 //이메일 중복 확인
 app.post("/checkEmail",(req,res)=>{
     const email = req.body.email
     console.log(email)
-    db.query("SELECT * FROM UserAccountInfo WHERE EMAIL=?;",email,(err,result)=>{
+    db.query("SELECT EXISTS (SELECT company_id FROM UserAccountInfo WHERE EMAIL=?) AS exist;",email,(err,result)=>{
         if(err) console.log(err)
         //중복된 이메일이 있으면 1 반환
+        // console.log(result[0].exist)
         if(result){
-            if(result.length >0){
+            if(result[0].exist==1){
                 res.send({message:"존재하는 이메일입니다!",flag:1})
-                
             }else{
                 res.send({message:"사용가능한 이메일입니다!",flag:0})
             }
         }
         else{
             
+        }
+    })
+})
+
+app.post("/changePassword",(req,res)=>{
+    console.log(req.body)
+    const companyId = req.body.companyId;
+    const newPw = req.body.newPassword;
+    bcrypt.hash(newPw,saltRounds, (err, hash) =>{
+        if(err){
+            console.log(err)
+        }
+
+        db.query("UPDATE UserAccountInfo SET PASSWORD=? WHERE company_id = ?;",[hash,companyId],
+            (err, result) => {
+                
+                if(err) console.log(err);
+                
+                if(result){
+                    res.send(result)
+                }else{
+                    res.send({message:"비밀번호 변경 실패!"})
+                }
+            }
+        )
+    })
+})
+
+app.post("/adminLogin",(req,res)=>{
+    const id = req.body.id;
+    const pw = req.body.pw;
+    db.query("SELECT COUNT(*) AS exist FROM AdminAccount WHERE adminId = ? AND PASSWORD =?;",[id,pw],(err,result)=>{
+        if(err) {
+            console.log(err);
+            res.send({resultCode:'E',message:"에러났어요!",error:err});
+        }
+        if(result){
+            if(result[0].exist){
+                res.send({resultCode:'S',message:"로그인 성공!"});
+            }else{
+                res.send({resultCode:'E',message:"로그인 실패!"});
+            }
+        }else {
+            res.send({resultCode:'E',message:"데이터 베이스 에러"});
+        }
+    })
+})
+
+app.get("/getAllUserData",(req,res)=>{
+    db.query("SELECT * FROM UserAccountInfo",(err,result)=>{
+        if(result.length > 0){
+            console.log(result);
+            res.send(result);
+        }
+    })
+})
+
+app.get("/getCompanyMemberCount/:companyId",(req,res)=>{
+    const companyId = req.params.companyId;
+    db.query("SELECT COUNT(*) AS member FROM Pass WHERE companyId = ?;",companyId,(err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[0]);
+                res.send(result[0]);
+            }
+        }
+    })
+})
+
+app.get("/getCompanyInfoById/:companyId",(req,res)=>{
+    const companyId = req.params.companyId;
+    db.query("SELECT * FROM UserAccountInfo WHERE company_id = ?;",companyId,(err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[0]);
+                res.send(result[0]);
+            }
+        }
+    })
+})
+
+app.get("/getSearchData",(req,res)=>{
+    db.query("SET @num:=0;SELECT @num:=@num+1 AS id, CONCAT(b.section, '_',b.type,'_', b.layer,'0', b.number) AS boothname, company_name  FROM UserAccountInfo AS u JOIN BoothInfo AS b  ON u.company_id = b.company_id WHERE (@num:=0)=0;",
+    (err,result)=>{
+        if(result){
+            if(result.length>0){
+                console.log(result[1]);
+                res.send(result)
+            }
         }
     })
 })

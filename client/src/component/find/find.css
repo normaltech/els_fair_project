@@ -69,7 +69,22 @@
     height: 40px;
     font-size: 17px;
     font-weight: bold;
-    margin: 20px 0 10px 0;
+    margin: 5px 0 10px 0;
+}
+
+.regist_button{
+    display: none;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+    padding-top: 5px;
 }
 
 .find_button:hover{

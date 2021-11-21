@@ -95,13 +95,13 @@
 
 .boothInfoSearchContainer{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .sectionBox{
   display: flex;
-  width: 510px;
+  width: auto;
   padding: 18px 12px 17px 15px;
   border-radius: 6px;
   box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
@@ -120,15 +120,20 @@
   letter-spacing: 0.09px;
   text-align: center;
   color: #050830;
+  background: none;
+  border: none;
 }
 
 .boothSearchBarContainer{
   display: flex;
   width: 400px;
   height: 50px;
-  padding: 11.5px 13.7px 11.2px 11.3px;
+  padding: 10px;
   border: solid 3px var(--warm-grey);
   background-color: white;
+  margin-left: 90px;
+  margin-top: 3px;
+  border-radius: 13px;
 }
 
 .searchBarInput{
@@ -219,6 +224,14 @@
 }
 
 @media screen and (max-width: 1098px){
+  .boothInfoSearchContainer{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+  }
+  .boothSearchBarContainer{
+    margin-top: 24px;
+  }
     .boothGuideContainer{
       height: 800px;
     }
@@ -253,6 +266,12 @@
 }
 
 @media screen and (max-width: 735px){
+  .boothInfoSearchContainer{
+    display: inline-block;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-left: 25px;
+  }
   .boothGuideContainer{
     height: 1450px;
   }

@@ -25,6 +25,11 @@
     left: 1373px;
     object-fit: contain;
 }
+@keyframes blink-effect {
+    50% {
+      opacity: 0;
+    }
+}
 
 .A_b1_101{
     width: 60px;
