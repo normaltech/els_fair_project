@@ -12,13 +12,128 @@ export default function SelectBooth() {
   const layer_2 = 2;
   const layer_3 = 3;
   
-  const [sections, setSections] = useState([true,false,false,false,false,false,false,false,false])
+  const [sections, setSections] = useState([true,false,false,false,false,false,false,false,false]);
+
+  const sectionList = ['.A','.B','.C','.D','.E','.F','.G','.H','.I'];
 
   const clickSection = (e) => {
-    if(e.target.id === "section_A"){
-      document.getElementById('section_A').style.color = "red";
-      document.querySelector('.selectbooth_layer1').querySelector('.Booth_A').style.borderColor = "red";
+    // console.log((e.target.id).slice(-1)==="A" ? true : false);
+    toggleSectionColor(e.target.id); //section_A
+    const targetClassName = (e.target.id).slice(-1); //A나 B
+    toggleBoothColor(targetClassName);
+    // console.log(As);
+    // document.getElementById('section_A').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.A');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    // })
+    // const Bs = document.querySelectorAll('.B');
+    // const Cs = document.querySelectorAll('.C');
+    // const Ds = document.querySelectorAll('.D');
+    // const Es = document.querySelectorAll('.E');
+    // const Fs = document.querySelectorAll('.F');
+    // const Gs = document.querySelectorAll('.G');
+    // const Hs = document.querySelectorAll('.H');
+    // const Is = document.querySelectorAll('.I');
+
+    // if(e.target.id === "section_A"){
+    //   document.getElementById('section_A').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.A');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_B"){
+    //   document.getElementById('section_B').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.B');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_C"){
+    //   document.getElementById('section_C').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.C');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_D"){
+    //   document.getElementById('section_D').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.D');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_E"){
+    //   document.getElementById('section_E').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.E');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_F"){
+    //   document.getElementById('section_F').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.F');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_G"){
+    //   document.getElementById('section_G').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.G');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_H"){
+    //   document.getElementById('section_H').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.H');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+    // else if(e.target.id === "section_I"){
+    //   document.getElementById('section_I').style.color = "#fcc000";
+    //   const As = document.querySelectorAll('.I');
+    //   As.forEach((booth)=>{
+    //     booth.style.borderColor = "#fcc000";
+    //   })
+    //   // document.querySelectorAll('.A').style.borderColor = "red";
+    // }
+  }
+
+  const toggleSectionColor = (target) => {
+    if(document.getElementsByClassName('fontActive')){
+      const pre = document.getElementsByClassName('fontActive');
+      for(let i = 0; i < pre.length; i++){
+        pre[i].classList.toggle('fontActive');
+      }
     }
+    document.getElementById(target).classList.toggle('fontActive');
+  }
+
+  const toggleBoothColor = (target) => {
+    if(document.querySelectorAll('.borderActive')){
+      const pre = document.querySelectorAll('.borderActive');  
+      console.log(pre);
+      for(let item of pre){
+        console.log(item);
+        item.classList.toggle('borderActive');
+      }
+    }
+    console.log(`.${target}`);
+    const targetBoothes = document.querySelectorAll(`.${target}`); //부스들
+    targetBoothes.forEach((booth)=>{
+      booth.classList.toggle('borderActive');
+    })
   }
 
   //현재 기기 해상도 가로 세로 크기 가져오기
@@ -114,15 +229,14 @@ export default function SelectBooth() {
                   <div className="boothInfoSearchContainer">
                     <div className="sectionBox">
                       <div id="section_A" className="section" onClick={clickSection}>A 구역</div>
-                      <div className="section">A 구역</div>
-                      <div className="section">B 구역</div>
-                      <div className="section">C 구역</div>
-                      <div className="section">D 구역</div>
-                      <div className="section">E 구역</div>
-                      <div className="section">F 구역</div>
-                      <div className="section">G 구역</div>
-                      <div className="section">H 구역</div>
-                      <div className="section">I 구역</div>
+                      <div id="section_B" className="section" onClick={clickSection}>B 구역</div>
+                      <div id="section_C" className="section" onClick={clickSection}>C 구역</div>
+                      <div id="section_D" className="section" onClick={clickSection}>D 구역</div>
+                      <div id="section_E" className="section" onClick={clickSection}>E 구역</div>
+                      <div id="section_F" className="section" onClick={clickSection}>F 구역</div>
+                      <div id="section_G" className="section" onClick={clickSection}>G 구역</div>
+                      <div id="section_H" className="section" onClick={clickSection}>H 구역</div>
+                      <div id="section_I" className="section" onClick={clickSection}>I 구역</div>
                     </div>
                     <div className="boothSearchBarContainer">
                       <input type="text" className="searchBarInput" placeholder="검색하실 기업을 입력해주세요." />
