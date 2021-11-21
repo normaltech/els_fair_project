@@ -12,7 +12,7 @@
   color: #fcc000;
 }
 .borderActive{
-  border: solid 2px #fcc000;
+  border: solid 1px #fcc000;
 }
 
 .boothGuideContainerTitle{
@@ -127,7 +127,6 @@
   line-height: 1.5;
   letter-spacing: 0.09px;
   text-align: center;
-  color: #050830;
   background: none;
   border: none;
 }

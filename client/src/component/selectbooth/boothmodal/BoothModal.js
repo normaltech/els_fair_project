@@ -33,17 +33,13 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "white",
 }));
 
-export default function BoothModal({clickSection, searchData, boothId, className, section,type,layer,number}) {
+export default function BoothModal({ searchData, boothId, className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const searchRef = useRef(null);
  
-  const [cs, setCS] = useState(clickSection);
-  if(clickSection == section){
-    searchRef.current.style.animation = "blink-effect 1s step-end";
-  }
   //한번 클릭하면 animation이 바뀌어 있어서 바로 animation을 null로 바꿔줘야됨
 
   searchData.map((value)=>{

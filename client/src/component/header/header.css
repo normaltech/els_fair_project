@@ -113,7 +113,6 @@ a{
     .headerRightContent{
         justify-content: center;
         width: 100%;
-        padding: 8px 0;
     }
 
     .headerRightSpan{
@@ -125,7 +124,6 @@ a{
     .headerToggle{
         display: block;
         color: var(--dark-grey-blue);
-        margin-top: 8px;
     }
 
     .headerToggle:hover{
@@ -171,7 +169,6 @@ a{
     }
     .headerToggle{
         color: var(--white);
-        margin-top: 11px;
     }
     .headerToggle:hover{
         color: var(--warm-grey);
@@ -184,6 +181,5 @@ a{
         margin-left: -5px;
     }
     .headerToggle{
-        margin-top: 13px;
     }
 }

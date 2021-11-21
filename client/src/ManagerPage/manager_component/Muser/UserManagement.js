@@ -61,7 +61,7 @@ function UserManagement() {
         document.querySelector('.userManagement_userRegister_wrap').style.display = 'none';
         document.querySelector('.userManagement_userRegisterSuccess_wrap').style.display = 'block';
     }
-    const onClickUserRegisterBack = () => {``
+    const onClickUserRegisterBack = () => {
         document.querySelector('.userManagement_black_bg').style.display = 'block';
         document.querySelector('.userManagement_registerFailModal_wrap').style.display = 'none';
         document.querySelector('.userManagement_userRegister_wrap').style.display = 'block';

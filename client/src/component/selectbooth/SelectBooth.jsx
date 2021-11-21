@@ -49,14 +49,39 @@ export default function SelectBooth() {
     }
   }
 
-
   //구역 선택시 해당 구역 색상 표시
-  const [section, setSection] = useState();
-  const sectionHandler = (e)=>{
-    setSection(e.target.id);
-    console.log(section);
+  const clickSection = (e) => {
+    // console.log((e.target.id).slice(-1)==="A" ? true : false);
+    toggleSectionColor(e.target.id); //section_A
+    const targetClassName = (e.target.id).slice(-1); //A나 B
+    toggleBoothColor(targetClassName);
   }
 
+  const toggleSectionColor = (target) => {
+    if(document.getElementsByClassName('fontActive')){
+      const pre = document.getElementsByClassName('fontActive');
+      for(let i = 0; i < pre.length; i++){
+        pre[i].classList.toggle('fontActive');
+      }
+    }
+    document.getElementById(target).classList.toggle('fontActive');
+  }
+
+  const toggleBoothColor = (target) => {
+    if(document.querySelectorAll('.borderActive')){
+      const pre = document.querySelectorAll('.borderActive');  
+      console.log(pre);
+      for(let item of pre){
+        console.log(item);
+        item.classList.toggle('borderActive');
+      }
+    }
+    console.log(`.${target}`);
+    const targetBoothes = document.querySelectorAll(`.${target}`); //부스들
+    targetBoothes.forEach((booth)=>{
+      booth.classList.toggle('borderActive');
+    })
+  }
   //현재 기기 해상도 가로 세로 크기 가져오기
   function getDisplayInfo() {
     var size = {
@@ -169,7 +194,7 @@ export default function SelectBooth() {
                   </div>
                   <TransformComponent>
                     <div className="boothMainPicuture">
-                      <Booth className="selectbooth_layer1" clickSection={section} searchData={filteredData.map((value)=>{return value.boothname})} layer={layer_1} ref={booth_module} handleOpen={handleOpen} handleClose={handleClose}/>
+                      <Booth className="selectbooth_layer1" searchData={filteredData.map((value)=>{return value.boothname})} layer={layer_1} ref={booth_module} handleOpen={handleOpen} handleClose={handleClose}/>
                       {/* <Booth className="selectbooth_layer2" layer = {layer_2}/> */}
                       {/* <Booth className="selectbooth_layer3" layer = {layer_3}/> */}
                       {/* 3개의 Booth태그 대신 옆에 층을 클릭했을때(className="floor") 나타나게 하는방식으로 props로 층을주고 */}

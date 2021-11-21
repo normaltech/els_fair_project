@@ -28,13 +28,13 @@ function useFetch(url){
 
 
 
-export default function Booth( {clickSection, searchData, layer, handleOpen, handleClose} ) {
+export default function Booth( {searchData, layer, handleOpen, handleClose} ) {
     
     const boothList = useFetch("/getBooth");
     const boothModalList = [];
     boothList.map(
         (item)=>{
-            boothModalList.push(<BoothModal clickSection={clickSection} searchData={searchData} boothId={item.booth_id} className={item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
+            boothModalList.push(<BoothModal searchData={searchData} boothId={item.booth_id} className={item.section+" "+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
         }
     )
     return(
