@@ -98,7 +98,7 @@
 }
 
 .boothInfoContainerLeftBox{
-  flex:9;
+  margin-right: 10px;
 }
 
 .boothInfoSearchContainer{
@@ -165,7 +165,6 @@
 }
 
 .boothInfoContainerRightBox{
-  flex:1;
   display: flex;
   flex-direction: column;
   align-items: center;
