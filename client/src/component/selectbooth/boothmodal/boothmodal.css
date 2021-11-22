@@ -1,3 +1,14 @@
+.modalCloseButton{
+  position: absolute;
+  right: 5%;
+  top: 2%;
+  font-size: 12px;
+}
+
+.modalCloseButton:hover{
+  cursor: pointer;
+}
+
 .modalBoothType{
   display: flex;
   justify-content: space-evenly;

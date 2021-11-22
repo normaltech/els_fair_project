@@ -7,6 +7,7 @@ import './boothmodal.css'
 import { orange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute',
@@ -66,6 +67,7 @@ export default function BoothModal({ searchData, boothId, className, section,typ
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <CloseIcon className="modalCloseButton" onClick={handleClose}/>
           <Typography textAlign="center" id="modal-modal-title" variant="h5" component="div" marginBottom="30px" fontSize="32px" fontWeight="Bold">
             {'예약가능'}
           </Typography>
