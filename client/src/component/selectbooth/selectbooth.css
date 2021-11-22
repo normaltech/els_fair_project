@@ -3,6 +3,10 @@
   justify-content: space-evenly;
 }
 
+.booth_wrap span:hover{
+  cursor: pointer;
+}
+
 .selectBoothImg{
   width: 100%;
 }
@@ -13,6 +17,10 @@
 }
 .borderActive{
   border: solid 1px #fcc000;
+}
+
+.rightButtonActive{
+  background-color: #fcc000;
 }
 
 .boothGuideContainerTitle{

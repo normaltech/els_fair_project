@@ -21,7 +21,7 @@ export default function SelectBooth() {
   useEffect(()=>{
     const searchInput = document.getElementById("searchInput").value;
     axios.get("/getSearchData").then((res)=>{
-      console.log(res.data[1]);
+      // console.log(res.data[1]);
       setAllData(res.data[1]);
       //처음 랜더링 될때 데이터가 들어가서 깜빡이는 현상 없애기 위한 코드
       if(searchInput.length != 0){
@@ -106,6 +106,13 @@ export default function SelectBooth() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleFloorButton = (e) => {
+    if(document.querySelector('.rightButtonActive')){
+      const pre = document.querySelector('.rightButtonActive');
+      pre.classList.toggle('rightButtonActive');
+    }
+    document.getElementById(e.currentTarget.id).classList.toggle('rightButtonActive');
+  }
 
   return (
     <div className="selectionPageConainer">
@@ -174,15 +181,15 @@ export default function SelectBooth() {
                 <div className="boothInfoContainerLeftBox">
                   <div className="boothInfoSearchContainer">
                     <div className="sectionBox">
-                      <div id="section_A" className="section" onClick={clickSection}>A 구역</div>
-                      <div id="section_B" className="section" onClick={clickSection}>B 구역</div>
-                      <div id="section_C" className="section" onClick={clickSection}>C 구역</div>
-                      <div id="section_D" className="section" onClick={clickSection}>D 구역</div>
-                      <div id="section_E" className="section" onClick={clickSection}>E 구역</div>
-                      <div id="section_F" className="section" onClick={clickSection}>F 구역</div>
-                      <div id="section_G" className="section" onClick={clickSection}>G 구역</div>
-                      <div id="section_H" className="section" onClick={clickSection}>H 구역</div>
-                      <div id="section_I" className="section" onClick={clickSection}>I 구역</div>
+                      <button id="section_A" className="section" onClick={clickSection}>A 구역</button>
+                      <button id="section_B" className="section" onClick={clickSection}>B 구역</button>
+                      <button id="section_C" className="section" onClick={clickSection}>C 구역</button>
+                      <button id="section_D" className="section" onClick={clickSection}>D 구역</button>
+                      <button id="section_E" className="section" onClick={clickSection}>E 구역</button>
+                      <button id="section_F" className="section" onClick={clickSection}>F 구역</button>
+                      <button id="section_G" className="section" onClick={clickSection}>G 구역</button>
+                      <button id="section_H" className="section" onClick={clickSection}>H 구역</button>
+                      <button id="section_I" className="section" onClick={clickSection}>I 구역</button>
                     </div>
                       {/* <div>{filteredData.map((value,index)=>{
                         return(<div key={value.id}>{value.boothname}</div>)
@@ -203,18 +210,18 @@ export default function SelectBooth() {
                 </div>
                 <div className="boothInfoContainerRightBox">
                   <div className="selectFloorButtons">
-                    <div className="floor">
+                    <button id="rightA" onClick={handleFloorButton} className="floor rightButtonActive">
                       <div className="floorNum">1층</div>
                       <div className="hallName">전시홀 A</div>
-                    </div>
-                    <div className="floor">
+                    </button>
+                    <button id="rightB" onClick={handleFloorButton} className="floor">
                       <div className="floorNum">2층</div>
                       <div className="hallName">전시홀 B</div>
-                    </div>
-                    <div className="floor">
+                    </button>
+                    <button id="rightC" onClick={handleFloorButton} className="floor">
                       <div className="floorNum">3층</div>
                       <div className="hallName">전시홀 C</div>
-                    </div>
+                    </button>
                   </div>
                   <div className="enlargeConatiner">
                     <button className="enlargeButton" onClick={() => zoomIn()}>+</button>
