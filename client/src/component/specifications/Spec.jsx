@@ -113,7 +113,7 @@ export default function Spec() {
           </div></div>)
       }
       return (
-        <div className="SelectionItemBottomItem">
+        <div className="SelectionItemBottomItemBottom">
           {result.map(item => (
             item
           ))}
@@ -316,7 +316,7 @@ export default function Spec() {
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
                   <div className="newSelectionItemContainer">
-                    <div id="fixedBox" className="SelectionItemBottomItem">
+                    <div  className="SelectionItemBottomItem">
                       <h4>회사안내 ESL</h4>
                       <img src="/assets/icons/esl1.png" alt="esl image" />
                       <div className="selectionConatiner">
@@ -332,7 +332,7 @@ export default function Spec() {
                     }
                     </div>
                     <div className="newSelectionItemContainer">
-                    <div id="fixedBox" className="SelectionItemBottomItem">
+                    <div className="SelectionItemBottomItem">
                       <h4>제품 안내 ESL</h4>
                       <img src="/assets/icons/esl2.png" alt="esl image" />
                       <div className="selectionConatiner">
@@ -351,7 +351,7 @@ export default function Spec() {
                       isE2True() && <E2InfoBox/>
                     }
                     </div>
-                    <div id="fixedBox">
+                    <div className="SelectionItemBottomItem">
                     <h4>기타 ESL</h4>
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
