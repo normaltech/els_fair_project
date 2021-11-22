@@ -4,6 +4,7 @@ import Header from '../header/Header'
 import './spec.css'
 import axios from 'axios';
 import { useLocation } from 'react-router';
+import SpecModal from './specModal';
 
 
 
@@ -125,7 +126,7 @@ export default function Spec() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const email = document.getElementById("defaultInfoTable_managerEmail").value;
     const name = document.getElementById("defaultInfoTable_managerName").value;
 
@@ -218,11 +219,6 @@ export default function Spec() {
       console.log(error);
     }
   }, []);
-
-
-
-
-
 
   // data.map((item)=>{
   //   setManagerEmail(item.email)
@@ -459,7 +455,7 @@ export default function Spec() {
               <div className="reservationDashboardCostTitle">총 금액</div>
               <div className="reservationDashboardCostNum">{eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth == 0 ? 0 : eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth}만원</div>
             </div>
-            <div className="reservationDashboardButton" onClick={handleSubmit}>결제</div>
+            <SpecModal handleSubmit={handleSubmit}/>
           </div>
         </div>
       </div>
