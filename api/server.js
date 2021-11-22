@@ -279,7 +279,7 @@ app.post('/sendEmail', async function (req, res) {
 app.post("/getBooth", (req, res) => {
     const exhibitionId = req.body.exhibitionId;
     // const section = req.body.section;
-    db.query("SELECT booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
+    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
         (err, result) => {
             if (err) {
                 console.log(err);
