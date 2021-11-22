@@ -671,8 +671,8 @@
     font-weight: bold;
   }
   .DescTopBoothnum{
-    width: 20px;
-    height: 15px;
+    width: auto;
+    height: auto;
     font-weight: bold;
   }
   .SelectionItemTop .SelectionItemIndex{
