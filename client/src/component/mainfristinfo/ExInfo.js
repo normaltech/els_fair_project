@@ -22,6 +22,7 @@ export const ExInfo = ({name, place, startDate, endDate, image}) => {
         if(userExist == true){
             window.location.href= "/selection"
         }else{
+            alert("로그인이 필요한 서비스입니다.")
             window.location.href= "/login"
         }
     }

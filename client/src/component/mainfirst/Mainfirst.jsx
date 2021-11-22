@@ -59,7 +59,8 @@ export default function Mainfirst() {
     const items = [];
     
     data.map(
-        (item)=>{items.push(<ExMonth key={item.month} month={item.month}/>)}
+        (item)=>{if(item.month!=null)
+            items.push(<ExMonth key={item.month} month={item.month}/>)}
     )
 
     const click = (e) => {
@@ -86,20 +87,8 @@ export default function Mainfirst() {
                         <div className="n4">날짜</div>
                         {/* <div className="n5">선택</div> */}
                     </div>
-                    {console.log('postPerPage :'+postPerPage +'\n'+'postslength: :'+posts.length)}
                     <Posts posts={currentPosts} loading={loading}/>
                     <Pagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
-                   
-                    {/* <Notice num={num} exhibition={exhibition} title={title} date={date} />
-                    <Notice num={num} exhibition={exhibition} title={title} date={date} />
-                    <Notice num={num} exhibition={exhibition} title={title} date={date} />
-                    <Notice num={num} exhibition={exhibition} title={title} date={date} />
-                    <Notice num={num} exhibition={exhibition} title={title} date={date} />
-                    <div className="pageWrap">
-                        <Stack className="page" spacing={2}>
-                            <Pagination count={10} color="primary" onClick={click} />
-                        </Stack>
-                    </div> */}
                 </div>
             </div>
             {/* 월별 전시정보 */}

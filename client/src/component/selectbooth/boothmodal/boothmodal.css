@@ -36,3 +36,8 @@
 .boothmodalButton{
   margin: 0 auto;
 }
+
+.reservedBooth{
+  text-align: center;
+  color: chocolate;
+}
