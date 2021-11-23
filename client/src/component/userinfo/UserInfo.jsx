@@ -16,10 +16,10 @@ export default function UserInfo() {
     try {
       axios.get("/getuserinfo")
         .then((response) => {
-          setcompany_id(response.data[0].company_id);
-          setmanager(response.data[0].manager);
-          setmanager_phone_num(response.data[0].manager_phone_num);
-          setemail(response.data[0].email);
+          setcompany_id(response.data.company_id);
+          setmanager(response.data.manager);
+          setmanager_phone_num(response.data.manager_phone_num);
+          setemail(response.data.email);
         });
     } catch (error) {
       console.log(error);
@@ -78,7 +78,14 @@ export default function UserInfo() {
             </div>
           </div>
           <div className="userInfoBoxItemLeft">
-            <Link to="changeNumber">
+            <Link to={{
+              pathname:"/changeNumber",
+              props : {
+                name:manager,
+                number:manager_phone_num,
+                email:email
+              }
+            }}>
               <div className="userInfoBoxItemButton" style={{color:"var(--dusty-orange)"}}>수정</div>
             </Link>
           </div>

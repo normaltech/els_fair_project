@@ -11,7 +11,7 @@ const saltRounds = 10;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-// const nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 app.use(express.json());
 
 app.use(cors({
@@ -121,33 +121,62 @@ app.post("/login", (req, res) => {
     const userEmail = req.body.email
     const password = req.body.password
     // console.log(userEmail);
-    db.query(
-        "SELECT * FROM UserAccountInfo WHERE email = ?;",
-        userEmail,
-        (err, result) => {
-            // console.log(err);
-            if (err) {
-                res.send({ err: err })
-            }
+    const sql1 = "SELECT isActive FROM UserAccountInfo WHERE email = ?;";
+    var sql1s = mysql.format(sql1, userEmail);
+    const sql2 = "SELECT * FROM UserAccountInfo WHERE email = ?;";
+    var sql2s = mysql.format(sql2, userEmail);
 
-            if (result.length > 0) {
-                bcrypt.compare(password, result[0].password, (error, response) => {
+    db.query(sql1s+sql2s, function(err,result){
+        var result0 = Object.values(JSON.parse(JSON.stringify(result[0])))
+        var result1 = Object.values(JSON.parse(JSON.stringify(result[1])))
+        // console.log(result1[0]);
+        if(result0[0].isActive == 1){
+            if (result1[0]) {
+                bcrypt.compare(password, result1[0].password, (error, response) => {
                     if (response) {
                         //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
-
-                        req.session.user = result
-                        // console.log(req.session.user);
-                        res.send(result)
+                        req.session.user = result1[0]
+                        console.log(req.session.user);
+                        res.send({resultCode:0,message:"로그인 성공"})
                     }
                     else {
-                        res.send({ message: "해당 아이디/비밀번호는 존재하지 않습니다." })
+                        res.send({resultCode:1, message: "해당 아이디/비밀번호는 존재하지 않습니다." })
                     }
                 })
             } else {
-                res.send({ message: "해당 아이디는 존재하지 않습니다." })
+                res.send({resultCode:1, message: "해당 아이디는 존재하지 않습니다." })
             }
+        }else{
+            res.send({resultCode:1,message:"비활성화 되어있는 계정입니다."})
         }
-    )
+    })
+    // db.query(
+    //     "SELECT * FROM UserAccountInfo WHERE email = ?;",
+    //     userEmail,
+    //     (err, result) => {
+    //         // console.log(err);
+    //         if (err) {
+    //             res.send({ err: err })
+    //         }
+
+    //         if (result.length > 0) {
+    //             bcrypt.compare(password, result[0].password, (error, response) => {
+    //                 if (response) {
+    //                     //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
+
+    //                     req.session.user = result
+    //                     // console.log(req.session.user);
+    //                     res.send(result)
+    //                 }
+    //                 else {
+    //                     res.send({ message: "해당 아이디/비밀번호는 존재하지 않습니다." })
+    //                 }
+    //             })
+    //         } else {
+    //             res.send({ message: "해당 아이디는 존재하지 않습니다." })
+    //         }
+    //     }
+    // )
 })
 
 app.get("/login", (req, res) => {
@@ -339,7 +368,7 @@ app.post("/reservateBooth", (req, res) => {
 
 //세션에서 사용자 정보 가져오기
 app.get("/getUserInfoFromSession", (req, res) => {
-    const su = req.session.user[0]
+    const su = req.session.user
     const userData = {
         companyName: su.company_name,
         companyId: su.company_id,
@@ -386,7 +415,38 @@ app.post("/checkEmail",(req,res)=>{
         }
     })
 })
+app.post("/changePwFromMyPage",(req,res)=>{
+    const currentPw = req.body.currentPw;
+    const pw1 = req.body.pw1;
+    const pw2 = req.body.pw2;
+    const currentId = req.session.user.company_id;
+    console.log(currentPw+"<->"+req.session.user.password)
 
+    bcrypt.compare(currentPw, req.session.user.password, (error, response) => {
+        console.log(response);
+        if (!response) {
+           res.send({resultCode:1,message:"현재 비밀번호를 확인해주세요."})
+        }
+        else if(pw1 != pw2) res.send({resultCode:2,message:"비밀번호가 일치하지 않습니다."})
+        else{
+            bcrypt.hash(pw1,saltRounds, (err, hash) =>{
+                if(err)console.log(err)
+                db.query("UPDATE UserAccountInfo SET PASSWORD=? WHERE company_id = ?;",[hash,currentId],
+                    (err, result) => {
+                        if(err) console.log(err);
+                        if(result){
+                            res.send({resultCode:3,message:"비밀번호 변경 성공!"})
+                        }else{
+                            res.send({resultCode:4,message:"비밀번호 변경 실패!"})
+                        }
+                    }
+                )
+            })
+            
+        }
+    })
+    
+})
 app.post("/changePassword",(req,res)=>{
     console.log(req.body)
     const companyId = req.body.companyId;
@@ -411,6 +471,50 @@ app.post("/changePassword",(req,res)=>{
     })
 })
 
+app.post("/changeCompanyId",(req,res)=>{
+    const inputCompanyId = req.body.inputCompanyId;
+    db.query("UPDATE UserAccountInfo SET company_id = ? WHERE company_id = ?",[inputCompanyId,req.session.user.company_id]
+    ,(err,result)=>{
+        console.log(result);
+        if(err) res.send({resultCode:0,message:"사업자 번호 수정 실패"})
+        if(result){
+            req.session.user.company_id = inputCompanyId;
+            res.send({resultCode:1,message:"사업자 번호 수정 완료"})
+        }else{
+            res.send({resultCode:0,message:"사업자 번호 수정 실패"})
+        }
+    })
+})
+
+app.post("/updateUserData",(req,res)=>{
+    const name = req.body.name;
+    const phoneNumber = req.body.phoneNumber;
+    const email = req.body.email;
+    console.log(name+"-"+phoneNumber+"-"+email)
+    db.query("UPDATE UserAccountInfo SET manager =? , manager_phone_num =? , email =? WHERE company_id=?;",
+    [name,phoneNumber,email,req.session.user.company_id],(err,result)=>{
+        if(err) res.send({resultCode:0,message:"에러"}) 
+        if(result){
+            req.session.user.manager = name;
+            req.session.user.manager_phone_num = phoneNumber;
+            req.session.user.email = email;
+                res.send({resultCode:1,message:"연락처를 성공적으로 수정하였습니다."})
+        }
+    })
+})
+app.get("/withDrawUserAccount",(req,res)=>{
+    db.query("UPDATE UserAccountInfo SET isActive = 0 WHERE company_id=?;",req.session.user.company_id,
+    (err,result)=>{
+        if(err) res.send({resultCode:0,message:err})
+        if(result){
+            //세션에서 user 정보 제거 = 로그아웃
+            req.session.destroy(function () {
+                req.session;
+            });
+            res.send({resultCode:1,message:"탈퇴완료되었습니다."})
+        }
+    })
+})
 app.post("/adminLogin",(req,res)=>{
     const id = req.body.id;
     const pw = req.body.pw;
@@ -513,4 +617,13 @@ app.post("/getboothInfo", (req, res) => {
     )
 })
 
+app.get("/getNoticeContent/:id",(req,res)=>{
+    const noticeId = req.params.id;
+    db.query("SELECT notices FROM NOTICE WHERE id=?",noticeId,(err,result)=>{
+        if(result){
+            // console.log(result);
+            res.send(result);
+        }
+    })
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

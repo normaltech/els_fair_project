@@ -295,8 +295,18 @@
     padding: 5px 10px;
     font-size: 15px;
 }
-.mainpage_noticeModal_titleInput{
+
+.mainpage_noticeModal_exhibitionInput{
     width: 200px;
+    border-radius: 7px;
+    border: solid 1px #b4b4b4;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-size: 15px;
+    outline: none;
+}
+.mainpage_noticeModal_titleInput{
+    width: 265px;
     border-radius: 7px;
     border: solid 1px #b4b4b4;
     background-color: #fff;

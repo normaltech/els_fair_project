@@ -16,8 +16,8 @@ export default function Header() {
     try {
       axios.get("/getuserinfo")
       .then((response) => {
-        if(response.data[0].manager){
-            setPerson(response.data[0].manager);
+        if(response.data.manager){
+            setPerson(response.data.manager);
         }
       });
     } catch (error) {
@@ -30,8 +30,10 @@ export default function Header() {
     const toggleBtn = document.querySelector('.headerToggle');
     const menu = document.querySelector('.headerMenu');
     const logout = document.querySelector('.headerRightSpan');
+    const mypage = document.querySelector('.headerRightMyPageSpan');
     menu.classList.toggle('active');
     logout.classList.toggle('active');
+    mypage.classList.toggle('active');
   }
 
   const btn = () => {
@@ -41,17 +43,22 @@ export default function Header() {
         console.log(error);
       }
   }
-
+  const btnMypage = () => {
+      window.location.href="/userinfo"
+  }
   const loginlogout = () =>{
     if(person != null){
       return (
         <>
           <Link to="/userinfo">
-            <div className="headerRightPadding headerRightPerson"><strong>{person}님 환영합니다</strong></div>
+            <div className="headerRightPadding headerRightPerson" onClick={btnMypage}><strong>{person}님 환영합니다</strong></div>
           </Link>
           <Link to="/" className="headerLogout" style={{ textDecoration: "none" }}>
             <span className="headerRightPadding headerRightSpan" onClick={btn}>로그아웃</span>
           </Link>
+          <div className="headerLogout" style={{ textDecoration: "none" }}>
+            <span className="headerRightPadding headerRightMyPageSpan" onClick={btnMypage}>[MY PAGE]</span>
+          </div>
         </>
       )
     }else{

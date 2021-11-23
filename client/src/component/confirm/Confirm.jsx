@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './confirm.css';
 import Footer from '../footer/Footer';
 import { Link, useHistory,useLocation} from 'react-router-dom';
 
 export default function Confirm(){
+
     const location = useLocation();
     const history = useHistory();
+    
     var mailCode = 0;
     var email = location.props.email;
     // console.log(location.props.mailcode)

@@ -10,7 +10,7 @@ export const ExInfo = ({name, place, startDate, endDate, image}) => {
       try {
         axios.get("/getuserinfo")
         .then((response) => {
-          if(response.data[0].manager){
+          if(response.data.manager){
             setUserExist(true);
           }
         });
