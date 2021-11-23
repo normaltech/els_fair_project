@@ -23,7 +23,7 @@ export default function ChangeBussinessNumber(){
                     <div><Link to="/userinfo"><button className="changeBussinessNumber_button">취소</button></Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

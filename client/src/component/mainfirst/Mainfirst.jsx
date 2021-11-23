@@ -66,7 +66,7 @@ export default function Mainfirst() {
         console.log(e);
     }
     return(
-        <>
+        <div className="mainPage">
             <Header />
             <div className="headerWrap">
                 <div className="imgWrap"><img src="/assets/headerpic.png" alt="headerpicture" /></div>
@@ -111,7 +111,7 @@ export default function Mainfirst() {
             */}
             {items}
             
-            {/* <Footer /> */}
-        </>
+            <Footer />
+        </div>
     )
 }

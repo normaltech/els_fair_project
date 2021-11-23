@@ -233,6 +233,7 @@ export default function SelectBooth() {
           )}
         </TransformWrapper>
       </div>
+      <Footer/>
     </div>
   )
 }

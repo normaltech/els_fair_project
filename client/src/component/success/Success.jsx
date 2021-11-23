@@ -15,7 +15,7 @@ export default function Success(){
                     <div><Link to="/"><button className="success_button">로그인 페이지로 이동</button></Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

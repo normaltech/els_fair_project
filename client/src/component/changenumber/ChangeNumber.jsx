@@ -25,7 +25,7 @@ export default function ChangeNumber(){
                     <div><Link to="/userinfo"><button className="changeNumber_button">취소</button></Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

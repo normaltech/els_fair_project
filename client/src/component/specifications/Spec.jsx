@@ -459,7 +459,7 @@ export default function Spec() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

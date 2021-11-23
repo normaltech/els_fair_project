@@ -19,7 +19,8 @@
 }
 
 .withdraw_word1, .withdraw_word2, .withdraw_word3{
-    font-family: NanumSquare_ac;
+    font-family: NanumSquare;
+    font-size: 18px;
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;

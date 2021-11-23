@@ -6,7 +6,7 @@ import Header from '../header/Header';
 
 export default function Signup() {
   return (
-    <>
+    <div className="signUpPage">
     <Header/>
     <div className="signup">
       <div className="Web_register">
@@ -19,6 +19,7 @@ export default function Signup() {
         <SignUpFormBox />
       </div>
     </div>
-    </>
+    <Footer/>
+    </div>
   )
 }

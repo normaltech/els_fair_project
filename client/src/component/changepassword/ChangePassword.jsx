@@ -25,7 +25,7 @@ export default function ChangePassword(){
                     <div><Link to="/userinfo"><button className="changePassword_button">취소</button></Link></div>
                 </div>
             </div>
-            {/* <Footer/> */}
+            <Footer/>
         </>
     )
 }

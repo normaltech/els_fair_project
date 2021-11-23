@@ -43,7 +43,7 @@ export default function ReservationList() {
           </div>
         </div>
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }
