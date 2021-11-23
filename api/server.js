@@ -7,6 +7,9 @@ const app = express();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+//ftp관리
+const ftp = require("basic-ftp");
+
 //쿠키 + 세션 관리
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -509,6 +512,48 @@ app.post("/getboothInfo", (req, res) => {
         (err, data) => {
             if(!err)res.send(data);
             else console.log(err);
+        }
+    )
+})
+
+//esl ftp연결함수
+// async function example() {
+//     const client = new ftp.Client()
+//     client.ftp.verbose = true
+//     try {
+//         await client.access({
+//             host: "192.168.1.11",
+//             user: "cgESLUser",
+//             password: "cgESLPassword",
+//             port : "2121",
+//             secure: false
+//         })
+//         console.log(await client.list())
+//         console.log("성공")
+//         // await client.uploadFrom("README.md", "README_FTP.md")
+//     }
+//     catch (err) {
+//         console.log(err)
+//         console.log('에러')
+//     }
+//     client.close()
+// }
+
+//esl ftp연결
+// app.get("/getesl", (req, res) => {
+//     console.log('시작');
+//     example();
+// })
+
+//esl 정보 가져오기
+app.get("/eslinfo", (req, res) => {
+    db.query("SELECT company_id, company_name, company_phone_num, email, manager FROM UserAccountInfo;",
+        (err, data) => {
+            if (!err) {
+                res.send(data);
+            } else {
+                console.log(err);
+            }
         }
     )
 })
