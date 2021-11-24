@@ -62,7 +62,7 @@
 }
 
 .noticeInfo{
-    margin: 20px;
+    margin: 30px;
 }
 
 .noticeNav{
@@ -219,24 +219,52 @@
         font-size: 12px;
     }
     .moreInfo{
-        display: none;
+        /* display: none; */
+    }
+    .exButton{
+        width: 80px;
+        height: 40px;
+    }
+    .buttonWord{
+        margin-left: 8px;
+        font-size: 14px;
+    }
+    .arrowImg{
+        width: 15px;
+        height: 15px;
     }
 }
 
 @media screen and (max-width: 480px) {
+    .line{
+        display: none;
+    }
+    .exInfo{
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        flex-direction: column;
+    }
+
+    .exInfo{
+        border-bottom: 0.5px solid #455863;
+    }
     .wordWrap{
         font-size: 14px;
     }
 
+    .detailInfo div span{
+        font-size: 16px;
+    }
     .exImg{
-        margin: 0;
+        margin: 25px 0 0 0;
         width: 250px;
+        text-align: center;
     }
 
     .exImg img{
-        width: 100px;
-        height: 45px;
-
+        width: 250px;
+        height: 120px;
     }
 
     .detailInfo div span{
@@ -244,7 +272,7 @@
     }
 
     .moreInfo{
-        display: none;
+        /* display: none; */
     }
 
     .detailInfo div{
@@ -270,6 +298,20 @@
         text-align: center;
     }
 }
+
+
+@media screen and (max-width: 321px) {
+    .exImg img{
+        width: 220px;
+        height: 100px;
+    }
+}
+/* 
+@media screen and (max-width: 365px) {
+   .exInfo{
+       border-bottom: 0.5px solid #455863;
+   }
+} */
 
 /* 공지사항 모달창 */
 .mainpage_noticeModal_word{

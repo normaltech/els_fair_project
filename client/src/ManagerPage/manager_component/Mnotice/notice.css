@@ -90,12 +90,12 @@
     z-index: 1;
 }
 .Mnotice_noticeModal_wrap{
-    display: none;
+    /* display: none; */
     width: 600px;
     height: 550px;
     position: absolute;
-    top:50%;
-    left: 50%;
+    top:48%;
+    left: 47%;
     margin: -250px 0 0 -250px;
     background-color: #fff;
     border-radius: 15px;
@@ -206,7 +206,7 @@
 }
 /* 삭제 모달창 */
 .Mnotice_deleteModal_wrap{
-    display: none;
+    /* display: none; */
     width: 420px;
     height: 200px;
     position: absolute;
