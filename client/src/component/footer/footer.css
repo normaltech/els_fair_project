@@ -6,6 +6,23 @@
   background-color: #304653;
 }
 
+.signUpPage .footer{
+  position: relative;
+}
+.userInfoPage .footer{
+  position: relative;
+}
+.selectionPageConainer .footer{
+  position: relative;
+}
+.mainPage .footer{
+  position: relative;
+}
+.reservationContainer .footer{
+  position: relative;
+}
+
+
 .footerInfo{
   display: flex;
   justify-content: flex-end;

@@ -28,7 +28,7 @@ export default function UserInfo() {
 
 
   return (
-    <>
+    <div className="userInfoPage">
       <Header />
       <div className="userinfoOrReservationlistMenuBar">
         <div className="uorMenuContainer">
@@ -102,7 +102,7 @@ export default function UserInfo() {
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
-    </>
+      <Footer />
+    </div>
   )
 }

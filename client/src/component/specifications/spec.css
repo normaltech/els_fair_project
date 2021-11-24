@@ -76,7 +76,7 @@
   align-items: center;
   padding-top: 20px;
   width: 344px;
-  height: auto;
+  height: 400px;
   margin: 46px 29px 50px 45px;
   border: solid 1px var(--greyish-brown);
   background-color: var(--white);
@@ -85,7 +85,6 @@
 
 .SelectionItemBottomItem img{
   width: 80%;
-  height: 200px;
   text-align: center;
 }
 
@@ -369,6 +368,19 @@
   width: 120px;
 } */
 
+.SelectionItemBottomItemBottom{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 344px;
+  height: auto;
+  margin: 46px 29px 50px 45px;
+  padding: 10px 0;
+  border: solid 1px var(--greyish-brown);
+  background-color: var(--white);
+  justify-content: space-evenly;
+}
+
 
 @media screen and (max-width: 1098px){
   .specBanner{
@@ -383,9 +395,6 @@
   }
   .specContainerLeft{
     width: 1098px;
-  }
-  .SelectionItemBottomItem{
-    height: 250px;
   }
   .selectionConatiner label{
     width: 60px;
@@ -417,15 +426,21 @@
     font-size: 16px;
   }
   .SelectionItemBottomItem{
-    width: 182px;
+    width: 200px;
     height: 250px;
     margin: 46px 29px 126px 45px;
   }
+
   .SelectionItemBottomItem img{
     width: 160px;
   }
   .specContainerRight{
     width: 400px;
+  }
+
+  
+  .SelectionItemBottomItemBottom{
+    width: 200px;
   }
 }
 
@@ -443,7 +458,7 @@
 @media screen and (max-width: 540px){
   .specBanner{
     height: 27px;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 27px;
     padding-left: 27px;
   }
@@ -475,16 +490,20 @@
     width: 200px;
   }
   #defaultInfoTable_companyName{
-    width: 200px;
+    width: auto;
   }
   .SelectionItemBottomItems{
-    height: 850px;
     flex-direction: column;
     align-items: center;
   }
   .SelectionItemBottomItem{
     width: 250px;
-    height: 250px;
+    height: auto;
+    margin: 20px auto;
+  }
+
+  .SelectionItemBottomItemBottom{
+    width: 250px;
     margin: 20px auto;
   }
   .selectionConatiner .eslSelectionBOX{
@@ -597,6 +616,7 @@
   }
 }
 @media screen and (max-width: 360px){
+
   .specContainerLeft{
     width: 360px;
   }
@@ -605,7 +625,7 @@
   }
   .specBanner{
     height: 25px;
-    font-size: 10px;
+    font-size: 15px;
     line-height: 25px;
     padding-left: 27px;
   }
@@ -623,9 +643,10 @@
     height: 30px;
     padding: 3px 0;
     margin-left: 20px;
+    width: auto;
   }
   .SelectionItemBottomItem{
-    height: 280px;
+    height: auto;
   }
   .SelectionItemBottomItem img{
     height: 80px;
@@ -650,8 +671,8 @@
     font-weight: bold;
   }
   .DescTopBoothnum{
-    width: 20px;
-    height: 15px;
+    width: auto;
+    height: auto;
     font-weight: bold;
   }
   .SelectionItemTop .SelectionItemIndex{

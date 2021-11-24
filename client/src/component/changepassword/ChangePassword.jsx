@@ -50,7 +50,7 @@ export default function ChangePassword(){
                     <div><button className="changePassword_button">취소</button></div>
                 </div>
             </div>
-            {/* <Footer/> */}
+            <Footer/>
         </>
     )
 }

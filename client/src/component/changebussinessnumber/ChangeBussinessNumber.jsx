@@ -40,7 +40,7 @@ export default function ChangeBussinessNumber(){
                     <div><button className="changeBussinessNumber_button">취소</button></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

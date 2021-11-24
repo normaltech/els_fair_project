@@ -35,7 +35,7 @@ export default function Withdraw(){
                     <div><Link to="/userinfo"><button className="withdraw_button">취소</button></Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }
