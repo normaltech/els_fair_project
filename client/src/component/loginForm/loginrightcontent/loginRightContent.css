@@ -160,6 +160,7 @@
       }
 
       .loginRightContent{
+        margin-top: 0px;
           width: 400px;
           height: 370px;
       }
@@ -207,7 +208,7 @@
   
   @media screen and (max-width: 480px){
       .loginRightContent{
-          margin-top: 50px;
+          margin-top: 0px;
           width: 300px;
           height: 350px;
       }
