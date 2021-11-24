@@ -6,7 +6,8 @@ import Modal from '@mui/material/Modal';
 import './boothmodal.css'
 import { orange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const style = {
   position: 'absolute',
@@ -37,9 +38,30 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const history = useHistory(null);
   const searchRef = useRef(null);
- 
+  const checkIfUserReserved = () =>{
+    axios.get("/checkIfUserReserved").then((res)=>{
+      const data = res.data[0].COUNT;
+      if(data == 1){
+        alert("예약 내역이 존재합니다!");
+        return;
+      }else{
+        history.push({
+          pathname: "/reservation",
+          state: {
+            boothId: boothId,
+            section: section,
+            type: type,
+            number: number,
+            layer: layer
+          }
+        })
+      }
+     
+    })
+    // window.history.go(0)
+  }
   var reservedCheck = "예약 가능";
   if(isReserved == 1){
     reservedCheck = "예약 불가능";
@@ -47,16 +69,9 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
   function showButton(){
     if(isReserved==0){
       return(
-        <Link className="boothmodalButton" to={{
-          pathname: "/reservation",
-          state: {
-            boothId: boothId,
-            section: section,
-            type: type,
-            number: number,
-            layer: layer,
-          }
-        }}><ColorButton  size="large" variant="contained" display="flex" disableElevation >부스 신청</ColorButton></Link>
+        <div className="boothmodalButton">
+          <ColorButton size="large" variant="contained" display="flex" disableElevation onClick={checkIfUserReserved}>부스 신청</ColorButton>
+        </div>
       )
     }else{
       return(<div className="reservedBooth">예약이 완료된 부스입니다.</div>)

@@ -114,7 +114,7 @@ export default function SignUpFormBox() {
         };
 
         try {
-          axios.post("http://localhost:5000/register", userInfo)
+          axios.post("/register", userInfo)
             .then((response) => {
               console.log(response);
             });
@@ -148,6 +148,7 @@ export default function SignUpFormBox() {
 
     if (count == 0) setcheckinput(true)
     else setcheckinput(false)
+    console.log(count)
   }, [handleSubmit])
 
 

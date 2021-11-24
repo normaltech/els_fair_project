@@ -177,7 +177,7 @@ export default function Spec() {
     };
 
     console.log(selectionInfo);
-    const reserveResultMsg = "";
+    var reserveResultMsg = "";
     try {
       axios.post("/reservateBooth", selectionInfo)
         .then((res) => {
@@ -187,7 +187,9 @@ export default function Spec() {
           } else if (res.data.resultCd == 'E') {
             reserveResultMsg = res.data.msg;
           }
-          console.log(reserveResultMsg)
+          alert(reserveResultMsg)
+          window.location.href="/selection"
+          // console.log(reserveResultMsg)
         });
     } catch (error) {
       console.log(error);

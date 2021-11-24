@@ -347,18 +347,20 @@ app.post("/reservateBooth", (req, res) => {
     pass.forEach(function (item) {
         sql2s += mysql.format(sql2, item);
     });
-    console.log(sql2s);
 
-    db.query(sql1s + sql2s, function (err, result) {
+    var sql3 = "UPDATE BoothInfo SET company_id = ?,isReserved=1 WHERE booth_id=?";
+    var sql3s = mysql.format(sql3,[rvData.companyId,rvData.boothId]);
+    // console.log(sql2s);
+
+    db.query(sql1s + sql2s + sql3s, function (err, result) {
         if (err) {
             console.error(err);
             res.send({ resultCd: 'E', msg: "예기치 않은 오류가 발생하여 예약에 실패하였습니다." });
             throw err;
         }
 
-        if (result[0].affectedRows > 0) {
+        if (result[0].affectedRows > 0&& result[2].affectedRows > 0) {
             res.send({ resultCd: 'S', msg: '정상적으로 예약이 완료되었습니다.' });
-
         } else {
             console.error(result.message);
             res.send({ resultCd: 'E', msg: "예기치 않은 오류가 발생하여 예약에 실패하였습니다. " + result.message });
@@ -561,7 +563,7 @@ app.get("/getCompanyInfoById/:companyId",(req,res)=>{
     db.query("SELECT * FROM UserAccountInfo WHERE company_id = ?;",companyId,(err,result)=>{
         if(result){
             if(result.length>0){
-                console.log(result[0]);
+                // console.log(result[0]);
                 res.send(result[0]);
             }
         }
@@ -573,7 +575,7 @@ app.get("/getSearchData",(req,res)=>{
     (err,result)=>{
         if(result){
             if(result.length>0){
-                console.log(result[1]);
+                // console.log(result[1]);
                 res.send(result)
             }
         }
@@ -623,6 +625,18 @@ app.get("/getNoticeContent/:id",(req,res)=>{
         if(result){
             // console.log(result);
             res.send(result);
+        }
+    })
+})
+
+app.get("/checkIfUserReserved",(req,res)=>{
+    const companyId = req.session.user.company_id;
+    db.query("SELECT COUNT(*) AS COUNT FROM RESERVATION WHERE companyId = ?;",companyId,(err,result)=>{
+        if(result){
+            // console.log(result)
+            res.send(result)
+        }else{
+            res.send({err:err})
         }
     })
 })

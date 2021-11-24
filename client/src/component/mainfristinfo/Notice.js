@@ -53,7 +53,7 @@ function NoticeModal({id,exhibition,title}) {
                 aria-describedby="modal-modal-description"
             >
             <Box sx={style} className="mainpage_box">
-                <div className="mainpage_noticeModal_word"><span className="mainpage_noticeModal_word_span">공지사항 작성</span></div>
+                <div className="mainpage_noticeModal_word"><span className="mainpage_noticeModal_word_span">공지사항</span></div>
                 <div className="mainpage_noticeModal_selectTitle mainpage_noticeModal_padding">전시회 선택</div>
                 <div className="mainpage_noticeModal_padding" >
                     <input type="text" className="mainpage_noticeModal_exhibitionInput" defaultValue={exhibition} disabled/>  
