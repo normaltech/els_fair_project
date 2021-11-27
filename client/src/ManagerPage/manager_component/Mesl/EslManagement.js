@@ -1,34 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
-function useFetch(url) {
-    // console.log(month);
-    const [data, setData] = useState([])
-    async function fetchUrl() {
-        const response = await fetch(url);
-        const json = await response.json();
-        setData(json);
-    }
-
-    useEffect(() => {
-        fetchUrl();
-    }, []);
-
-    return data;
-}
 
 function EslManagement() {
 
-    // const data = useFetch("/eslinfo");
-
     const btn = () => {
-        // try{
-        //     axios.get("/getesl", {data});
-        // }catch(error){
+        // try {
+        //     axios.get("/eslinfo");
+        // } catch (error) {
         //     console.log(error);
         // }
-        axios.get("/eslinfo");
-        // console.log(data);
+        console.log("하이");
     }
 
     return (

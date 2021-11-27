@@ -533,46 +533,38 @@ app.post("/getboothInfo", (req, res) => {
 })
 
 //esl ftp연결함수
-// async function example() {
-//     const client = new ftp.Client()
-//     client.ftp.verbose = true
-//     try {
-//         await client.access({
-//             host: "192.168.1.11",
-//             user: "cgESLUser",
-//             password: "cgESLPassword",
-//             port : "2121",
-//             secure: false
-//         })
-//         await client.cd("/Import")
-//         console.log(await client.list())
-//         console.log("성공")
-//         // await client.uploadFrom("../../import_20211123123410.csv", "import_20211126123456");
-//     }
-//     catch (err) {
-//         console.log(err)
-//         console.log('에러')
-//     }
-//     client.close()
-// }
+async function example() {
+    const client = new ftp.Client()
+    client.ftp.verbose = true
+    try {
+        await client.access({
+            host: "192.168.1.11",
+            user: "cgESLUser",
+            password: "cgESLPassword",
+            port : "2121",
+            secure: false
+        })
+        await client.cd("/Import")
+        console.log(await client.list())
+        console.log("성공")
+        await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
+    }
+    catch (err) {
+        console.log(err)
+        console.log('에러')
+    }
+    client.close()
+}
 
-//esl ftp연결
-// app.get("/getesl", (req, res) => {
-//     console.log('시작');
-//     example();
-// })
-
-//esl 정보 가져오기
+//esl 정보 가져오기 및 ftp연결
 app.get("/eslinfo", (req, res) => {
-    db.query("SELECT company_id, company_name, company_phone_num, email, manager FROM UserAccountInfo;",
+    db.query("SELECT company_id AS eslid, company_name AS name, company_phone_num AS tel, email AS address, manager AS page FROM UserAccountInfo;",
         (err, data) => {
-            const csv_test = jsonToCSV(data);
-            fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
             if (!err) {
-                // res.send(data);
-                console.log("csv테스트입니다.")
-                console.log(csv_test);
-                console.log("csv테스트입니다.")
+                const csv_test = jsonToCSV(data);
+                fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
+
+                example();
             } else {
                 console.log(err);
             }
