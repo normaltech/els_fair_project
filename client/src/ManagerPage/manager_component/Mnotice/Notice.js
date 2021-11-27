@@ -4,6 +4,8 @@ import axios from 'axios';
 import MnoticePosts from './MnoticePosts';
 import { MnoticeNotice } from './MnoticeNotice';
 import MnoticePagenation from './MnoticePagenation';
+import { AddNoticeModal } from './AddNoticeModal';
+import { DeleteNoticeModal } from './DeleteNoticeModal';
 
 function Notice() {
 
@@ -103,34 +105,17 @@ function Notice() {
                         {/* <div><button>페이지네이션</button></div> */}
                     </div>
                     <div className="Mnotice_btn_wrap">
-                        <div><button type="button" className="Mnotice_btn_add" onClick={onClickAdd}>추가</button></div>
-                        <div><button type="button" className="Mnotice_btn_delete" onClick={onClickDelete}>삭제</button></div>
+                        {/* <div><button type="button" className="Mnotice_btn_add" onClick={onClickAdd}>추가</button></div> */}
+                        <div><AddNoticeModal /></div>
+                        {/* <div><button type="button" className="Mnotice_btn_delete" onClick={onClickDelete}>삭제</button></div> */}
+                        <div><DeleteNoticeModal /></div>
                     </div>
                 </div>
             </div>
             
             {/* 배경흐림 모달창 */}
             <div className="Mnotice_black_bg"></div>
-            {/* 추가버튼 -> 공지사항 모달창 */}
-            <div className="Mnotice_noticeModal_wrap">
-                <div className="Mnotice_noticeModal_word"><span className="Mnotice_noticeModal_word_span">공지사항 작성</span></div>
-                <div className="Mnotice_noticeModal_selectTitle Mnotice_noticeModal_padding">전시회 선택</div>
-                <div className="Mnotice_noticeModal_padding">
-                    <select className="Mnotice_noticeModal_selectInput" name="" id="">
-                        <option value="">에스씨엠 페어 2021</option>
-                        <option value="">에스씨엠 페어 2022</option>
-                        <option value="">에스씨엠 페어 2023</option>
-                    </select>
-                </div>
-                <div className="Mnotice_noticeModal_title Mnotice_noticeModal_padding">제목</div>
-                <div className="Mnotice_noticeModal_padding"><input type="text" className="Mnotice_noticeModal_titleInput" placeholder="제목을 입력하세요." /></div>
-                <div className="Mnotice_noticeModal_content Mnotice_noticeModal_padding">내용</div>
-                <div className="Mnotice_noticeModal_padding"><textarea className="Mnotice_noticeModal_textarea" cols="62" rows="10" placeholder="내용을 입력하세요."></textarea></div>
-                <div className="Mnotice_noticeModal_btn_wrap">
-                    <div><button type="button" className="Mnotice_noticeModal_btn_add" onClick={onClickAddInAdd}>추가</button></div>
-                    <div><button type="button" className="Mnotice_noticeModal_btn_cancel" onClick={onClickCancel}>취소</button></div>
-                </div>
-            </div>
+           
             {/* 공지사항 추가완료 모달창 */}
             <div className="Mnotice_addSuccess_wrap">
                 <div class="Mnotice_addsuccess_content_wrap">
@@ -138,20 +123,7 @@ function Notice() {
                     <div><button type="button" className="Mnotice_addsuccess_btn" onClick={onClickOk}>확인</button></div>
                 </div>
             </div>
-            {/* 삭제버튼 -> 공지사항 삭제 모달창 */}
-            <div className="Mnotice_deleteModal_wrap">
-                <div className="Mnotice_deleteModal_content_wrap">
-                    <div className="Mnotice_deleteModal_img_wrap"><img className="Mnotice_deleteModal_img" src="/assets/delete_warning.png" alt="느낌표이미지" /></div>
-                    <div className="Mnotice_deleteModal_right_content">
-                        <div className="Mnotice_deleteModal_title">공지사항 삭제</div>
-                        <div className="Mnotice_deleteModal_question">삭제 버튼을 누르게 되면 해당 내용은 복구할 수 없습니다. 그래도 삭제하시겠습니까?</div>
-                        <div className="Mnotice_deleteModal_btn_wrap">
-                            <div><button className="Mnotice_deleteModal_btn_delete" onClick={onClickDelInDel}>삭제</button></div>
-                            <div><button className="Mnotice_deleteModal_btn_cancel" onClick={onClickCancel}>취소</button></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
             {/* 공지사항 삭제완료 모달창 */}
             <div className="Mnotice_deleteSuccess_wrap">
                 <div className="Mnotice_deleteSuccess_content_wrap">

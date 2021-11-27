@@ -6,7 +6,9 @@ import Modal from '@mui/material/Modal';
 import './boothmodal.css'
 import { orange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
+import axios from 'axios';
+import CloseIcon from '@mui/icons-material/Close';
 
 const style = {
   position: 'absolute',
@@ -33,18 +35,54 @@ const ColorButton = styled(Button)(({ theme }) => ({
   color: "white",
 }));
 
-export default function BoothModal({ searchData, boothId, className, section,type,layer,number}) {
+export default function BoothModal({ isReserved, searchData, boothId, className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const history = useHistory(null);
   const searchRef = useRef(null);
- 
+  const checkIfUserReserved = () =>{
+    axios.get("/checkIfUserReserved").then((res)=>{
+      const data = res.data[0].COUNT;
+      if(data == 1){
+        alert("예약 내역이 존재합니다!");
+        return;
+      }else{
+        history.push({
+          pathname: "/reservation",
+          state: {
+            boothId: boothId,
+            section: section,
+            type: type,
+            number: number,
+            layer: layer
+          }
+        })
+      }
+     
+    })
+    // window.history.go(0)
+  }
+  var reservedCheck = "예약 가능";
+  if(isReserved == 1){
+    reservedCheck = "예약 불가능";
+  }
+  function showButton(){
+    if(isReserved==0){
+      return(
+        <div className="boothmodalButton">
+          <ColorButton size="large" variant="contained" display="flex" disableElevation onClick={checkIfUserReserved}>부스 신청</ColorButton>
+        </div>
+      )
+    }else{
+      return(<div className="reservedBooth">예약이 완료된 부스입니다.</div>)
+    }
+  }
   //한번 클릭하면 animation이 바뀌어 있어서 바로 animation을 null로 바꿔줘야됨
-
+  // console.log(searchData+"<->"+className.substring(2))
   searchData.map((value)=>{
     //value에서 boothname을 none으로 받으면 안보이게 설정
-    if(value === className){
+    if(value === className.substring(2)){
       searchRef.current.style.color = "white";
       searchRef.current.style.border = "";
       searchRef.current.style.backgroundColor = "#F6C652";
@@ -66,8 +104,9 @@ export default function BoothModal({ searchData, boothId, className, section,typ
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <CloseIcon className="modalCloseButton" onClick={handleClose}/>
           <Typography textAlign="center" id="modal-modal-title" variant="h5" component="div" marginBottom="30px" fontSize="32px" fontWeight="Bold">
-            {'예약가능'}
+            {reservedCheck}
           </Typography>
           <div className="modalCenterMakeHelper">
             <Box className="modalBoothType" marginBottom="30px">
@@ -134,16 +173,7 @@ export default function BoothModal({ searchData, boothId, className, section,typ
                 <Typography fontSize="15px" fontWeight="bold">{1}회선</Typography>
               </Box>
             </Box>
-            <Link className="boothmodalButton" to={{
-              pathname: "/reservation",
-              state: {
-                boothId: boothId,
-                section: section,
-                type: type,
-                number: number,
-                layer: layer,
-              }
-            }}><ColorButton size="large" variant="contained" display="flex" disableElevation >부스신청</ColorButton></Link>
+            {showButton()}
           </div>
         </Box>
       </Modal>

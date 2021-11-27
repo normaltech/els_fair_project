@@ -15,7 +15,7 @@ export default function SuccessSignIn(){
                     <div><Link to="/"><button className="successSignIn_button">로그인 페이지로 이동</button></Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

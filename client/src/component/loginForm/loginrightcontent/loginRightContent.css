@@ -1,4 +1,5 @@
 @import url('https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css');
+  
   .loginRightContent{
       margin-top: 80px;
       width: 600px;
@@ -159,7 +160,7 @@
       }
 
       .loginRightContent{
-          margin: 0;
+        margin-top: 0px;
           width: 400px;
           height: 370px;
       }
@@ -207,7 +208,7 @@
   
   @media screen and (max-width: 480px){
       .loginRightContent{
-          /* margin: 158px auto 158px auto; */
+          margin-top: 0px;
           width: 300px;
           height: 350px;
       }

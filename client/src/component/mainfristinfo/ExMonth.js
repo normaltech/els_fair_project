@@ -42,7 +42,7 @@ export const ExMonth = ({id, month}) => {
     return (
         <div className="infoContainer">
             <div className="borderSection">
-                <div className="notice">{month}</div>
+                <div className="notice">{month}월</div>
                 <hr className="line"/>
             </div>
             {

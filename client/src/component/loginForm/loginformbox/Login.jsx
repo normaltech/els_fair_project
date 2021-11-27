@@ -55,14 +55,21 @@ export default function Login() {
       //   body: JSON.stringify(user)
       // });
       try {
-        await axios.post("/login", user)
-        .then((response) => {
-          if(response.data.message)
-            setLoginStatus(response.data.message)
-          else{
-            setLoginStatus(response.data[0].manager+"님 환영합니다!")
+        await axios.post("/login", user).then((res) => {
+          const code = res.data.resultCode;
+          const message=res.data.message;
+
+          if(code==0){
             window.location.href = "/mainpage"
+          }else{
+            alert(message);
           }
+          // if(response.data.message)
+          //   setLoginStatus(response.data.message)
+          // else{
+          //   setLoginStatus(response.data[0].manager+"님 환영합니다!")
+          //   window.location.href = "/mainpage"
+          // }
         });
       } catch (error) {
         console.log(error);
@@ -77,7 +84,7 @@ export default function Login() {
   useEffect(()=>{
     axios.get("/login").then((response)=>{
       if(response.data.loggedIn == true){
-        setLoginStatus(response.data.user[0].manager+"님 환영합니다!")
+        setLoginStatus(response.data.user.manager+"님 환영합니다!")
       }
     })
   }, [])
@@ -99,6 +106,7 @@ export default function Login() {
         <LoginRightContent inputId={inputId} inputPw={inputPw} changeId={changeId} changePw={changePw}
           changeBorderColor={changeBorderColor} clickButton={clickButton} loginStatus={loginStatus}/>
       </div>
+      <Footer/>
     </div>
   )
 }

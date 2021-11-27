@@ -68,7 +68,7 @@ export default function Find(){
                     <div className="find_homeLink"><Link to="/" className="find_word3">홈으로 이동</Link></div>
                 </div>
             </div>
-            {/* <Footer /> */}
+            <Footer />
         </>
     )
 }

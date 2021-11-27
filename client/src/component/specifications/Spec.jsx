@@ -4,6 +4,7 @@ import Header from '../header/Header'
 import './spec.css'
 import axios from 'axios';
 import { useLocation } from 'react-router';
+import SpecModal from './specModal';
 
 
 
@@ -113,7 +114,7 @@ export default function Spec() {
           </div></div>)
       }
       return (
-        <div className="SelectionItemBottomItem">
+        <div className="SelectionItemBottomItemBottom">
           {result.map(item => (
             item
           ))}
@@ -125,7 +126,7 @@ export default function Spec() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const email = document.getElementById("defaultInfoTable_managerEmail").value;
     const name = document.getElementById("defaultInfoTable_managerName").value;
 
@@ -177,7 +178,7 @@ export default function Spec() {
     };
 
     console.log(selectionInfo);
-    const reserveResultMsg = "";
+    var reserveResultMsg = "";
     try {
       axios.post("/reservateBooth", selectionInfo)
         .then((res) => {
@@ -187,7 +188,9 @@ export default function Spec() {
           } else if (res.data.resultCd == 'E') {
             reserveResultMsg = res.data.msg;
           }
-          console.log(reserveResultMsg)
+          alert(reserveResultMsg)
+          window.location.href="/selection"
+          // console.log(reserveResultMsg)
         });
     } catch (error) {
       console.log(error);
@@ -218,11 +221,6 @@ export default function Spec() {
       console.log(error);
     }
   }, []);
-
-
-
-
-
 
   // data.map((item)=>{
   //   setManagerEmail(item.email)
@@ -316,7 +314,7 @@ export default function Spec() {
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
                   <div className="newSelectionItemContainer">
-                    <div id="fixedBox" className="SelectionItemBottomItem">
+                    <div  className="SelectionItemBottomItem">
                       <h4>회사안내 ESL</h4>
                       <img src="/assets/icons/esl1.png" alt="esl image" />
                       <div className="selectionConatiner">
@@ -332,7 +330,7 @@ export default function Spec() {
                     }
                     </div>
                     <div className="newSelectionItemContainer">
-                    <div id="fixedBox" className="SelectionItemBottomItem">
+                    <div className="SelectionItemBottomItem">
                       <h4>제품 안내 ESL</h4>
                       <img src="/assets/icons/esl2.png" alt="esl image" />
                       <div className="selectionConatiner">
@@ -351,7 +349,7 @@ export default function Spec() {
                       isE2True() && <E2InfoBox/>
                     }
                     </div>
-                    <div id="fixedBox">
+                    <div className="SelectionItemBottomItem">
                     <h4>기타 ESL</h4>
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
@@ -459,11 +457,11 @@ export default function Spec() {
               <div className="reservationDashboardCostTitle">총 금액</div>
               <div className="reservationDashboardCostNum">{eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth == 0 ? 0 : eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth}만원</div>
             </div>
-            <div className="reservationDashboardButton" onClick={handleSubmit}>결제</div>
+            <SpecModal handleSubmit={handleSubmit}/>
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

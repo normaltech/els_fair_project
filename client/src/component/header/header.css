@@ -50,6 +50,15 @@ a{
     padding: 8px 12px;
 }
 
+.headerRightMyPageSpan{
+    color: var(--greyish-brown);
+    margin-left: 0;
+}
+
+.headerRightMyPageSpan:hover{
+    color: var(--warm-grey);
+}
+
 .headerRightSpan{
     color: var(--greyish-brown);
     margin-left: 0;
@@ -120,7 +129,13 @@ a{
         /* color: var(--white); */
         color: var(--dark-grey-blue);
     }
-
+    .headerRightMyPageSpan{
+        display: none;
+        /* color: var(--white); */
+        color: var(--dark-grey-blue);
+    }
+    
+    
     .headerToggle{
         display: block;
         color: var(--dark-grey-blue);
@@ -132,6 +147,10 @@ a{
 
     .headerMenu.active,
     .headerRightSpan.active{
+        display: flex;
+    }
+    .headerMenu.active,
+    .headerRightMyPageSpan.active{
         display: flex;
     }
 }
@@ -164,6 +183,10 @@ a{
         color: var(--white);
     }
     .headerRightSpan{
+        color: var(--white);
+        font-size: 14px;
+    }
+    .headerRightMyPageSpan{
         color: var(--white);
         font-size: 14px;
     }
