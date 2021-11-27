@@ -44,6 +44,8 @@ export default function Spec() {
   const [btype, setBType] = useState(specs.type == 'b' ? true : false);
   const [ctype, setCType] = useState(specs.type == 'c' ? true : false);
 
+  // const [companyURL, setcompanyURL] = useState("https://eservate.com");
+
   const handleBoothPrice = (e) => {
     const boothType = e.target.value;
 
@@ -88,7 +90,7 @@ export default function Spec() {
       <div className="SelectionItemBottomItem">
         <div className="e1DetailInfo">
           <label htmlFor="">회사 소개 사이트 주소</label><br />
-          <input type="text" name="companyName" />
+          <input type="text" name="companyName" className="company_url" />
         </div>
       </div>
     )
@@ -108,9 +110,9 @@ export default function Spec() {
           <h5>품목{i+1}</h5>
           <div className="e2DetailInfo">
             <label htmlFor="product">제품명</label><br />
-            <input type="text" name="product" /><br/>
+            <input type="text" name="product" className="eslProductName" /><br/>
             <label htmlFor="value">가격</label><br />
-            <input type="text" name="value" />
+            <input type="text" name="value" className="eslProductPrice" />
           </div></div>)
       }
       return (
@@ -157,6 +159,31 @@ export default function Spec() {
       }
     }
 
+    const eslProductName = document.getElementsByClassName("eslProductName");
+    const eslProductPrice = document.getElementsByClassName("eslProductPrice");
+
+    const eslproduct = [];
+    for(let i=0; i<eslNum[1]; i++){
+      if(eslProductName[i].value != ''){
+        eslproduct.push({
+          'product_name': eslProductName[i].value,
+          'product_price': eslProductPrice[i].value
+        })
+      }
+    }
+
+    const eslCompanyUrl = document.getElementsByClassName("company_url");
+
+    const eslurl = [];
+    for(let i=0; i<eslNum[0]; i++){
+      if(eslCompanyUrl[i].value != ''){
+        eslurl.push({
+          'url': eslCompanyUrl[i].value
+        })
+      }
+    }
+    
+
     // let selectionInfo = {
     //   boothId: specs.boothId,
     //   email: email,
@@ -174,6 +201,8 @@ export default function Spec() {
       companyId: companyId,
       passArray: passTotalArray,
       eslNum: eslNum,
+      eslproduct: eslproduct,
+      eslurl: eslurl,
       totalPrice: eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth
     };
 

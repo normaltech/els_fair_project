@@ -354,8 +354,9 @@ app.post("/reservateBooth", (req, res) => {
     }
 
     console.log(reservateList);
-    const pass = rvData.passArray
-    // console.log(pass)
+    const pass = rvData.passArray;
+    const esl = rvData.eslurl;
+    const product = rvData.eslproduct;
 
     //sql구문 두개 이상 한번에 처리
     var sql1 = "INSERT INTO RESERVATION SET ?;";
@@ -367,11 +368,25 @@ app.post("/reservateBooth", (req, res) => {
         sql2s += mysql.format(sql2, item);
     });
 
-    var sql3 = "UPDATE BoothInfo SET company_id = ?,isReserved=1 WHERE booth_id=?";
+    var sql3 = "UPDATE BoothInfo SET company_id = ?,isReserved=1 WHERE booth_id=?;";
     var sql3s = mysql.format(sql3,[rvData.companyId,rvData.boothId]);
-    // console.log(sql2s);
 
-    db.query(sql1s + sql2s + sql3s, function (err, result) {
+    var sql4 = "UPDATE UserAccountInfo SET ? WHERE company_id = ?;";
+    var sql4s = "";
+    esl.forEach(function (item) {
+        sql4s += mysql.format(sql4, [item,rvData.companyId]);
+    });
+
+    var sql5 = "INSERT INTO Product SET company_id = ?, ?;";
+    var sql5s = "";
+    product.forEach(function (item) {
+        sql5s += mysql.format(sql5, [rvData.companyId,item]);
+    });
+
+
+    console.log(sql4s);
+
+    db.query(sql1s + sql2s + sql3s + sql4s + sql5s, function (err, result) {
         if (err) {
             console.error(err);
             res.send({ resultCd: 'E', msg: "예기치 않은 오류가 발생하여 예약에 실패하였습니다." });
