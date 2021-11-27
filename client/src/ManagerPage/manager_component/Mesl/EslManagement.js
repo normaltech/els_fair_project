@@ -19,7 +19,7 @@ function useFetch(url) {
 
 function EslManagement() {
 
-    const data = useFetch("/eslinfo");
+    // const data = useFetch("/eslinfo");
 
     const btn = () => {
         // try{
@@ -27,7 +27,8 @@ function EslManagement() {
         // }catch(error){
         //     console.log(error);
         // }
-        console.log(data);
+        axios.get("/eslinfo");
+        // console.log(data);
     }
 
     return (

@@ -9,7 +9,23 @@ const saltRounds = 10;
 
 //ftp관리
 const ftp = require("basic-ftp");
+function jsonToCSV(json_data) {
+    const json_array = json_data;
+    let csv_string = '';
+    const titles = Object.keys(json_array[0]);
 
+    titles.forEach((title, index) => { csv_string += (index !== titles.length - 1 ? `${title},` : `${title}\r\n`); });
+
+    json_array.forEach((content, index) => {
+        let = row = '';
+        for (let title in content) {
+            row += (row === '' ? `${content[title]}` : `,${content[title]}`);
+        }
+        csv_string += (index !== json_array.length - 1 ? `${row}\r\n` : `${row}`);
+    })
+
+    return csv_string;
+}
 //쿠키 + 세션 관리
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -550,9 +566,10 @@ app.post("/getboothInfo", (req, res) => {
 app.get("/eslinfo", (req, res) => {
     db.query("SELECT company_id, company_name, company_phone_num, email, manager FROM UserAccountInfo;",
         (err, data) => {
+            const csv_test = jsonToCSV(data);
+            fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
             if (!err) {
-                res.send(data);
-                const csv_test = jsonToCSV(data);
+                // res.send(data);
                 console.log("csv테스트입니다.")
                 console.log(csv_test);
                 console.log("csv테스트입니다.")
