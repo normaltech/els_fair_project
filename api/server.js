@@ -528,9 +528,10 @@ app.post("/getboothInfo", (req, res) => {
 //             port : "2121",
 //             secure: false
 //         })
+//         await client.cd("/Import")
 //         console.log(await client.list())
 //         console.log("성공")
-//         // await client.uploadFrom("README.md", "README_FTP.md")
+//         // await client.uploadFrom("../../import_20211123123410.csv", "import_20211126123456");
 //     }
 //     catch (err) {
 //         console.log(err)
@@ -551,6 +552,10 @@ app.get("/eslinfo", (req, res) => {
         (err, data) => {
             if (!err) {
                 res.send(data);
+                const csv_test = jsonToCSV(data);
+                console.log("csv테스트입니다.")
+                console.log(csv_test);
+                console.log("csv테스트입니다.")
             } else {
                 console.log(err);
             }
