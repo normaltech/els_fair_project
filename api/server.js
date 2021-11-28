@@ -11,59 +11,52 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
-const crawler = async() => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    const eslid = 'develop';
-    const eslpassword = 'esl';
+const crawler = async () => {
+    try {
+        const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, acceptInsecureCerts: true, args: ['--proxy-bypass-list=*', '--disable-gpu', '--disable-dev-shm-usage', '--disable-setuid-sandbox', '--no-first-run', '--no-sandbox', '--no-zygote', '--single-process', '--ignore-certificate-errors', '--ignore-certificate-errors-spki-list', '--enable-features=NetworkService'] });
+        const page = await browser.newPage();
+        const eslid = 'develop';
+        const eslpassword = 'esl';
 
-    await page.goto('https://192.168.1.11:8443');
+        await page.goto('https://192.168.1.11:8443');
 
-    // await page.evaluate((id, pw) => {
-    //     document.querySelector('input[name="userid"]').value = id;
-    //     document.querySelector('input[name="pwd"]').value = pw;
-    // }, eslid, eslpassword);
+        await page.evaluate((id, pw) => {
+            document.querySelector('input[name="userid"]').value = id;
+            document.querySelector('input[name="pwd"]').value = pw;
+        }, eslid, eslpassword);
 
-    // await page.click('a[class="btn"]');
-    // await page.waitFor(500);
+        await page.click('a[class="btn"]');
+        await page.waitForTimeout(500);
 
-    if(page.url() === 'https://192.168.1.11:8443')console.log('로그인안됨')
-    else if (page.url() === 'https://192.168.1.11:8443/main.jsp')console.log('로그인성공!')
+        if (page.url() === 'https://192.168.1.11:8443/main.jsp') {
+            console.log('로그인성공!');
+
+            // await page.click("li");
+            // await page.click('a[id="btn_merchandise_refresh"]');
+
+            // const content = await page.content();
+
+            // let esllist = [];
+            // const $ = cheerio.load(content);
+            // const $bodyList = $("div.merchandise_list_div table").children("tbody");
+
+            // $bodyList.each(function (i, elem) {
+            //     esllist[i] = {
+            //         t1: $(this).find('tr td').text()
+            //     };
+            // });
+
+            // console.log(esllist);
+        }
+        else console.log(page.url());
+
+        await browser.close();
+    } catch (e) {
+        console.error(e);
+    }
 }
 
 crawler();
-
-// axios.get('https://192.168.1.11:8443/main.jsp')
-//     .then(html => {
-//         let esllist = [];
-//         const $ = cheerio.load(html.data);
-//         const $bodyList = $("table.tag_list tbody").children("tr");
-
-//         $bodyList.each(function(i, elem) {
-//             esllist[i] = {
-//                 t1: $(this).find('td').text(),
-//                 t2: $(this).find('td').text(),
-//                 t3: $(this).find('td').text(),
-//                 t4: $(this).find('td').text(),
-//                 t5: $(this).find('td').text(),
-//                 t6: $(this).find('td').text(),
-//                 t7: $(this).find('td').text(),
-//                 t8: $(this).find('td').text(),
-//                 t9: $(this).find('td').text(),
-//                 t10: $(this).find('td').text(),
-//                 t11: $(this).find('td').text(),
-//                 t12: $(this).find('td').text(),
-//                 t13: $(this).find('td').text(),
-//                 t14: $(this).find('td').text(),
-//                 t15: $(this).find('td').text(),
-//                 t16: $(this).find('td').text(),
-//                 t17: $(this).find('td').text(),
-//                 t18: $(this).find('td').text()
-//             };
-//         });
-
-//         console.log(esllist);
-//     });
 
 //ftp관리
 const ftp = require("basic-ftp");
