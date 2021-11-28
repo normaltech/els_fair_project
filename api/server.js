@@ -7,6 +7,64 @@ const app = express();
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+const axios = require('axios');
+const cheerio = require('cheerio');
+const puppeteer = require('puppeteer');
+
+const crawler = async() => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    const eslid = 'develop';
+    const eslpassword = 'esl';
+
+    await page.goto('https://192.168.1.11:8443');
+
+    // await page.evaluate((id, pw) => {
+    //     document.querySelector('input[name="userid"]').value = id;
+    //     document.querySelector('input[name="pwd"]').value = pw;
+    // }, eslid, eslpassword);
+
+    // await page.click('a[class="btn"]');
+    // await page.waitFor(500);
+
+    if(page.url() === 'https://192.168.1.11:8443')console.log('로그인안됨')
+    else if (page.url() === 'https://192.168.1.11:8443/main.jsp')console.log('로그인성공!')
+}
+
+crawler();
+
+// axios.get('https://192.168.1.11:8443/main.jsp')
+//     .then(html => {
+//         let esllist = [];
+//         const $ = cheerio.load(html.data);
+//         const $bodyList = $("table.tag_list tbody").children("tr");
+
+//         $bodyList.each(function(i, elem) {
+//             esllist[i] = {
+//                 t1: $(this).find('td').text(),
+//                 t2: $(this).find('td').text(),
+//                 t3: $(this).find('td').text(),
+//                 t4: $(this).find('td').text(),
+//                 t5: $(this).find('td').text(),
+//                 t6: $(this).find('td').text(),
+//                 t7: $(this).find('td').text(),
+//                 t8: $(this).find('td').text(),
+//                 t9: $(this).find('td').text(),
+//                 t10: $(this).find('td').text(),
+//                 t11: $(this).find('td').text(),
+//                 t12: $(this).find('td').text(),
+//                 t13: $(this).find('td').text(),
+//                 t14: $(this).find('td').text(),
+//                 t15: $(this).find('td').text(),
+//                 t16: $(this).find('td').text(),
+//                 t17: $(this).find('td').text(),
+//                 t18: $(this).find('td').text()
+//             };
+//         });
+
+//         console.log(esllist);
+//     });
+
 //ftp관리
 const ftp = require("basic-ftp");
 function jsonToCSV(json_data) {
@@ -115,7 +173,7 @@ app.post("/register", (req, res) => {
         }
 
         db.query(
-            "INSERT INTO UserAccountInfo (company_id,company_name,manager,email,password,gender,company_phone_num,manager_phone_num,isActive)"
+            "INSERT INTO UserAccountInfo (company_id,company_name,manager,email,password,url,company_phone_num,manager_phone_num,isActive)"
             + "VALUES (?,?,?,?,?,?,?,?,?)",
             [companyId, companyName, managerName, userEmail, hash, gender, companyNum, managerNum, 1],
             (err, result) => {
@@ -244,18 +302,6 @@ app.get("/getuserinfo", (req, res) => {
     }
 
     else {
-        // db.query("SELECT * FROM UserAccountInfo WHERE email=?;", [email],
-        //     (err, data) => {
-        //         if (!err) {
-        //             res.send(data);
-        //             console.log('데이터전송');
-        //             console.log(data);
-        //         } else {
-        //             res.send(err);
-        //         }
-        //     }
-        // )
-
         res.send(name);
     }
 })
@@ -668,7 +714,7 @@ async function example() {
         await client.cd("/Import")
         console.log(await client.list())
         console.log("성공")
-        await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
+        // await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
     }
     catch (err) {
         console.log(err)
@@ -682,8 +728,8 @@ app.get("/eslinfo", (req, res) => {
     db.query("SELECT company_id AS eslid, company_name AS name, company_phone_num AS tel, email AS address, manager AS page FROM UserAccountInfo;",
         (err, data) => {
             if (!err) {
-                const csv_test = jsonToCSV(data);
-                fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
+                // const csv_test = jsonToCSV(data);
+                // fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
 
                 example();
             } else {

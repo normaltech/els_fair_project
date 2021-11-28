@@ -4,11 +4,11 @@ import axios from 'axios';
 function EslManagement() {
 
     const btn = () => {
-        // try {
-        //     axios.get("/eslinfo");
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            axios.get("/eslinfo");
+        } catch (error) {
+            console.log(error);
+        }
         console.log("하이");
     }
 

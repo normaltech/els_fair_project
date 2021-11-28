@@ -14,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.24.0",
     "basic-ftp": "^4.6.6",
     "basic-ftp-ct": "^4.5.13",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.10",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
@@ -30,6 +32,7 @@
     "nodemailer": "^6.7.0",
     "nodemailer-smtp-pool": "^2.8.3",
     "nodemon": "^2.0.14",
+    "puppeteer": "^12.0.0",
     "react-icons": "^4.3.1",
     "yarn": "^1.22.17"
   },
