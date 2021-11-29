@@ -11,8 +11,8 @@ function ManagerMain() {
     const [companyName, setCompanyName] = useState('펍쥐')
     const [companyNum, setCompanyNum] = useState('5')
     const [companyBooth, setCompanyBooth] = useState('A-a101')
-    const [eslNum, setEslNum] = useState('85')
-    const [eslDestroyNum, setEslDestroyNum] = useState('85')
+    const [eslNum, setEslNum] = useState('10')
+    const [eslDestroyNum, setEslDestroyNum] = useState('10')
 
     return (
         <>
@@ -59,13 +59,13 @@ function ManagerMain() {
                                 <div className="managerMain_eslManageNum">{eslNum}</div>
                             </div>
                             <div className="managerMain_eslManageDestroy_wrap">
-                                <div className="managerMain_eslManageDestroyTitle">파손현황</div>
+                                <div className="managerMain_eslManageDestroyTitle">연결현황</div>
                                 <div className="managerMain_eslManageDestroy">{eslDestroyNum}</div>
                             </div>
                         </div>
                         <div className="managerMain_eslManageUnder_wrap">
                             <div><img className="managerMain_eslManageUnder_img" src="/assets/network.png" alt="network사진" /></div>
-                            <div>현재 장치가 정상 작동중입니다.</div>
+                            <div>esl</div>
                         </div>
                     </div>
                 </div>

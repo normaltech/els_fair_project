@@ -31,9 +31,14 @@ const crawler = async () => {
         if (page.url() === 'https://192.168.1.11:8443/main.jsp') {
             console.log('로그인성공!');
 
-            await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
+            // await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
+            // await page.waitForTimeout(500);
+            // await page.click('#btn_merchandise_refresh');
+            // await page.waitForTimeout(500);
+
+            await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
             await page.waitForTimeout(500);
-            await page.click('#btn_merchandise_refresh');
+            await page.click('#btn_tag_status_refresh');
             await page.waitForTimeout(500);
 
             const content = await page.content();
@@ -41,12 +46,14 @@ const crawler = async () => {
             let esllist = [];
             const $ = cheerio.load(content);
             // const $bodyList = $("div#content").children("ul");
-            const $bodyList = $("div#merchandise_list_div").children("table");
+            const $bodyList = $("table#tag_list tbody").children("tr");
 
             $bodyList.each(function (i, elem) {
                 esllist[i] = {
-                    // t1: $(this).find('thead > tr > th:nth-child(1)').text(),
-                    t2: $(this).find('tbody > tr:nth-child(1) > td:nth-child(1)').text()
+                    tag_id: $(this).find('td:nth-child(2)').text(),
+                    state: $(this).find('td:nth-child(5) > span').text(),
+                    battery: $(this).find('td:nth-child(6)').text(),
+                    company_id: $(this).find('td:nth-child(15)').text()
                 };
             });
 
