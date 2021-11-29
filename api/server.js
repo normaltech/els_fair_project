@@ -31,22 +31,26 @@ const crawler = async () => {
         if (page.url() === 'https://192.168.1.11:8443/main.jsp') {
             console.log('로그인성공!');
 
-            // await page.click("li");
-            // await page.click('a[id="btn_merchandise_refresh"]');
+            await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
+            await page.waitForTimeout(500);
+            await page.click('#btn_merchandise_refresh');
+            await page.waitForTimeout(500);
 
-            // const content = await page.content();
+            const content = await page.content();
 
-            // let esllist = [];
-            // const $ = cheerio.load(content);
-            // const $bodyList = $("div.merchandise_list_div table").children("tbody");
+            let esllist = [];
+            const $ = cheerio.load(content);
+            // const $bodyList = $("div#content").children("ul");
+            const $bodyList = $("div#merchandise_list_div").children("table");
 
-            // $bodyList.each(function (i, elem) {
-            //     esllist[i] = {
-            //         t1: $(this).find('tr td').text()
-            //     };
-            // });
+            $bodyList.each(function (i, elem) {
+                esllist[i] = {
+                    // t1: $(this).find('thead > tr > th:nth-child(1)').text(),
+                    t2: $(this).find('tbody > tr:nth-child(1) > td:nth-child(1)').text()
+                };
+            });
 
-            // console.log(esllist);
+            console.log(esllist);
         }
         else console.log(page.url());
 
@@ -56,7 +60,7 @@ const crawler = async () => {
     }
 }
 
-crawler();
+// crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
