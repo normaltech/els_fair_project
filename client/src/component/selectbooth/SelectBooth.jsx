@@ -163,7 +163,7 @@ export default function SelectBooth() {
 
       <div className="boothInfoContainer" id="boothInfo">
         <div className="boothInfoContainerTitle">
-          <img src="" alt="" className="boothInfoContainerTitleImg" />
+          {/* <img src="" alt="" className="boothInfoContainerTitleImg" /> */}
           <div className="boothInfoContainerTitleText">부스 배치도</div>
         </div>
         <TransformWrapper
@@ -177,7 +177,7 @@ export default function SelectBooth() {
                     <button onClick={() => zoomOut()}>-</button>
                     <button onClick={() => resetTransform()}>x</button>
                   </div> */}
-              <a name="booth_target"></a>
+              {/* <a name="booth_target"></a> */}
               <div className="boothInfoContainerMain">
                 <div className="boothInfoContainerLeftBox">
                   <div className="boothInfoSearchContainer">
