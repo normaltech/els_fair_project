@@ -8,6 +8,10 @@
     /* justify-content: center; */
 }
 
+.managerMain_boothReservationInfo{
+  position: relative;
+}
+
 .managerMain_wrap .managerMain_top_content_wrap, 
 .managerMain_wrap .managerMain_middle_content_wrap, 
 .managerMain_wrap .managerMain_bottom_cotent_wrap{
@@ -127,10 +131,10 @@
 /* 2. 부스 예약 현황 */
 .managerMain_middle_content_wrap{
     /* width: 1400px; */
-    width: 80vw;
+    width: 88vw;
     height: 686px;
     border-radius: 9px;
-    background-color: #fff;
+    background-color: #d4ddea;
 }
 
 /* 3. 기업관리 및 ESL관리 */

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './managerMain.css'
 import { CompanyM } from './company/CompanyM'
+import ManagerBooth from './managerbooth/ManagerBooth'
 
 function ManagerMain() {
 
@@ -41,7 +42,7 @@ function ManagerMain() {
                 {/* 2. 부스 예약 현황 */}
                 <div className="managerMain_middle_content_wrap">
                     <div className="managerMain_boothReservationInfo">
-
+                      <ManagerBooth/>
                     </div>
                 </div>
                 {/* 3. 기업관리 및 ESL관리 */}
