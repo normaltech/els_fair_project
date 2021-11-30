@@ -124,9 +124,6 @@
     padding: 10px 0;
 }
 .userManagement_userDetailModal_leftContent_img_wrap{
-    width: 180px;
-    height: 180px;
-    border: 1px solid var(--warm-grey);
     border-radius: 50%;
 }
 .userManagement_userDetailModal_leftContent_name{
@@ -143,7 +140,7 @@
 .userManagement_userDetailModal_rightContent_wrap{
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 50px;
+    padding: 16px 0 0 50px;
 }
 .userManagement_userDetailModal_rightUpContent_wrap{
     display: flex;

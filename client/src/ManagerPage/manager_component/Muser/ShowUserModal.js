@@ -1,18 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import './userManagement.css';
+import axios from 'axios';
+function MemberCount(companyId){
+    const [data, setData] = useState([])
+    async function fetchUrl(){
+        axios.get("/getCompanyMemberCount/"+companyId).then((res) => {
+            setData(res.data.member)
+        })
+    }
 
-export const ShowUserModal = ({company, primaryNum, boothId, manager, phoneNum, email}) => {
+    useEffect(() => {
+        fetchUrl();
+     },[]);
+
+    return data;
+}
+export const ShowUserModal = ({company, primaryNum, boothId, manager, phoneNum, email, isActive,companyNum}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    var member = MemberCount(primaryNum);
     return (
         <>
             {/* <span onClick={handleOpen} ></span> */}
             <td className="userManagement_table_padding" onClick={handleOpen}>{company}</td>
             <td className="userManagement_table_padding" onClick={handleOpen}>{primaryNum}</td>
-            <td className="userManagement_table_padding" onClick={handleOpen}>{boothId}</td>
+            {/* <td className="userManagement_table_padding" onClick={handleOpen}>{boothId}</td> */}
             <td className="userManagement_table_padding" onClick={handleOpen}>{manager}</td>
             <td className="userManagement_table_padding" onClick={handleOpen}>{phoneNum}</td>
             <td className="userManagement_table_padding" onClick={handleOpen}>{email}</td>
@@ -27,10 +42,10 @@ export const ShowUserModal = ({company, primaryNum, boothId, manager, phoneNum, 
                     <div className="userManagement_userDetailModal_wrap">
                         <div className="userManagement_userDetailModal_content_wrap">
                             <div className="userManagement_userDetailModal_leftContent_wrap">
-                                <div className="userManagement_userDetailModal_leftContent_img_wrap userManagement_userDetailModal_leftContent_padding"><img src="" alt="" /></div>
-                                <div className="userManagement_userDetailModal_leftContent_name userManagement_userDetailModal_leftContent_padding">강낭콩</div>
-                                <div className="userManagement_userDetailModal_leftContent_phoneNum userManagement_userDetailModal_leftContent_padding">010-****-****</div>
-                                <div className="userManagement_userDetailModal_leftContent_email userManagement_userDetailModal_leftContent_padding">***@gmail.com</div>
+                                <div className="userManagement_userDetailModal_leftContent_img_wrap userManagement_userDetailModal_leftContent_padding"><img src="/assets/avatar2.png" width="170px"/></div>
+                                <div className="userManagement_userDetailModal_leftContent_name userManagement_userDetailModal_leftContent_padding" >{manager}</div>
+                                <div className="userManagement_userDetailModal_leftContent_phoneNum userManagement_userDetailModal_leftContent_padding" >{phoneNum}</div>
+                                <div className="userManagement_userDetailModal_leftContent_email userManagement_userDetailModal_leftContent_padding">{email}</div>
                             </div>
                             <div className="userManagement_userDetailModal_rightContent_wrap">
                                 <div className="userManagement_userDetailModal_rightUpContent_wrap">
@@ -41,9 +56,9 @@ export const ShowUserModal = ({company, primaryNum, boothId, manager, phoneNum, 
                                         <div className="userManagement_userDetailModal_rightUpTitle_style userManagement_userDetailModal_rightUpContent_padding">고유번호</div>
                                     </div>
                                     <div className="userManagement_userDetailModal_rightUpTitleInfo_wrap">
-                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">캠피스트</div>
-                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">02-***-****</div>
-                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">A0101121</div>
+                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">{company}</div>
+                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">{companyNum}</div>
+                                        <div className="userManagement_userDetailModal_rightUpTitleInfo_style userManagement_userDetailModal_rightUpContent_padding">{primaryNum}</div>
                                     </div>
                                 </div>
                                 <div className="userManagement_userDetailModal_rightDownContent_wrap">
@@ -57,11 +72,11 @@ export const ShowUserModal = ({company, primaryNum, boothId, manager, phoneNum, 
                                         </div>
                                         <div className="userManagement_userDetailModal_rightDownUp_numOfPeople_wrap">
                                             <div className="userManagement_userDetailModal_rightDownUp_numofPeople_title userManagement_userDetailModal_rightDownContent_padding">인원</div>
-                                            <div className="userManagement_userDetailModal_rightDownUp_numofPeople userManagement_userDetailModal_rightDownContent_padding">5명</div>
+                                            <div className="userManagement_userDetailModal_rightDownUp_numofPeople userManagement_userDetailModal_rightDownContent_padding">{member}</div>
                                         </div>
                                         <div className="userManagement_userDetailModal_rightDownUp_authority_wrap">
                                             <div className="userManagement_userDetailModal_rightDownUp_authority_title userManagement_userDetailModal_rightDownContent_padding">권한</div>
-                                            <div className="userManagement_userDetailModal_rightDownUp_authority userManagement_userDetailModal_rightDownContent_padding">활성화</div>
+                                            <div className="userManagement_userDetailModal_rightDownUp_authority userManagement_userDetailModal_rightDownContent_padding">{isActive}</div>
                                         </div>
                                     </div>
                                     {/* 중앙 */}
