@@ -38,7 +38,7 @@ function MemberInfo(companyId){
 
 export default function EditModal({companyId}) {
     var member = MemberCount(companyId);
-    console.log("인원:"+member);
+    // console.log("인원:"+member);
     var companyInfo = MemberInfo(companyId);
 
     const [open, setOpen] = useState(false);
@@ -59,6 +59,34 @@ export default function EditModal({companyId}) {
         companyId: '',
         member: '',
     });
+
+    const submitUpdate = () =>{
+        const manager = document.getElementById('manager').value;
+        const phoneNum = document.getElementById('phoneNum').value;
+        const email = document.getElementById('email').value;
+        const companyName = document.getElementById('companyName').value;
+        const companyNum = document.getElementById('companyNum').value;
+        const companyId = document.getElementById('companyId').value;
+        const isActive = document.getElementById('isActive').value;
+        let data = {
+            manager : manager,
+            phoneNum : phoneNum,
+            email : email,
+            companyName : companyName,
+            companyNum : companyNum,
+            companyId : companyId,
+            isActive : isActive,
+            companyId : companyId
+        }
+        axios.post("/updateUserInfo",data).then((res)=>{
+            // console.log(res);
+            if(res.data.affectedRows >= 1){
+                alert("사용자 정보가 수정되었습니다!");
+                window.location.reload();
+                handleClose();
+            }
+        })
+    }
 
     const managerSetter = (value) => {
         setUser({
@@ -126,15 +154,15 @@ export default function EditModal({companyId}) {
                        </div> */}
                        <div className="userManagement_userModifyModal_leftContent_name userManagement_userModifyModal_leftContent_padding">
                            <div className="userManagement_userModifyModal_leftContent_name_title">이름</div>
-                           <div className="userManagement_userModifyModal_leftContent_name_info"><input type="text" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.manager} onChange={(e) => { managerSetter(e.target.value);}}/></div>
+                           <div className="userManagement_userModifyModal_leftContent_name_info"><input type="text" id="manager" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.manager} onChange={(e) => { managerSetter(e.target.value);}}/></div>
                        </div>
                        <div className="userManagement_userModifyModal_leftContent_phoneNum userManagement_userModifyModal_leftContent_padding">
                            <div className="userManagement_userModifyModal_leftContent_phoneNum_title">전화번호</div>
-                           <div className="userManagement_userModifyModal_leftContent_phoneNum_info"><input type="text" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.manager_phone_num} onChange={(e) => { managerPhoneSetter(e.target.value);}}/></div>
+                           <div className="userManagement_userModifyModal_leftContent_phoneNum_info"><input type="text" id="phoneNum" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.manager_phone_num} onChange={(e) => { managerPhoneSetter(e.target.value);}}/></div>
                        </div>
                        <div className="userManagement_userModifyModal_leftContent_email userManagement_userModifyModal_leftContent_padding">
                            <div className="userManagement_userModifyModal_leftContent_email_title">이메일</div>
-                           <div className="userManagement_userModifyModal_leftContent_email_info"><input type="email" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.email} onChange={(e) => { emailSetter(e.target.value);}}/></div>
+                           <div className="userManagement_userModifyModal_leftContent_email_info"><input type="email" id="email" className="userManagement_userModifyModal_leftContent_input" defaultValue={companyInfo.email} onChange={(e) => { emailSetter(e.target.value);}}/></div>
                        </div>
                    </div>
                    <div className="userManagement_userModifyModal_rightContent_wrap">
@@ -146,9 +174,9 @@ export default function EditModal({companyId}) {
                                <div className="userManagement_userModifyModal_rightUpTitle_style userManagement_userModifyModal_rightUpContent_padding">고유번호</div>
                            </div>
                            <div className="userManagement_userModifyModal_rightUpTitleInfo_wrap">
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyInfo.company_name} onChange={(e) => { companySetter(e.target.value);}}/></div>
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyInfo.company_phone_num} onChange={(e) => { companyPhoneSetter(e.target.value);}}/></div>
-                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyId} onChange={(e) => { companyIdSetter(e.target.value);}}/></div>
+                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input id="companyName" className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyInfo.company_name} onChange={(e) => { companySetter(e.target.value);}}/></div>
+                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input id="companyNum" className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyInfo.company_phone_num} onChange={(e) => { companyPhoneSetter(e.target.value);}}/></div>
+                               <div className="userManagement_userModifyModal_rightUpTitleInfo_style userManagement_userModifyModal_rightUpContent_padding"><input id="companyId" className="userManagement_userModifyModal_rightContent_input" type="text" defaultValue={companyId} onChange={(e) => { companyIdSetter(e.target.value);}}/></div>
                            </div>
                        </div>
                        <div className="userManagement_userModifyModal_rightDownContent_wrap">
@@ -168,15 +196,15 @@ export default function EditModal({companyId}) {
                                <div className="userManagement_userModifyModal_rightDownUp_numOfPeople_wrap">
                                    <div className="userManagement_userModifyModal_rightDownUp_numofPeople_title userManagement_userModifyModal_rightDownContent_padding">인원</div>
                                    <div className="userManagement_userModifyModal_rightDownUp_numofPeople userManagement_userModifyModal_rightDownContent_padding">
-                                       <input className="userManagement_userModifyModal_rightDownUp_numOfPeople_input" type="number" defaultValue={member} onChange={(e) => { memberSetter(e.target.value);}}/>
+                                       <input className="userManagement_userModifyModal_rightDownUp_numOfPeople_input" type="number" readOnly defaultValue={member} onChange={(e) => { memberSetter(e.target.value);}}/>
                                    </div>
                                </div>
                                <div className="userManagement_userModifyModal_rightDownUp_authority_wrap">
                                    <div className="userManagement_userModifyModal_rightDownUp_authority_title userManagement_userModifyModal_rightDownContent_padding">권한</div>
                                    <div className="userManagement_userModifyModal_rightDownContent_padding">
-                                        <select name="" id="">
-                                            <option value="">활성화</option>
-                                            <option value="">비활성화</option>
+                                        <select name="" id="isActive">
+                                            <option value="1">활성화</option>
+                                            <option value="0">비활성화</option>
                                         </select>
                                    </div>
                                </div>
@@ -204,7 +232,7 @@ export default function EditModal({companyId}) {
                            </div>
                            {/* 아래 */}
                            <div className="userManagement_userModifyModal_rightDownDown_btn_wrap">
-                               <button className="userManagement_userModifyModal_rightDownDown_btn" onClick={handleClose}>수정</button>
+                               <button className="userManagement_userModifyModal_rightDownDown_btn" onClick={submitUpdate}>수정</button>
                                <button className="userManagement_userModifyModal_rightDownDown_btn" onClick={handleClose}>취소</button>
                            </div>
                        </div>

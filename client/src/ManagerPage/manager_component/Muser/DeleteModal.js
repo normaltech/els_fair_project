@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import {AiFillDelete} from 'react-icons/ai';
 import './userManagement.css';
+import axios from 'axios';
 
 // const style = {
 //   diplay:'block',
@@ -40,6 +41,17 @@ export default function DeleteModal({companyId}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  let data = {
+    companyId : companyId
+  }
+  const deleteAccount = () => {
+    axios.post("/unActivateAccountById",data).then((res)=>{
+      if(res.data.changedRows >= 1){
+        window.location.reload()
+        handleClose();
+      }
+    })
+  }
   return (
     <>
       <span onClick={handleOpen} ><AiFillDelete/></span>
@@ -59,7 +71,7 @@ export default function DeleteModal({companyId}) {
                         <div className="userManagement_deleteModal_title">사용자 삭제</div>
                         <div className="userManagement_deleteModal_question">삭제 버튼을 누르게 되면 해당 내용은 복구할 수 없습니다. 그래도 삭제하시겠습니까?</div>
                         <div className="userManagement_deleteModal_btn_wrap">
-                            <div><button className="userManagement_deleteModal_btn_delete" onClick={handleClose}>삭제</button></div>
+                            <div><button className="userManagement_deleteModal_btn_delete" onClick={deleteAccount}>삭제</button></div>
                             <div><button className="userManagement_deleteModal_btn_cancel" onClick={handleClose}>취소</button></div>
                         </div>
                     </div>
