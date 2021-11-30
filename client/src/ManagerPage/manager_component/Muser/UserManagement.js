@@ -5,7 +5,7 @@ import MuserPosts from './MuserPosts';
 import { MuserNotice } from './MuserNotice';
 import MuserPagenation from './MuserPagenation';
 import { AddUserModal } from './AddUserModal';
-
+import {RiUserSearchFill} from 'react-icons/ri';
 function UserManagement() {
 
     const onClickContent = () => {
@@ -80,6 +80,8 @@ function UserManagement() {
           setLoading(true);
           const res = await axios.get('/getAllUserData'); // 데이터베이스 가져오기
           setPosts(res.data);
+          setAllData(res.data);
+          setFilteredData(res.data);
           setLoading(false);
         }
     
@@ -94,21 +96,32 @@ function UserManagement() {
     //현재 파일 가져오기
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
-    // console.log(posts);
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    console.log(currentPosts)
-   
+    // console.log(currentPosts)
 
+    //검색 기능
+    const [allData,setAllData] = useState([]);
+    const [filteredData,setFilteredData] = useState(allData);
+    
+    const currentPosts = filteredData.slice(indexOfFirstPost, indexOfLastPost);
+    const handleSearch = (event) => {
+        let value = event.target.value.toLowerCase();
+        let result = [];
+        console.log(value);
+        result = allData.filter((data) => {
+        return data.company_name.search(value) != -1;
+        });
+        setFilteredData(result);
+    }
     return (
         <>
             <div className='userManagement_wrap'>
                 {/* 상단 검색바 */}
                 <div className="userManagement_search">
-                    <input type="text" className="userManagement_input" placeholder="검색어를 입력하세요." />
-                    <img src="/assets/icons/iconAwesomeSearch.png" alt="검색이미지" className="userManagement_img" />
+                    <input type="text" id="searchInput" onChange={(event) =>handleSearch(event)} className="userManagement_input" placeholder="회사명을 입력하세요." />
+                    <RiUserSearchFill size="28"/>
                 </div>
                 {/* 공지사항 content */}
                 <div className="userManagement_table_wrap">
@@ -116,7 +129,7 @@ function UserManagement() {
                         <tr className="userManagement_table_tr">
                             <th className="userManagement_table_padding">회사</th>
                             <th className="userManagement_table_padding">고유번호</th>
-                            <th className="userManagement_table_padding">부스ID</th>
+                            {/* <th className="userManagement_table_padding">부스ID</th> */}
                             <th className="userManagement_table_padding">담당자</th>
                             <th className="userManagement_table_padding">담당자 전화번호</th>
                             <th className="userManagement_table_padding">이메일</th>

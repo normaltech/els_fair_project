@@ -33,7 +33,7 @@ export default function SelectBooth() {
   const handleSearch = (event) => {
     let value = event.target.value.toLowerCase();
     let result = [];
-    console.log(value.length)
+    // console.log(value.length)
     if(value.length>0){
     // result = allData.filter
     result = allData.filter((data)=>{

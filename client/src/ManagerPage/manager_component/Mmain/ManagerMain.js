@@ -1,10 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './managerMain.css'
 import { CompanyM } from './company/CompanyM'
+import axios from 'axios';
+function useFetch(url){
+    const [data, setData] = useState()
+    async function fetchUrl(){
+        axios.get(url).then((res)=>{
+            setData(res.data.num);
+        });
+    }
 
+    useEffect(() => {
+        fetchUrl();
+     },[]);
+
+    return data;
+}
 function ManagerMain() {
 
-    const [corpTeam, setCorpTeam] = useState('38')
+    var corpTeam = useFetch("/getCompanyCount")
     const [corpInfoNum, setCorpInfoNum] = useState('3')
     const [visitorNum, setVisitorNum] = useState('352')
     const [visitorInfoNum, setVisitorInfoNum] = useState('352')

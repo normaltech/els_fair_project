@@ -6,7 +6,7 @@ import { ShowUserModal } from './ShowUserModal';
 import { Link } from 'react-router-dom';
 
 
-export const MuserNotice = ({company, primaryNum, boothId, manager, phoneNum, email,isActive}) => {
+export const MuserNotice = ({company, primaryNum, boothId, manager, phoneNum, email,isActive,companyNum}) => {
     if(isActive == 1){
         isActive = "사용중";
     }else{
@@ -34,7 +34,7 @@ export const MuserNotice = ({company, primaryNum, boothId, manager, phoneNum, em
             <td className="userManagement_table_padding" onClick={onClickContent}>{manager}</td>
             <td className="userManagement_table_padding" onClick={onClickContent}>{phoneNum}</td>
             <td className="userManagement_table_padding" onClick={onClickContent}>{email}</td> */}
-            <ShowUserModal company={company} primaryNum={primaryNum} boothId={boothId} manager={manager} phoneNum={phoneNum} email={email} />
+            <ShowUserModal company={company} primaryNum={primaryNum} boothId={boothId} manager={manager} phoneNum={phoneNum} email={email} isActive={isActive} companyNum={companyNum}/>
             <td className="userManagement_table_padding">{isActive}
                 {/* <select name="" id="">
                     <option value="">활성화</option>

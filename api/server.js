@@ -35,6 +35,7 @@ app.use(session({
         expires: expiryDate
     }
 }))
+
 //데이터 베이스 연동!
 const data = fs.readFileSync('./database.json');
 const conf = JSON.parse(data);
@@ -545,13 +546,31 @@ app.get("/getAllUserData",(req,res)=>{
         }
     })
 })
-
+app.get("/getBoothIdByCompanyId/:company_id",(req,res)=>{
+    const companyId = req.params.company_id;
+    db.query("SELECT booth_id FROM BoothInfo WHERE company_id=?;",companyId,(err,result)=>{
+        if(result.length > 0){
+            // console.log(result);
+            res.send(result);
+        }
+    })
+})
+app.get("/getCompanyCount",(req,res)=>{
+    db.query("SELECT COUNT(*) as num FROM UserAccountInfo;",(err,result)=>{
+        if(result){
+            if(result.length>0){
+                // console.log(result[0]);
+                res.send(result[0]);
+            }
+        }
+    })
+})
 app.get("/getCompanyMemberCount/:companyId",(req,res)=>{
     const companyId = req.params.companyId;
     db.query("SELECT COUNT(*) AS member FROM Pass WHERE companyId = ?;",companyId,(err,result)=>{
         if(result){
             if(result.length>0){
-                console.log(result[0]);
+                // console.log(result[0]);
                 res.send(result[0]);
             }
         }
@@ -570,6 +589,34 @@ app.get("/getCompanyInfoById/:companyId",(req,res)=>{
     })
 })
 
+app.post("/unActivateAccountById",(req,res)=>{
+    const companyId = req.body.companyId;
+    db.query("UPDATE UserAccountInfo SET isActive = 0 WHERE company_id=?;",companyId,(err,result)=>{
+        if(result){
+            // console.log(result);
+            res.send(result);
+        }
+    })
+})
+app.post("/updateUserInfo",(req,res)=>{
+       var manager = req.body.manager;
+       var manager_phone_num = req.body.phoneNum;
+       var email = req.body.email;
+       var company_name = req.body.companyName;
+       var company_phone_num = req.body.companyNum;
+       var company_id = req.body.companyId;
+       var isActive = req.body.isActive;
+    db.query("UPDATE UserAccountInfo SET manager=?,manager_phone_num=?, email=?, company_name=?, company_phone_num=?,company_id=?,isActive = ? WHERE company_id=?;",
+    [manager,manager_phone_num,email,company_name,company_phone_num,company_id,isActive,company_id],(err,result)=>{
+        if(err){
+            console.log(err);
+            return;
+        }
+        if(result){
+            res.send(result);
+        }
+    })
+})
 app.get("/getSearchData",(req,res)=>{
     db.query("SET @num:=0;SELECT @num:=@num+1 AS id, CONCAT(b.section, '_',b.type,'_', b.layer,'0', b.number) AS boothname, company_name  FROM UserAccountInfo AS u JOIN BoothInfo AS b  ON u.company_id = b.company_id WHERE (@num:=0)=0;",
     (err,result)=>{
