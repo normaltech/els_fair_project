@@ -35,7 +35,7 @@
 
 .verificationNumButton{
   display: inline;
-  width: 168.6px;
+  width: 180px;
   height: 53.7px;
   padding: 15.2px 13.6px 18.4px 14px;
   background-color: var(--dark-grey-blue);
@@ -47,43 +47,59 @@
   text-align: center;
   color: var(--white);
   cursor: pointer;
-  margin-left: 1%;
+  margin-left: 2%;
 }
 .verificationNumButton:hover{
   background-color: #546c7a;
 }
 
-@media screen and (max-width: 550px){
-  .verificationNum{
-    width: 288px;
-  }
-  .vertificationContentWrap{
-    flex-direction: column;
-    width: 288px;
-  }
-  .vertificationBtnWrap{
-    /* justify-content: space-between; */
-  }
+@media screen and (max-width: 768px){
   .verificationNumButton{
-    width: 168.6px;
-    height: 53.7px;
-    /* margin-left: 2%; */
-    margin-top: 1%;
-  }
-  .verificationNumInput {
-    width: 100%;
+    width: 185px;
+    margin-left: 2%;
   }
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 550px){
+  .vertificationContentWrap{
+    flex-direction: column;
+    width: 80vw;
+  }
   .verificationNumInput {
-    width: 50vw;
-    height: 25px;
+    /* width: 300.15px; */
+    width: 100%;
+    height: 45px;
+    font-size: 10px;
+    padding: 0 15px;
+  }
+
+  .vertificationBtnWrap{
+    justify-content: space-between;
+    width: 80vw;
+  }
+
+  .verificationNumButton{
+    width: 35vw;
+    height: 45px;
+    padding: 0 5px 0 5px;
+    font-size: 16px;
+    margin-left: 0;
+    margin-top: 1%;
+  }
+}
+
+@media screen and (max-width: 360px){
+  .verificationNumInput {
+    height: 35px;
   }
   .verificationNumButton{
-    width: 30vw;
-    height: 25px;
-    padding: 0 5px 0 5px;
-    font-size: 10px;
+    height: 35px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 280px){
+  .verificationNumButton{
+    font-size: 12px;
   }
 }

@@ -51,6 +51,12 @@
     background-color: #f58f76;
 }
 
+@media screen and (max-width: 550px){
+    .successSignIn_wrap{
+        height: 90vh;
+    }
+}
+
 @media screen and (max-width: 480px){
     .successSignIn_contentWrap{
         width: 320px;
@@ -60,5 +66,17 @@
     .successSignIn_logo{
         width: 200px;
         height: 45px;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .successSignIn_logo{
+        width: 130px;
+        height: 30px;
+    }
+    .successSignIn_button{
+        width: 170px;
+        height: 40px;
+        font-size: 14px;
     }
 }

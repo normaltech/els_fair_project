@@ -27,6 +27,7 @@ import ManagerPage from './ManagerPage/Home';
 
 // 에러페이지
 import ErrorBoundary from './ErrorBoundary';
+import About from './component/aboutEservate/About';
 
 function App() {
   return (
@@ -88,6 +89,9 @@ function App() {
           </Route>
           <Route path="/reservationlist">
             <ReservationList />
+          </Route>
+          <Route path="/about-us">
+            <About/>
           </Route>
 
           {/* 매니저페이지 */}

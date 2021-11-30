@@ -145,6 +145,25 @@
   .findInfo:hover{
       color: #808080;
   }
+
+  @media screen and (max-width: 1025px){
+    .loginRightContent{
+        /* margin-top: 80px; */
+        width: 500px;
+        height: 420px;
+    }
+    .eservateLogo{
+        /* margin: 20px auto 30px auto; */
+        width: 190px;
+        height: 40px;
+    }
+    .signIn{
+        margin: 20px auto 10px auto;
+    }
+    .findEmailOrPwd{
+        margin: 10px auto;
+    }
+  }
   
   @media screen and (max-width: 768px){
   
@@ -160,52 +179,61 @@
       }
 
       .loginRightContent{
-        margin-top: 0px;
-          width: 400px;
-          height: 370px;
+          margin-top: 0px;
+          width: 550px;
+          height: 450px;
       }
       .eservateLogo{
-          width: 134px;
-          height: 30px;
+          /* width: 150px; */
+          /* height: 30px; */
       }
-      .loginInput{
+      /* .loginInput{
           width: 248px;
           height: 40px;
           padding-top: 8px;
           padding-bottom: 8px;
-      }
-      .loginButton{
+      } */
+      /* .loginButton{
           width: 248px;
           height: 32px;
           margin-top: 25px;
-      }
-      .loginMessage{
+      } */
+      /* .loginMessage{
           font-size: 15px;
-      }
-      .signIn{
+      } */
+      /* .signIn{
           margin: 20px auto 10px auto;
-      }
-      .signInAsk{
+      } */
+      /* .signInAsk{
           font-size: 10px;
-      }
-      .signInButton{
+      } */
+      /* .signInButton{
           width: 80px;
           height: 21px;
           line-height: 18px;
           padding-bottom: 3px;
-      }
-      .signInMessage{
+      } */
+      /* .signInMessage{
           font-size: 9px;
-      }
-      .findEmailOrPwd{
+      } */
+      /* .findEmailOrPwd{
           margin: 10px auto;
-      }
-      .findInfo{
+      } */
+      /* .findInfo{
           font-size: 10px;
-      }
+      } */
   
   }
+ 
   
+  @media screen and (max-width: 550px){
+    .loginRightContent{
+        /* margin-top: 0px; */
+        width: 480px;
+        height: 420px;
+    }
+  }
+
   @media screen and (max-width: 480px){
       .loginRightContent{
           margin-top: 0px;
@@ -219,6 +247,7 @@
       .loginInput{
           width: 248px;
           height: 30px;
+          font-size: 12px;
       }
       .loginButton{
           width: 248px;
@@ -249,4 +278,21 @@
       .findInfo{
           font-size: 10px;
       }
+  }
+
+  
+  @media screen and (max-width: 285px){
+    .loginRightContent{
+        width: 250px;
+        height: 320px;
+    }
+    .loginInput{
+        width: 200px;
+        height: 30px;
+    }
+    .loginButton{
+        width: 200px;
+        /* height: 32px; */
+        margin-top: 10px;
+    }
   }
