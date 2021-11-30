@@ -1,5 +1,5 @@
 .find_wrap{
-    height: 87vh;
+    height: 77vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -137,5 +137,40 @@
 
     .find_hidden{
         font-size: 12px;
+    }
+}
+
+
+@media screen and (max-width: 415px){
+    .find_wrap{
+        height: 74vh;
+    }
+}
+
+@media screen and (max-width: 376px){
+    .find_wrap{
+        height: 70vh;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .find_wrap{
+        height: 67vh;
+    }
+    .find_contentWrap{
+        width: 270px;
+        height: 350px;
+        /* margin-top: 170px; */
+    }
+    .find_logo{
+        width: 124px;
+        height: 25px;
+        margin-top: 12px;
+    }   
+    .find_button{
+        width: 180px;
+        height: 30px;
+        font-size: 15px;
+        margin: 5px 0 5px 0;
     }
 }

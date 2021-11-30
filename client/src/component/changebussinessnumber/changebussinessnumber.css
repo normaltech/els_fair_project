@@ -59,3 +59,60 @@
 .changeBussinessNumber_button:hover{
     background-color: #f58f76;
 }
+
+@media screen and (max-width: 1025px){
+    .changeBussinessNumber_wrap{
+        height: 66vh;
+    }
+}
+
+@media screen and (max-width: 415px){
+    .changeBussinessNumber_wrap{
+        height: 65vh;
+    }
+}
+
+@media screen and (max-width: 376px){
+    .changeBussinessNumber_wrap{
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .changeBussinessNumber_wrap{
+        height: 55vh;
+    }
+    
+    .changeBussinessNumber_contentWrap{
+        width: 250px;
+        height: 250px;
+    }
+
+    .changeBussinessNumber_word1{
+        font-size: 18px;
+        margin: 20px 0;
+    }
+
+    .changeBussinessNumber_input{
+        width: 180px;
+        font-size: 15px;
+    }
+
+    .changeBussinessNumber_button1{
+        margin-top: 20px !important;
+    }
+
+    .changeBussinessNumber_button{
+        width: 160px;
+        height: 35px;
+        font-size: 16px;
+        /* font-weight: bold; */
+        margin: 5px 0;
+    }
+}
+
+@media screen and (max-width: 281px){
+    .changeBussinessNumber_wrap{
+        height: 60vh;
+    }
+}

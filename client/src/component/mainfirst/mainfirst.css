@@ -1,3 +1,6 @@
+.mainPage{
+    /* height: 100%; */
+}
 .headerWrap{
     position: relative;
 }
@@ -273,6 +276,7 @@
 
     .moreInfo{
         /* display: none; */
+        margin: 0 10px 15px 10px;
     }
 
     .detailInfo div{
@@ -366,4 +370,10 @@
 }
 .mainpage_noticeModal_padding{
     padding: 6px 0;
+}
+
+@media screen and (max-width: 290px) {
+    .wordWrap{
+        left: 70%;
+    }
 }

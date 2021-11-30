@@ -80,14 +80,14 @@ input::-webkit-inner-spin-button {
   color: var(--black);
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 550px){
 
   .inputTag{
     width: 80vw;
   }
   .inputTagInput{
     width: 100%;
-    height: 25px;
+    height: 45px;
     font-size: 10px;
   }
   .inputTagLabel {
@@ -101,7 +101,7 @@ input::-webkit-inner-spin-button {
     width: 500px;
     height: 10px;
     margin: 5px 6px 4px 10px;
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.35;
     text-align: left;
     color: #f80000;
@@ -118,16 +118,39 @@ input::-webkit-inner-spin-button {
   
   #telNumContainerSelect {
     width: 30vw;
-    height: 25px;
+    height: 45px;
     padding: 0;
-    margin-right: 5px;
-    font-size: 10px;
+    margin-right: 11px;
+    font-size: 16px;
   }
   
   .telNumContainerWrite {
     width: 48vw;
-    height: 25px;
+    height: 45px;
     font-size: 20px;
   }
   
+}
+@media screen and (max-width: 415px){
+  #telNumContainerSelect {
+    margin-right: 7px;
+  }
+}
+
+@media screen and (max-width: 360px){
+  .inputTagInput{
+    height: 35px;
+  }
+  #telNumContainerSelect {
+    height: 35px;
+    margin-right: 6px;
+    font-size: 14px;
+  }
+  .telNumContainerWrite {
+    height: 35px;
+  }
+  
+  .warningText{
+    font-size: 10px;
+  }
 }
