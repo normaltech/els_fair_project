@@ -37,7 +37,7 @@ const crawler = async () => {
             // await page.waitForTimeout(500);
 
             await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
-            await page.waitForTimeout(500);
+            await page.waitForTimeout(600);
             await page.click('#btn_tag_status_refresh');
             await page.waitForTimeout(500);
 
@@ -67,7 +67,7 @@ const crawler = async () => {
     }
 }
 
-// crawler();
+crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
