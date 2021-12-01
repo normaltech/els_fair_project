@@ -5,7 +5,7 @@ import './reservationlist.css'
 
 export default function ReservationList() {
   return (
-    <>
+    <div className="reservationListPage">
       <Header />
       <div className="userinfoOrReservationlistMenuBar">
         <div className="uorMenuContainer">
@@ -44,6 +44,6 @@ export default function ReservationList() {
         </div>
       </div>
       <Footer/>
-    </>
+    </div>
   )
 }

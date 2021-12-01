@@ -67,7 +67,7 @@ const crawler = async () => {
     }
 }
 
-crawler();
+// crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
