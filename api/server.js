@@ -67,7 +67,7 @@ const crawler = async () => {
     }
 }
 
-crawler();
+// crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
@@ -776,13 +776,13 @@ async function example() {
 
 //esl 정보 가져오기 및 ftp연결
 app.get("/eslinfo", (req, res) => {
-    db.query("SELECT company_id AS eslid, company_name AS name, company_phone_num AS tel, email AS address, manager AS page FROM UserAccountInfo;",
+    db.query("SELECT u.company_id AS eslid, u.manager AS name, u.manager_phone_num AS tel, u.email AS address, u.url AS PAGE, p.product_name, p.product_price FROM UserAccountInfo AS u, Product AS p WHERE u.company_id = p.company_id GROUP BY eslid;",
         (err, data) => {
             if (!err) {
-                // const csv_test = jsonToCSV(data);
-                // fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
+                const csv_test = jsonToCSV(data);
+                fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
 
-                example();
+                // example();
             } else {
                 console.log(err);
             }
