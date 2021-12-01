@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, flexbox } from '@mui/system';
 import { Typography } from '@mui/material';
+import axios from 'axios';
 
 const style = {
   mx: 'auto',
@@ -46,8 +47,14 @@ export default function SpecModal({handleSubmit}) {
   //한번 클릭하면 animation이 바뀌어 있어서 바로 animation을 null로 바꿔줘야됨
 
   const handleClick = () => {
-    handleOpen();
-    handleSubmit();
+    try {
+      handleOpen();
+      handleSubmit();
+      
+      axios.get("/eslinfo")
+    } catch {
+      console.log('err')
+    }
   }
 
   return (

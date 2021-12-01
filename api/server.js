@@ -36,8 +36,9 @@ const crawler = async () => {
             // await page.click('#btn_merchandise_refresh');
             // await page.waitForTimeout(500);
 
+            await page.waitForTimeout(300);
             await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
-            await page.waitForTimeout(600);
+            await page.waitForTimeout(500);
             await page.click('#btn_tag_status_refresh');
             await page.waitForTimeout(500);
 
@@ -58,6 +59,7 @@ const crawler = async () => {
             });
 
             console.log(esllist);
+            return esllist;
         }
         else console.log(page.url());
 
@@ -66,8 +68,6 @@ const crawler = async () => {
         console.error(e);
     }
 }
-
-// crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
@@ -765,7 +765,7 @@ async function example() {
         await client.cd("/Import")
         console.log(await client.list())
         console.log("성공")
-        // await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
+        await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
     }
     catch (err) {
         console.log(err)
@@ -776,7 +776,7 @@ async function example() {
 
 //esl 정보 가져오기 및 ftp연결
 app.get("/eslinfo", (req, res) => {
-    db.query("SELECT u.company_id AS eslid, u.manager AS name, u.manager_phone_num AS tel, u.email AS address, u.url AS PAGE, p.product_name, p.product_price FROM UserAccountInfo AS u, Product AS p WHERE u.company_id = p.company_id GROUP BY eslid;",
+    db.query("SELECT company_id AS eslid, manager AS name, manager_phone_num AS tel, email AS address, url AS page, (SELECT product_name FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_name, (SELECT product_price FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_price FROM UserAccountInfo;",
         (err, data) => {
             if (!err) {
                 const csv_test = jsonToCSV(data);
@@ -788,6 +788,21 @@ app.get("/eslinfo", (req, res) => {
             }
         }
     )
+})
+
+//크롤링 해서 esl 정보 가져오기
+app.get("/esl_crawler", (req, res) => {
+    
+    try {
+        crawler().then((data) => {
+            res.send(data);
+        });
+        // console.log(esldata);
+        // res.send(crawler());
+    } catch (err) {
+        console.log(err)
+        console.log('에러')
+    }
 })
 
 app.get("/getNoticeContent/:id",(req,res)=>{
