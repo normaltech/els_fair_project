@@ -316,6 +316,12 @@
     background-color: var(--white);
     height: 1500px;
   }
+  .boothSearchBarContainer{
+    width: 290px;
+  }
+  .searchBarInput{
+    font-size: 16px;
+  }
   .boothGuideContainerTitle{
     width: 400px;
     font-size: 20px !important;

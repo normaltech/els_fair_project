@@ -70,6 +70,7 @@
       align-items: center;
   }
   .footerInfo div{
+    display: none;
     margin: 3px auto;
     font-size: 10px;
     font-weight: 400;
