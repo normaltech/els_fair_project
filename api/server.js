@@ -58,7 +58,7 @@ const crawler = async () => {
                 };
             });
 
-            console.log(esllist);
+            // console.log(esllist);
             return esllist;
         }
         else console.log(page.url());

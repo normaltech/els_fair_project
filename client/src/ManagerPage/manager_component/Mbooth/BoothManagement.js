@@ -103,10 +103,15 @@ function BoothManagement() {
     const [managerEmailInfo, setManagerEmailInfo] = useState('-')
     const [peopleNumInfo, setPeopleNumInfo] = useState('-')
     // ESL정보 변수
-    const [eslInfoNum, setEslInfoNum] = useState('1')
-    const [eslInfoType, setEslInfoType] = useState('E1')
-    const [eslInfoId, setEslInfoId] = useState('E1-50022SEB')
-    const [eslInfoState, setEslInfoState] = useState('대여중')
+    const [tagid1, settagid1] = useState('-')
+    const [c_id1, setc_id1] = useState('-')
+    const [state1, setstate1] = useState('-')
+    const [battery1, setbettery1] = useState('-')
+
+    const [tagid2, settagid2] = useState('-')
+    const [c_id2, setc_id2] = useState('-')
+    const [state2, setstate2] = useState('-')
+    const [battery2, setbettery2] = useState('-')
     // 하단 table 변수
     const [detailBoothName, setDetailBoothName] = useState('A-101')
     const [detailBoothType, setDetailBoothType] = useState('a')
@@ -123,6 +128,33 @@ function BoothManagement() {
     const indexOfLastPost = currentPage * postPerPage;
     const indexOfFirstPost = indexOfLastPost - postPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+    //esl정보 가져오기
+    const btn = () => {
+        try {
+            axios.get("/esl_crawler")
+                .then((response) => {
+                    console.log(response.data);
+                    settagid1(response.data[1].tag_id);
+                    setc_id1(response.data[1].company_id);
+                    setstate1(response.data[1].state);
+                    setbettery1(response.data[1].battery);
+
+                    settagid2(response.data[2].tag_id);
+                    setc_id2(response.data[2].company_id);
+                    setstate2(response.data[2].state);
+                    setbettery2(response.data[2].battery);
+                })
+        } catch (error) {
+            console.log(error);
+        }
+        // console.log("하이");
+    }
+
+    // useEffect(() => {
+    //     btn();
+    // }, [])
+
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -263,24 +295,24 @@ function BoothManagement() {
                         <div className="boothManagement_eslInfo_table_wrap boothManagement_eslInfo_true">
                             <table className="boothManagement_eslInfo_table">
                                 <tr className="boothManagement_eslInfo_tr">
-                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">순번</th>
-                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">타입</th>
-                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">ID</th>
+                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">태그ID</th>
+                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">사업자번호</th>
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">상태</th>
+                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">배터리</th>
                                 </tr>
                                 <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{eslInfoNum}</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{eslInfoType }</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{eslInfoId}</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{eslInfoState}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{tagid1}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{c_id1}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{state1}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{battery1}%</td>
                                 </tr>
                                 <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">2</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{tagid2}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{c_id2}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{state2}</td>
+                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{battery2}%</td>
                                 </tr>
-                                <tr>
+                                {/* <tr>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">3</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
@@ -315,7 +347,7 @@ function BoothManagement() {
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E3</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
+                                </tr> */}
                             </table>
                         </div>
                         <div className="boothManagement_eslInfo_false">

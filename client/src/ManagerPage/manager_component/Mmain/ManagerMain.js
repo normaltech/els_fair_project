@@ -17,7 +17,7 @@ function useFetch(url){
 
     return data;
 }
-function ManagerMain() {
+function ManagerMain(esl_data) {
 
     var corpTeam = useFetch("/getCompanyCount")
     const [corpInfoNum, setCorpInfoNum] = useState('3')
@@ -26,8 +26,23 @@ function ManagerMain() {
     const [companyName, setCompanyName] = useState('펍쥐')
     const [companyNum, setCompanyNum] = useState('5')
     const [companyBooth, setCompanyBooth] = useState('A-a101')
-    const [eslNum, setEslNum] = useState('10')
-    const [eslDestroyNum, setEslDestroyNum] = useState('10')
+    const [eslNum, setEslNum] = useState('-')
+    const [eslDestroyNum, setEslDestroyNum] = useState('-')
+
+    const btn = () => {
+        try {
+            axios.get("/esl_crawler")
+                .then((response) => {
+                    setEslNum(response.data.length - 1);
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // useEffect(() => {
+    //     btn();
+    // }, []);
 
     return (
         <>

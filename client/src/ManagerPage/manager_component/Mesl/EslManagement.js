@@ -18,24 +18,24 @@ function EslManagement() {
     const [battery2, setbettery2] = useState('-')
 
     const btn = () => {
-        // try {
-        //     axios.get("/esl_crawler")
-        //         .then((response) => {
-        //             console.log(response.data);
-        //             settagid1(response.data[1].tag_id);
-        //             setc_id1(response.data[1].company_id);
-        //             setstate1(response.data[1].state);
-        //             setbettery1(response.data[1].battery);
+        try {
+            axios.get("/esl_crawler")
+                .then((response) => {
+                    console.log(response.data);
+                    settagid1(response.data[1].tag_id);
+                    setc_id1(response.data[1].company_id);
+                    setstate1(response.data[1].state);
+                    setbettery1(response.data[1].battery);
 
-        //             settagid2(response.data[2].tag_id);
-        //             setc_id2(response.data[2].company_id);
-        //             setstate2(response.data[2].state);
-        //             setbettery2(response.data[2].battery);
-        //         })
-        // } catch (error) {
-        //     console.log(error);
-        // }
-        console.log("하이");
+                    settagid2(response.data[2].tag_id);
+                    setc_id2(response.data[2].company_id);
+                    setstate2(response.data[2].state);
+                    setbettery2(response.data[2].battery);
+                })
+        } catch (error) {
+            console.log(error);
+        }
+        // console.log("하이");
     }
 
     // useEffect(() => {
@@ -68,7 +68,7 @@ function EslManagement() {
                         <td className="Mnotice_table_padding">{battery2}%</td>
                     </tr>
                 </table>
-                <button onClick={btn}>조회</button>
+                <button onClick={btn}>재조회</button>
             </div>
         </>
     )
