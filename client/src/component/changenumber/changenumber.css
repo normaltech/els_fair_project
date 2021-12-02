@@ -1,5 +1,5 @@
 .changeNumber_wrap{
-    height: 75vh;
+    height: 71vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
     flex-direction: column;
     align-items: center;
     width: 320px;
-    height: 530px;
+    height: 450px;
     border-radius: 30px;
     box-shadow: 5px 7px 10px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #dfe3f5;
@@ -22,7 +22,7 @@
     font-style: normal;
     color: #000;
     font-size: 20px;
-    margin: 30px 0 70px 0;
+    margin: 30px 0;
 }
 
 .changeNumber_input{
@@ -41,7 +41,7 @@
 }
 
 .changeNumber_button1{
-    margin-top: 70px !important;
+    margin-top: 50px !important;
 }
 
 .changeNumber_button{
@@ -58,4 +58,60 @@
 
 .changeNumber_button:hover{
     background-color: #f58f76;
+}
+
+@media screen and (max-width: 1025px) {  
+    .changeNumber_wrap{
+        height: 68vh;
+    }
+    .changeNumber_contentWrap{
+        height: 350px;
+    }
+    .changeNumber_word1{
+        margin: 30px 0 20px 0;
+    }
+    .changeNumber_btn_wrap{
+        display: flex;
+    }
+    .changeNumber_button{
+        width: 90px;
+        margin: 15px 5px;
+    }
+    .changeNumber_button1{
+        margin-top: 15px !important;
+    }
+}
+
+@media screen and (max-width: 380px) {  
+    .changeNumber_wrap{
+        height: 60vh;
+    }
+}
+
+@media screen and (max-width: 321px) {  
+    .changeNumber_wrap{
+        height: 56vh;
+    }
+    .changeNumber_contentWrap{
+        width: 250px;
+        height: 280px;
+    }
+    .changeNumber_word1{
+        margin: 10px auto;
+        font-size: 16px;
+    }
+    .changeNumber_input{
+        width: 180px;
+        height: 23px;
+        font-size: 14px;
+    }
+    .changeNumber_button{
+        width: 80px;
+        height: 35px;
+        font-size: 16px;
+        margin: 8px 5px;
+    }
+    .changeNumber_button1{
+        margin-top: 8px !important;
+    }
 }

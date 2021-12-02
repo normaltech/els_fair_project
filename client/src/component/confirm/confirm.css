@@ -96,7 +96,7 @@
 @media screen and (max-width: 480px){
     .confirm_contentWrap{
         width: 320px;
-        height: 400px;
+        height: 430px;
         /* margin-top: 120px; */
     }
 
@@ -122,5 +122,25 @@
 
     .confirm_hidden{
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .confirm_contentWrap{
+        width: 250px;
+        height: 400px;
+    }
+    .confirm_logo{
+        width: 150px;
+        height: 35px;
+    }
+    .confirm_word1{
+        margin: 15px auto;
+    }
+    .confirm_button{
+        width: 150px;
+        height: 35px;
+        font-size: 16px;
+        margin: 20px 0 10px 0;
     }
 }

@@ -83,6 +83,57 @@
   }
 }
 
-/* @media screen and (max-width: 480px){
-  
-} */
+@media screen and (max-width: 550px){
+  #userInfoBox{
+    height: 100vh;
+    width: 100%;
+    margin: 20px auto;
+  }
+  .userInfoBoxItem{
+    width: 300px;
+    height: 180px;
+  }
+  .userInfoBoxItemTitle,
+  .userInfoBoxItemSub,
+  .userInfoBoxItemButton{
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 321px){
+  .userInfoBoxItem{
+    width: 250px;
+    height: 180px;
+  }
+}
+
+@media screen and (min-height: 1023px){
+  #userInfoBox{
+    height: 100vh;
+  }
+  .userInfoBoxItem{
+    height: 220px;
+  }
+}
+
+@media screen and (min-height: 1365px){
+  .userinfoOrReservationlistContainer{
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .userInfoBoxItem{
+    margin: 10px auto;
+    padding: 10px 0;
+  }
+  .userInfoBoxItem{
+    height: 300px;
+  }
+  .userInfoBoxItemTitle,
+  .userInfoBoxItemSub,
+  .userInfoBoxItemButton{
+    font-size: 30px;
+  }
+  .uIACKey{
+    width: 120px;
+  }
+}
