@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import './booth.css';
+import './managerbooth.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Modal } from '@mui/material';
@@ -36,7 +36,7 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
     const boothModalList = [];
     boothList.map(
         (item)=>{
-            boothModalList.push(<ManagerBoothModal isReserved={item.isReserved} boothId={item.booth_id} className={item.section+" "+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
+            boothModalList.push(<ManagerBoothModal isReserved={item.isReserved} boothId={item.booth_id} className={"manager"+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
         }
     )
     return(

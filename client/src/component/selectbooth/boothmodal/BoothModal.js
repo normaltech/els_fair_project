@@ -96,7 +96,7 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
   })
   return (
     <>
-      <span className={className} onClick={handleOpen} ref={searchRef}>{section}-{type}{layer}{number}</span>
+      <span id={`section_${section}`} className={className} onClick={handleOpen} ref={searchRef}>{section}-{type}{layer}{number}</span>
       <Modal
         open={open}
         onClose={handleClose}

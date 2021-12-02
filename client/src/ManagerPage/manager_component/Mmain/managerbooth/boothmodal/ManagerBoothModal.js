@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import './boothmodal.css'
-import { orange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import { Link,useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -24,16 +23,6 @@ const style = {
   p: 4,
 }
 
-const ColorButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(orange[500]),
-  backgroundColor: orange[600],
-  '&:hover': {
-    backgroundColor: orange[700],
-  },
-  fontSize: 20,
-  fontWeight: "bold",
-  color: "white",
-}));
 
 export default function BoothModal({ isReserved, boothId, className, section,type,layer,number}) {
   const [open, setOpen] = useState(false);
@@ -67,19 +56,6 @@ export default function BoothModal({ isReserved, boothId, className, section,typ
   if(isReserved == 1){
     reservedCheck = "예약 불가능";
   }
-  function showButton(){
-    if(isReserved==0){
-      return(
-        <div className="boothmodalButton">
-          <ColorButton size="large" variant="contained" display="flex" disableElevation onClick={checkIfUserReserved}>부스 신청</ColorButton>
-        </div>
-      )
-    }else{
-      return(<div className="reservedBooth">예약이 완료된 부스입니다.</div>)
-    }
-  }
-  //한번 클릭하면 animation이 바뀌어 있어서 바로 animation을 null로 바꿔줘야됨
-  // console.log(searchData+"<->"+className.substring(2))
 
   return (
     <>
@@ -160,7 +136,6 @@ export default function BoothModal({ isReserved, boothId, className, section,typ
                 <Typography fontSize="15px" fontWeight="bold">{1}회선</Typography>
               </Box>
             </Box>
-            {showButton()}
           </div>
         </Box>
       </Modal>
