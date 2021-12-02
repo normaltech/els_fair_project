@@ -103,10 +103,28 @@
     .changePw_input{
         width: 200px;
         height: 20px;
+        font-size: 12px;
         /* margin: 10px; */
     }
 
     .changePw_hidden{
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 281px){
+    .changePw_contentWrap{
+        width: 250px;
+        height: 371px;
+    }
+    .changePw_logo{
+        width: 180px;
+        height: 40px;
+    }
+    .changePw_button{
+        width: 180px;
+        height: 40px;
+        font-size: 17px;
+        margin: 20px 0 10px 0;
     }
 }

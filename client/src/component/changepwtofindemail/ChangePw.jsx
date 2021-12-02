@@ -30,7 +30,10 @@ export default function ChangePw(){
         const value2 = document.getElementById('pw2').value;
         
         const warningText = document.querySelector('.changePw_hidden');
-        if(value1 === value2){
+        if(value1 === '' || value2 === ''){
+            alert('비밀번호를 입력해주세요.')
+        }
+        else if(value1 === value2){
             warningText.style.display = "block";
             warningText.textContent= "비밀번호가 일치합니다!";
             //받아온 이메일로 회사 ID가져오기
