@@ -34,7 +34,7 @@
 }
 
 .noticeContainer, .infoContainer{
-    margin: 50px;
+    margin: 50px 15px 50px 15px;
 }
 
 .borderSection{
