@@ -43,17 +43,17 @@ function Navbar() {
         <>
         <IconContext.Provider value={{color: '#060b26'}}>
                 <div className="navbar">
-                    <span>
+                    <span className="Navbar_span">
                         <Link to="#" className="menu-bars">
                             <FaIcons.FaBars onClick={showSidebar} />
                         </Link>
-                        <span className="nowpage">{icon}</span>
-                        <span className="nowpage">{pagename}</span>
+                        <span className="nowpage Navbar_span">{icon}</span>
+                        <span className="nowpage Navbar_span">{pagename}</span>
                     </span>
-                    <span className="logoimg"><img src="/assets/headerlogo.png" alt="로고이미지" /></span>
-                    <span className="manager-name">
-                        <span className="messageicon"><GoCommentDiscussion /></span>
-                        <span>{manager_name}</span>
+                    <span className="logoimg Navbar_span"><img src="/assets/headerlogo.png" alt="로고이미지" /></span>
+                    <span className="manager-name Navbar_span">
+                        <span className="messageicon Navbar_span"><GoCommentDiscussion /></span>
+                        <span className="Navbar_span">{manager_name}</span>
                     </span>
                 </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -68,7 +68,7 @@ function Navbar() {
                             <li key={index} className={item.cName} onClick={()=>{showHeader(item)}}>
                                 <Link to={item.path} >
                                     {item.icon}
-                                    <span>{item.title}</span>
+                                    <span className="Navbar_span">{item.title}</span>
                                 </Link>
                             </li>
                         )

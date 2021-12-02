@@ -36,8 +36,9 @@ const crawler = async () => {
             // await page.click('#btn_merchandise_refresh');
             // await page.waitForTimeout(500);
 
+            await page.waitForTimeout(300);
             await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
-            await page.waitForTimeout(600);
+            await page.waitForTimeout(500);
             await page.click('#btn_tag_status_refresh');
             await page.waitForTimeout(500);
 
@@ -53,11 +54,13 @@ const crawler = async () => {
                     tag_id: $(this).find('td:nth-child(2)').text(),
                     state: $(this).find('td:nth-child(5) > span').text(),
                     battery: $(this).find('td:nth-child(6)').text(),
-                    company_id: $(this).find('td:nth-child(15)').text()
+                    company_id: $(this).find('td:nth-child(15)').text(),
+                    company_name: $(this).find('td:nth-child(16)').text()
                 };
             });
 
-            console.log(esllist);
+            // console.log(esllist);
+            return esllist;
         }
         else console.log(page.url());
 
@@ -765,7 +768,7 @@ async function example() {
         await client.cd("/Import")
         console.log(await client.list())
         console.log("성공")
-        // await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
+        await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
     }
     catch (err) {
         console.log(err)
@@ -776,18 +779,33 @@ async function example() {
 
 //esl 정보 가져오기 및 ftp연결
 app.get("/eslinfo", (req, res) => {
-    db.query("SELECT company_id AS eslid, company_name AS name, company_phone_num AS tel, email AS address, manager AS page FROM UserAccountInfo;",
+    db.query("SELECT company_id AS eslid, company_name, manager AS name, manager_phone_num AS tel, email AS address, url AS page, (SELECT product_name FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_name, (SELECT product_price FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_price, (SELECT CONCAT(section, '-', `type`,layer, '0', NUMBER) FROM BoothInfo WHERE UserAccountInfo.company_id = BoothInfo.company_id) AS booth FROM UserAccountInfo;",
         (err, data) => {
             if (!err) {
-                // const csv_test = jsonToCSV(data);
-                // fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
+                const csv_test = jsonToCSV(data);
+                fs.writeFileSync('./esl_csvfile/import_20211127123456.csv', csv_test);
 
-                example();
+                // example();
             } else {
                 console.log(err);
             }
         }
     )
+})
+
+//크롤링 해서 esl 정보 가져오기
+app.get("/esl_crawler", (req, res) => {
+    
+    try {
+        crawler().then((data) => {
+            res.send(data);
+        });
+        // console.log(esldata);
+        // res.send(crawler());
+    } catch (err) {
+        console.log(err)
+        console.log('에러')
+    }
 })
 
 app.get("/getNoticeContent/:id",(req,res)=>{

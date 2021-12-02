@@ -45,8 +45,10 @@ export default function ChangeNumber(){
                     <div><input id="manager" className="changeNumber_input" type="text" placeholder="이름" defaultValue={name}/></div>
                     <div><input id="phoneNumber" className="changeNumber_input" type="text" placeholder="전화번호" defaultValue={number}/></div>
                     <div><input id="email" className="changeNumber_input" type="email" placeholder="메일" defaultValue={email}/></div>
-                    <div><button className="changeNumber_button changeNumber_button1" onClick={btnUpdate}>확인</button></div>
-                    <div><Link to="/userinfo"><button className="changeNumber_button">취소</button></Link></div>
+                    <div className="changeNumber_btn_wrap">
+                        <div><button className="changeNumber_button changeNumber_button1" onClick={btnUpdate}>확인</button></div>
+                        <div><Link to="/userinfo"><button className="changeNumber_button">취소</button></Link></div>
+                    </div>
                 </div>
             </div>
             <Footer />

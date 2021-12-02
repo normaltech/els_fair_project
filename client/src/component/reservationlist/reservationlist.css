@@ -112,6 +112,12 @@
 }
 
 @media screen and (max-width: 480px){
+  /* #reservationInfoBox{
+    margin: auto;
+    width: 70%;
+    height: 70vh;
+    margin-top: 2%;
+  } */
   .rListTitleAndSub{
     height: 90px;
   }
