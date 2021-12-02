@@ -54,7 +54,8 @@ const crawler = async () => {
                     tag_id: $(this).find('td:nth-child(2)').text(),
                     state: $(this).find('td:nth-child(5) > span').text(),
                     battery: $(this).find('td:nth-child(6)').text(),
-                    company_id: $(this).find('td:nth-child(15)').text()
+                    company_id: $(this).find('td:nth-child(15)').text(),
+                    company_name: $(this).find('td:nth-child(16)').text()
                 };
             });
 
@@ -776,7 +777,7 @@ async function example() {
 
 //esl 정보 가져오기 및 ftp연결
 app.get("/eslinfo", (req, res) => {
-    db.query("SELECT company_id AS eslid, manager AS name, manager_phone_num AS tel, email AS address, url AS page, (SELECT product_name FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_name, (SELECT product_price FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_price FROM UserAccountInfo;",
+    db.query("SELECT company_id AS eslid, company_name, manager AS name, manager_phone_num AS tel, email AS address, url AS page, (SELECT product_name FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_name, (SELECT product_price FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_price, (SELECT CONCAT(section, '-', `type`,layer, '0', NUMBER) FROM BoothInfo WHERE UserAccountInfo.company_id = BoothInfo.company_id) AS booth FROM UserAccountInfo;",
         (err, data) => {
             if (!err) {
                 const csv_test = jsonToCSV(data);

@@ -136,12 +136,12 @@ function BoothManagement() {
                 .then((response) => {
                     console.log(response.data);
                     settagid1(response.data[1].tag_id);
-                    setc_id1(response.data[1].company_id);
+                    setc_id1(response.data[1].company_name);
                     setstate1(response.data[1].state);
                     setbettery1(response.data[1].battery);
 
                     settagid2(response.data[2].tag_id);
-                    setc_id2(response.data[2].company_id);
+                    setc_id2(response.data[2].company_name);
                     setstate2(response.data[2].state);
                     setbettery2(response.data[2].battery);
                 })
@@ -296,7 +296,7 @@ function BoothManagement() {
                             <table className="boothManagement_eslInfo_table">
                                 <tr className="boothManagement_eslInfo_tr">
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">태그ID</th>
-                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">사업자번호</th>
+                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">대여회사</th>
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">상태</th>
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">배터리</th>
                                 </tr>

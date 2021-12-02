@@ -26,11 +26,13 @@ function EslManagement() {
                     setc_id1(response.data[1].company_id);
                     setstate1(response.data[1].state);
                     setbettery1(response.data[1].battery);
+                    setcompany1(response.data[1].company_name);
 
                     settagid2(response.data[2].tag_id);
                     setc_id2(response.data[2].company_id);
                     setstate2(response.data[2].state);
                     setbettery2(response.data[2].battery);
+                    setcompany2(response.data[2].company_name);
                 })
         } catch (error) {
             console.log(error);
