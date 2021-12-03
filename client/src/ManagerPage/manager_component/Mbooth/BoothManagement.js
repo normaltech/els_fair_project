@@ -4,6 +4,7 @@ import axios from 'axios';
 import MBoothPosts from './MBoothPosts';
 import { MBoothNotice, btn } from './MBoothNotice';
 import MBoothPagenation from './MBoothPagenation';
+import MBoothEsl from './MBoothEsl';
 
 function BoothManagement() {
 
@@ -151,9 +152,9 @@ function BoothManagement() {
         //     console.log(error);
         // }
         setLoadong2(true);
-        // const res = await axios.get("/esl_crawler");
-        // setesldata(res.data);
-        // console.log(esldata);
+        const res = await axios.get("/esl_crawler");
+        setesldata(res.data);
+        console.log(esldata);
         setLoadong2(false);
     }
 
@@ -304,9 +305,9 @@ function BoothManagement() {
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">태그ID</th>
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">대여회사</th>
                                     <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">상태</th>
-                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">배터리</th>
+                                    <th className="boothManagement_eslInfo_padding boothManagement_eslInfo_th">배터리(%)</th>
                                 </tr>
-                                <tr>
+                                {/* <tr>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{tagid1}</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{c_id1}</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{state1}</td>
@@ -317,7 +318,8 @@ function BoothManagement() {
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{c_id2}</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{state2}</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{battery2}%</td>
-                                </tr>
+                                </tr> */}
+                                <MBoothEsl posts={esldata} loading={loading2} />
                                 {/* <tr>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">3</td>
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1</td>

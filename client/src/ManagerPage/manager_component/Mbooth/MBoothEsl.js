@@ -1,5 +1,4 @@
 import React from 'react'
-import { MBoothNotice } from './MBoothNotice';
 import './boothManagement.css'
 
 const MBoothEsl = ({ posts, loading }) => {
@@ -10,9 +9,16 @@ const MBoothEsl = ({ posts, loading }) => {
     // 리턴문안에 중괄호부분 데이터베이스 변수로 채우기
     return (
         <>
-                {posts.map(post => (
-                    <MBoothNotice key={post.Bname} detailBoothName={post.Bname} detailBoothType={post.type} detailCompany={post.Cname} detailEsl={post.ESL} detailPrice={post.price} getChange={getChange}/>
-                ))}
+            {posts.map(post => (
+                <>
+                    <tr>
+                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.tag_id}</td>
+                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.company_name}</td>
+                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.state}</td>
+                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.battery}</td>
+                    </tr>
+                </>
+            ))}
         </>
     )
 }

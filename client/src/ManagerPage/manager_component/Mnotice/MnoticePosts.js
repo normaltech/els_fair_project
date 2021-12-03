@@ -25,7 +25,7 @@ const MnoticePosts = ({ posts, loading }) => {
     return (
         <>
             {posts.map(post => (
-                <MnoticeNotice MnoticeNum={post.id} MnoticeShow={post.exhibition} MnoticeTitle={post.title} MnoticeDate={toStringByFormatting(new Date(post.date))} />
+                <MnoticeNotice MnoticeNum={post.id} MnoticeShow={post.exhibition} MnoticeTitle={post.title} MnoticeDate={toStringByFormatting(new Date(post.date))} Mnoticetext={post.notices} />
             ))}
         </>
     )

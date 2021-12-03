@@ -852,9 +852,19 @@ app.post("/insert_notice", (req, res) => {
     const exhibition = req.body.user.exhibition;
     const today = new Date();
 
-    db.query("INSERT INTO NOTICE (exhibition, title, notices, date) VALUE (?, ? ,?, ?);", 
-        [exhibition, n_title, n_text, today]
-    );
+    db.query("SELECT MAX(id) as id FROM NOTICE;", (err, result) => {
+        if (result) {
+            const maxid = result[0].id + 1;
+            db.query("INSERT INTO NOTICE (id, exhibition, title, notices, date) VALUE (?, ?, ? ,?, ?);", 
+                [maxid, exhibition, n_title, n_text, today]
+            );
+        }
+        else console.log(err);
+    })
+
+    // db.query("INSERT INTO NOTICE (id, exhibition, title, notices, date) VALUE (?, ?, ? ,?, ?);", 
+    //     [maxID, exhibition, n_title, n_text, today]
+    // );
 })
 
 app.listen(5000, () => console.log(`Listening on port 5000`));

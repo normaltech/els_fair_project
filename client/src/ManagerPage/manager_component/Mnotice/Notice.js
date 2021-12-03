@@ -73,10 +73,10 @@ function Notice() {
         <>
             <div className='Mnotice_wrap'>
                 {/* 상단 검색바 */}
-                <div className="Mnotice_search">
+                {/* <div className="Mnotice_search">
                     <input type="text" className="Mnotice_input" placeholder="검색어를 입력하세요." />
                     <img src="/assets/icons/iconAwesomeSearch.png" alt="검색이미지" className="Mnotice_img" />
-                </div>
+                </div> */}
                 {/* 공지사항 content */}
                 <div className="Mnotice_table_wrap">
                     <table className="Mnotice_table">

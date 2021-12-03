@@ -22,27 +22,10 @@ const style ={
     zIndex: 2,
 }
 
-function useFetch(id){
-    const [data, setData] = useState([])
-    async function fetchUrl(){
-        axios.get("/getNoticeContent/"+id).then((res)=>{
-            setData(res.data[0].notices)
-        })
-    }
-
-    useEffect(() => {
-        fetchUrl();
-     },[]);
-
-    return data;
-}
-
-function NoticeModal({id,exhibition,title}) {
+function NoticeModal({id,exhibition,title,text}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    var content = useFetch(id);
 
     const btn = () => {
         const n_text = document.getElementsByClassName("mainpage_noticeModal_textarea")[0].value;
@@ -79,9 +62,10 @@ function NoticeModal({id,exhibition,title}) {
                 </div>
                 <div className="mainpage_noticeModal_content mainpage_noticeModal_padding">내용</div>
                 <div className="mainpage_noticeModal_padding">
-                    <textarea className="mainpage_noticeModal_textarea" cols="62" rows="10" defaultValue={content} />
+                    <textarea className="mainpage_noticeModal_textarea" cols="62" rows="10" defaultValue={text} />
                 </div>
-                <button onClick={btn}>수정</button>
+                <button onClick={btn} className="Mnotice_noticeModal_btn_add_2">수정</button>
+                <button onClick={handleClose} className="Mnotice_noticeModal_btn_add_2">취소</button>
             </Box>
             </Modal>
         </React.Fragment>
@@ -90,13 +74,13 @@ function NoticeModal({id,exhibition,title}) {
 
 
 
-export const MnoticeNotice = ({MnoticeNum, MnoticeShow, MnoticeTitle, MnoticeDate}) => {
+export const MnoticeNotice = ({MnoticeNum, MnoticeShow, MnoticeTitle, MnoticeDate, Mnoticetext}) => {
     return (
         <tr>
             <td className="Mnotice_table_padding">{MnoticeNum}</td>
             <td className="Mnotice_table_padding">{MnoticeShow}</td>
             {/* <td className="Mnotice_table_padding">{MnoticeTitle}</td> */}
-            <NoticeModal id ={MnoticeNum} exhibition = {MnoticeShow} title={MnoticeTitle}  />
+            <NoticeModal id ={MnoticeNum} exhibition = {MnoticeShow} title={MnoticeTitle} text={Mnoticetext}  />
             <td className="Mnotice_table_padding">{MnoticeDate}</td>
             <td><DeleteNoticeModal id={MnoticeNum} /></td>
         </tr>
