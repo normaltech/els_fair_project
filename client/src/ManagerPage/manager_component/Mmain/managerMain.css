@@ -10,6 +10,8 @@
 
 .managerMain_boothReservationInfo{
   position: relative;
+  height: 100%;
+  overflow-x: scroll;
 }
 
 .managerMain_wrap .managerMain_top_content_wrap, 
