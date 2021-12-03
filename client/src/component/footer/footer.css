@@ -9,8 +9,11 @@
 .signUpPage .footer{
   position: relative;
 }
-.userInfoPage .footer{
-  position: relative;
+
+@media screen and (max-width: 800px){
+  .userInfoPage .footer{
+    position: relative;
+  }
 }
 .selectionPageConainer .footer{
   position: relative;
@@ -22,9 +25,9 @@
   position: relative;
 }
 
-.reservationListPage .footer{
+/* .reservationListPage .footer{
   position: relative;
-}
+} */
 
 
 .footerInfo{

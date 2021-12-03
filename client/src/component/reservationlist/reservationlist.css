@@ -15,8 +15,11 @@
   font-family: NanumSquare_acR;
   font-size: 18px;
   line-height: 60px;
-  color: var(--white);
-  border-bottom: solid 3px rgb(190, 158, 158);
+  color: var(--white); 
+}
+
+.activatedUorMenu{
+  border-bottom: solid 3px var(--white);
 }
 
 #reservationInfoBox{

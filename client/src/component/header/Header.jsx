@@ -44,7 +44,7 @@ export default function Header() {
       }
   }
   const btnMypage = () => {
-      window.location.href="/userinfo"
+      window.location.href="/mypage/userinfo"
   }
   const loginlogout = () =>{
     if(person != null){

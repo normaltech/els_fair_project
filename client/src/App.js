@@ -84,10 +84,10 @@ function App() {
           <Route path="/withdraw">
             <Withdraw />
           </Route>
-          <Route path="/userinfo">
+          <Route path="/mypage/userinfo">
             <UserInfo />
           </Route>
-          <Route path="/reservationlist">
+          <Route path="/mypage/reservationlist">
             <ReservationList />
           </Route>
           <Route path="/about-us">

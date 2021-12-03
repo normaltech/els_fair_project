@@ -32,8 +32,8 @@ export default function UserInfo() {
       <Header />
       <div className="userinfoOrReservationlistMenuBar">
         <div className="uorMenuContainer">
-          <span className="uorMenu">회원정보</span>
-          <span className="uorMenu">예약 내역</span>
+          <Link to="/mypage/userinfo" className="uorMenu activatedUorMenu">회원 정보</Link>
+          <Link to="/mypage/reservationlist" className="uorMenu">예약 내역</Link>
         </div>
       </div>
       <div className="userinfoOrReservationlistContainer" id="userInfoBox">
