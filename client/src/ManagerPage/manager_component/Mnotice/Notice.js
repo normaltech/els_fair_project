@@ -58,16 +58,16 @@ function Notice() {
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    useEffect(()=>{
-        const fetchPosts = async () =>{
-          setLoading(true);
-          const res = await axios.get(''); // 데이터베이스 가져오기
-          setPosts(res.data);
-          setLoading(false);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setLoading(true);
+            const res = await axios.get('/getNotice'); // 데이터베이스 가져오기
+            setPosts(res.data);
+            setLoading(false);
         }
-    
+
         fetchPosts();
-      }, [])
+    }, [])
 
     return (
         <>
@@ -94,28 +94,26 @@ function Notice() {
                             <td className="Mnotice_table_padding">{MnoticeDate}</td>
                             <td className="Mnotice_table_padding"><input type="checkbox" /></td>
                         </tr> */}
-                        <MnoticePosts posts={currentPosts} loading={loading}/>
+                        <MnoticePosts posts={currentPosts} loading={loading} />
                     </table>
                     {/* 여기에도 넣어보기 */}
                 </div>
                 <div className="Mnotice_bottom_content_wrap">
                     <div className="Mnotice_pagination">
                         {/* 여기에 페이지네이션 */}
-                        <MnoticePagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
+                        <MnoticePagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate} />
                         {/* <div><button>페이지네이션</button></div> */}
                     </div>
                     <div className="Mnotice_btn_wrap">
                         {/* <div><button type="button" className="Mnotice_btn_add" onClick={onClickAdd}>추가</button></div> */}
                         <div><AddNoticeModal /></div>
-                        {/* <div><button type="button" className="Mnotice_btn_delete" onClick={onClickDelete}>삭제</button></div> */}
-                        <div><DeleteNoticeModal /></div>
                     </div>
                 </div>
             </div>
-            
+
             {/* 배경흐림 모달창 */}
             <div className="Mnotice_black_bg"></div>
-           
+
             {/* 공지사항 추가완료 모달창 */}
             <div className="Mnotice_addSuccess_wrap">
                 <div class="Mnotice_addsuccess_content_wrap">
@@ -123,7 +121,7 @@ function Notice() {
                     <div><button type="button" className="Mnotice_addsuccess_btn" onClick={onClickOk}>확인</button></div>
                 </div>
             </div>
-            
+
             {/* 공지사항 삭제완료 모달창 */}
             <div className="Mnotice_deleteSuccess_wrap">
                 <div className="Mnotice_deleteSuccess_content_wrap">

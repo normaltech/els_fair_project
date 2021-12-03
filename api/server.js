@@ -18,7 +18,7 @@ const crawler = async () => {
         const eslid = 'develop';
         const eslpassword = 'esl';
 
-        await page.goto('https://192.168.1.11:8443');
+        await page.goto('https://192.168.0.11:8443');
 
         await page.evaluate((id, pw) => {
             document.querySelector('input[name="userid"]').value = id;
@@ -28,7 +28,7 @@ const crawler = async () => {
         await page.click('a[class="btn"]');
         await page.waitForTimeout(500);
 
-        if (page.url() === 'https://192.168.1.11:8443/main.jsp') {
+        if (page.url() === 'https://192.168.0.11:8443/main.jsp') {
             console.log('로그인성공!');
 
             // await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
@@ -314,7 +314,7 @@ app.get("/getuserinfo", (req, res) => {
 
 //공지사항 테이블 불러오기
 app.get("/getNotice", (req, res) => {
-    db.query("SELECT * FROM NOTICE;",
+    db.query("SELECT * FROM NOTICE ORDER BY id ASC;",
         (err, data) => {
             if (!err) {
                 res.send(data);
@@ -626,7 +626,7 @@ app.post("/adminLogin",(req,res)=>{
 app.get("/getAllUserData",(req,res)=>{
     db.query("SELECT * FROM UserAccountInfo",(err,result)=>{
         if(result.length > 0){
-            console.log(result);
+            // console.log(result);
             res.send(result);
         }
     })
@@ -757,7 +757,7 @@ async function example() {
     client.ftp.verbose = true
     try {
         await client.access({
-            host: "192.168.1.11",
+            host: "192.168.0.11",
             user: "cgESLUser",
             password: "cgESLPassword",
             port : "2121",
@@ -810,7 +810,6 @@ app.get("/getNoticeContent/:id",(req,res)=>{
     const noticeId = req.params.id;
     db.query("SELECT notices FROM NOTICE WHERE id=?",noticeId,(err,result)=>{
         if(result){
-            // console.log(result);
             res.send(result);
         }
     })
@@ -827,4 +826,35 @@ app.get("/checkIfUserReserved",(req,res)=>{
         }
     })
 })
+
+//공지사항 수정
+app.post("/notices_change", (req, res) => {
+    const n_title = req.body.n_title;
+    const n_text = req.body.n_text;
+    const id = req.body.id;
+
+    db.query("UPDATE NOTICE SET title = ?, notices = ? WHERE id = ?;",
+        [n_title, n_text, id]
+    );
+})
+
+//공지사항 삭제
+app.post("/notices_delete", (req, res) => {
+    const id = req.body.id;
+
+    db.query("DELETE FROM NOTICE WHERE id = ?;", id);
+})
+
+//공지사항 추가
+app.post("/insert_notice", (req, res) => {
+    const n_title = req.body.user.title;
+    const n_text = req.body.user.content;
+    const exhibition = req.body.user.exhibition;
+    const today = new Date();
+
+    db.query("INSERT INTO NOTICE (exhibition, title, notices, date) VALUE (?, ? ,?, ?);", 
+        [exhibition, n_title, n_text, today]
+    );
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));

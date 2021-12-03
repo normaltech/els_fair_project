@@ -109,7 +109,7 @@ function UserManagement() {
     const handleSearch = (event) => {
         let value = event.target.value.toLowerCase();
         let result = [];
-        console.log(value);
+        // console.log(value);
         result = allData.filter((data) => {
         return data.company_name.search(value) != -1;
         });
@@ -163,9 +163,9 @@ function UserManagement() {
                         <MuserPagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
                         {/* <div><button>페이지네이션</button></div> */}
                     </div>
-                    <div>
+                    {/* <div>
                         <AddUserModal />
-                    </div>              
+                    </div>               */}
                 </div>
             </div>
 

@@ -2,15 +2,29 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import './notice.css';
+import {AiFillDelete} from 'react-icons/ai';
+import axios from 'axios';
 
-export const DeleteNoticeModal = () => {
+export const DeleteNoticeModal = ({id}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+    const btn = () => {
+        try{
+            axios.post("/notices_delete", {id});
+        } catch {
+            console.log("에러");
+        }
+        setOpen(false);
+        alert('삭제완료');
+        window.location.replace("/managerpage/notice");
+    }
+
     return (
         <>
             {/* <span onClick={handleOpen} ></span> */}
-            <button type="button" className="Mnotice_btn_delete" onClick={handleOpen}>삭제</button>
+            <div onClick={handleOpen} className="B_delete"><AiFillDelete /></div>
             <Modal
             open={open}
             onClose={handleClose}
@@ -26,7 +40,7 @@ export const DeleteNoticeModal = () => {
                             <div className="Mnotice_deleteModal_title">공지사항 삭제</div>
                             <div className="Mnotice_deleteModal_question">삭제 버튼을 누르게 되면 해당 내용은 복구할 수 없습니다. 그래도 삭제하시겠습니까?</div>
                             <div className="Mnotice_deleteModal_btn_wrap">
-                                <div><button className="Mnotice_deleteModal_btn_delete" onClick={handleClose}>삭제</button></div>
+                                <div><button className="Mnotice_deleteModal_btn_delete" onClick={btn}>삭제</button></div>
                                 <div><button className="Mnotice_deleteModal_btn_cancel" onClick={handleClose}>취소</button></div>
                             </div>
                         </div>
