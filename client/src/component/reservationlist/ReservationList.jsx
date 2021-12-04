@@ -3,7 +3,6 @@ import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import { Link } from 'react-router-dom';
 import './reservationlist.css'
-import { Link } from "react-router-dom";
 export default function ReservationList() {
   return (
     <div className="reservationListPage">

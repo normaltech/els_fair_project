@@ -17,12 +17,12 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
         cName: 'nav-text'
     },
-    // {
-    //     title: 'ESL 기기 관리',
-    //     path: '/managerpage/eslManagement',
-    //     icon: <GoCreditCard />,
-    //     cName: 'nav-text'
-    // },
+    {
+        title: 'ESL 기기 관리',
+        path: '/managerpage/eslManagement',
+        icon: <GoCreditCard />,
+        cName: 'nav-text'
+    },
     {
         title: '부스 관리',
         path: '/managerpage/boothManagement',
