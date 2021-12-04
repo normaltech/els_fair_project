@@ -1,3 +1,8 @@
+.B_delete{
+    position: relative;
+    left: 25%;
+}
+
 .Mnotice_wrap{
     height: 100vh; 
     /* height 다시 */
@@ -159,6 +164,19 @@
     color: #fff;
     font-size: 14px;
     margin: 0 5px;
+}
+.Mnotice_noticeModal_btn_add_2{
+    width: 50px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #0058ff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    margin: 0 5px;
+    
+    position: relative;
+    left: 37%;
 }
 .Mnotice_noticeModal_btn_add:hover,
 .Mnotice_noticeModal_btn_cancel:hover{

@@ -22,7 +22,7 @@ const Posts = ({posts, loading})=>{
 
     return(<ul className="list-group mb-4">
         {posts.map(post =>(
-            <Notice num={post.id} exhibition={post.exhibition} title={post.title} date={toStringByFormatting(new Date(post.date))} />
+            <Notice num={post.id} exhibition={post.exhibition} title={post.title} date={toStringByFormatting(new Date(post.date))} text={post.notices} />
         ))}
     </ul>
     )

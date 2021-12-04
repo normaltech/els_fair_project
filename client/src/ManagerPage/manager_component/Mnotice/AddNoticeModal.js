@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import './notice.css';
+import axios from 'axios';
 
 export const AddNoticeModal = () => {
     const [open, setOpen] = useState(false);
@@ -10,13 +11,20 @@ export const AddNoticeModal = () => {
 
     //입력 변수값
     const [user, setUser] = useState({
-        exhibition: '',
+        exhibition: '에스씨엠 페어 2021',
         title: '',
         content: '',
     });
 
     const clickAdd = () => {
-        console.log(user);
+        try {
+            axios.post("/insert_notice", {user});
+            alert('공지사항 추가');
+        } catch {
+            console.log('에러');
+        }
+        setOpen(false);
+        window.location.replace("/managerpage/notice");
     }
 
     const exhibitionSetter = (value) => {
