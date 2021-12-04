@@ -18,7 +18,8 @@ const crawler = async () => {
         const eslid = 'develop';
         const eslpassword = 'esl';
 
-        await page.goto('https://192.168.1.11:8443');
+        await page.goto('https://192.168.0.11:8443');
+        // await page.goto('https://175.194.142.194:8443');
 
         await page.evaluate((id, pw) => {
             document.querySelector('input[name="userid"]').value = id;
@@ -28,13 +29,9 @@ const crawler = async () => {
         await page.click('a[class="btn"]');
         await page.waitForTimeout(500);
 
-        if (page.url() === 'https://192.168.1.11:8443/main.jsp') {
+        // if (page.url() === 'https://175.194.142.194:8443/main.jsp') {
+        if (page.url() === 'https://192.168.0.11:8443/main.jsp') {    
             console.log('로그인성공!');
-
-            // await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
-            // await page.waitForTimeout(500);
-            // await page.click('#btn_merchandise_refresh');
-            // await page.waitForTimeout(500);
 
             await page.waitForTimeout(300);
             await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
@@ -46,7 +43,6 @@ const crawler = async () => {
 
             let esllist = [];
             const $ = cheerio.load(content);
-            // const $bodyList = $("div#content").children("ul");
             const $bodyList = $("table#tag_list tbody").children("tr");
 
             $bodyList.each(function (i, elem) {
@@ -58,8 +54,6 @@ const crawler = async () => {
                     company_name: $(this).find('td:nth-child(16)').text()
                 };
             });
-
-            // console.log(esllist);
             return esllist;
         }
         else console.log(page.url());
@@ -69,6 +63,8 @@ const crawler = async () => {
         console.error(e);
     }
 }
+
+// crawler();
 
 //ftp관리
 const ftp = require("basic-ftp");
@@ -314,7 +310,7 @@ app.get("/getuserinfo", (req, res) => {
 
 //공지사항 테이블 불러오기
 app.get("/getNotice", (req, res) => {
-    db.query("SELECT * FROM NOTICE;",
+    db.query("SELECT * FROM NOTICE ORDER BY id ASC;",
         (err, data) => {
             if (!err) {
                 res.send(data);
@@ -626,7 +622,7 @@ app.post("/adminLogin",(req,res)=>{
 app.get("/getAllUserData",(req,res)=>{
     db.query("SELECT * FROM UserAccountInfo",(err,result)=>{
         if(result.length > 0){
-            console.log(result);
+            // console.log(result);
             res.send(result);
         }
     })
@@ -757,7 +753,8 @@ async function example() {
     client.ftp.verbose = true
     try {
         await client.access({
-            host: "192.168.1.11",
+            // host: "175.194.142.194",
+            host: "192.168.0.11",
             user: "cgESLUser",
             password: "cgESLPassword",
             port : "2121",
@@ -798,8 +795,6 @@ app.get("/esl_crawler", (req, res) => {
         crawler().then((data) => {
             res.send(data);
         });
-        // console.log(esldata);
-        // res.send(crawler());
     } catch (err) {
         console.log(err)
         console.log('에러')
@@ -810,7 +805,6 @@ app.get("/getNoticeContent/:id",(req,res)=>{
     const noticeId = req.params.id;
     db.query("SELECT notices FROM NOTICE WHERE id=?",noticeId,(err,result)=>{
         if(result){
-            // console.log(result);
             res.send(result);
         }
     })
@@ -827,4 +821,76 @@ app.get("/checkIfUserReserved",(req,res)=>{
         }
     })
 })
+
+//공지사항 수정
+app.post("/notices_change", (req, res) => {
+    const n_title = req.body.n_title;
+    const n_text = req.body.n_text;
+    const id = req.body.id;
+
+    db.query("UPDATE NOTICE SET title = ?, notices = ? WHERE id = ?;",
+        [n_title, n_text, id]
+    );
+})
+
+//공지사항 삭제
+app.post("/notices_delete", (req, res) => {
+    const id = req.body.id;
+
+    db.query("DELETE FROM NOTICE WHERE id = ?;", id);
+})
+
+//공지사항 추가
+app.post("/insert_notice", (req, res) => {
+    const n_title = req.body.user.title;
+    const n_text = req.body.user.content;
+    const exhibition = req.body.user.exhibition;
+    const today = new Date();
+
+    db.query("SELECT MAX(id) as id FROM NOTICE;", (err, result) => {
+        if (result) {
+            const maxid = result[0].id + 1;
+            db.query("INSERT INTO NOTICE (id, exhibition, title, notices, date) VALUE (?, ?, ? ,?, ?);", 
+                [maxid, exhibition, n_title, n_text, today]
+            );
+        }
+        else console.log(err);
+    })
+
+    // db.query("INSERT INTO NOTICE (id, exhibition, title, notices, date) VALUE (?, ?, ? ,?, ?);", 
+    //     [maxID, exhibition, n_title, n_text, today]
+    // );
+})
+
+//부스예약초기화
+app.post("/delete_booth", (req, res) => {
+    const Cname = req.body.Mname;
+
+    db.query("SELECT company_id FROM UserAccountInfo WHERE company_name = ?;", Cname, (err, result) => {
+        if (result) {
+            const id = result[0].company_id;
+
+            var sql1 = "DELETE FROM Product WHERE company_id = ?;";
+            var sql1s = mysql.format(sql1, id);
+
+            var sql2 = "DELETE FROM Pass WHERE companyId = ?;";
+            var sql2s = mysql.format(sql2, id);
+
+            var sql3 = "DELETE FROM RESERVATION WHERE companyId = ?;";
+            var sql3s = mysql.format(sql3, id);
+
+            var sql4 = "UPDATE BoothInfo SET company_id = 0, isReserved = 0 WHERE company_id = ?;";
+            var sql4s = mysql.format(sql4, id);
+
+            db.query(sql1s + sql2s + sql3s + sql4s, function (err, result) {
+                if (err) {
+                    console.error(err);
+                }
+            })
+
+        }
+        else console.log(err);
+    })
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));

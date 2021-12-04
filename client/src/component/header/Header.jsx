@@ -44,7 +44,7 @@ export default function Header() {
       }
   }
   const btnMypage = () => {
-      window.location.href="/userinfo"
+      window.location.href="/mypage/userinfo"
   }
   const loginlogout = () =>{
     if(person != null){
@@ -71,8 +71,6 @@ export default function Header() {
       )
     }
   }
-
-    
     return (
         <>
             <div className="headerContainer">
@@ -86,7 +84,7 @@ export default function Header() {
           <li className="headerMenuItem"><Link to="/mainpage">전시회 목록</Link></li>
           {/* <li className="headerMenuItem"><Link to="#target">부스 정보</Link></li> */}
           {/* <li className="headerMenuItem"><a href="#booth_target">부스 정보</a></li> */}
-          <li className="headerMenuItem"><Link to="/selection">예약 안내</Link></li>
+          <li className="headerMenuItem"><Link to="/how-to-book">예약 안내</Link></li>
           <li className="headerMenuItem"><Link to="/about-us">전시 개요</Link></li>
         </ul>
 

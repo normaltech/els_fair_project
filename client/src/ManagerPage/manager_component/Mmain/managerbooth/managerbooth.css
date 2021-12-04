@@ -1,11 +1,12 @@
-.booth_wrap span, .booth_wrap img{
+.managerbooth_wrap span, .managerbooth_wrap img{
     position: absolute;
 }
 
-.booth_wrap>span{
+.managerbooth_wrap>span{
   font-family: sans-serif;
   font-weight: bold;
 }
+
 
 #booth_in{
     width: 68.5px;
@@ -36,7 +37,7 @@
     }
 }
 
-.A_b1_101{
+.managerA_b1_101{
     width: 60px;
     height: 120px;
     top: 454px;
@@ -47,7 +48,7 @@
     line-height: 120px;
 }
 
-.A_a_102{
+.managerA_a_102{
     width: 60px;
     height: 60px;
     top: 394px;
@@ -58,7 +59,7 @@
     line-height: 60px;
 }
 
-.A_a_103{
+.managerA_a_103{
     width: 60px;
     height: 60px;
     top: 334px;
@@ -69,7 +70,7 @@
     line-height: 60px;
 }
 
-.A_a_104{
+.managerA_a_104{
     width: 60px;
     height: 60px;
     top: 274px;
@@ -80,7 +81,7 @@
     line-height: 60px;
 }
 
-.A_a_105{
+.managerA_a_105{
     width: 60px;
     height: 60px;
     top: 214px;
@@ -91,7 +92,7 @@
     line-height: 60px;
 }
 
-.A_a_106{
+.managerA_a_106{
     width: 60px;
     height: 60px;
     top: 154px;
@@ -102,7 +103,7 @@
     line-height: 60px;
 }
 
-.A_a_107{
+.managerA_a_107{
     width: 60px;
     height: 60px;
     top: 94px;
@@ -113,7 +114,7 @@
     line-height: 60px;
 }
 
-.A_b2_108{
+.managerA_b2_108{
     width: 120px;
     height: 60px;
     top: 18px;
@@ -124,7 +125,7 @@
     line-height: 60px;
 }
 
-.B_c_101{
+.managerB_c_101{
     width: 120px;
     height: 120px;
     top: 454px;
@@ -135,7 +136,7 @@
     line-height: 120px;
 }
 
-.B_c_102{
+.managerB_c_102{
     width: 120px;
     height: 120px;
     top: 309px;
@@ -146,7 +147,7 @@
     line-height: 120px;
 }
 
-.B_a_103{
+.managerB_a_103{
     width: 60px;
     height: 60px;
     top: 213px;
@@ -157,7 +158,7 @@
     line-height: 60px;
 }
 
-.B_b1_104{
+.managerB_b1_104{
     width: 60px;
     height: 120px;
     top: 153px;
@@ -169,7 +170,7 @@
     line-height: 120px;
 }
 
-.B_b1_105{
+.managerB_b1_105{
     width: 60px;
     height: 120px;
     top: 136px;
@@ -180,7 +181,7 @@
     line-height: 120px;
 }
 
-.B_b1_106{
+.managerB_b1_106{
     width: 60px;
     height: 120px;
     top: 94px;
@@ -191,7 +192,7 @@
     line-height: 120px;
 }
 
-.B_a_107{
+.managerB_a_107{
     width: 60px;
     height: 60px;
     top: 94px;
@@ -202,7 +203,7 @@
     line-height: 60px;
 }
 
-.B_b1_108{
+.managerB_b1_108{
     width: 60px;
     height: 120px;
     top: 17px;
@@ -213,7 +214,7 @@
     line-height: 120px;
 }
 
-.C_c_101{
+.managerC_c_101{
     width: 120px;
     height: 120px;
     top: 449px;
@@ -224,7 +225,7 @@
     line-height: 120px;
 }
 
-.C_a_102{
+.managerC_a_102{
     width: 60px;
     height: 60px;
     top: 256px;
@@ -235,7 +236,7 @@
     line-height: 60px;
 }
 
-.C_b2_103{
+.managerC_b2_103{
     width: 122px;
     height: 60px;
     top: 256px;
@@ -246,7 +247,7 @@
     line-height: 60px;
 }
 
-.C_b1_104{
+.managerC_b1_104{
     width: 60px;
     height: 120px;
     top: 135px;
@@ -257,7 +258,7 @@
     line-height: 120px;
 }
 
-.C_b1_105{
+.managerC_b1_105{
     width: 60px;
     height: 120px;
     top: 16px;
@@ -268,7 +269,7 @@
     line-height: 120px;
 }
 
-.C_b2_106{
+.managerC_b2_106{
     width: 120px;
     height: 60px;
     top: 16px;
@@ -279,7 +280,7 @@
     line-height: 60px;
 }
 
-.D_b2_101{
+.managerD_b2_101{
     width: 120px;
     height: 60px;
     top: 509px;
@@ -290,7 +291,7 @@
     line-height: 60px;
 }
 
-.D_a_102{
+.managerD_a_102{
     width: 60px;
     height: 60px;
     top: 438px;
@@ -301,7 +302,7 @@
     line-height: 60px;
 }
 
-.D_a_103{
+.managerD_a_103{
     width: 60px;
     height: 60px;
     top: 438px;
@@ -312,7 +313,7 @@
     line-height: 60px;
 }
 
-.D_a_104{
+.managerD_a_104{
     width: 60px;
     height: 60px;
     top: 377px;
@@ -323,7 +324,7 @@
     line-height: 60px;
 }
 
-.D_a_105{
+.managerD_a_105{
     width: 60px;
     height: 60px;
     top: 377px;
@@ -334,7 +335,7 @@
     line-height: 60px;
 }
 
-.D_b2_106{
+.managerD_b2_106{
     width: 120px;
     height: 60px;
     top: 308px;
@@ -345,7 +346,7 @@
     line-height: 60px;
 }
 
-.D_c_107{
+.managerD_c_107{
     width: 120px;
     height: 120px;
     top: 136px;
@@ -356,7 +357,7 @@
     line-height: 120px;
 }
 
-.D_c_108{
+.managerD_c_108{
     width: 120px;
     height: 120px;
     top: 17px;
@@ -367,7 +368,7 @@
     line-height: 120px;
 }
 
-.E_c_101{
+.managerE_c_101{
     width: 120px;
     height: 120px;
     top: 427px;
@@ -378,7 +379,7 @@
     line-height: 120px;
 }
 
-.E_c_102{
+.managerE_c_102{
     width: 120px;
     height: 120px;
     top: 308px;
@@ -389,7 +390,7 @@
     line-height: 120px;
 }
 
-.E_b2_103{
+.managerE_b2_103{
     width: 120px;
     height: 60px;
     top: 137px;
@@ -400,7 +401,7 @@
     line-height: 60px;
 }
 
-.E_c_104{
+.managerE_c_104{
     width: 120px;
     height: 120px;
     top: 18px;
@@ -411,7 +412,7 @@
     line-height: 120px;
 }
 
-.F_c_101{
+.managerF_c_101{
     width: 120px;
     height: 120px;
     top: 410px;
@@ -422,7 +423,7 @@
     line-height: 120px;
 }
 
-.F_a_102{
+.managerF_a_102{
     width: 60px;
     height: 60px;
     top: 318.8px;
@@ -433,7 +434,7 @@
     line-height: 60px;
 }
 
-.F_a_103{
+.managerF_a_103{
     width: 60px;
     height: 60px;
     top: 318.8px;
@@ -444,7 +445,7 @@
     line-height: 60px;
 }
 
-.F_a_104{
+.managerF_a_104{
     width: 60px;
     height: 60px;
     top: 196.8px;
@@ -455,7 +456,7 @@
     line-height: 60px;
 }
 
-.F_a_105{
+.managerF_a_105{
     width: 60px;
     height: 60px;
     top: 196.8px;
@@ -466,7 +467,7 @@
     line-height: 60px;
 }
 
-.F_c_106{
+.managerF_c_106{
     width: 120px;
     height: 120px;
     top: 48.8px;
@@ -477,7 +478,7 @@
     line-height: 120px;
 }
 
-.G_c_101{
+.managerG_c_101{
     width: 120px;
     height: 120px;
     top: 423px;
@@ -488,7 +489,7 @@
     line-height: 120px;
 }
 
-.G_c_102{
+.managerG_c_102{
     width: 120px;
     height: 120px;
     top: 280px;
@@ -499,7 +500,7 @@
     line-height: 120px;
 }
 
-.G_b1_103{
+.managerG_b1_103{
     width: 60px;
     height: 120px;
     top: 116px;
@@ -510,7 +511,7 @@
     line-height: 120px;
 }
 
-.G_a_104{
+.managerG_a_104{
     width: 60px;
     height: 60px;
     top: 175px;
@@ -521,7 +522,7 @@
     line-height: 60px;
 }
 
-.G_a_105{
+.managerG_a_105{
     width: 60px;
     height: 60px;
     top: 116px;
@@ -532,7 +533,7 @@
     line-height: 60px;
 }
 
-.G_a_106{
+.managerG_a_106{
     width: 59px;
     height: 60px;
     top: 18px;
@@ -543,7 +544,7 @@
     line-height: 60px;
 }
 
-.G_a_107{
+.managerG_a_107{
     width: 60px;
     height: 60px;
     top: 18px;
@@ -554,7 +555,7 @@
     line-height: 60px;
 }
 
-.H_c_101{
+.managerH_c_101{
     width: 120px;
     height: 120px;
     top: 400px;
@@ -565,7 +566,7 @@
     line-height: 120px;
 }
 
-.H_b2_102{
+.managerH_b2_102{
     width: 120px;
     height: 60px;
     top: 334px;
@@ -576,7 +577,7 @@
     line-height: 60px;
 }
 
-.H_b2_103{
+.managerH_b2_103{
     width: 120px;
     height: 60px;
     top: 273px;
@@ -587,7 +588,7 @@
     line-height: 60px;
 }
 
-.H_a_104{
+.managerH_a_104{
     width: 60px;
     height: 60px;
     top: 175px;
@@ -598,7 +599,7 @@
     line-height: 60px;
 }
 
-.H_a_105{
+.managerH_a_105{
     width: 60px;
     height: 60px;
     top: 175px;
@@ -609,7 +610,7 @@
     line-height: 60px;
 }
 
-.H_a_106{
+.managerH_a_106{
     width: 60px;
     height: 60px;
     top: 114px;
@@ -620,7 +621,7 @@
     line-height: 60px;
 }
 
-.H_a_107{
+.managerH_a_107{
     width: 60px;
     height: 60px;
     top: 114px;
@@ -631,7 +632,7 @@
     line-height: 60px;
 }
 
-.H_b2_108{
+.managerH_b2_108{
     width: 120px;
     height: 60px;
     top: 18px;
@@ -642,7 +643,7 @@
     line-height: 60px;
 }
 
-.H_b2_109{
+.managerH_b2_109{
     width: 120px;
     height: 60px;
     top: 18px;
@@ -653,7 +654,7 @@
     line-height: 60px;
 }
 
-.I_a_101{
+.managerI_a_101{
     width: 60px;
     height: 60px;
     top: 530px;
@@ -664,7 +665,7 @@
     line-height: 60px;
 }
 
-.I_a_102{
+.managerI_a_102{
     width: 60px;
     height: 60px;
     top: 471px;
@@ -675,7 +676,7 @@
     line-height: 60px;
 }
 
-.I_a_103{
+.managerI_a_103{
     width: 60px;
     height: 60px;
     top: 411.5px;
@@ -686,7 +687,7 @@
     line-height: 60px;
 }
 
-.I_a_104{
+.managerI_a_104{
     width: 60px;
     height: 60px;
     top: 352.5px;
@@ -697,7 +698,7 @@
     line-height: 60px;
 }
 
-.I_b1_105{
+.managerI_b1_105{
     width: 60px;
     height: 120px;
     top: 233.5px;
@@ -708,7 +709,7 @@
     line-height: 120px;
 }
 
-.I_b1_106{
+.managerI_b1_106{
     width: 60px;
     height: 120px;
     top: 114.5px;

@@ -21,13 +21,14 @@ import Spec from './component/specifications/Spec';
 import UserInfo from './component/userinfo/UserInfo';
 import ReservationList from './component/reservationlist/ReservationList';
 import ErrPage from './component/errpage/ErrPage';
-
+import { ReservationInfo } from './component/reservationinfo/ReservationInfo';
 // 메니저페이지
 import ManagerPage from './ManagerPage/Home';
 
 // 에러페이지
 import ErrorBoundary from './ErrorBoundary';
 import About from './component/aboutEservate/About';
+import ReservationGuide from './component/reservationguide/ReservationGuide';
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/selection">
             <SelectBooth />
+          </Route>
+          <Route path="/how-to-book">
+            <ReservationGuide/>
           </Route>
           <Route path="/mainpage">
             <Mainfirst />
@@ -84,14 +88,18 @@ function App() {
           <Route path="/withdraw">
             <Withdraw />
           </Route>
-          <Route path="/userinfo">
+          <Route path="/mypage/userinfo">
             <UserInfo />
           </Route>
-          <Route path="/reservationlist">
+          <Route path="/mypage/reservationlist">
             <ReservationList />
           </Route>
           <Route path="/about-us">
             <About/>
+          </Route>
+          {/* 예약안내페이지 */}
+          <Route path="/reservationinfo">
+            <ReservationInfo />
           </Route>
 
           {/* 매니저페이지 */}

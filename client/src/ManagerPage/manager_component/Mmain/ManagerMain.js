@@ -43,6 +43,44 @@ function ManagerMain(esl_data) {
     // useEffect(() => {
     //     btn();
     // }, []);
+    const [tagid1, settagid1] = useState('-')
+    const [company1, setcompany1] = useState('-')
+    const [c_id1, setc_id1] = useState('-')
+    const [state1, setstate1] = useState('-')
+    const [battery1, setbettery1] = useState('-')
+
+    const [tagid2, settagid2] = useState('-')
+    const [company2, setcompany2] = useState('-')
+    const [c_id2, setc_id2] = useState('-')
+    const [state2, setstate2] = useState('-')
+    const [battery2, setbettery2] = useState('-')
+
+    const esl_btn = () => {
+        try {
+            axios.get("/esl_crawler")
+                .then((response) => {
+                    console.log(response.data);
+                    settagid1(response.data[1].tag_id);
+                    setc_id1(response.data[1].company_id);
+                    setstate1(response.data[1].state);
+                    setbettery1(response.data[1].battery);
+                    setcompany1(response.data[1].company_name);
+
+                    settagid2(response.data[2].tag_id);
+                    setc_id2(response.data[2].company_id);
+                    setstate2(response.data[2].state);
+                    setbettery2(response.data[2].battery);
+                    setcompany2(response.data[2].company_name);
+                })
+        } catch (error) {
+            console.log(error);
+        }
+        // console.log("하이");
+    }
+
+    // useEffect(() => {
+    //     esl_btn();
+    // }, [])
 
     return (
         <>
@@ -82,7 +120,7 @@ function ManagerMain(esl_data) {
 
                     {/* ESL 관리 */}
                     <div className="managerMain_eslManage_wrap">
-                        <div className="managerMain_eslManageTitle">ESL관리</div>
+                        {/* <div className="managerMain_eslManageTitle">ESL관리</div>
                         <div className="managerMain_eslManageInfo_wrap">
                             <div className="managerMain_eslManageNum_wrap">
                                 <div className="managerMain_eslManageNumTitle">개수</div>
@@ -96,7 +134,34 @@ function ManagerMain(esl_data) {
                         <div className="managerMain_eslManageUnder_wrap">
                             <div><img className="managerMain_eslManageUnder_img" src="/assets/network.png" alt="network사진" /></div>
                             <div>esl</div>
+                        </div> */}
+                         <div className="esl_table_wrap">
+                            <table className="esl_table">
+                                <tr className="esl_table_tr">
+                                    <th className="esl_table_padding">태그 ID</th>
+                                    <th className="esl_table_padding">회사</th>
+                                    <th className="esl_table_padding">사업자번호</th>
+                                    <th className="esl_table_padding">상태</th>
+                                    <th className="esl_table_padding">배터리</th>
+                                </tr>
+                                <tr>
+                                    <td className="esl_table_padding">{tagid1}</td>
+                                    <td className="esl_table_padding">{company1}</td>
+                                    <td className="esl_table_padding">{c_id1}</td>
+                                    <td className="esl_table_padding">{state1}</td>
+                                    <td className="esl_table_padding">{battery1}%</td>
+                                </tr>
+                                <tr>
+                                    <td className="esl_table_padding">{tagid2}</td>
+                                    <td className="esl_table_padding">{company2}</td>
+                                    <td className="esl_table_padding">{c_id2}</td>
+                                    <td className="esl_table_padding">{state2}</td>
+                                    <td className="esl_table_padding">{battery2}%</td>
+                                </tr>
+                            </table>
+                            {/* <button className="esl_rebtn" onClick={esl_btn}>재조회</button> */}
                         </div>
+                        <button className="esl_rebtn" onClick={esl_btn}>재조회</button>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,16 @@
 import React from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
+import { Link } from 'react-router-dom';
 import './reservationlist.css'
-
 export default function ReservationList() {
   return (
-    <>
+    <div className="reservationListPage">
       <Header />
       <div className="userinfoOrReservationlistMenuBar">
         <div className="uorMenuContainer">
-          <span className="uorMenu">회원정보</span>
-          <span className="uorMenu">예약 내역</span>
+          <Link to="/mypage/userinfo" className="uorMenu">회원 정보</Link>
+          <Link to="/mypage/reservationlist" className="uorMenu activatedUorMenu">예약 내역</Link>
         </div>
       </div>
       <div className="userinfoOrReservationlistContainer" id="reservationInfoBox">
@@ -44,6 +44,6 @@ export default function ReservationList() {
         </div>
       </div>
       <Footer/>
-    </>
+    </div>
   )
 }

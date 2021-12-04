@@ -21,27 +21,24 @@ const style ={
     zIndex: 2,
 }
 
-function useFetch(id){
-    const [data, setData] = useState([])
-    async function fetchUrl(){
-        axios.get("/getNoticeContent/"+id).then((res)=>{
-            setData(res.data[0].notices)
-        })
-    }
+// function useFetch(id){
+//     const [data, setData] = useState([])
+//     async function fetchUrl(){
+//         axios.get("/getNoticeContent/"+id).then((res)=>{
+//             setData(res.data[0].notices)
+//         })
+//     }
 
-    useEffect(() => {
-        fetchUrl();
-     },[]);
+//     useEffect(() => {
+//         fetchUrl();
+//      },[]);
 
-    return data;
-}
-function NoticeModal({id,exhibition,title}) {
+//     return data;
+// }
+function NoticeModal({id,exhibition,title, text}) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-
-    var content = useFetch(id);
-    
     
     return(
         <React.Fragment>
@@ -64,7 +61,7 @@ function NoticeModal({id,exhibition,title}) {
                 </div>
                 <div className="mainpage_noticeModal_content mainpage_noticeModal_padding">내용</div>
                 <div className="mainpage_noticeModal_padding">
-                    <textarea className="mainpage_noticeModal_textarea" cols="62" rows="10" defaultValue={content} disabled/>
+                    <textarea className="mainpage_noticeModal_textarea" cols="62" rows="10" defaultValue={text} disabled/>
                 </div>
             </Box>
             </Modal>
@@ -72,11 +69,11 @@ function NoticeModal({id,exhibition,title}) {
     );
 }
 
-export const Notice = ({num, exhibition, title, date}) => (
+export const Notice = ({num, exhibition, title, date, text}) => (
     <div className="noticeDetail">
         <div className="n1">{num}</div>
         <div className="n2">{exhibition}</div>
-        <NoticeModal id ={num} exhibition = {exhibition} title={title} />
+        <NoticeModal id ={num} exhibition = {exhibition} title={title} text={text} />
         <div className="n4">{date}</div>
     </div>
 );

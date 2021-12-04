@@ -51,7 +51,7 @@ export default function SelectBooth() {
 
   //구역 선택시 해당 구역 색상 표시
   const clickSection = (e) => {
-    // console.log((e.target.id).slice(-1)==="A" ? true : false);
+    console.log(e.target.id);
     toggleSectionColor(e.target.id); //section_A
     const targetClassName = (e.target.id).slice(-1); //A나 B
     toggleBoothColor(targetClassName);

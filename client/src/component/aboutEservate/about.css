@@ -1,17 +1,32 @@
-/* .aboutPageWrapper{
-  height: 1000px;
-} */
+.aboutPageWrapper{
+}
 
 .sloganImg{
   display: block;
-  width: 53.6%;
-  margin: 170px auto 0 auto;
+  width: 50vw;
+  margin: 100px auto;
 }
 
-@media screen and (max-width:1600px) {
+
+@media screen and (max-width: 1300px){
   .sloganImg{
-    display: block;
-    width: 80.6%;
-    margin: 190px auto 0 auto;
+    width:50vw;
+    margin: 8% auto;
+  }
+}
+@media screen and (max-width: 1025px){
+  .sloganImg{
+    width:90vw;
+    margin: 30% auto;
+  }
+}
+@media screen and (max-width: 800px){
+  .sloganImg{
+    margin: 30% auto;
+  }
+}
+@media screen and (max-width: 400px){
+  .sloganImg{
+    margin: 55% auto;
   }
 }

@@ -52,3 +52,35 @@
   text-align: center;
   color: chocolate;
 }
+
+.inReserveBgColorX{
+  background-color:white;
+}
+.inReserveBgColorO{
+  background-color:#fff2cc;
+}
+
+.managerBoothModalLeft{
+  padding-right: 15px;
+  border-right: 1px solid black;
+}
+
+.managerBoothModalRight{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+
+.managerBoothModalRight .mBMRReserverInfo{
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.managerBoothModalRight div{
+  font-size: 20px;
+}

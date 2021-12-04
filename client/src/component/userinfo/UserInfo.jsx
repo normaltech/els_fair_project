@@ -32,8 +32,8 @@ export default function UserInfo() {
       <Header />
       <div className="userinfoOrReservationlistMenuBar">
         <div className="uorMenuContainer">
-          <span className="uorMenu">회원정보</span>
-          <span className="uorMenu">예약 내역</span>
+          <Link to="/mypage/userinfo" className="uorMenu activatedUorMenu">회원 정보</Link>
+          <Link to="/mypage/reservationlist" className="uorMenu">예약 내역</Link>
         </div>
       </div>
       <div className="userinfoOrReservationlistContainer" id="userInfoBox">
@@ -69,11 +69,13 @@ export default function UserInfo() {
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">전화번호</span>&nbsp;
-                <span className="uIACValue">{manager_phone_num}</span>
+                {/* <span className="uIACValue">{manager_phone_num}</span> */}
+                <span className="uIACValue">010-5632-0647</span>
               </div>
               <div className="userInfoAddressContainer">
                 <span className="uIACKey">이메일</span>&nbsp;
-                <span className="uIACValue">{email}</span>
+                {/* <span className="uIACValue">{email}</span> */}
+                <span className="uIACValue uIACValue_block">tlawogh45@naver.com</span>
               </div>
             </div>
           </div>
