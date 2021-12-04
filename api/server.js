@@ -19,6 +19,7 @@ const crawler = async () => {
         const eslpassword = 'esl';
 
         await page.goto('https://192.168.0.11:8443');
+        // await page.goto('https://175.194.142.194:8443');
 
         await page.evaluate((id, pw) => {
             document.querySelector('input[name="userid"]').value = id;
@@ -28,13 +29,9 @@ const crawler = async () => {
         await page.click('a[class="btn"]');
         await page.waitForTimeout(500);
 
-        if (page.url() === 'https://192.168.0.11:8443/main.jsp') {
+        // if (page.url() === 'https://175.194.142.194:8443/main.jsp') {
+        if (page.url() === 'https://192.168.0.11:8443/main.jsp') {    
             console.log('로그인성공!');
-
-            // await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(2)');
-            // await page.waitForTimeout(500);
-            // await page.click('#btn_merchandise_refresh');
-            // await page.waitForTimeout(500);
 
             await page.waitForTimeout(300);
             await page.click('#leftcolumn > div > ul:nth-child(2) > li:nth-child(3)');
@@ -46,7 +43,6 @@ const crawler = async () => {
 
             let esllist = [];
             const $ = cheerio.load(content);
-            // const $bodyList = $("div#content").children("ul");
             const $bodyList = $("table#tag_list tbody").children("tr");
 
             $bodyList.each(function (i, elem) {
@@ -58,8 +54,6 @@ const crawler = async () => {
                     company_name: $(this).find('td:nth-child(16)').text()
                 };
             });
-
-            // console.log(esllist);
             return esllist;
         }
         else console.log(page.url());
@@ -757,6 +751,7 @@ async function example() {
     client.ftp.verbose = true
     try {
         await client.access({
+            // host: "175.194.142.194",
             host: "192.168.0.11",
             user: "cgESLUser",
             password: "cgESLPassword",
@@ -798,8 +793,6 @@ app.get("/esl_crawler", (req, res) => {
         crawler().then((data) => {
             res.send(data);
         });
-        // console.log(esldata);
-        // res.send(crawler());
     } catch (err) {
         console.log(err)
         console.log('에러')
