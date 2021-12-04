@@ -64,8 +64,10 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
     // window.history.go(0)
   }
   var reservedCheck = "예약 가능";
+  let inReserveBgColor = "inReserveBgColorX"; //예약가능시 하얀색 배경
   if(isReserved == 1){
-    reservedCheck = "예약 불가능";
+    reservedCheck = "예약 불가능"; 
+    inReserveBgColor = "inReserveBgColorO";//예약가능시 노란 배경
   }
   function showButton(){
     if(isReserved==0){
@@ -97,7 +99,7 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
   })
   return (
     <>
-      <span id={`section_${section}`} className={className} onClick={handleOpen} ref={searchRef}>{section}-{type}{layer}{number}</span>
+      <span id={`section_${section}`} className={`${className} ${inReserveBgColor}`} onClick={handleOpen} ref={searchRef} style={{inReserveBgColor}}>{section}-{type}{layer}{number}</span>
       <Modal
         open={open}
         onClose={handleClose}

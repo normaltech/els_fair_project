@@ -52,3 +52,10 @@
   text-align: center;
   color: chocolate;
 }
+
+.inReserveBgColorX{
+  background-color:white;
+}
+.inReserveBgColorO{
+  background-color:#fff2cc;
+}
