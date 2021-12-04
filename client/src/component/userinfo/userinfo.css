@@ -3,7 +3,7 @@
   column-gap: 3rem;
   grid-template-columns: repeat(2, 1fr);
   margin: auto;
-  width: 70%;
+  width: 80%;
   height: 70vh;
   margin-top: 7%;
 }
@@ -34,7 +34,7 @@
 
 .userInfoBoxItemSub{
   font-family: NanumSquare;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.11;
   text-align: left;
   color: #8d8d8d;
@@ -65,11 +65,20 @@
   justify-content: flex-start;
 }
 .uIACKey{
-  width: 70px;
+  width: 80px;
 }
 
 .userinfoLogoutButton{
   justify-self: center;
+}
+
+@media screen and (max-width: 1025px){
+  .uIACKey{
+    width: 70px;
+  }
+  .userInfoBoxItemSub{
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 768px){
@@ -90,7 +99,7 @@
     margin: 20px auto;
   }
   .userInfoBoxItem{
-    width: 300px;
+    width: 400px;
     height: 180px;
   }
   .userInfoBoxItemTitle,
@@ -98,12 +107,48 @@
   .userInfoBoxItemButton{
     font-size: 16px;
   }
+  .uIACKey{
+    width: 70px;
+  }
+  .userInfoBoxItemSub{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .userInfoBoxItem{
+    width: 340px;
+  }
+  .userInfoBoxItemSub{
+    font-size: 12px;
+  }
+  .uIACKey{
+    width: 55px;
+  }
 }
 
 @media screen and (max-width: 321px){
   .userInfoBoxItem{
-    width: 250px;
+    width: 300px;
     height: 180px;
+  }
+  .userInfoBoxItemSub{
+    font-size: 11px;
+  }
+  .uIACKey{
+    width: 50px;
+  }
+  .userInfoBoxItemButton{
+    font-size: 14px
+  }
+}
+
+@media screen and (max-width: 281px){
+  .userInfoBoxItem{
+    width: 270px;
+  }
+  .userInfoBoxItemSub{
+    font-size: 7px;
   }
 }
 

@@ -18,6 +18,9 @@
   color: var(--white);
   border-bottom: solid 3px rgb(190, 158, 158);
 }
+.uorMenu:hover{
+  color: rgb(134, 120, 120);
+}
 
 #reservationInfoBox{
   margin: auto;
@@ -123,5 +126,14 @@
   }
   .rListItem{
     height: 30px;
+  }
+  .uorMenu{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 330px){
+  .uorMenu{
+    font-size: 13px;
   }
 }
