@@ -4,6 +4,14 @@
 
 .sloganImg{
   display: block;
-  width: 80.6%;
-  margin: 190px auto 0 auto;
+  width: 53.6%;
+  margin: 170px auto 0 auto;
+}
+
+@media screen and (max-width:1600px) {
+  .sloganImg{
+    display: block;
+    width: 80.6%;
+    margin: 190px auto 0 auto;
+  }
 }
