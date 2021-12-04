@@ -3,6 +3,7 @@ import './managerMain.css'
 import { CompanyM } from './company/CompanyM'
 import ManagerBooth from './managerbooth/ManagerBooth'
 import axios from 'axios';
+import CompanyESL from './company/CompanyESL';
 function useFetch(url){
     const [data, setData] = useState()
     async function fetchUrl(){
@@ -17,7 +18,7 @@ function useFetch(url){
 
     return data;
 }
-function ManagerMain(esl_data) {
+function ManagerMain() {
 
     var corpTeam = useFetch("/getCompanyCount")
     const [corpInfoNum, setCorpInfoNum] = useState('3')
@@ -29,20 +30,21 @@ function ManagerMain(esl_data) {
     const [eslNum, setEslNum] = useState('-')
     const [eslDestroyNum, setEslDestroyNum] = useState('-')
 
-    const btn = () => {
-        try {
-            axios.get("/esl_crawler")
-                .then((response) => {
-                    setEslNum(response.data.length - 1);
-                })
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    const [esldata, setesldata] = useState([]);
+    const [loading, setLoading] = useState(false);
 
+    //esl정보 가져오기
+    const btn = async() => {
+        setLoading(true);
+        const res = await axios.get("/esl_crawler");
+        setesldata(res.data);
+        console.log(esldata);
+        setLoading(false);
+    }
     // useEffect(() => {
     //     btn();
-    // }, []);
+    // }, [])
+
     const [tagid1, settagid1] = useState('-')
     const [company1, setcompany1] = useState('-')
     const [c_id1, setc_id1] = useState('-')
@@ -144,24 +146,10 @@ function ManagerMain(esl_data) {
                                     <th className="esl_table_padding">상태</th>
                                     <th className="esl_table_padding">배터리</th>
                                 </tr>
-                                <tr>
-                                    <td className="esl_table_padding">{tagid1}</td>
-                                    <td className="esl_table_padding">{company1}</td>
-                                    <td className="esl_table_padding">{c_id1}</td>
-                                    <td className="esl_table_padding">{state1}</td>
-                                    <td className="esl_table_padding">{battery1}%</td>
-                                </tr>
-                                <tr>
-                                    <td className="esl_table_padding">{tagid2}</td>
-                                    <td className="esl_table_padding">{company2}</td>
-                                    <td className="esl_table_padding">{c_id2}</td>
-                                    <td className="esl_table_padding">{state2}</td>
-                                    <td className="esl_table_padding">{battery2}%</td>
-                                </tr>
+                                <CompanyESL posts={esldata} loading={loading} />
                             </table>
-                            {/* <button className="esl_rebtn" onClick={esl_btn}>재조회</button> */}
                         </div>
-                        <button className="esl_rebtn" onClick={esl_btn}>재조회</button>
+                        {/* <button className="esl_rebtn" onClick={esl_btn}>재조회</button> */}
                     </div>
                 </div>
             </div>

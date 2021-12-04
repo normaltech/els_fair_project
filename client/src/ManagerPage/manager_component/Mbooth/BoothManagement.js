@@ -134,23 +134,6 @@ function BoothManagement() {
 
     //esl정보 가져오기
     const btn = async() => {
-        // try {
-        //     axios.get("/esl_crawler")
-        //         .then((response) => {
-        //             console.log(response.data);
-        //             settagid1(response.data[1].tag_id);
-        //             setc_id1(response.data[1].company_name);
-        //             setstate1(response.data[1].state);
-        //             setbettery1(response.data[1].battery);
-
-        //             settagid2(response.data[2].tag_id);
-        //             setc_id2(response.data[2].company_name);
-        //             setstate2(response.data[2].state);
-        //             setbettery2(response.data[2].battery);
-        //         })
-        // } catch (error) {
-        //     console.log(error);
-        // }
         setLoadong2(true);
         const res = await axios.get("/esl_crawler");
         setesldata(res.data);
