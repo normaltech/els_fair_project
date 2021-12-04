@@ -893,4 +893,22 @@ app.post("/delete_booth", (req, res) => {
     })
 })
 
+//예약 리스트 가져오기
+app.get("/getReservedList",(req,res)=>{
+    const companyId = req.session.user.company_id;
+    db.query(
+    "SELECT b.section, SUBSTRING(b.TYPE,1,1) AS TYPE, e.startDate AS date, e.name "+
+    "FROM BoothInfo b, ExhibitionList e "+
+    "WHERE b.booth_id = (SELECT boothId FROM RESERVATION WHERE companyId = ?) "+
+    "AND e.id = (SELECT exhibitionId FROM RESERVATION WHERE companyId = ?);",
+    [companyId,companyId],
+    (err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        if(result){
+            res.send(result);
+        }
+    })
+})
 app.listen(5000, () => console.log(`Listening on port 5000`));

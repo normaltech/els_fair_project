@@ -73,7 +73,7 @@
   display: flex;
   width: auto;
   height: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 23px;
   align-items: center;
   justify-content: space-evenly;
   background-color: rgba(212, 212, 212, 0.27);
@@ -84,7 +84,7 @@
 .rListItem{
   width: 20%;
   font-family: NanumSquare_acB;
-  font-size: 26px;
+  font-size: 20px;
   line-height: 1.12;
   text-align: center;
   color: var(--black);
@@ -92,10 +92,11 @@
 #rListTableField>.rListItem{
   width: 20%;
   font-family: NanumSquare_acB;
-  font-size: 26px;
+  font-size: 22px;
   line-height: 1.12;
   text-align: center;
-  color: var(--warm-grey);
+  color: black;
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px){
@@ -127,9 +128,6 @@
   .rListTitleAndSub{
     height: 90px;
   }
-  .rListItem{
-    height: 30px;
-  }
   .uorMenu{
     font-size: 15px;
   }
@@ -139,4 +137,24 @@
   .uorMenu{
     font-size: 13px;
   }
+  #reservationInfoBox{
+    width: 90%;
+  }
+  #rListTableField>.rListItem {
+    width: 20%;
+    font-size: 13px;
+  }
+  .rListItem{
+    font-size: 15px;
+  }
+  .rListSub{    
+    font-size: 15px;
+  }
+  .rListTitleAndSub{
+    height: 80px;
+    margin-bottom: 5px;
+  }
+  .uorMenuContainer {
+    margin-left: 4.0%;
+}
 }

@@ -24,13 +24,15 @@
   }
 }
 
-.mainPage .footer{
+/* .mainPage .footer{
   position: relative;
-}
+} */
 .reservationContainer .footer{
   position: relative;
 }
-
+.selectionPageConainer .footer{
+  position: relative;
+}
 
 /* .reservationListPage .footer{
   position: relative;
