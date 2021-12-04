@@ -10,8 +10,11 @@
   position: relative;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1024px){
   .userInfoPage .footer{
+    position: relative;
+  }
+  .selectionPageConainer .footer{
     position: relative;
   }
 }
@@ -20,9 +23,7 @@
     position: relative;
   }
 }
-.selectionPageConainer .footer{
-  position: relative;
-}
+
 .mainPage .footer{
   position: relative;
 }

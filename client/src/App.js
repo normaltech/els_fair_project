@@ -28,6 +28,7 @@ import ManagerPage from './ManagerPage/Home';
 // 에러페이지
 import ErrorBoundary from './ErrorBoundary';
 import About from './component/aboutEservate/About';
+import ReservationGuide from './component/reservationguide/ReservationGuide';
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
           </Route>
           <Route path="/selection">
             <SelectBooth />
+          </Route>
+          <Route path="/how-to-book">
+            <ReservationGuide/>
           </Route>
           <Route path="/mainpage">
             <Mainfirst />

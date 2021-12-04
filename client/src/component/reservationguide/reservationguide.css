@@ -1,0 +1,390 @@
+.boothGuideContainerStepsContiner{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.booth_wrap span:hover{
+  cursor: pointer;
+}
+
+.selectBoothImg{
+  width: 100%;
+}
+
+
+.fontActive{
+  color: #fcc000;
+}
+.borderActive{
+  border: solid 1px #fcc000;
+}
+
+.rightButtonActive{
+  background-color: #fcc000;
+}
+
+.boothGuideContainerTitle{
+  width: 600px;
+  height: 102px;
+  font-family: NanumSquare;
+  font-size: 40px;
+  line-height: 102px;
+  margin: 0 auto 40px auto;
+  color: var(--black);
+  border-bottom: solid 4px var(--warm-grey);  
+  text-align: center;
+}
+
+.boothGuideContainer {
+  width: 100%;
+  height: 706px;
+  background-color: rgba(239, 239, 239, 0.4);
+}
+
+.step {
+  width: 339px;
+  height: 495px;
+  border-radius: 17px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.stepTitle{
+  font-family: NanumSquare_acB;
+  font-size: 27px;
+  line-height: 1.11;
+  text-align: center;
+  color: var(--black);
+  margin-top: 11.5%;
+}
+.stepImgBox{
+  height: 200px;
+}
+
+.stepImg {
+  margin-top: 13.9%;
+  margin-bottom: 11.1%;
+}
+
+.stepName {
+  font-family: NanumSquare_acB;
+  font-size: 24px;
+  line-height: 1.08;
+  text-align: center;
+  color: var(--black);
+  margin-bottom: 7.1%;
+}
+
+.stepDescription {
+  font-family: NanumSquare_acL;
+  font-size: 18px;
+  line-height: 1.11;
+  text-align: center;
+  color: var(--black);
+  margin: 5% 8.3%;
+}
+
+.boothInfoContainer{
+  margin-bottom:20px;
+}
+
+.boothInfoContainerTitleText{
+  text-align: center;
+  width: 600px;
+  height: 102px;
+  font-family: NanumSquare_acB;
+  font-size: 25px;
+  line-height: 102px;
+  margin: 0 auto 40px auto;
+  color: var(--black);
+  border-bottom: solid 4px var(--warm-grey);  
+}
+
+.boothInfoContainerLeftBox{
+  margin-right: 5%;
+}
+
+.boothInfoSearchContainer{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.sectionBox{
+  display: flex;
+  width: auto;
+  padding: 18px 12px 17px 15px;
+  border-radius: 6px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: var(--white);
+  margin-left: 15px;
+}
+
+.section{
+  width: 60px;
+  height: 20px;
+  margin: auto;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.09px;
+  text-align: center;
+  background: none;
+  border: none;
+}
+
+.boothSearchBarContainer{
+  display: flex;
+  width: 400px;
+  height: 50px;
+  padding: 10px;
+  border: solid 3px var(--warm-grey);
+  background-color: white;
+  margin-left: 90px;
+  margin-top: 3px;
+  border-radius: 13px;
+}
+
+.searchBarInput{
+  flex:9;
+  border: none;
+  height: 25px;
+  font-size: 20px;
+}
+
+.searchBarInput:focus { outline: none; }
+
+.searchMirror{
+  flex:1;
+  width: 31.4px;
+  height: 26.3px;
+}
+
+.boothInfoContainerMain{
+  display: flex;
+  height: 100%;
+  overflow-x:scroll;
+}
+
+.boothInfoContainerRightBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.floor{
+  width: 80px;
+  height: 80px;
+  border-radius: 13px;
+  border: solid 2px var(--dark-grey-blue);
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.floorNum{
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.53;
+  letter-spacing: 0.11px;
+  text-align: left;
+  color: var(--dark-grey-blue);
+}
+
+.hallName{
+  font-family: Poppins;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.55;
+  letter-spacing: 0.07px;
+  text-align: center;
+  color: var(--dark-grey-blue);
+}
+
+.enlargeConatiner{
+  display: flex;
+  flex-direction: column;
+}
+
+.enlargeButton{
+  width: 40px;
+  height: 40px;
+  margin: 0 0 8.6px;
+  /* padding: 11.8px; */
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: #e4e4e4;
+  line-height: 28px;
+  font-size: 20px;
+}
+
+.boothMainPicuture{
+  width: 1669px;
+  height: 683px;
+  padding: 17px 23px 16px 23.5px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+@media screen and (max-width: 1098px){
+  .boothInfoSearchContainer{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 20px;
+  }
+  .boothSearchBarContainer{
+    margin-top: 24px;
+  }
+    .boothGuideContainer{
+      height: 800px;
+    }
+    .boothGuideContainerTitle{
+      font-size: 27px;
+      border-bottom: solid 2.5px var(--warm-grey);
+    }
+    .boothGuideContainerStepsContiner{
+      flex-wrap: wrap;
+    }
+    .step{
+      width: 339px;
+      height: 300px;
+      margin: 10px;
+    }
+    .stepTitle{
+      font-size: 20px;
+    }
+    .stepImgBox{
+      margin-top: 30px;
+    }
+    .stepImg{
+      width: 80px;
+      height: 80px;
+    }
+    .stepName{
+      font-size: 20px;
+    }
+    .stepDescription{
+      font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 735px){
+  .boothInfoContainerTitle{
+    text-align: center;
+  }
+  .boothInfoSearchContainer{
+    display: inline-block;
+    justify-content: left;
+    margin-bottom: 20px;
+    margin-left: 25px;
+  }
+  .boothGuideContainer{
+    height: 1450px;
+  }
+}
+
+@media screen and (max-width: 540px){
+  .selectionPageConainer{
+    overflow: hidden;
+  }
+  .boothGuideContainerTitle{
+    width: 540px;
+  }
+  .boothInfoContainerTitle{
+    display: flex;
+  }
+  .boothInfoContainerTitleText{
+    justify-content: flex-start;
+    width: 540px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .boothGuideContainer{
+    background-color: var(--white);
+    height: 1500px;
+  }
+  .boothSearchBarContainer{
+    width: 290px;
+  }
+  .searchBarInput{
+    font-size: 16px;
+  }
+  .boothGuideContainerTitle{
+    width: 400px;
+    font-size: 20px !important;
+    border-bottom: solid 2.5px var(--warm-grey);
+  }
+  .boothGuideContainerStepsContiner{
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: nowrap;
+  }
+  .step{
+    margin: 20px 0;
+    width: 157px;
+    height: 270px;
+  }
+  .stepTitle{
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 0px;
+  }
+  .stepImgBox{
+    padding: 0px;
+    width: 55px;
+    margin: 14px auto 0 auto;
+    height: 50px;
+  }
+  .stepImg{
+    width: 50px;
+    height: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 2px;
+  }
+  .stepName{
+    font-size: 14px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 0;
+  }
+  .stepDescription{
+    height: 70px;
+    padding: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .boothInfoContainer{
+    top: 1800px;
+  }
+}
+
+@media screen and (max-width: 360px){
+
+  .boothGuideContainerTitle{
+    width: 280px;
+    height: 130px;
+    line-height: 120px;
+    border-bottom: solid 1.5px var(--warm-grey);
+  }
+  .boothInfoContainerTitleText{
+    height: 130px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
