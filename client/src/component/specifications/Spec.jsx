@@ -6,7 +6,70 @@ import axios from 'axios';
 import { useLocation } from 'react-router';
 import SpecModal from './specModal';
 
+const isE1True = function () {
+  try {
+    const e1 = document.getElementById("e1Select");
+    const e1Num = Number(e1.options[e1.selectedIndex].value);
+    return (e1Num > 0 ? true : false);
+  }
+  catch (error) {
+    return false;
+  }
+}
+const isE2True = function () {
+  try {
+    const e2 = document.getElementById("e2Select");
+    const e2Num = Number(e2.options[e2.selectedIndex].value);
+    return (e2Num > 0 ? true : false);
+  } catch (error) {
+    return false;
+  }
+}
 
+const E1InfoBox = () => {
+  if (!isE1True()) {
+    return null
+  }
+  return (
+    <div className="SelectionItemBottomItem">
+      <div className="e1DetailInfo">
+        <label htmlFor="">회사 소개 사이트 주소</label><br />
+        <input type="text" name="companyName" className="company_url" />
+      </div>
+    </div>
+  )
+}
+
+const E2InfoBox = function () {
+  if (!isE2True()) {
+    return null
+  }
+  const result = []
+  try {
+    const e2 = document.getElementById("e2Select");
+    const e2Num = Number(e2.options[e2.selectedIndex].value);
+    for (let i = 0; i < e2Num; i++) {
+      result.push(
+        <div>
+          <h5>품목{i + 1}</h5>
+          <div className="e2DetailInfo">
+            <label htmlFor="product">제품명</label><br />
+            <input type="text" name="product" className="eslProductName" /><br />
+            <label htmlFor="value">가격</label><br />
+            <input type="text" name="value" className="eslProductPrice" />
+          </div></div>)
+    }
+    return (
+      <div className="SelectionItemBottomItemBottom">
+        {result.map(item => (
+          item
+        ))}
+      </div>
+    );
+  } catch (error) {
+    return null
+  }
+}
 
 export default function Spec() {
 
@@ -59,73 +122,8 @@ export default function Spec() {
     }
   }
 
-  const isE1True = function () {
-    try {
-      const e1 = document.getElementById("e1Select");
-      const e1Num = Number(e1.options[e1.selectedIndex].value);
-      return (e1Num > 0 ? true : false);
-    } 
-    catch (error) {
-      return false;
-    }
-  }
-  const isE2True = function () {
-    try {
-      const e2 = document.getElementById("e2Select");
-      const e2Num = Number(e2.options[e2.selectedIndex].value);
-      return (e2Num > 0 ? true : false);
-    } catch (error) {
-      return false;
-    }
-  }
 
-  useEffect(() => {
-  }, [isE1True,isE2True])
 
-  const E1InfoBox = () => {
-    if (!isE1True()) {
-      return null
-    }
-    return (
-      <div className="SelectionItemBottomItem">
-        <div className="e1DetailInfo">
-          <label htmlFor="">회사 소개 사이트 주소</label><br />
-          <input type="text" name="companyName" className="company_url" />
-        </div>
-      </div>
-    )
-  }
-
-  const E2InfoBox = function () {
-    if (!isE2True()) {
-      return null
-    }
-    const result = []
-    try {
-      const e2 = document.getElementById("e2Select");
-      const e2Num = Number(e2.options[e2.selectedIndex].value);
-      for(let i = 0; i < e2Num; i++){
-        result.push(
-          <div>
-          <h5>품목{i+1}</h5>
-          <div className="e2DetailInfo">
-            <label htmlFor="product">제품명</label><br />
-            <input type="text" name="product" className="eslProductName" /><br/>
-            <label htmlFor="value">가격</label><br />
-            <input type="text" name="value" className="eslProductPrice" />
-          </div></div>)
-      }
-      return (
-        <div className="SelectionItemBottomItemBottom">
-          {result.map(item => (
-            item
-          ))}
-        </div>
-      );
-    } catch (error) {
-      return null
-    }
-  }
 
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -163,8 +161,8 @@ export default function Spec() {
     const eslProductPrice = document.getElementsByClassName("eslProductPrice");
 
     const eslproduct = [];
-    for(let i=0; i<eslNum[1]; i++){
-      if(eslProductName[i].value != ''){
+    for (let i = 0; i < eslNum[1]; i++) {
+      if (eslProductName[i].value != '') {
         eslproduct.push({
           'product_name': eslProductName[i].value,
           'product_price': eslProductPrice[i].value
@@ -175,14 +173,14 @@ export default function Spec() {
     const eslCompanyUrl = document.getElementsByClassName("company_url");
 
     const eslurl = [];
-    for(let i=0; i<eslNum[0]; i++){
-      if(eslCompanyUrl[i].value != ''){
+    for (let i = 0; i < eslNum[0]; i++) {
+      if (eslCompanyUrl[i].value != '') {
         eslurl.push({
           'url': eslCompanyUrl[i].value
         })
       }
     }
-    
+
 
     // let selectionInfo = {
     //   boothId: specs.boothId,
@@ -218,7 +216,7 @@ export default function Spec() {
             reserveResultMsg = res.data.msg;
           }
           alert(reserveResultMsg)
-          window.location.href="/selection"
+          window.location.href = "/selection"
           // console.log(reserveResultMsg)
         });
     } catch (error) {
@@ -342,44 +340,44 @@ export default function Spec() {
                 </div>
                 <div className="SelectionItemBottom">
                   <div className="SelectionItemBottomItems">
-                  <div className="newSelectionItemContainer">
-                    <div  className="SelectionItemBottomItem">
-                      <h4>회사안내 ESL</h4>
-                      <img src="/assets/icons/esl1.png" alt="esl image" />
-                      <div className="selectionConatiner">
-                        <label htmlFor="ESL_E1">E1<br />기기당<br />2만원</label>
-                        <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option value={0}>0</option>
-                          <option value={1}>1</option>
-                        </select>  
+                    <div className="newSelectionItemContainer">
+                      <div className="SelectionItemBottomItem">
+                        <h4>회사안내 ESL</h4>
+                        <img src="/assets/icons/esl1.png" alt="esl image" />
+                        <div className="selectionConatiner">
+                          <label htmlFor="ESL_E1">E1<br />기기당<br />2만원</label>
+                          <select id="e1Select" name="ESL_E1" className="eslSelectionBOX" onChange={handleEslNum}>
+                            <option value={0}>0</option>
+                            <option value={1}>1</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                    {
-                      isE1True() && <E1InfoBox/>
-                    }
+                      {
+                        isE1True() && <E1InfoBox />
+                      }
                     </div>
                     <div className="newSelectionItemContainer">
-                    <div className="SelectionItemBottomItem">
-                      <h4>제품 안내 ESL</h4>
-                      <img src="/assets/icons/esl2.png" alt="esl image" />
-                      <div className="selectionConatiner">
-                        <label htmlFor="ESL_E2">E2<br />기기당<br />3만원</label>
-                        <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
-                          <option defaultValue value="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                        </select>
+                      <div className="SelectionItemBottomItem">
+                        <h4>제품 안내 ESL</h4>
+                        <img src="/assets/icons/esl2.png" alt="esl image" />
+                        <div className="selectionConatiner">
+                          <label htmlFor="ESL_E2">E2<br />기기당<br />3만원</label>
+                          <select id="e2Select" name="ESL_E2" className="eslSelectionBOX" onChange={handleEslNum}>
+                            <option defaultValue value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                        </div>
                       </div>
-                    </div>
-                    {
-                      isE2True() && <E2InfoBox/>
-                    }
+                      {
+                        isE2True() && <E2InfoBox />
+                      }
                     </div>
                     <div className="SelectionItemBottomItem">
-                    <h4>기타 ESL</h4>
+                      <h4>기타 ESL</h4>
                       <img src="/assets/icons/esl.png" alt="esl image" />
                       <div className="selectionConatiner">
                         <label htmlFor="ESL_E3">E3<br />기기당<br />4만원</label>
@@ -486,7 +484,7 @@ export default function Spec() {
               <div className="reservationDashboardCostTitle">총 금액</div>
               <div className="reservationDashboardCostNum">{eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth == 0 ? 0 : eslNum[0] * 2 + eslNum[1] * 3 + eslNum[2] * 4 + booth}만원</div>
             </div>
-            <SpecModal handleSubmit={handleSubmit}/>
+            <SpecModal handleSubmit={handleSubmit} />
           </div>
         </div>
       </div>
