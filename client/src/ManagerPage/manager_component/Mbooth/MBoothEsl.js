@@ -12,7 +12,7 @@ const MBoothEsl = ({ posts, loading }) => {
             {posts.map(post => (
                 <>
                     <tr>
-                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.tag_id}</td>
+                        <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td" key={post.tag_id}>{post.tag_id}</td>
                         <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.company_name}</td>
                         <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.state}</td>
                         <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{post.battery}</td>

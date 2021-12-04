@@ -320,42 +320,6 @@ function BoothManagement() {
                                     <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">{battery2}%</td>
                                 </tr> */}
                                 <MBoothEsl posts={esldata} loading={loading2} />
-                                {/* <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">3</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
-                                <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">4</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
-                                <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">5</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E2</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
-                                <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">6</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E3</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
-                                <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">7</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E3</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr>
-                                <tr>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">8</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E3</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">E1-50022SEB</td>
-                                    <td className="boothManagement_eslInfo_padding boothManagement_eslInfo_td">대여중</td>
-                                </tr> */}
                             </table>
                         </div>
                         <div className="boothManagement_eslInfo_false">

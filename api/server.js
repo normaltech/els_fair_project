@@ -860,4 +860,35 @@ app.post("/insert_notice", (req, res) => {
     // );
 })
 
+//부스예약초기화
+app.post("/delete_booth", (req, res) => {
+    const Cname = req.body.Mname;
+
+    db.query("SELECT company_id FROM UserAccountInfo WHERE company_name = ?;", Cname, (err, result) => {
+        if (result) {
+            const id = result[0].company_id;
+
+            var sql1 = "DELETE FROM Product WHERE company_id = ?;";
+            var sql1s = mysql.format(sql1, id);
+
+            var sql2 = "DELETE FROM Pass WHERE companyId = ?;";
+            var sql2s = mysql.format(sql2, id);
+
+            var sql3 = "DELETE FROM RESERVATION WHERE companyId = ?;";
+            var sql3s = mysql.format(sql3, id);
+
+            var sql4 = "UPDATE BoothInfo SET company_id = 0, isReserved = 0 WHERE company_id = ?;";
+            var sql4s = mysql.format(sql4, id);
+
+            db.query(sql1s + sql2s + sql3s + sql4s, function (err, result) {
+                if (err) {
+                    console.error(err);
+                }
+            })
+
+        }
+        else console.log(err);
+    })
+})
+
 app.listen(5000, () => console.log(`Listening on port 5000`));
