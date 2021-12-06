@@ -29,6 +29,7 @@ import ManagerPage from './ManagerPage/Home';
 import ErrorBoundary from './ErrorBoundary';
 import About from './component/aboutEservate/About';
 import ReservationGuide from './component/reservationguide/ReservationGuide';
+import AboutExhibition from './component/aboutExhibition/AboutExhibition';
 
 function App() {
   return (
@@ -100,6 +101,9 @@ function App() {
           {/* 예약안내페이지 */}
           <Route path="/reservationinfo">
             <ReservationInfo />
+          </Route>
+          <Route path="/ourteam">
+            <AboutExhibition/>
           </Route>
 
           {/* 매니저페이지 */}

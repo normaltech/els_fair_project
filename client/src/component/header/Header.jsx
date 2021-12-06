@@ -83,7 +83,7 @@ export default function Header() {
           <li className="headerMenuItem"><Link to="/about-us">홈페이지 안내</Link></li>
           <li className="headerMenuItem"><Link to="/mainpage">전시회 목록</Link></li>
           <li className="headerMenuItem"><Link to="/how-to-book">예약 안내</Link></li>
-          <li className="headerMenuItem"><Link to="/about-us">상세 정보</Link></li>
+          <li className="headerMenuItem"><Link to="/ourteam">상세 정보</Link></li>
         </ul>
 
         <div className="headerRightContent">

@@ -1,0 +1,96 @@
+.aboutExhibitionContainer{
+  display: grid;
+  grid-template-columns:1fr 2fr;
+  width: 90%;
+  margin: 50px auto;
+  row-gap: 30px;
+  column-gap: 100px;
+}
+
+.ainfoContainer{
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.developersParagraph{
+  display: flex;
+}
+.developersParagraph .ainfoContainer{
+  margin-right: 30px;
+}
+
+.howtocomeParagraph{
+  display: flex;
+}
+
+.aboutExhibitionPage h2{
+  color: var(--dark-grey-blue);
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 5px solid var(--dark-grey-blue);;
+}
+
+.aboutCorp{
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-top: 30px;
+  margin-bottom: 30px; */
+}
+
+.aboutCorp img{
+  margin-right: 100px;
+}
+
+.howtocomeLeft img{
+  width: 300px;
+  height: 300px;
+}
+
+
+.infoSubTitle.part{
+  margin-bottom: 0;
+}
+
+
+.infoSubTitle{
+  font-family: NanumSquare;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: left;
+  color: var(--black);
+}
+.infoParagraph{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-family: NanumSquare;
+  font-size: 20px;
+  text-align: left;
+  color: #686868;
+}
+
+.infoParagraph.bigger{
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.part{
+  margin-bottom: 10px;
+}
+
+.partHan{
+  font-family: NanumSquare;
+  font-size: 14px;
+  text-align: left;
+  color: #686868;
+  padding-left: 3px;
+  line-height: 0.25rem
+}
+
+.developerName{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
