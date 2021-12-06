@@ -6,7 +6,7 @@ import './reservationguide.css';
 export default function ReservationGuide() {
 
   return (
-    <div className="selectionPageConainer">
+    <div className="aselectionPageConainer">
       <Header />
       <div id="boothGuide" className="boothGuideContainer">
         <div className="boothGuideContainerTitle">예약 안내</div>

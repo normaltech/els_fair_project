@@ -14,9 +14,7 @@
   .userInfoPage .footer{
     position: relative;
   }
-  .selectionPageConainer .footer{
-    position: relative;
-  }
+
 }
 @media screen and (max-width: 1000px){
   .aboutPage .footer{
@@ -31,6 +29,9 @@
   position: relative;
 }
 
+.selectionPageConainer .footer{
+  position: relative;
+}
 
 /* .reservationListPage .footer{
   position: relative;
