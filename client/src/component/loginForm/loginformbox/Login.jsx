@@ -5,6 +5,7 @@ import './login.css';
 import axios from 'axios';
 import { loginCall } from '../../../apiCalls';
 import { AuthContext } from '../../../context/AuthContext';
+import Header from '../../header/Header';
 
 
 export default function Login() {
@@ -97,6 +98,7 @@ export default function Login() {
   }
   return (
     <div className="loginContentContainer">
+      <Header />
       <div className="loginContent">
         {/* 왼쪽사진 */}
         <div className="loginLeftContent">

@@ -39,7 +39,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Login />
+            <Mainfirst />
           </Route>
           <Route path="/signup">
             <Signup />
@@ -51,7 +51,7 @@ function App() {
             <SelectBooth />
           </Route>
           <Route path="/how-to-book">
-            <ReservationGuide/>
+            <ReservationGuide />
           </Route>
           <Route path="/mainpage">
             <Mainfirst />
@@ -95,7 +95,7 @@ function App() {
             <ReservationList />
           </Route>
           <Route path="/about-us">
-            <About/>
+            <About />
           </Route>
           {/* 예약안내페이지 */}
           <Route path="/reservationinfo">

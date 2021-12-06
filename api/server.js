@@ -407,7 +407,7 @@ app.post("/reservateBooth", (req, res) => {
     const product = rvData.eslproduct;
 
     //sql구문 두개 이상 한번에 처리
-    var sql1 = "INSERT INTO RESERVATION SET ?;";
+    var sql1 = "INSERT INTO RESERVATION SET exhibitionId = 1, ?;";
     var sql1s = mysql.format(sql1, reservateList);
 
     var sql2 = "INSERT INTO Pass SET ?;";
@@ -430,9 +430,6 @@ app.post("/reservateBooth", (req, res) => {
     product.forEach(function (item) {
         sql5s += mysql.format(sql5, [rvData.companyId,item]);
     });
-
-
-    console.log(sql4s);
 
     db.query(sql1s + sql2s + sql3s + sql4s + sql5s, function (err, result) {
         if (err) {
