@@ -36,7 +36,7 @@ export default function Booth( {layer, handleOpen, handleClose} ) {
     const boothModalList = [];
     boothList.map(
         (item)=>{
-            boothModalList.push(<ManagerBoothModal isReserved={item.isReserved} boothId={item.booth_id} className={"manager"+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER}/>)
+            boothModalList.push(<ManagerBoothModal isReserved={item.isReserved} boothId={item.booth_id} className={"manager"+item.section+"_"+item.TYPE+"_"+item.layer+"0"+item.NUMBER} section={item.section} type={item.TYPE.substring(0,1)} layer={item.layer} number={"0"+item.NUMBER} company_id={item.company_id} />)
         }
     )
     return(

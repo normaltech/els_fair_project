@@ -375,7 +375,7 @@ app.post('/sendEmail', async function (req, res) {
 app.post("/getBooth", (req, res) => {
     const exhibitionId = req.body.exhibitionId;
     // const section = req.body.section;
-    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
+    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price,company_id FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -383,7 +383,7 @@ app.post("/getBooth", (req, res) => {
             }
 
             if (result.length > 0) {
-                res.send(result)
+                res.send(result);
             } else {
                 res.send({ message: "부스가 존재하지 않습니다!" })
             }

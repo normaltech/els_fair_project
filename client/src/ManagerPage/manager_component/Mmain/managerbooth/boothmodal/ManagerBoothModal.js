@@ -25,7 +25,26 @@ const style = {
 }
 
 
-export default function BoothModal({ isReserved, boothId, className, section, type, layer, number }) {
+export default function BoothModal({ isReserved, boothId, className, section, type, layer, number, company_id }) {
+  
+  const [Cname, setCname] = useState('-');
+  const [Cid, setCid] = useState('-');
+  const [Mname, setMname] = useState('-');
+  const [Mnum, setMnum] = useState('-');
+  const [Memail, setMemail] = useState('-');
+
+  useEffect(() => {
+    if(company_id !== 0){
+      axios.get("/getCompanyInfoById/" + company_id).then((res) => {
+          setCname(res.data.company_name);
+          setMname(res.data.manager);
+          setMnum(res.data.manager_phone_num);
+          setMemail(res.data.email)
+          setCid(company_id);
+      })
+    }
+  }, [])
+  
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -144,11 +163,11 @@ export default function BoothModal({ isReserved, boothId, className, section, ty
           </div>
           <div className="managerBoothModalRight">
             <div className="mBMRReserverInfo">예약자 정보</div>
-            <div className="mBMRCompanyName">{`회사명:  ${"파이브스타"}`}</div>
-            <div className="mBMRCompanyId">{`사업자번호:  ${"123123123"}`}</div>
-            <div className="mBMRManagerName">{`담당자이름:  ${"박재형"}`}</div>
-            <div className="mBMRManagerNum">{`담당자번호:  ${"01023123123"}`}</div>
-            <div className="mBMRManagerEmail">{`담당자이메일:  ${"test@test.com"}`}</div>
+            <div className="mBMRCompanyName">{`회사명:  ${Cname}`}</div>
+            <div className="mBMRCompanyId">{`사업자번호:  ${Cid}`}</div>
+            <div className="mBMRManagerName">{`담당자이름:  ${Mname}`}</div>
+            <div className="mBMRManagerNum">{`담당자번호:  ${Mnum}`}</div>
+            <div className="mBMRManagerEmail">{`담당자이메일:  ${Memail}`}</div>
           </div>
         </Box>
       </Modal>
