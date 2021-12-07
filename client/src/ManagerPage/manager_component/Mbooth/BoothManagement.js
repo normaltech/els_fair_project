@@ -30,16 +30,16 @@ function BoothManagement() {
     }
 
     const getvolume = (type) => {
-        if(type === 'a'){setWidthInfo(3000); setLengthInfo(3000); setHeightInfo(3000);}
-        else if(type === 'b1'){setWidthInfo(6000); setLengthInfo(3000); setHeightInfo(3000);}
-        else if(type === 'b2'){setWidthInfo(3000); setLengthInfo(6000); setHeightInfo(6000);}
-        else if(type === 'c'){setWidthInfo(6000); setLengthInfo(6000); setHeightInfo(6000);}
+        if (type === 'a') { setWidthInfo(3000); setLengthInfo(3000); setHeightInfo(3000); }
+        else if (type === 'b1') { setWidthInfo(6000); setLengthInfo(3000); setHeightInfo(3000); }
+        else if (type === 'b2') { setWidthInfo(3000); setLengthInfo(6000); setHeightInfo(6000); }
+        else if (type === 'c') { setWidthInfo(6000); setLengthInfo(6000); setHeightInfo(6000); }
     }
 
     useEffect(() => {
         if (c_booth !== "-") {
             try {
-                axios.post("/getboothInfo", {c_booth})
+                axios.post("/getboothInfo", { c_booth })
                     .then((response) => {
                         getboothinfo(
                             response.data[0].bname,
@@ -66,11 +66,11 @@ function BoothManagement() {
 
     useEffect(() => {
         if (c_conpany !== "-") {
-            if(c_conpany == null){
-                getreservation("-","-","-","-","-","-");
+            if (c_conpany == null) {
+                getreservation("-", "-", "-", "-", "-", "-");
             } else {
                 try {
-                    axios.post("/getmanagerInfo", {c_conpany})
+                    axios.post("/getmanagerInfo", { c_conpany })
                         .then((response) => {
                             getreservation(
                                 response.data[0].company_id,
@@ -87,6 +87,19 @@ function BoothManagement() {
             }
         }
     }, [c_conpany])
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+            setLoading(true);
+            const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
+            setPosts(res.data);
+            setAllData(res.data);
+            setFilteredData(res.data);
+            setLoading(false);
+        }
+
+        fetchPosts();
+    }, [])
 
     // 부스정보 변수
     const [nameInfo, setNameInfo] = useState('-')
@@ -119,7 +132,7 @@ function BoothManagement() {
     const [detailCompany, setDetailCompany] = useState('CampinGas')
     const [detailEsl, setDetailEsl] = useState('6')
     const [detailPrice, setDetailPrice] = useState('자세히')
-    
+
     // 페이지네이션 변수
     const [posts, setPosts] = useState([]);
     const [esldata, setesldata] = useState([]);
@@ -133,24 +146,7 @@ function BoothManagement() {
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
     //esl정보 가져오기
-    const btn = async() => {
-        // try {
-        //     axios.get("/esl_crawler")
-        //         .then((response) => {
-        //             console.log(response.data);
-        //             settagid1(response.data[1].tag_id);
-        //             setc_id1(response.data[1].company_name);
-        //             setstate1(response.data[1].state);
-        //             setbettery1(response.data[1].battery);
-
-        //             settagid2(response.data[2].tag_id);
-        //             setc_id2(response.data[2].company_name);
-        //             setstate2(response.data[2].state);
-        //             setbettery2(response.data[2].battery);
-        //         })
-        // } catch (error) {
-        //     console.log(error);
-        // }
+    const btn = async () => {
         setLoadong2(true);
         const res = await axios.get("/esl_crawler");
         setesldata(res.data);
@@ -165,16 +161,28 @@ function BoothManagement() {
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    useEffect(()=>{
-        const fetchPosts = async () =>{
-          setLoading(true);
-          const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
-          setPosts(res.data);
-          setLoading(false);
+    //검색기능
+    const [allData, setAllData] = useState([]);
+    const [filteredData, setFilteredData] = useState(allData);
+    const currentPosts2 = filteredData.slice(indexOfFirstPost, indexOfLastPost);
+    const handleSearch2 = (event) => {
+        let value = event.target.value.toLowerCase();
+        let result = [];
+        // console.log(value);
+        if(value === ''){
+            result = allData.filter((data) => {
+                return data.Bname.search(value) !== -1;
+            });
         }
+        else {
+            result = allData.filter((data) => {
+                if(data.Cname !== null)return data.Cname.search(value) !== -1;
+            });
+        }
+        setFilteredData(result);
+    }
+
     
-        fetchPosts();
-      }, [])
 
     const onClickBoothInfo = () =>{
         const addName = detailBoothName.slice(0,2) + detailBoothType + detailBoothName.slice(2,6);
@@ -223,7 +231,7 @@ function BoothManagement() {
             <div className='boothManagement_wrap'>
                 {/* 상단 */}
                 <div className="boothManagement_search">
-                    <input type="text" className="boothManagement_input" placeholder="검색하실 기업을 입력해주세요." />
+                    <input type="text" className="boothManagement_input" onChange={(event) => handleSearch2(event)} placeholder="검색하실 기업을 입력해주세요." />
                     <img src="/assets/icons/iconAwesomeSearch.png" alt="검색이미지" className="boothManagement_img" />
                 </div>
                 {/* 중앙 */}
@@ -265,7 +273,7 @@ function BoothManagement() {
                     {/* 예약자 정보 */}
                     <div className="boothManagement_reservationInfo_wrap">
                         <div className="boothManagement_reservationInfo_title">예약자 정보</div>
-                        <div className="boothManagement_reservationInfo_content_wrap boothManagement_reservationInfo_true">  
+                        <div className="boothManagement_reservationInfo_content_wrap boothManagement_reservationInfo_true">
                             <div className="boothManagement_reservationInfo_content boothManagement_reservationInfo_companyName_wrap">
                                 <div className="boothManagement_reservationInfo_content_style_title boothManagement_reservationInfo_companyName">회사명</div>
                                 <div className="boothManagement_reservationInfo_content_style_sub boothManagement_reservationInfo_companyNameInfo">{companyNameInfo}</div>
@@ -339,10 +347,10 @@ function BoothManagement() {
                                 <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th5">가격</th>
                                 <th className="boothManagement_detail_padding boothManagement_detail_th boothManagement_detail_th6">초기화</th>
                             </tr>
-                            <MBoothPosts posts={currentPosts} loading={loading} getChange={getChange} />
+                            <MBoothPosts posts={currentPosts2} loading={loading} getChange={getChange} />
                         </table>
                     </div>
-                    <MBoothPagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate}/>
+                    <MBoothPagenation postPerPage={postPerPage} totalPosts={posts.length} paginate={paginate} />
                 </div>
             </div>
         </>

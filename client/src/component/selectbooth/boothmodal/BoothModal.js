@@ -90,12 +90,12 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
       searchRef.current.style.backgroundColor = "#F6C652";
       searchRef.current.style.animation = "blink-effect 1s step-end infinite";
     }
-    // else{
-    //   searchRef.current.style.color = "black";
-    //   searchRef.current.style.border = "solid 1px #707070";
-    //   searchRef.current.style.backgroundColor = " #fff";
-    //   searchRef.current.style.animation = "";
-    // }
+    else{
+      searchRef.current.style.color = "black";
+      searchRef.current.style.border = "solid 1px #707070";
+      searchRef.current.style.backgroundColor = " #fff";
+      searchRef.current.style.animation = "";
+    }
   })
   return (
     <>
