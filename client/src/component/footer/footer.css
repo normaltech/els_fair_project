@@ -10,6 +10,11 @@
   position: relative;
 }
 
+@media screen and (max-width: 1800px){
+  .aboutExhibitionPage .footer{
+    position: relative;
+  }
+}
 @media screen and (max-width: 1024px){
   .userInfoPage .footer{
     position: relative;

@@ -53,9 +53,18 @@ export default function AboutExhibition() {
             <div className="howtocomeRight">
               <div className="ainfoContainer">
                 <div className="infoSubTitle">세종 전시장</div>
-                <div className="infoParagraph bigger">도로명 서울 광진구 능동로 209 세종대학교</div>
-                <div className="infoParagraph bigger">지번 서울 광진구 군자동 98 세종대학교</div>
-                <div className="infoParagraph bigger">우편 05006</div>
+                <div className="infoParagraphContainer">
+                  <div className="infoParagraph bigger sp st">도로명</div>
+                  <div className="infoParagraph bigger sp">서울 광진구 능동로 209 세종대학교</div>
+                </div>
+                <div className="infoParagraphContainer">
+                  <div className="infoParagraph bigger sp st">지번</div>
+                  <div className="infoParagraph bigger sp">서울 광진구 군자동 98 세종대학교</div>
+                </div>
+                <div className="infoParagraphContainer">
+                  <div className="infoParagraph bigger sp st">우편</div>
+                  <div className="infoParagraph bigger sp">05006</div>
+                </div>
               </div>
               <div className="ainfoContainer">
                 <div className="infoSubTitle">찾아오는 길</div>

@@ -1,8 +1,8 @@
 .aboutExhibitionContainer{
   display: grid;
   grid-template-columns:1fr 2fr;
-  width: 90%;
-  margin: 50px auto;
+  width: 75%;
+  margin: 0 auto;
   row-gap: 30px;
   column-gap: 100px;
 }
@@ -27,14 +27,14 @@
   color: var(--dark-grey-blue);
   font-weight: bold;
   padding-bottom: 10px;
+  margin-bottom: 20px;
   border-bottom: 5px solid var(--dark-grey-blue);;
 }
 
 .aboutCorp{
   display: flex;
   flex-wrap: wrap;
-  /* margin-top: 30px;
-  margin-bottom: 30px; */
+  margin-bottom: 50px;
 }
 
 .aboutCorp img{
@@ -72,6 +72,13 @@
 .infoParagraph.bigger{
   font-size: 25px;
   margin-bottom: 10px;
+}
+
+.infoParagraph.sp{
+  display: inline-block;
+}
+.infoParagraph.sp.st{
+  width: 100px;
 }
 
 .part{
