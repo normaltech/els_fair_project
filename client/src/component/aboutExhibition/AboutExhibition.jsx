@@ -31,7 +31,7 @@ export default function AboutExhibition() {
     <div className="aboutExhibitionPage">
       <Header />
       <div className="aboutExhibitionContainer">
-        <div className="exhibitionInfo">
+        <div className="exhibitionInfo time">
           <h2>전시장 정보</h2>
           <div className="ainfoContainer">
             <div className="infoSubTitle">관람 시간 안내</div>
@@ -44,7 +44,7 @@ export default function AboutExhibition() {
             <div className="infoParagraph bigger">3층 대강당</div>
           </div>
         </div>
-        <div className="exhibitionInfo">
+        <div className="exhibitionInfo howtocome">
           <h2>오시는 길</h2>
           <div className="howtocomeParagraph">
             <div className="howtocomeLeft">
@@ -73,7 +73,7 @@ export default function AboutExhibition() {
             </div>
           </div>
         </div>
-        <div className="exhibitionInfo">
+        <div className="exhibitionInfo developers">
           <h2>개발자</h2>
           <div className="developersParagraph">
             <div className="developersLeft ainfoContainer">
@@ -108,7 +108,7 @@ export default function AboutExhibition() {
             </div>
           </div>
         </div>
-        <div className="exhibitionInfo">
+        <div className="exhibitionInfo corps">
           <h2>산학 연계 기업</h2>
           <div className="aboutCorp ainfoContainer">
             <div className="corpLogoBox">
