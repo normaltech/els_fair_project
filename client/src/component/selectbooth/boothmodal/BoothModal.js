@@ -87,20 +87,17 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
     //value에서 boothname을 none으로 받으면 안보이게 설정
     if(value === className.substring(2)){
       searchRef.current.style.color = "white";
-      searchRef.current.style.border = "";
       searchRef.current.style.backgroundColor = "#F6C652";
       searchRef.current.style.animation = "blink-effect 1s step-end infinite";
     }
     else{
       if (reservedCheck === "예약 가능") {
         searchRef.current.style.color = "black";
-        searchRef.current.style.border = "solid 1px #707070";
         searchRef.current.style.backgroundColor = " #fff";
         searchRef.current.style.animation = "";
       }
       else {
         searchRef.current.style.color = "black";
-        searchRef.current.style.border = "solid 1px #707070";
         searchRef.current.style.backgroundColor = "#fff2cc";
         searchRef.current.style.animation = "";
       }
