@@ -28,6 +28,9 @@
   .aboutExhibitionPage .footer{
     position: absolute;
   }
+  .aselectionPageConainer .footer{
+    position: relative;
+  }
 
 }
 @media screen and (max-width: 1000px){
@@ -39,11 +42,15 @@
   .aboutExhibitionPage .footer{
     position: absolute;
   }
+  .aselectionPageConainer .footer{
+    position: relative;
+  }
 }
 @media screen and (max-width: 375px){
   .aboutExhibitionPage .footer{
     position: relative;
   }
+  
 }
 @media screen and (max-width: 360px){
   .aboutExhibitionPage .footer{
