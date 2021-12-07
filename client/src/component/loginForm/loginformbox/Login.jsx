@@ -98,7 +98,6 @@ export default function Login() {
   }
   return (
     <div className="loginContentContainer">
-      <Header />
       <div className="loginContent">
         {/* 왼쪽사진 */}
         <div className="loginLeftContent">

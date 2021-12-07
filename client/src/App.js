@@ -40,7 +40,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <Mainfirst />
+            <Login />
           </Route>
           <Route path="/signup">
             <Signup />
