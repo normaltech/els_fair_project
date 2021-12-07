@@ -24,11 +24,6 @@ function ManagerMain() {
     const [corpInfoNum, setCorpInfoNum] = useState('3')
     const [visitorNum, setVisitorNum] = useState('352')
     const [visitorInfoNum, setVisitorInfoNum] = useState('352')
-    const [companyName, setCompanyName] = useState('펍쥐')
-    const [companyNum, setCompanyNum] = useState('5')
-    const [companyBooth, setCompanyBooth] = useState('A-a101')
-    const [eslNum, setEslNum] = useState('-')
-    const [eslDestroyNum, setEslDestroyNum] = useState('-')
 
     const [esldata, setesldata] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -43,45 +38,6 @@ function ManagerMain() {
     }
     // useEffect(() => {
     //     btn();
-    // }, [])
-
-    const [tagid1, settagid1] = useState('-')
-    const [company1, setcompany1] = useState('-')
-    const [c_id1, setc_id1] = useState('-')
-    const [state1, setstate1] = useState('-')
-    const [battery1, setbettery1] = useState('-')
-
-    const [tagid2, settagid2] = useState('-')
-    const [company2, setcompany2] = useState('-')
-    const [c_id2, setc_id2] = useState('-')
-    const [state2, setstate2] = useState('-')
-    const [battery2, setbettery2] = useState('-')
-
-    const esl_btn = () => {
-        try {
-            axios.get("/esl_crawler")
-                .then((response) => {
-                    console.log(response.data);
-                    settagid1(response.data[1].tag_id);
-                    setc_id1(response.data[1].company_id);
-                    setstate1(response.data[1].state);
-                    setbettery1(response.data[1].battery);
-                    setcompany1(response.data[1].company_name);
-
-                    settagid2(response.data[2].tag_id);
-                    setc_id2(response.data[2].company_id);
-                    setstate2(response.data[2].state);
-                    setbettery2(response.data[2].battery);
-                    setcompany2(response.data[2].company_name);
-                })
-        } catch (error) {
-            console.log(error);
-        }
-        // console.log("하이");
-    }
-
-    // useEffect(() => {
-    //     esl_btn();
     // }, [])
 
     return (
