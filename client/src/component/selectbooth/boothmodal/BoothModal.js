@@ -46,6 +46,7 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
       const data = res.data[0].COUNT;
       if(data == 1){
         alert("예약 내역이 존재합니다!");
+        setOpen(false);
         return;
       }else{
         history.push({
@@ -91,10 +92,18 @@ export default function BoothModal({ isReserved, searchData, boothId, className,
       searchRef.current.style.animation = "blink-effect 1s step-end infinite";
     }
     else{
-      searchRef.current.style.color = "black";
-      searchRef.current.style.border = "solid 1px #707070";
-      searchRef.current.style.backgroundColor = " #fff";
-      searchRef.current.style.animation = "";
+      if (reservedCheck === "예약 가능") {
+        searchRef.current.style.color = "black";
+        searchRef.current.style.border = "solid 1px #707070";
+        searchRef.current.style.backgroundColor = " #fff";
+        searchRef.current.style.animation = "";
+      }
+      else {
+        searchRef.current.style.color = "black";
+        searchRef.current.style.border = "solid 1px #707070";
+        searchRef.current.style.backgroundColor = "#fff2cc";
+        searchRef.current.style.animation = "";
+      }
     }
   })
   return (
