@@ -5,25 +5,25 @@ import Footer from '../footer/Footer';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-export default function Withdraw(){
+export default function Withdraw() {
 
     const btnWithDraw = () =>{
         axios.get("/api/withDrawUserAccount").then((res)=>{
             const code = res.data.resultCode;
             const message = res.data.message;
             alert(message)
-            if(code == 1) {
-                window.location.href="/";
+            if (code == 1) {
+                window.location.href = "/login";
             }
         })
     }
-    return(
+    return (
         <>
-            <Header/>
+            <Header />
             <div className="userinfoOrReservationlistMenuBar">
                 <div className="uorMenuContainer">
-                <span className="uorMenu">회원정보</span>
-                <span className="uorMenu">예약 내역</span>
+                    <Link to="/mypage/userinfo" className="uorMenu activatedUorMenu">회원 정보</Link>
+                    <Link to="/mypage/reservationlist" className="uorMenu">예약 내역</Link>
                 </div>
             </div>
             <div className="withdraw_wrap">
@@ -32,7 +32,7 @@ export default function Withdraw(){
                     <div className="withdraw_word2">탈퇴하시겠습니까?</div>
                     <div className="withdraw_word3">탈퇴하시게 되면 개인정보 및 예약하신 데이터들이 모두 삭제됩니다.</div>
                     <div><button className="withdraw_button withdraw_button1" onClick={btnWithDraw}>탈퇴</button></div>
-                    <div><Link to="/userinfo"><button className="withdraw_button">취소</button></Link></div>
+                    <div><Link to="/mypage/userinfo"><button className="withdraw_button">취소</button></Link></div>
                 </div>
             </div>
             <Footer />

@@ -10,16 +10,50 @@
   position: relative;
 }
 
+@media screen and (max-width: 1800px){
+  .aboutExhibitionPage .footer{
+    position: relative;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .aboutExhibitionPage .footer{
+    position: absolute;
+  }
+}
 @media screen and (max-width: 1024px){
   .userInfoPage .footer{
     position: relative;
   }
-  .selectionPageConainer .footer{
+  .aboutExhibitionPage .footer{
+    position: absolute;
+  }
+  .aselectionPageConainer .footer{
     position: relative;
   }
+
 }
 @media screen and (max-width: 1000px){
   .aboutPage .footer{
+    position: relative;
+  }
+}
+@media screen and (max-width: 600px){
+  .aboutExhibitionPage .footer{
+    position: absolute;
+  }
+  .aselectionPageConainer .footer{
+    position: relative;
+  }
+}
+@media screen and (max-width: 375px){
+  .aboutExhibitionPage .footer{
+    position: relative;
+  }
+  
+}
+@media screen and (max-width: 360px){
+  .aboutExhibitionPage .footer{
     position: relative;
   }
 }
@@ -34,7 +68,7 @@
   position: relative;
 }
 
-/* .reservationListPage .footer{
+/* .aboutExhibitionPage .footer{
   position: relative;
 } */
 
@@ -73,15 +107,49 @@
   color: rgba(210, 210, 210, 0.98);
 }
 
-@media screen and (max-width: 375px){
+@media screen and (max-width: 540px){
   .footer{
     margin-top:30px;
   }
   .footerInfo{
-      display: flex;
-      flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerInfo div{
+    display: none;
+    margin: 3px auto;
+    font-size: 10px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: rgba(210, 210, 210, 0.98);
+  }
+  .line{
+      display: none;
+  }
+  .copyright{
+      font-size: 5px;
       justify-content: center;
-      align-items: center;
+      text-align: center;
+  }
+  .copyright span{
+    text-align: center;
+  }
+}
+@media screen and (max-width: 450px){
+  .footer{
+    margin-top:30px;
+  }
+  .footerInfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .footerInfo div{
     display: none;

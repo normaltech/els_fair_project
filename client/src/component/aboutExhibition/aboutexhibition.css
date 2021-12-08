@@ -1,0 +1,173 @@
+.aboutExhibitionContainer{
+  display: grid;
+  grid-template-columns:1fr 2fr;
+  width: 75%;
+  margin: 0 auto;
+  row-gap: 30px;
+  column-gap: 100px;
+  grid-template-areas:
+    "time howtocome"
+    "developers corps";
+}
+
+.time{
+  grid-area: time;
+}
+.howtocome{
+  grid-area: howtocome;
+}
+.developers{
+  grid-area: developers;
+}
+.corps{
+  grid-area: corps;
+}
+
+.ainfoContainer{
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.developersParagraph{
+  display: flex;
+}
+.developersParagraph .ainfoContainer{
+  margin-right: 30px;
+}
+
+.howtocomeParagraph{
+  display: flex;
+}
+
+.aboutExhibitionPage h2{
+  color: var(--dark-grey-blue);
+  font-weight: bold;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 5px solid var(--dark-grey-blue);;
+}
+
+.aboutCorp{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.aboutCorp img{
+  margin-right: 100px;
+}
+
+.howtocomeLeft img{
+  width: 300px;
+  height: 300px;
+}
+
+
+.infoSubTitle.part{
+  margin-bottom: 0;
+}
+
+
+.infoSubTitle{
+  font-family: NanumSquare;
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 900;
+  text-align: left;
+  color: var(--black);
+}
+.infoParagraph{
+  margin-left: 10px;
+  margin-bottom: 5px;
+  font-family: NanumSquare;
+  font-size: 20px;
+  text-align: left;
+  color: #686868;
+}
+
+.infoParagraph.bigger{
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.infoParagraph.sp{
+  display: inline-block;
+}
+.infoParagraph.sp.st{
+  width: 100px;
+}
+
+.part{
+  margin-bottom: 10px;
+}
+
+.partHan{
+  font-family: NanumSquare;
+  font-size: 14px;
+  text-align: left;
+  color: #686868;
+  padding-left: 3px;
+  line-height: 0.25rem
+}
+
+.developerName{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1280px){
+  .aboutExhibitionContainer{
+    margin: auto 20px;
+  }
+}
+
+@media screen and (max-width: 1200px){
+  .aboutExhibitionContainer{
+    grid-template-columns:1fr;
+    width: 90%;
+    margin: auto 0;
+    row-gap: 30px;
+    column-gap: 100px;
+    grid-template-areas:
+      "developers"
+      "corps";
+  }
+  .time{
+    display: none;
+  }
+  .howtocome{
+    display: none;
+  }
+  .corpLogoBox img{
+    width: 45%;
+  }
+  .corpTitle img{
+    width: 45%;
+  }
+  .projectHistory img{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .aboutExhibitionContainer{
+    margin: 300px auto;
+  }
+}
+@media screen and (max-width: 800px){
+  .aboutExhibitionContainer{
+    margin: 100px auto;
+  }
+}
+@media screen and (max-width: 500px){
+  .aboutExhibitionContainer{
+    margin: 60px auto;
+  }
+}
+@media screen and (max-width: 360px){
+  .aboutExhibitionContainer{
+    margin: 30px 0;
+  }
+}

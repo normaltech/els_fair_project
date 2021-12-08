@@ -385,7 +385,7 @@ app.post('/sendEmail', async function (req, res) {
 app.post("/api/getBooth", (req, res) => {
     const exhibitionId = req.body.exhibitionId;
     // const section = req.body.section;
-    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
+    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price,company_id FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -393,7 +393,7 @@ app.post("/api/getBooth", (req, res) => {
             }
 
             if (result.length > 0) {
-                res.send(result)
+                res.send(result);
             } else {
                 res.send({ message: "부스가 존재하지 않습니다!" })
             }
@@ -417,7 +417,7 @@ app.post("/api/reservateBooth", (req, res) => {
     const product = rvData.eslproduct;
 
     //sql구문 두개 이상 한번에 처리
-    var sql1 = "INSERT INTO RESERVATION SET ?;";
+    var sql1 = "INSERT INTO RESERVATION SET exhibitionId = 1, ?;";
     var sql1s = mysql.format(sql1, reservateList);
 
     var sql2 = "INSERT INTO Pass SET ?;";
