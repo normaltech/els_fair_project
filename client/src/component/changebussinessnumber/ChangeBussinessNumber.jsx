@@ -14,7 +14,7 @@ export default function ChangeBussinessNumber(){
         let data = {
             inputCompanyId : inputId
         }
-        axios.post("/changeCompanyId",data).then((res)=>{
+        axios.post("/api/changeCompanyId",data).then((res)=>{
             const code = res.data.resultCode;
             const message = res.data.message;
             alert(message);

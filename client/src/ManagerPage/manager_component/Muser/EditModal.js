@@ -10,7 +10,7 @@ import {VscAccount} from "react-icons/vsc";
 function MemberCount(companyId){
     const [data, setData] = useState([])
     async function fetchUrl(){
-        axios.get("/getCompanyMemberCount/"+companyId).then((res) => {
+        axios.get("/api/getCompanyMemberCount/"+companyId).then((res) => {
             setData(res.data.member)
         })
     }
@@ -24,7 +24,7 @@ function MemberCount(companyId){
 function MemberInfo(companyId){
     const [data, setData] = useState([])
     async function fetchUrl(){
-        axios.get("/getCompanyInfoById/"+companyId).then((res) => {
+        axios.get("/api/getCompanyInfoById/"+companyId).then((res) => {
             setData(res.data)
         })
     }
@@ -78,7 +78,7 @@ export default function EditModal({companyId}) {
             isActive : isActive,
             companyId : companyId
         }
-        axios.post("/updateUserInfo",data).then((res)=>{
+        axios.post("/api/updateUserInfo",data).then((res)=>{
             // console.log(res);
             if(res.data.affectedRows >= 1){
                 alert("사용자 정보가 수정되었습니다!");

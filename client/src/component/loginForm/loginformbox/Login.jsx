@@ -55,7 +55,7 @@ export default function Login() {
       //   body: JSON.stringify(user)
       // });
       try {
-        await axios.post("/login", user).then((res) => {
+        await axios.post("/api/login", user).then((res) => {
           const code = res.data.resultCode;
           const message=res.data.message;
 

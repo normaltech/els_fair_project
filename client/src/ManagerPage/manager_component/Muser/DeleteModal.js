@@ -45,7 +45,7 @@ export default function DeleteModal({companyId}) {
     companyId : companyId
   }
   const deleteAccount = () => {
-    axios.post("/unActivateAccountById",data).then((res)=>{
+    axios.post("/api/unActivateAccountById",data).then((res)=>{
       if(res.data.changedRows >= 1){
         window.location.reload()
         handleClose();

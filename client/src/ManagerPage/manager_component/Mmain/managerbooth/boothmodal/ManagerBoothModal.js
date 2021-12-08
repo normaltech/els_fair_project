@@ -32,7 +32,7 @@ export default function BoothModal({ isReserved, boothId, className, section, ty
   const history = useHistory(null);
   const searchRef = useRef(null);
   const checkIfUserReserved = () => {
-    axios.get("/checkIfUserReserved").then((res) => {
+    axios.get("/api/checkIfUserReserved").then((res) => {
       const data = res.data[0].COUNT;
       if (data == 1) {
         alert("예약 내역이 존재합니다!");

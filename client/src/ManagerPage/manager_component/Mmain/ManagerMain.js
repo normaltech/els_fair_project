@@ -19,7 +19,7 @@ function useFetch(url){
 }
 function ManagerMain(esl_data) {
 
-    var corpTeam = useFetch("/getCompanyCount")
+    var corpTeam = useFetch("/api/getCompanyCount")
     const [corpInfoNum, setCorpInfoNum] = useState('3')
     const [visitorNum, setVisitorNum] = useState('352')
     const [visitorInfoNum, setVisitorInfoNum] = useState('352')
@@ -31,7 +31,7 @@ function ManagerMain(esl_data) {
 
     const btn = () => {
         try {
-            axios.get("/esl_crawler")
+            axios.get("/api/esl_crawler")
                 .then((response) => {
                     setEslNum(response.data.length - 1);
                 })
@@ -57,7 +57,7 @@ function ManagerMain(esl_data) {
 
     const esl_btn = () => {
         try {
-            axios.get("/esl_crawler")
+            axios.get("/api/esl_crawler")
                 .then((response) => {
                     console.log(response.data);
                     settagid1(response.data[1].tag_id);

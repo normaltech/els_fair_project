@@ -39,7 +39,7 @@ export default function Mainfirst() {
     useEffect(()=>{
       const fetchPosts = async () =>{
         setLoading(true);
-        const res = await axios.get('/getNotice');
+        const res = await axios.get('/api/getNotice');
         setPosts(res.data);
         setLoading(false);
       }
@@ -55,7 +55,7 @@ export default function Mainfirst() {
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    const data = useFetch("/ExhibitionMonthList");
+    const data = useFetch("/api/ExhibitionMonthList");
     const items = [];
     
     data.map(

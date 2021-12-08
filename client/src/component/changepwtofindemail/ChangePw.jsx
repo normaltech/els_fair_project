@@ -6,7 +6,7 @@ import { Link ,useLocation} from 'react-router-dom';
 function useFetch(emailData){
     const [data, setData] = useState()
     async function fetchUrl(){
-        axios.post("/getCompanyIdByEmail", emailData).then((res) => {
+        axios.post("/api/getCompanyIdByEmail", emailData).then((res) => {
             setData(res.data.companyId)
         })
     }
@@ -45,7 +45,7 @@ export default function ChangePw(){
             // })
             console.log("회사 id:"+ companyId)
             let data = {companyId : companyId, newPassword : value2}
-            axios.post("/changePassword", data).then((res) => {
+            axios.post("/api/changePassword", data).then((res) => {
                 console.log(res)
                 window.location.href="/login"
             })

@@ -2,13 +2,13 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "web.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon web.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd ../client && yarn start",
-    "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "server": "nodemon web.js",
+    "dev": "con currently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
     "express-session": "^1.17.2",
     "fs": "^0.0.1-security",
     "helmet": "^4.6.0",
+    "http-proxy-middleware": "^2.0.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.0",

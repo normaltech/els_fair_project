@@ -1,0 +1,8 @@
+{
+    "host":"eservateclient.cafe24app.com",
+    "user":"eservate",
+    "password":"capstone2021",
+    "port":"3306",
+    "database":"eservate",
+    "dateStrings" : "date"
+}

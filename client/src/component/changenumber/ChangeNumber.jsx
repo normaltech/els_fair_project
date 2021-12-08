@@ -21,7 +21,7 @@ export default function ChangeNumber(){
             phoneNumber : ipNumber,
             email : ipEmail
         }
-        axios.post("/updateUserData",data).then((res)=>{
+        axios.post("/api/updateUserData",data).then((res)=>{
             const code = res.data.resultCode;
             const message = res.data.message;
             alert(message)

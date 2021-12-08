@@ -61,7 +61,7 @@ function Notice() {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('/getNotice'); // 데이터베이스 가져오기
+            const res = await axios.get('/api/getNotice'); // 데이터베이스 가져오기
             setPosts(res.data);
             setLoading(false);
         }

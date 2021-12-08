@@ -207,7 +207,7 @@ export default function Spec() {
     console.log(selectionInfo);
     var reserveResultMsg = "";
     try {
-      axios.post("/reservateBooth", selectionInfo)
+      axios.post("/api/reservateBooth", selectionInfo)
         .then((res) => {
           // console.log(res);
           if (res.data.resultCd == 'S') {
@@ -233,7 +233,7 @@ export default function Spec() {
 
   useEffect(() => { //session에서 받아온 유저정보
     try {
-      axios.get("/getUserInfoFromSession")
+      axios.get("/api/getUserInfoFromSession")
         .then((response) => {
           if (response.data != null) {
             setCompanyName(response.data.companyName);

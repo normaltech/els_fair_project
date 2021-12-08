@@ -15,7 +15,7 @@ export const MBoothDelete = ({Mname}) => {
         else {
             console.log(Mname);
             try{
-                axios.post("/delete_booth", {Mname});
+                axios.post("/api/delete_booth", {Mname});
                 window.location.replace("/managerpage/boothManagement");
             }catch {
                 alert('삭제 실패');

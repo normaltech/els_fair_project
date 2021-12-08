@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => { //session에서 받아온 유저정보
     try {
-      axios.get("/getuserinfo")
+      axios.get("/api/getuserinfo")
       .then((response) => {
         if(response.data.manager){
             setPerson(response.data.manager);
@@ -38,7 +38,7 @@ export default function Header() {
 
   const btn = () => {
       try {
-        axios.get("/logout")
+        axios.get("/api/logout")
       } catch (error) {
         console.log(error);
       }

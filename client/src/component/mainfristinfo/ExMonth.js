@@ -38,7 +38,7 @@ function toStringByFormatting(source, delimiter = '-') {
 }
 
 export const ExMonth = ({id, month}) => {
-    const data = useFetch("/ExhibitionList/" + month);
+    const data = useFetch("/api/ExhibitionList/" + month);
     return (
         <div className="infoContainer">
             <div className="borderSection">

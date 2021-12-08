@@ -8,7 +8,7 @@ export const ExInfo = ({name, place, startDate, endDate, image}) => {
 
     useEffect(() => { //session에서 받아온 유저정보
       try {
-        axios.get("/getuserinfo")
+        axios.get("/api/getuserinfo")
         .then((response) => {
           if(response.data.manager){
             setUserExist(true);

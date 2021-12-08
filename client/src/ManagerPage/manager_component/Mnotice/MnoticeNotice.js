@@ -32,7 +32,7 @@ function NoticeModal({id,exhibition,title,text}) {
         const n_title = document.getElementsByClassName("mainpage_noticeModal_titleInput")[0].value;
 
         try{
-            axios.post("/notices_change", {n_title, n_text, id})
+            axios.post("/api/notices_change", {n_title, n_text, id})
             setOpen(false);
             alert("수정완료 되었습니다.");
             window.location.replace("/managerpage/notice");

@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function Withdraw(){
 
     const btnWithDraw = () =>{
-        axios.get("/withDrawUserAccount").then((res)=>{
+        axios.get("/api/withDrawUserAccount").then((res)=>{
             const code = res.data.resultCode;
             const message = res.data.message;
             alert(message)

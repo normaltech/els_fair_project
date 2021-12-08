@@ -33,7 +33,7 @@ function toStringByFormatting(source, delimiter = '-') {
   return [year, month, day].join(delimiter);
 }
 export default function ReservationList() {
-  const data = useFetch("/getReservedList");
+  const data = useFetch("/api/getReservedList");
   return (
     <div className="reservationListPage">
       <Header />

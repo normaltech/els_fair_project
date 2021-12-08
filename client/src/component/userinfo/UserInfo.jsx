@@ -14,7 +14,7 @@ export default function UserInfo() {
 
   useEffect(() => { //session에서 받아온 유저정보
     try {
-      axios.get("/getuserinfo")
+      axios.get("/api/getuserinfo")
         .then((response) => {
           setcompany_id(response.data.company_id);
           setmanager(response.data.manager);

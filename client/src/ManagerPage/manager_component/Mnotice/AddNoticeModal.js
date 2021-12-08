@@ -18,7 +18,7 @@ export const AddNoticeModal = () => {
 
     const clickAdd = () => {
         try {
-            axios.post("/insert_notice", {user});
+            axios.post("/api/insert_notice", {user});
             alert('공지사항 추가');
         } catch {
             console.log('에러');

@@ -20,7 +20,7 @@ export default function ChangePassword(){
             pw1: pw1,
             pw2:pw2
         }
-        axios.post("/changePwFromMyPage",data).then((res)=>{
+        axios.post("/api/changePwFromMyPage",data).then((res)=>{
             console.log(res);
             const code = res.data.resultCode;
             const message = res.data.message;

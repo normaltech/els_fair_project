@@ -2,14 +2,14 @@
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-#esl_csvfile
-/esl_csvfile
+# #esl_csvfile
+# /esl_csvfile
 
-#database
-/database.json
+# #database
+# /database.json
 
-#email
-/email.json
+# #email
+# /email.json
 
 # dependencies
 /node_modules

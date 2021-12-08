@@ -25,10 +25,10 @@ export default function Find(){
         const hiddenTxt = document.querySelector('.find_hidden');
         const hiddenBtn = document.querySelector('.regist_button');
         try {
-            axios.post("/checkEmail", data).then((res) => {
+            axios.post("/api/checkEmail", data).then((res) => {
               console.log(res.data.flag)
                 if(res.data.flag == 1){
-                    axios.post("/sendEmail", data).then((response) => {
+                    axios.post("/api/sendEmail", data).then((response) => {
                         // /confirm으로 난수 보내기
                         console.log("메일코드:"+response.data.number)
                         hiddenTxt.style.display = "block";

@@ -3,13 +3,73 @@ const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
 const app = express();
+const path = require("path");
+
 //비밀번호 암호화
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
-const axios = require('axios');
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
+
+//쿠키 + 세션 관리
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const nodemailer = require("nodemailer");
+
+//호스팅 proxy 설정
+const {createProxyMiddleware} = require('http-proxy-middleware');
+
+app.use(express.static(path.join(__dirname, "/build")));
+app.use(express.json());
+
+app.use(cors());
+//proxy말고 createProxyMiddleware써서 클라이언트쪽에서 경로를 /api/~ 로 지정해서 서버의 api를 사용할수있게 지정
+module.exports = function(app){
+	app.use(
+		createProxyMiddleware("/api",{
+			target: "http://eservateclient.cafe24app.com",
+			changeOrigin: true
+		})
+	)
+}
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({ extended: true }));
+
+//쿠키 1시간동안 보관
+var expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 1);
+
+//세션 활성화
+app.use(session({
+    key: "userId",
+    secret: "subscribe",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        expires: expiryDate
+    }
+}))
+
+//데이터 베이스 연동!
+const data = fs.readFileSync(path.join(__dirname, './database.json'));
+const conf = JSON.parse(data);
+
+const email_data = fs.readFileSync(path.join(__dirname, './email.json'));
+const email_conf = JSON.parse(email_data);
+
+
+const db = mysql.createConnection({
+    host: conf.host,
+    user: conf.user,
+    password: conf.password,
+    database: conf.database,
+    multipleStatements: true
+});
+db.connect();
+
+//현재 날짜 가져오기
+const time = new Date();
+const year = time.getFullYear();
 
 const crawler = async () => {
     try {
@@ -85,64 +145,14 @@ function jsonToCSV(json_data) {
 
     return csv_string;
 }
-//쿠키 + 세션 관리
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const nodemailer = require("nodemailer");
-app.use(express.json());
-
-app.use(cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials: true
-}));
-
-app.use(cookieParser())
-app.use(bodyParser.urlencoded({ extended: true }));
-
-//쿠키 24시간동안 보관
-var expiryDate = new Date(Date.now() + 60 * 60 * 1000 * 24);
-//세션 활성화
-app.use(session({
-    key: "userId",
-    secret: "subscribe",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        expires: expiryDate
-    }
-}))
-
-//데이터 베이스 연동!
-const data = fs.readFileSync('./database.json');
-const conf = JSON.parse(data);
-
-const email_data = fs.readFileSync('./email.json');
-const email_conf = JSON.parse(email_data);
-
-
-const db = mysql.createConnection({
-    host: conf.host,
-    user: conf.user,
-    password: conf.password,
-    database: conf.database,
-    multipleStatements: true
-});
-db.connect();
-
-//현재 날짜 가져오기
-const time = new Date();
-const year = time.getFullYear();
-
-app.get("/hello", (req, res) => {
+app.get("/api/hello", (req, res) => {
     res.send("Welcome to homepage");
 })
 
-app.get("/test", (req, res) => {
+app.get("/api/test", (req, res) => {
     console.log(req.session.user);
 })
-app.get("/logout", (req, res) => {
+app.get("/api/logout", (req, res) => {
 
     if (req.session.user) {
         res.send({ loggedIn: false })
@@ -157,7 +167,7 @@ app.get("/logout", (req, res) => {
         console.log('세션에 로그인 정보가 없음')
     }
 })
-app.post("/register", (req, res) => {
+app.post("/api/register", (req, res) => {
     const userEmail = req.body.email
     const password = req.body.password
     const managerName = req.body.name
@@ -196,7 +206,7 @@ app.post("/register", (req, res) => {
 
 })
 
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
     const userEmail = req.body.email
     const password = req.body.password
     // console.log(userEmail);
@@ -215,7 +225,7 @@ app.post("/login", (req, res) => {
                     if (response) {
                         //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
                         req.session.user = result1[0]
-                        console.log(req.session.user);
+                        // console.log(req.session.user);
                         res.send({resultCode:0,message:"로그인 성공"})
                     }
                     else {
@@ -258,7 +268,7 @@ app.post("/login", (req, res) => {
     // )
 })
 
-app.get("/login", (req, res) => {
+app.get("/api/login", (req, res) => {
     //user객체가 존재한다면 == 로그인이 되어있다면
     if (req.session.user) {
         res.send({ loggedIn: true, user: req.session.user })
@@ -267,7 +277,7 @@ app.get("/login", (req, res) => {
     }
 })
 
-app.get("/ExhibitionMonthList", (req, res) => {
+app.get("/api/ExhibitionMonthList", (req, res) => {
 
     db.query("SELECT DISTINCT MONTH(startDate) AS 'month' FROM ExhibitionList ;", (err, data) => {
         // console.log(data)
@@ -281,7 +291,7 @@ app.get("/ExhibitionMonthList", (req, res) => {
 })
 
 
-app.get("/ExhibitionList/:month", (req, res) => {
+app.get("/api/ExhibitionList/:month", (req, res) => {
     const month = req.params.month;
     db.query("SELECT * FROM ExhibitionList WHERE YEAR(startDate)=? AND MONTH(startDate)=?;", [year, month],
         (err, data) => {
@@ -294,7 +304,7 @@ app.get("/ExhibitionList/:month", (req, res) => {
     )
 })
 
-app.get("/getuserinfo", (req, res) => {
+app.get("/api/getuserinfo", (req, res) => {
     // const email = 'test@test.com';
     const name = '방문자'
 
@@ -309,7 +319,7 @@ app.get("/getuserinfo", (req, res) => {
 })
 
 //공지사항 테이블 불러오기
-app.get("/getNotice", (req, res) => {
+app.get("/api/getNotice", (req, res) => {
     db.query("SELECT * FROM NOTICE ORDER BY id ASC;",
         (err, data) => {
             if (!err) {
@@ -321,7 +331,7 @@ app.get("/getNotice", (req, res) => {
     )
 })
 
-app.get("/getManagerBooth", (req, res) => {
+app.get("/api/getManagerBooth", (req, res) => {
     db.query("SELECT CONCAT(b.section, '-', b.`type`,b.layer, '0', b.number) AS Bname, b.`type`, (SELECT company_name FROM UserAccountInfo WHERE company_id = b.company_id) AS Cname, (SELECT company_name FROM UserAccountInfo WHERE company_id = b.company_id) AS ESL, b.price FROM BoothInfo as b ORDER BY Bname;",
         (err, data) => {
             if (!err) {
@@ -335,7 +345,7 @@ app.get("/getManagerBooth", (req, res) => {
 
 app.post('/sendEmail', async function (req, res) {
     const user_email = req.body.email;
-    console.log("email:"+user_email);
+    // console.log("email:"+user_email);
 
     let number = Math.floor(Math.random() * 1000000) + 100000;
     if (number > 1000000) number = number - 100000;
@@ -372,7 +382,7 @@ app.post('/sendEmail', async function (req, res) {
     }
 })
 //부스 정보 가져오기
-app.post("/getBooth", (req, res) => {
+app.post("/api/getBooth", (req, res) => {
     const exhibitionId = req.body.exhibitionId;
     // const section = req.body.section;
     db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
@@ -392,7 +402,7 @@ app.post("/getBooth", (req, res) => {
 })
 
 //예약 기능
-app.post("/reservateBooth", (req, res) => {
+app.post("/api/reservateBooth", (req, res) => {
     const rvData = req.body
     var reservateList = {
         boothId: rvData.boothId,
@@ -401,7 +411,7 @@ app.post("/reservateBooth", (req, res) => {
         totalPrice: rvData.totalPrice
     }
 
-    console.log(reservateList);
+    // console.log(reservateList);
     const pass = rvData.passArray;
     const esl = rvData.eslurl;
     const product = rvData.eslproduct;
@@ -432,7 +442,7 @@ app.post("/reservateBooth", (req, res) => {
     });
 
 
-    console.log(sql4s);
+    // console.log(sql4s);
 
     db.query(sql1s + sql2s + sql3s + sql4s + sql5s, function (err, result) {
         if (err) {
@@ -451,7 +461,7 @@ app.post("/reservateBooth", (req, res) => {
 })
 
 //세션에서 사용자 정보 가져오기
-app.get("/getUserInfoFromSession", (req, res) => {
+app.get("/api/getUserInfoFromSession", (req, res) => {
     const su = req.session.user
     const userData = {
         companyName: su.company_name,
@@ -466,23 +476,23 @@ app.get("/getUserInfoFromSession", (req, res) => {
 })
 
 //세션에서 사용자 정보 가져오기
-app.post("/getCompanyIdByEmail",(req,res)=>{
-    console.log(req.body)
+app.post("/api/getCompanyIdByEmail",(req,res)=>{
+    // console.log(req.body)
     const email = req.body.email;
     db.query("SELECT company_id from UserAccountInfo WHERE EMAIL = ?;",email,
     (err,result)=>{
         if(err) console.log("회사id찾기 오류:"+err)
         if(result){
-            console.log(result[0].company_id);
+            // console.log(result[0].company_id);
             res.send({companyId:result[0].company_id});
         }
     })
 })
 
 //이메일 중복 확인
-app.post("/checkEmail",(req,res)=>{
+app.post("/api/checkEmail",(req,res)=>{
     const email = req.body.email
-    console.log(email)
+    // console.log(email)
     db.query("SELECT EXISTS (SELECT company_id FROM UserAccountInfo WHERE EMAIL=?) AS exist;",email,(err,result)=>{
         if(err) console.log(err)
         //중복된 이메일이 있으면 1 반환
@@ -499,15 +509,15 @@ app.post("/checkEmail",(req,res)=>{
         }
     })
 })
-app.post("/changePwFromMyPage",(req,res)=>{
+app.post("/api/changePwFromMyPage",(req,res)=>{
     const currentPw = req.body.currentPw;
     const pw1 = req.body.pw1;
     const pw2 = req.body.pw2;
     const currentId = req.session.user.company_id;
-    console.log(currentPw+"<->"+req.session.user.password)
+    // console.log(currentPw+"<->"+req.session.user.password)
 
     bcrypt.compare(currentPw, req.session.user.password, (error, response) => {
-        console.log(response);
+        // console.log(response);
         if (!response) {
            res.send({resultCode:1,message:"현재 비밀번호를 확인해주세요."})
         }
@@ -531,8 +541,8 @@ app.post("/changePwFromMyPage",(req,res)=>{
     })
     
 })
-app.post("/changePassword",(req,res)=>{
-    console.log(req.body)
+app.post("/api/changePassword",(req,res)=>{
+    // console.log(req.body)
     const companyId = req.body.companyId;
     const newPw = req.body.newPassword;
     bcrypt.hash(newPw,saltRounds, (err, hash) =>{
@@ -555,11 +565,11 @@ app.post("/changePassword",(req,res)=>{
     })
 })
 
-app.post("/changeCompanyId",(req,res)=>{
+app.post("/api/changeCompanyId",(req,res)=>{
     const inputCompanyId = req.body.inputCompanyId;
     db.query("UPDATE UserAccountInfo SET company_id = ? WHERE company_id = ?",[inputCompanyId,req.session.user.company_id]
     ,(err,result)=>{
-        console.log(result);
+        // console.log(result);
         if(err) res.send({resultCode:0,message:"사업자 번호 수정 실패"})
         if(result){
             req.session.user.company_id = inputCompanyId;
@@ -570,11 +580,11 @@ app.post("/changeCompanyId",(req,res)=>{
     })
 })
 
-app.post("/updateUserData",(req,res)=>{
+app.post("/api/updateUserData",(req,res)=>{
     const name = req.body.name;
     const phoneNumber = req.body.phoneNumber;
     const email = req.body.email;
-    console.log(name+"-"+phoneNumber+"-"+email)
+    // console.log(name+"-"+phoneNumber+"-"+email)
     db.query("UPDATE UserAccountInfo SET manager =? , manager_phone_num =? , email =? WHERE company_id=?;",
     [name,phoneNumber,email,req.session.user.company_id],(err,result)=>{
         if(err) res.send({resultCode:0,message:"에러"}) 
@@ -586,7 +596,7 @@ app.post("/updateUserData",(req,res)=>{
         }
     })
 })
-app.get("/withDrawUserAccount",(req,res)=>{
+app.get("/api/withDrawUserAccount",(req,res)=>{
     db.query("UPDATE UserAccountInfo SET isActive = 0 WHERE company_id=?;",req.session.user.company_id,
     (err,result)=>{
         if(err) res.send({resultCode:0,message:err})
@@ -599,7 +609,7 @@ app.get("/withDrawUserAccount",(req,res)=>{
         }
     })
 })
-app.post("/adminLogin",(req,res)=>{
+app.post("/api/adminLogin",(req,res)=>{
     const id = req.body.id;
     const pw = req.body.pw;
     db.query("SELECT COUNT(*) AS exist FROM AdminAccount WHERE adminId = ? AND PASSWORD =?;",[id,pw],(err,result)=>{
@@ -619,7 +629,7 @@ app.post("/adminLogin",(req,res)=>{
     })
 })
 
-app.get("/getAllUserData",(req,res)=>{
+app.get("/api/getAllUserData",(req,res)=>{
     db.query("SELECT * FROM UserAccountInfo",(err,result)=>{
         if(result.length > 0){
             // console.log(result);
@@ -627,7 +637,7 @@ app.get("/getAllUserData",(req,res)=>{
         }
     })
 })
-app.get("/getBoothIdByCompanyId/:company_id",(req,res)=>{
+app.get("/api/getBoothIdByCompanyId/:company_id",(req,res)=>{
     const companyId = req.params.company_id;
     db.query("SELECT booth_id FROM BoothInfo WHERE company_id=?;",companyId,(err,result)=>{
         if(result.length > 0){
@@ -636,7 +646,7 @@ app.get("/getBoothIdByCompanyId/:company_id",(req,res)=>{
         }
     })
 })
-app.get("/getCompanyCount",(req,res)=>{
+app.get("/api/getCompanyCount",(req,res)=>{
     db.query("SELECT COUNT(*) as num FROM UserAccountInfo;",(err,result)=>{
         if(result){
             if(result.length>0){
@@ -646,7 +656,7 @@ app.get("/getCompanyCount",(req,res)=>{
         }
     })
 })
-app.get("/getCompanyMemberCount/:companyId",(req,res)=>{
+app.get("/api/getCompanyMemberCount/:companyId",(req,res)=>{
     const companyId = req.params.companyId;
     db.query("SELECT COUNT(*) AS member FROM Pass WHERE companyId = ?;",companyId,(err,result)=>{
         if(result){
@@ -658,7 +668,7 @@ app.get("/getCompanyMemberCount/:companyId",(req,res)=>{
     })
 })
 
-app.get("/getCompanyInfoById/:companyId",(req,res)=>{
+app.get("/api/getCompanyInfoById/:companyId",(req,res)=>{
     const companyId = req.params.companyId;
     db.query("SELECT * FROM UserAccountInfo WHERE company_id = ?;",companyId,(err,result)=>{
         if(result){
@@ -670,7 +680,7 @@ app.get("/getCompanyInfoById/:companyId",(req,res)=>{
     })
 })
 
-app.post("/unActivateAccountById",(req,res)=>{
+app.post("/api/unActivateAccountById",(req,res)=>{
     const companyId = req.body.companyId;
     db.query("UPDATE UserAccountInfo SET isActive = 0 WHERE company_id=?;",companyId,(err,result)=>{
         if(result){
@@ -679,7 +689,7 @@ app.post("/unActivateAccountById",(req,res)=>{
         }
     })
 })
-app.post("/updateUserInfo",(req,res)=>{
+app.post("/api/updateUserInfo",(req,res)=>{
        var manager = req.body.manager;
        var manager_phone_num = req.body.phoneNum;
        var email = req.body.email;
@@ -698,7 +708,7 @@ app.post("/updateUserInfo",(req,res)=>{
         }
     })
 })
-app.get("/getSearchData",(req,res)=>{
+app.get("/api/getSearchData",(req,res)=>{
     db.query("SET @num:=0;SELECT @num:=@num+1 AS id, CONCAT(b.section, '_',b.type,'_', b.layer,'0', b.number) AS boothname, company_name  FROM UserAccountInfo AS u JOIN BoothInfo AS b  ON u.company_id = b.company_id WHERE (@num:=0)=0;",
     (err,result)=>{
         if(result){
@@ -710,7 +720,7 @@ app.get("/getSearchData",(req,res)=>{
     })
 })
 //회사 부스예약 정보
-app.get("/companyList", (req, res) => {
+app.get("/api/companyList", (req, res) => {
     db.query("SELECT company_id AS id, company_name, (SELECT COUNT(NAME) FROM Pass WHERE companyId = u.company_id) AS personnel, (SELECT CONCAT(b.section, '-', b.`type`,b.layer, '0', b.number) FROM BoothInfo AS b WHERE company_id = u.company_id) AS booth FROM UserAccountInfo AS u;",
         (err, data) => {
             if (!err) {
@@ -723,7 +733,7 @@ app.get("/companyList", (req, res) => {
 })
 
 //관리자 부스관리page 예약자정보
-app.post("/getmanagerInfo", (req, res) => {
+app.post("/api/getmanagerInfo", (req, res) => {
     
     const textquery = req.body.c_conpany;
     
@@ -736,7 +746,7 @@ app.post("/getmanagerInfo", (req, res) => {
 })
 
 //관리자 부스관리page 부스정보
-app.post("/getboothInfo", (req, res) => {
+app.post("/api/getboothInfo", (req, res) => {
     const textquery = req.body.c_booth;
 
     db.query("SELECT CONCAT(section, '-', `type`,layer, '0', number) AS bname, section, type, layer FROM BoothInfo WHERE CONCAT(section, '-', `type`,layer, '0', NUMBER) = ?;", textquery,
@@ -761,7 +771,7 @@ async function example() {
             secure: false
         })
         await client.cd("/Import")
-        console.log(await client.list())
+        // console.log(await client.list())
         console.log("성공")
         await client.uploadFrom("./esl_csvfile/import_20211127123456.csv", "import_20211127123456.csv");
     }
@@ -773,7 +783,7 @@ async function example() {
 }
 
 //esl 정보 가져오기 및 ftp연결
-app.get("/eslinfo", (req, res) => {
+app.get("/api/eslinfo", (req, res) => {
     db.query("SELECT company_id AS eslid, company_name, manager AS name, manager_phone_num AS tel, email AS address, url AS page, (SELECT product_name FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_name, (SELECT product_price FROM Product WHERE UserAccountInfo.company_id = Product.company_id GROUP BY Product.company_id) AS product_price, (SELECT CONCAT(section, '-', `type`,layer, '0', NUMBER) FROM BoothInfo WHERE UserAccountInfo.company_id = BoothInfo.company_id) AS booth FROM UserAccountInfo;",
         (err, data) => {
             if (!err) {
@@ -789,7 +799,7 @@ app.get("/eslinfo", (req, res) => {
 })
 
 //크롤링 해서 esl 정보 가져오기
-app.get("/esl_crawler", (req, res) => {
+app.get("/api/esl_crawler", (req, res) => {
     
     try {
         crawler().then((data) => {
@@ -801,7 +811,7 @@ app.get("/esl_crawler", (req, res) => {
     }
 })
 
-app.get("/getNoticeContent/:id",(req,res)=>{
+app.get("/api/getNoticeContent/:id",(req,res)=>{
     const noticeId = req.params.id;
     db.query("SELECT notices FROM NOTICE WHERE id=?",noticeId,(err,result)=>{
         if(result){
@@ -810,7 +820,7 @@ app.get("/getNoticeContent/:id",(req,res)=>{
     })
 })
 
-app.get("/checkIfUserReserved",(req,res)=>{
+app.get("/api/checkIfUserReserved",(req,res)=>{
     const companyId = req.session.user.company_id;
     db.query("SELECT COUNT(*) AS COUNT FROM RESERVATION WHERE companyId = ?;",companyId,(err,result)=>{
         if(result){
@@ -823,7 +833,7 @@ app.get("/checkIfUserReserved",(req,res)=>{
 })
 
 //공지사항 수정
-app.post("/notices_change", (req, res) => {
+app.post("/api/notices_change", (req, res) => {
     const n_title = req.body.n_title;
     const n_text = req.body.n_text;
     const id = req.body.id;
@@ -834,14 +844,14 @@ app.post("/notices_change", (req, res) => {
 })
 
 //공지사항 삭제
-app.post("/notices_delete", (req, res) => {
+app.post("/api/notices_delete", (req, res) => {
     const id = req.body.id;
 
     db.query("DELETE FROM NOTICE WHERE id = ?;", id);
 })
 
 //공지사항 추가
-app.post("/insert_notice", (req, res) => {
+app.post("/api/insert_notice", (req, res) => {
     const n_title = req.body.user.title;
     const n_text = req.body.user.content;
     const exhibition = req.body.user.exhibition;
@@ -863,7 +873,7 @@ app.post("/insert_notice", (req, res) => {
 })
 
 //부스예약초기화
-app.post("/delete_booth", (req, res) => {
+app.post("/api/delete_booth", (req, res) => {
     const Cname = req.body.Mname;
 
     db.query("SELECT company_id FROM UserAccountInfo WHERE company_name = ?;", Cname, (err, result) => {
@@ -894,7 +904,7 @@ app.post("/delete_booth", (req, res) => {
 })
 
 //예약 리스트 가져오기
-app.get("/getReservedList",(req,res)=>{
+app.get("/api/getReservedList",(req,res)=>{
     const companyId = req.session.user.company_id;
     db.query(
     "SELECT b.section, SUBSTRING(b.TYPE,1,1) AS TYPE, e.startDate AS date, e.name "+
@@ -911,4 +921,13 @@ app.get("/getReservedList",(req,res)=>{
         }
     })
 })
-app.listen(5000, () => console.log(`Listening on port 5000`));
+
+
+app.get("/", function (req, res) {
+	res.sendFile(path.join(__dirname, "/build/index.html"));
+});
+app.get("*", function (req, res) {
+	res.sendFile(path.join(__dirname, "/build/index.html"));
+});
+
+app.listen(8001, () => console.log(`Listening on port 8001`));

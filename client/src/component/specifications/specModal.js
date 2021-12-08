@@ -51,7 +51,7 @@ export default function SpecModal({handleSubmit}) {
       handleOpen();
       handleSubmit();
       
-      axios.get("/eslinfo")
+      axios.get("/api/eslinfo")
     } catch {
       console.log('err')
     }

@@ -20,7 +20,7 @@ export default function SelectBooth() {
 
   useEffect(()=>{
     const searchInput = document.getElementById("searchInput").value;
-    axios.get("/getSearchData").then((res)=>{
+    axios.get("/api/getSearchData").then((res)=>{
       // console.log(res.data[1]);
       setAllData(res.data[1]);
       //처음 랜더링 될때 데이터가 들어가서 깜빡이는 현상 없애기 위한 코드

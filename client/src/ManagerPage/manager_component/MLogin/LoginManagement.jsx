@@ -20,7 +20,7 @@ export default function LoginManagement() {
             pw : inputPw
         }
         e.preventDefault();
-        await axios.post('/adminLogin',adminInfo).then((res)=>{
+        await axios.post('/api/adminLogin',adminInfo).then((res)=>{
             if(res.data){
                 if(res.data.resultCode == 'S'){
                     window.location.href="/managerpage";

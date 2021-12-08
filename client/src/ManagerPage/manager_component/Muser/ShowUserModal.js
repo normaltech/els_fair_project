@@ -6,7 +6,7 @@ import axios from 'axios';
 function MemberCount(companyId){
     const [data, setData] = useState([])
     async function fetchUrl(){
-        axios.get("/getCompanyMemberCount/"+companyId).then((res) => {
+        axios.get("/api/getCompanyMemberCount/"+companyId).then((res) => {
             setData(res.data.member)
         })
     }

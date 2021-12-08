@@ -19,7 +19,7 @@ function useFetch(url) {
 }
 
 export const CompanyM = () => {
-    const data = useFetch("/companyList");
+    const data = useFetch("/api/companyList");
     return (
         <div className="managerMain_corpManage_wrap">
             <div className="managerMain_corpManageTitle">기업관리</div>

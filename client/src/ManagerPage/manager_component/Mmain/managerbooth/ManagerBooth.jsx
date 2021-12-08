@@ -32,7 +32,7 @@ function useFetch(url){
 
 export default function Booth( {layer, handleOpen, handleClose} ) {
     
-    const boothList = useFetch("/getBooth");
+    const boothList = useFetch("/api/getBooth");
     const boothModalList = [];
     boothList.map(
         (item)=>{

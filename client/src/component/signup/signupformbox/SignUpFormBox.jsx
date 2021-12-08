@@ -114,7 +114,7 @@ export default function SignUpFormBox() {
         };
 
         try {
-          axios.post("/register", userInfo)
+          axios.post("/api/register", userInfo)
             .then((response) => {
               console.log(response);
             });

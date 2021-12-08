@@ -12,7 +12,7 @@ export const DeleteNoticeModal = ({id}) => {
 
     const btn = () => {
         try{
-            axios.post("/notices_delete", {id});
+            axios.post("/api/notices_delete", {id});
         } catch {
             console.log("에러");
         }

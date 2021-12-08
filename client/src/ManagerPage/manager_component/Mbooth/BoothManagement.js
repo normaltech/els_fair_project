@@ -39,7 +39,7 @@ function BoothManagement() {
     useEffect(() => {
         if (c_booth !== "-") {
             try {
-                axios.post("/getboothInfo", {c_booth})
+                axios.post("/api/getboothInfo", {c_booth})
                     .then((response) => {
                         getboothinfo(
                             response.data[0].bname,
@@ -70,7 +70,7 @@ function BoothManagement() {
                 getreservation("-","-","-","-","-","-");
             } else {
                 try {
-                    axios.post("/getmanagerInfo", {c_conpany})
+                    axios.post("/api/getmanagerInfo", {c_conpany})
                         .then((response) => {
                             getreservation(
                                 response.data[0].company_id,
@@ -152,7 +152,7 @@ function BoothManagement() {
         //     console.log(error);
         // }
         setLoadong2(true);
-        const res = await axios.get("/esl_crawler");
+        const res = await axios.get("/api/esl_crawler");
         setesldata(res.data);
         console.log(esldata);
         setLoadong2(false);
@@ -168,7 +168,7 @@ function BoothManagement() {
     useEffect(()=>{
         const fetchPosts = async () =>{
           setLoading(true);
-          const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
+          const res = await axios.get('/api/getManagerBooth'); // 데이터베이스 가져오기
           setPosts(res.data);
           setLoading(false);
         }
