@@ -36,9 +36,9 @@ function ManagerMain() {
         console.log(esldata);
         setLoading(false);
     }
-    // useEffect(() => {
-    //     btn();
-    // }, [])
+    useEffect(() => {
+        btn();
+    }, [])
 
     return (
         <>

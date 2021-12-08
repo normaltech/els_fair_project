@@ -64,8 +64,6 @@ const crawler = async () => {
     }
 }
 
-// crawler();
-
 //ftp관리
 const ftp = require("basic-ftp");
 function jsonToCSV(json_data) {
@@ -209,53 +207,28 @@ app.post("/login", (req, res) => {
         var result0 = Object.values(JSON.parse(JSON.stringify(result[0])))
         var result1 = Object.values(JSON.parse(JSON.stringify(result[1])))
         // console.log(result1[0]);
-        if(result0[0].isActive == 1){
-            if (result1[0]) {
-                bcrypt.compare(password, result1[0].password, (error, response) => {
-                    if (response) {
-                        //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
-                        req.session.user = result1[0]
-                        console.log(req.session.user);
-                        res.send({resultCode:0,message:"로그인 성공"})
-                    }
-                    else {
-                        res.send({resultCode:1, message: "해당 아이디/비밀번호는 존재하지 않습니다." })
-                    }
-                })
-            } else {
-                res.send({resultCode:1, message: "해당 아이디는 존재하지 않습니다." })
+        if(result1[0]){
+            if(result0[0].isActive == 1){
+                if (result1[0]) {
+                    bcrypt.compare(password, result1[0].password, (error, response) => {
+                        if (response) {
+                            //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
+                            req.session.user = result1[0]
+                            // console.log(req.session.user);
+                            res.send({resultCode:0,message:"로그인 성공"})
+                        }
+                        else {
+                            res.send({resultCode:1, message: "해당 비밀번호는 존재하지 않습니다." })
+                        }
+                    })
+                } 
+            }else{
+                res.send({resultCode:1,message:"비활성화 되어있는 계정입니다."})
             }
-        }else{
-            res.send({resultCode:1,message:"비활성화 되어있는 계정입니다."})
+        }else {
+            res.send({resultCode:1, message: "해당 아이디는 존재하지 않습니다." })
         }
     })
-    // db.query(
-    //     "SELECT * FROM UserAccountInfo WHERE email = ?;",
-    //     userEmail,
-    //     (err, result) => {
-    //         // console.log(err);
-    //         if (err) {
-    //             res.send({ err: err })
-    //         }
-
-    //         if (result.length > 0) {
-    //             bcrypt.compare(password, result[0].password, (error, response) => {
-    //                 if (response) {
-    //                     //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
-
-    //                     req.session.user = result
-    //                     // console.log(req.session.user);
-    //                     res.send(result)
-    //                 }
-    //                 else {
-    //                     res.send({ message: "해당 아이디/비밀번호는 존재하지 않습니다." })
-    //                 }
-    //             })
-    //         } else {
-    //             res.send({ message: "해당 아이디는 존재하지 않습니다." })
-    //         }
-    //     }
-    // )
 })
 
 app.get("/login", (req, res) => {
@@ -375,7 +348,7 @@ app.post('/sendEmail', async function (req, res) {
 app.post("/getBooth", (req, res) => {
     const exhibitionId = req.body.exhibitionId;
     // const section = req.body.section;
-    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price,company_id FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
+    db.query("SELECT isReserved, booth_id,section,TYPE,layer,NUMBER,price FROM BoothInfo WHERE exhibition_id=?", exhibitionId,
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -383,7 +356,7 @@ app.post("/getBooth", (req, res) => {
             }
 
             if (result.length > 0) {
-                res.send(result);
+                res.send(result)
             } else {
                 res.send({ message: "부스가 존재하지 않습니다!" })
             }
@@ -407,7 +380,7 @@ app.post("/reservateBooth", (req, res) => {
     const product = rvData.eslproduct;
 
     //sql구문 두개 이상 한번에 처리
-    var sql1 = "INSERT INTO RESERVATION SET exhibitionId = 1, ?;";
+    var sql1 = "INSERT INTO RESERVATION SET ?;";
     var sql1s = mysql.format(sql1, reservateList);
 
     var sql2 = "INSERT INTO Pass SET ?;";
@@ -430,6 +403,9 @@ app.post("/reservateBooth", (req, res) => {
     product.forEach(function (item) {
         sql5s += mysql.format(sql5, [rvData.companyId,item]);
     });
+
+
+    console.log(sql4s);
 
     db.query(sql1s + sql2s + sql3s + sql4s + sql5s, function (err, result) {
         if (err) {

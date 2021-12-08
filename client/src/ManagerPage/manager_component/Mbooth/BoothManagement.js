@@ -154,9 +154,9 @@ function BoothManagement() {
         setLoadong2(false);
     }
 
-    // useEffect(() => {
-    //     btn();
-    // }, [])
+    useEffect(() => {
+        btn();
+    }, [])
 
     //페이지 바꾸기
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
