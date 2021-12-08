@@ -91,7 +91,7 @@ function BoothManagement() {
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
-            const res = await axios.get('/getManagerBooth'); // 데이터베이스 가져오기
+            const res = await axios.get('api/getManagerBooth'); // 데이터베이스 가져오기
             setPosts(res.data);
             setAllData(res.data);
             setFilteredData(res.data);

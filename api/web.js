@@ -219,53 +219,28 @@ app.post("/api/login", (req, res) => {
         var result0 = Object.values(JSON.parse(JSON.stringify(result[0])))
         var result1 = Object.values(JSON.parse(JSON.stringify(result[1])))
         // console.log(result1[0]);
-        if(result0[0].isActive == 1){
-            if (result1[0]) {
-                bcrypt.compare(password, result1[0].password, (error, response) => {
-                    if (response) {
-                        //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
-                        req.session.user = result1[0]
-                        // console.log(req.session.user);
-                        res.send({resultCode:0,message:"로그인 성공"})
-                    }
-                    else {
-                        res.send({resultCode:1, message: "해당 아이디/비밀번호는 존재하지 않습니다." })
-                    }
-                })
-            } else {
-                res.send({resultCode:1, message: "해당 아이디는 존재하지 않습니다." })
+        if(result1[0]){
+            if(result0[0].isActive == 1){
+                if (result1[0]) {
+                    bcrypt.compare(password, result1[0].password, (error, response) => {
+                        if (response) {
+                            //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
+                            req.session.user = result1[0]
+                            // console.log(req.session.user);
+                            res.send({resultCode:0,message:"로그인 성공"})
+                        }
+                        else {
+                            res.send({resultCode:1, message: "해당 아이디/비밀번호는 존재하지 않습니다." })
+                        }
+                    })
+                } 
+            }else{
+                res.send({resultCode:1,message:"비활성화 되어있는 계정입니다."})
             }
-        }else{
-            res.send({resultCode:1,message:"비활성화 되어있는 계정입니다."})
+        }else {
+            res.send({resultCode:1, message: "해당 아이디는 존재하지 않습니다." })
         }
     })
-    // db.query(
-    //     "SELECT * FROM UserAccountInfo WHERE email = ?;",
-    //     userEmail,
-    //     (err, result) => {
-    //         // console.log(err);
-    //         if (err) {
-    //             res.send({ err: err })
-    //         }
-
-    //         if (result.length > 0) {
-    //             bcrypt.compare(password, result[0].password, (error, response) => {
-    //                 if (response) {
-    //                     //세션 이름을 user로 설정하고 user객체 안에 회원정보(result)를 담음
-
-    //                     req.session.user = result
-    //                     // console.log(req.session.user);
-    //                     res.send(result)
-    //                 }
-    //                 else {
-    //                     res.send({ message: "해당 아이디/비밀번호는 존재하지 않습니다." })
-    //                 }
-    //             })
-    //         } else {
-    //             res.send({ message: "해당 아이디는 존재하지 않습니다." })
-    //         }
-    //     }
-    // )
 })
 
 app.get("/api/login", (req, res) => {
@@ -343,7 +318,7 @@ app.get("/api/getManagerBooth", (req, res) => {
     )
 })
 
-app.post('/sendEmail', async function (req, res) {
+app.post('/api/sendEmail', async function (req, res) {
     const user_email = req.body.email;
     // console.log("email:"+user_email);
 

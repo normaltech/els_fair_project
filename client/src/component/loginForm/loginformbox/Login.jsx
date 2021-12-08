@@ -47,7 +47,7 @@ export default function Login() {
         email: idTag.value,
         password: pwTag.value
       };
-      console.log(user);
+      // console.log(user);
       // let response = fetch('', {  // 서버에서 어디로보낼지 로그인 api 첫번째인자에 정해야됨
       //   method: 'POST',
       //   headers: {

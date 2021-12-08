@@ -5,11 +5,15 @@
   left: 0;
   background-color: #304653;
 }
-
+.aselectionPageConainer .footer{
+  position: relative;
+}
 .signUpPage .footer{
   position: relative;
 }
-
+.userInfoPage .footer{
+  position: relative;
+}
 @media screen and (max-width: 1800px){
   .aboutExhibitionPage .footer{
     position: relative;
