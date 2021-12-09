@@ -31,7 +31,7 @@ function ManagerMain() {
     //esl정보 가져오기
     const btn = async() => {
         setLoading(true);
-        const res = await axios.get("api/esl_crawler");
+        const res = await axios.get("/api/esl_crawler");
         setesldata(res.data);
         console.log(esldata);
         setLoading(false);

@@ -35,7 +35,7 @@ export default function BoothModal({ isReserved, boothId, className, section, ty
 
   useEffect(() => {
     if(company_id !== 0){
-      axios.get("/getCompanyInfoById/" + company_id).then((res) => {
+      axios.get("/api/getCompanyInfoById/" + company_id).then((res) => {
           setCname(res.data.company_name);
           setMname(res.data.manager);
           setMnum(res.data.manager_phone_num);
